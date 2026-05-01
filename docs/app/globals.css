@@ -1,0 +1,406 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts — Inter + Roboto Mono */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;700&display=swap');
+
+/* Pangram — heading font (local) */
+@font-face {
+  font-family: 'Pangram';
+  src: url('/fonts/Pangram-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pangram';
+  src: url('/fonts/Pangram-Black.otf') format('opentype');
+  font-weight: 900;
+  font-display: swap;
+}
+
+/* ── Design system tokens ─────────────────────────────────────────────────── */
+:root {
+  /* Typography */
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'Roboto Mono', monospace;
+  --font-heading: 'Pangram', sans-serif;
+
+  /* Surface */
+  --color-bg:            #ffffff;
+  --color-surface:       #f8fafc;
+  --color-surface-white: #ffffff;
+
+  /* Border */
+  --color-border-subtle:  rgba(11, 18, 14, 0.14);
+  --color-border-default: rgba(5, 21, 36, 0.06);
+
+  /* Text */
+  --color-text-primary: #020618;
+  --color-text-subtle:  #314158;
+  --color-text-muted:   #62748e;
+  --color-text-inverse: #f8fafc;
+
+  /* Brand */
+  --color-brand:       #005fdb;
+  --color-brand-hover: #0047a3;
+
+  /* Semantic */
+  --color-success-border: #5ea500;
+  --color-success-text:   #3c6300;
+  --color-error-border:   #cf121f;
+  --color-error-text:     #6f040c;
+
+  /* Radius (from Figma border/radius tokens) */
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+
+  /* Layout */
+  --topbar-height:          57px;
+  --sidebar-width:          288px;
+  --on-this-page-width:     240px;
+  --content-max-width:      768px;
+
+  /* Spacing scale (from sizes/space/* tokens) */
+  --space-0:    0px;
+  --space-025:  2px;
+  --space-050:  4px;
+  --space-075:  6px;
+  --space-100:  8px;
+  --space-150: 12px;
+  --space-200: 16px;
+  --space-250: 20px;
+  --space-300: 24px;
+  --space-400: 32px;
+  --space-500: 40px;
+  --space-600: 48px;
+  --space-800: 64px;
+}
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { text-decoration: none; }
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--color-border-subtle); border-radius: 3px; }
+
+/* ── Docs layout ──────────────────────────────────────────────────────────── */
+.docs-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: var(--topbar-height);
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-200) var(--space-300);
+  background: var(--color-surface-white);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.docs-sidebar {
+  position: sticky;
+  top: var(--topbar-height);
+  height: calc(100vh - var(--topbar-height));
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  overflow-y: auto;
+  padding: var(--space-200) var(--space-300);
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border-default);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-050);
+}
+
+.docs-content {
+  flex: 1;
+  min-width: 0;
+  background: var(--color-surface-white);
+  padding: var(--space-200) var(--space-300) var(--space-500);
+  display: flex;
+  gap: var(--space-050);
+  align-items: flex-start;
+}
+
+.docs-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-500);
+  padding: 0 var(--space-300);
+}
+
+.docs-on-this-page {
+  flex-shrink: 0;
+  width: var(--on-this-page-width);
+  position: sticky;
+  top: calc(var(--topbar-height) + var(--space-200));
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-200) var(--space-300);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-050);
+}
+
+/* ── Sidebar nav ──────────────────────────────────────────────────────────── */
+.docs-nav-section-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-text-subtle);
+  padding: var(--space-050) 0;
+}
+
+.docs-nav-group-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-muted);
+  padding: var(--space-050) var(--space-075);
+}
+
+.docs-nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-050);
+  padding: var(--space-100) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.docs-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-100);
+  padding: var(--space-050) var(--space-075);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  color: var(--color-text-subtle);
+  transition: background 0.1s, color 0.1s;
+  cursor: pointer;
+}
+.docs-nav-item:hover {
+  background: var(--color-border-default);
+}
+.docs-nav-item.active {
+  background: var(--color-brand);
+  color: var(--color-text-inverse);
+  font-weight: 500;
+}
+
+/* ── Divider ──────────────────────────────────────────────────────────────── */
+.docs-divider {
+  border: none;
+  border-top: 1px solid var(--color-border-subtle);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ── Preview box ──────────────────────────────────────────────────────────── */
+.docs-preview-wrap {
+  width: 100%;
+  background: var(--color-surface-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.docs-preview-tabs {
+  display: flex;
+  gap: var(--space-050);
+  padding: 0 var(--space-200);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.docs-preview-tab {
+  padding: var(--space-150) var(--space-150);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.1s, border-color 0.1s;
+  text-transform: capitalize;
+  margin-bottom: -1px;
+}
+.docs-preview-tab.active {
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-brand);
+}
+
+.docs-preview-canvas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-400);
+  background: #ffffff;
+  width: 100%;
+}
+
+/* Children inside the canvas shrink to content width so they center properly */
+.docs-preview-canvas > * {
+  max-width: 100%;
+}
+
+/* ── Code block ───────────────────────────────────────────────────────────── */
+.docs-code-wrap {
+  position: relative;
+}
+
+.docs-code-block {
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.65;
+  padding: var(--space-300) var(--space-300);
+  overflow-x: auto;
+  white-space: pre;
+  border-radius: 0;
+  margin: 0;
+}
+
+.docs-code-copy {
+  position: absolute;
+  top: var(--space-150);
+  right: var(--space-150);
+  padding: var(--space-050) var(--space-100);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: #94a3b8;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, background 0.15s;
+}
+.docs-code-wrap:hover .docs-code-copy { opacity: 1; }
+.docs-code-copy:hover { background: rgba(255,255,255,0.14); color: #e2e8f0; }
+
+/* ── Typography — doc headings ────────────────────────────────────────────── */
+.docs-breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-muted);
+}
+
+.docs-page-title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+.docs-page-desc {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-text-subtle);
+}
+
+.docs-section-title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--color-text-primary);
+  scroll-margin-top: calc(var(--topbar-height) + var(--space-200));
+}
+
+.docs-subsection-title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-text-primary);
+  scroll-margin-top: calc(var(--topbar-height) + var(--space-200));
+}
+
+/* ── Do / Don't ───────────────────────────────────────────────────────────── */
+.docs-do-dont {
+  display: flex;
+  gap: var(--space-500);
+  width: 100%;
+}
+
+.docs-do,
+.docs-dont {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-050);
+  padding-left: var(--space-200);
+}
+
+.docs-do   { border-left: 1px solid var(--color-success-border); }
+.docs-dont { border-left: 1px solid var(--color-error-border);   }
+
+.docs-do-label   { font-family: var(--font-mono); font-weight: 700; font-size: 16px; line-height: 24px; color: var(--color-success-text); }
+.docs-dont-label { font-family: var(--font-mono); font-weight: 700; font-size: 16px; line-height: 24px; color: var(--color-error-text);   }
+
+.docs-do ul,
+.docs-dont ul {
+  list-style: disc;
+  padding-left: var(--space-200);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-text-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.docs-note {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-subtle);
+}
+
+/* ── Reference links ──────────────────────────────────────────────────────── */
+.docs-ref-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-075);
+  height: 32px;
+  padding: 0 var(--space-150);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-subtle);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  transition: background 0.1s;
+}
+.docs-ref-link:hover { background: var(--color-border-default); }
