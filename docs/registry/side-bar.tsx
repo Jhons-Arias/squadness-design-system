@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Sidebar, type SidebarItem } from '@squadness/ui/sidebar'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
@@ -59,14 +60,14 @@ const SettingsIcon = () => (
 
 // ── Shared data ───────────────────────────────────────────────────────────────
 
-// Expanded logo — 126×32px
+// Expanded logo — 126×32px  (Image handles basePath automatically)
 const LOGO_EXPANDED = (
-  <img src="/Logotipo Squadness.png" alt="Squadness" width={126} height={32} style={{ objectFit: 'contain' }} />
+  <Image src="/Logotipo Squadness.png" alt="Squadness" width={126} height={32} style={{ objectFit: 'contain' }} />
 )
 
 // Collapsed logo — icon-only mark
 const LOGO_COLLAPSED = (
-  <img src="/Logo Collapsed.png" alt="Squadness" width={32} height={32} style={{ objectFit: 'contain' }} />
+  <Image src="/Logo Collapsed.png" alt="Squadness" width={32} height={32} style={{ objectFit: 'contain' }} />
 )
 
 // Nav items — no href so clicks don't navigate; handled by onItemClick
@@ -173,8 +174,8 @@ export function SideBarPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Side Bar</h1>
           <Desc>
-            The sidebar provides the primary navigation structure of an application.
-            It supports an expanded mode with labels and a collapsed icon-only mode.
+            El sidebar provee la estructura de navegación principal de una aplicación.
+            Soporta un modo expandido con etiquetas y un modo colapsado que muestra únicamente íconos.
           </Desc>
         </div>
 
@@ -202,7 +203,7 @@ export function SideBarPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>The sidebar has two layout modes and supports active states, sub-menus, and badges.</Desc>
+            <Desc>El sidebar tiene dos modos de visualización y soporta estados activos, submenús y badges de notificación.</Desc>
           </div>
 
           {/* Expanded */}
@@ -284,7 +285,7 @@ export function SideBarPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -299,22 +300,22 @@ export function SideBarPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for organizing and labeling sidebar navigation.</Desc>
+            <Desc>Reglas para organizar y etiquetar la navegación del sidebar.</Desc>
           </div>
           <DoDont
             do={[
-              'Keep top-level items to 6 or fewer — too many items makes the sidebar hard to scan',
-              'Use short, noun-based labels (e.g. "Clientes", "Reportes") — avoid verbs or long phrases',
-              'Group related items under a parent with sub-menu rather than listing everything at the top level',
-              'Show a badge only for actionable counts (e.g. pending items) — not for decorative numbers',
+              'Limita los elementos de primer nivel a 6 o menos — demasiados ítems dificultan el escaneo visual',
+              'Usa etiquetas cortas basadas en sustantivos (ej. "Clientes", "Reportes") — evita verbos o frases largas',
+              'Agrupa elementos relacionados bajo un padre con submenú en lugar de listarlos todos al mismo nivel',
+              'Muestra un badge solo para conteos accionables (ej. ítems pendientes) — no para números decorativos',
             ]}
             dont={[
-              'Mix icons and text-only items at the same level — all items at the same depth should follow the same pattern',
-              'Use collapsed mode as the default — users should first see the full labeled sidebar',
-              'Put more than 2 levels of nesting in the sidebar — flatten the structure instead',
-              'Use the sidebar for page-level actions (like "Save" or "Export") — those belong in the top bar or content area',
+              'Mezcles ítems con ícono y sin ícono al mismo nivel — todos los elementos de la misma profundidad deben seguir el mismo patrón',
+              'Uses el modo colapsado como vista por defecto — el usuario debe ver primero el sidebar completo con etiquetas',
+              'Pongas más de 2 niveles de anidamiento — aplana la estructura en su lugar',
+              'Uses el sidebar para acciones de página (como "Guardar" o "Exportar") — esas pertenecen a la barra superior o al área de contenido',
             ]}
-            note="In collapsed mode only icons are visible, so every item must have an icon. Items without an icon will not be identifiable when the sidebar is collapsed."
+            note="En modo colapsado solo son visibles los íconos, por lo que cada ítem debe tener uno. Los ítems sin ícono no serán identificables cuando el sidebar esté colapsado."
           />
         </div>
 
