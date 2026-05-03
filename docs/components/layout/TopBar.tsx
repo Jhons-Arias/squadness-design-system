@@ -1,11 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useRef, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { getAllNavItems } from '@/lib/nav'
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 const ALL_ITEMS = getAllNavItems()
 
 function SearchIcon() {
@@ -93,13 +93,13 @@ export function TopBar() {
     <header className="docs-topbar">
       {/* Logo + wordmark */}
       <Link href="/components/button" style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
-        <Image
-          src="/Logo Squadness.png"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`${BASE}/Logo Squadness.png`}
           alt="Squadness"
           width={28}
           height={28}
           style={{ objectFit: 'contain' }}
-          priority
         />
         <span style={{
           fontFamily: 'var(--font-body)',
