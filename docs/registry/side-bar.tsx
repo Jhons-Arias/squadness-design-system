@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { Sidebar, type SidebarItem } from '@squadness/ui/sidebar'
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -60,14 +61,16 @@ const SettingsIcon = () => (
 
 // ── Shared data ───────────────────────────────────────────────────────────────
 
-// Expanded logo — 126×32px  (Image handles basePath automatically)
+// Expanded logo — 126×32px
 const LOGO_EXPANDED = (
-  <Image src="/Logotipo Squadness.png" alt="Squadness" width={126} height={32} style={{ objectFit: 'contain' }} />
+  // eslint-disable-next-line @next/next/no-img-element
+  <img src={`${BASE}/Logotipo Squadness.png`} alt="Squadness" width={126} height={32} style={{ objectFit: 'contain' }} />
 )
 
 // Collapsed logo — icon-only mark
 const LOGO_COLLAPSED = (
-  <Image src="/Logo Collapsed.png" alt="Squadness" width={32} height={32} style={{ objectFit: 'contain' }} />
+  // eslint-disable-next-line @next/next/no-img-element
+  <img src={`${BASE}/Logo Collapsed.png`} alt="Squadness" width={32} height={32} style={{ objectFit: 'contain' }} />
 )
 
 // Nav items — no href so clicks don't navigate; handled by onItemClick
