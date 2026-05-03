@@ -25,7 +25,7 @@
   --color-text-primary: #020618;
   --color-text-subtle:  #314158;
   --color-text-muted:   #62748e;
-  --color-text-inverse: #f8fafc;
+  --color-text-inverse: #ffffff;
 
   /* Brand */
   --color-brand:       #005fdb;
@@ -217,6 +217,20 @@ a { text-decoration: none; }
   border-top: 1px solid var(--color-border-subtle);
   width: 100%;
   flex-shrink: 0;
+}
+
+/* ── Scale row (spacing page) ─────────────────────────────────────────────── */
+.docs-scale-row {
+  display: grid;
+  grid-template-columns: 160px 56px 72px 1fr;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  align-items: center;
+  transition: background 0.1s;
+}
+.docs-scale-row:hover {
+  background: var(--color-surface);
 }
 
 /* ── Preview box ──────────────────────────────────────────────────────────── */
