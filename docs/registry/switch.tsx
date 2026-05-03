@@ -3,6 +3,7 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
+import { TokenTable } from '@/components/docs/TokenTable'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Ejemplos',           level: 1 },
@@ -11,7 +12,20 @@ const TOC: TocItem[] = [
   { id: 'label-position',     label: 'Label position',     level: 2 },
   { id: 'loading',            label: 'Loading',            level: 2 },
   { id: 'references',         label: 'Referencias',        level: 1 },
+  { id: 'tokens',             label: 'Design Tokens',      level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
+]
+
+const SWITCH_TOKENS = [
+  { token: 'border/subtle',              property: 'border-color',     value: 'rgba(11,18,14,0.14)', primitive: 'neutral/300a', description: 'Borde en reposo (unchecked)' },
+  { token: 'border/accent/neutral',      property: 'border-color',     value: '#45556c',             primitive: 'neutral/600',  description: 'Borde en hover' },
+  { token: 'surface/semantic/brand/subtler',  property: 'background-color', value: '#005fdb',        primitive: 'blue/700',     description: 'Fondo checked / ON' },
+  { token: 'surface/semantic/brand/subtler-hovered', property: 'background-color', value: '#0047a3', primitive: 'blue/800',     description: 'Fondo checked hover / ON hover' },
+  { token: 'surface/raised',             property: 'background-color', value: '#ffffff',             primitive: 'neutral/0',    description: 'Thumb del switch / check mark color' },
+  { token: 'surface/default',            property: 'background-color', value: '#f8fafc',             primitive: 'neutral/50',   description: 'Surface unchecked hover' },
+  { token: 'text/default',               property: 'color',            value: '#020618',             primitive: 'neutral/950',  description: 'Label texto principal' },
+  { token: 'text/subtle',                property: 'color',            value: '#314158',             primitive: 'neutral/700',  description: 'Label texto descripción' },
+  { token: 'text/subtlest',              property: 'color',            value: '#62748e',             primitive: 'neutral/500',  description: 'Hint / helper text' },
 ]
 
 // ── Hover style overrides ─────────────────────────────────────────────────────
@@ -208,6 +222,17 @@ export function SwitchPage() {
               { label: 'shadcn/ui', href: 'https://ui.shadcn.com/docs/components/switch' },
             ]}
           />
+        </div>
+
+        <Divider />
+
+        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <SectionTitle id="tokens">Design Tokens</SectionTitle>
+            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
+          </div>
+          <TokenTable tokens={SWITCH_TOKENS} />
         </div>
 
         <Divider />

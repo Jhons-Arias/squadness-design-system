@@ -1,4 +1,5 @@
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
+import { LightCodeBlock } from '@/components/docs/LightCodeBlock'
 
 const TOC: TocItem[] = [
   { id: 'que-es',       label: '¿Qué es un token?',   level: 1 },
@@ -28,16 +29,6 @@ function Divider() {
   return <hr className="docs-divider" />
 }
 
-function CodeBlock({ children }: { children: string }) {
-  return (
-    <div className="docs-code-wrap">
-      <pre className="docs-code-block" style={{ borderRadius: 8 }}>
-        {children}
-      </pre>
-    </div>
-  )
-}
-
 // ── Before/After comparison ───────────────────────────────────────────────────
 
 function BeforeAfter() {
@@ -65,11 +56,7 @@ function BeforeAfter() {
         }}>
           Sin tokens
         </p>
-        <div className="docs-code-wrap">
-          <pre className="docs-code-block" style={{ borderRadius: 8, fontSize: 12 }}>
-            {before}
-          </pre>
-        </div>
+        <LightCodeBlock code={before} lang="css" />
       </div>
       <div>
         <p style={{
@@ -79,11 +66,7 @@ function BeforeAfter() {
         }}>
           Con tokens
         </p>
-        <div className="docs-code-wrap">
-          <pre className="docs-code-block" style={{ borderRadius: 8, fontSize: 12 }}>
-            {after}
-          </pre>
-        </div>
+        <LightCodeBlock code={after} lang="css" />
       </div>
     </div>
   )
@@ -315,12 +298,12 @@ export function TokensPage() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <SubTitle id="css">CSS</SubTitle>
-            <CodeBlock>{cssExample}</CodeBlock>
+            <LightCodeBlock code={cssExample} lang="css" />
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <SubTitle id="react">React (inline styles)</SubTitle>
-            <CodeBlock>{reactExample}</CodeBlock>
+            <LightCodeBlock code={reactExample} lang="jsx" />
           </div>
         </div>
 

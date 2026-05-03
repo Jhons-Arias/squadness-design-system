@@ -16,6 +16,14 @@ export interface NavSection {
 
 export const navigation: NavSection[] = [
   {
+    label: 'Getting Started',
+    items: [
+      { label: 'Introduction',  slug: 'getting-started/introduction'  },
+      { label: 'Installation',  slug: 'getting-started/installation'  },
+      { label: 'Usage',         slug: 'getting-started/usage'         },
+    ],
+  },
+  {
     label: 'Foundations',
     items: [
       { label: 'Tokens',      slug: 'foundations/tokens' },
@@ -53,8 +61,9 @@ export const navigation: NavSection[] = [
       {
         label: 'Navigation',
         items: [
-          { label: 'Side Bar',   slug: 'components/side-bar' },
-          { label: 'Top Bar',    slug: 'components/top-bar' },
+          { label: 'Layout',     slug: 'components/layout'    },
+          { label: 'Side Bar',   slug: 'components/side-bar'  },
+          { label: 'Top Bar',    slug: 'components/top-bar'   },
           { label: 'Pagination', slug: 'components/pagination' },
         ],
       },

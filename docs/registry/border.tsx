@@ -1,4 +1,5 @@
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
+import { LightCodeBlock } from '@/components/docs/LightCodeBlock'
 
 const TOC: TocItem[] = [
   { id: 'colores',      label: 'Colores de borde',   level: 1 },
@@ -17,14 +18,6 @@ function Desc({ children }: { children: React.ReactNode }) {
 
 function Divider() {
   return <hr className="docs-divider" />
-}
-
-function CodeBlock({ children }: { children: string }) {
-  return (
-    <div className="docs-code-wrap">
-      <pre className="docs-code-block" style={{ borderRadius: 8 }}>{children}</pre>
-    </div>
-  )
 }
 
 // ── Border color data ─────────────────────────────────────────────────────────
@@ -297,9 +290,7 @@ export function BorderPage() {
                   {p.preview}
                 </div>
                 {/* Code */}
-                <div className="docs-code-wrap">
-                  <pre className="docs-code-block" style={{ borderRadius: 0, fontSize: 12 }}>{p.code}</pre>
-                </div>
+                <LightCodeBlock code={p.code} lang="css" embedded />
               </div>
             ))}
           </div>
@@ -313,7 +304,7 @@ export function BorderPage() {
             <SectionTitle id="uso">Uso en código</SectionTitle>
             <Desc>Referencia completa de los patrones de borde del sistema.</Desc>
           </div>
-          <CodeBlock>{codeExample}</CodeBlock>
+          <LightCodeBlock code={codeExample} lang="css" />
         </div>
 
       </div>

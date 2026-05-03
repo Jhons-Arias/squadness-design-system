@@ -21,6 +21,7 @@ import { ToastStyles }   from '@squadness/ui/toast.styles'
 import { TooltipStyles } from '@squadness/ui/tooltip.styles'
 import { DialogStyles }  from '@squadness/ui/dialog.styles'
 import { PopoverStyles } from '@squadness/ui/popover.styles'
+import { LayoutStyles }  from '@squadness/ui/layout.styles'
 
 export const metadata: Metadata = {
   title: {
@@ -50,6 +51,7 @@ const allStyles = [
   TooltipStyles,
   DialogStyles,
   PopoverStyles,
+  LayoutStyles,
 ].join('\n')
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

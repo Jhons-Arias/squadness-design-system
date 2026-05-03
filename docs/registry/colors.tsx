@@ -1,4 +1,5 @@
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
+import { LightCodeBlock } from '@/components/docs/LightCodeBlock'
 
 const TOC: TocItem[] = [
   { id: 'primitivos',  label: 'Paleta de colores',  level: 1 },
@@ -19,14 +20,6 @@ function Desc({ children }: { children: React.ReactNode }) {
 
 function Divider() {
   return <hr className="docs-divider" />
-}
-
-function CodeBlock({ children }: { children: string }) {
-  return (
-    <div className="docs-code-wrap">
-      <pre className="docs-code-block" style={{ borderRadius: 8 }}>{children}</pre>
-    </div>
-  )
 }
 
 // ── Primitive palette — valores exactos de Figma ──────────────────────────────
@@ -540,7 +533,7 @@ export function ColorsPage() {
             <SectionTitle id="uso">Uso en código</SectionTitle>
             <Desc>Referencia de los tokens de color más frecuentes y sus casos de uso en CSS.</Desc>
           </div>
-          <CodeBlock>{codeExample}</CodeBlock>
+          <LightCodeBlock code={codeExample} lang="css" />
         </div>
 
       </div>

@@ -6,6 +6,7 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
+import { TokenTable } from '@/components/docs/TokenTable'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Ejemplos',           level: 1 },
@@ -15,7 +16,18 @@ const TOC: TocItem[] = [
   { id: 'with-page-numbers',  label: 'With page numbers',  level: 2 },
   { id: 'first-last',         label: 'First / Last page',  level: 2 },
   { id: 'references',         label: 'Referencias',        level: 1 },
+  { id: 'tokens',             label: 'Design Tokens',      level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
+]
+
+const PAGINATION_TOKENS = [
+  { token: 'surface/raised',             property: 'background-color', value: '#ffffff',             primitive: 'neutral/0',    description: 'Fondo del botón' },
+  { token: 'border/default',             property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Borde del botón' },
+  { token: 'surface/default',            property: 'background-color', value: '#f8fafc',             primitive: 'neutral/50',   description: 'Fondo hover' },
+  { token: 'surface/accent/neutral/subtlest', property: 'background-color', value: '#f1f5f9',         primitive: 'neutral/100',  description: 'Fondo active' },
+  { token: 'surface/semantic/brand/subtler', property: 'background-color', value: '#005fdb',          primitive: 'blue/700',     description: 'Página activa — fondo' },
+  { token: 'text/subtle',                property: 'color',            value: '#314158',             primitive: 'neutral/700',  description: 'Número de página' },
+  { token: 'text/subtlest',              property: 'color',            value: '#62748e',             primitive: 'neutral/500',  description: 'Texto deshabilitado' },
 ]
 
 // ── Code snippets ─────────────────────────────────────────────────────────────
@@ -230,6 +242,17 @@ export function PaginationPage() {
               { label: 'Bootstrap', href: 'https://getbootstrap.com/docs/5.3/components/pagination/' },
             ]}
           />
+        </div>
+
+        <Divider />
+
+        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <SectionTitle id="tokens">Design Tokens</SectionTitle>
+            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
+          </div>
+          <TokenTable tokens={PAGINATION_TOKENS} />
         </div>
 
         <Divider />

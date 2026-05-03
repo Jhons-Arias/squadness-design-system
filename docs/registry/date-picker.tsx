@@ -6,13 +6,29 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
+import { TokenTable } from '@/components/docs/TokenTable'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Ejemplos',           level: 1 },
   { id: 'appearance',         label: 'Apariencia',         level: 1 },
   { id: 'state',              label: 'State',              level: 2 },
   { id: 'references',         label: 'Referencias',        level: 1 },
+  { id: 'tokens',             label: 'Design Tokens',      level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
+]
+
+const DATE_PICKER_TOKENS = [
+  { token: 'surface/raised',             property: 'background-color', value: '#ffffff',             primitive: 'neutral/0',    description: 'Fondo del panel' },
+  { token: 'border/default',             property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Borde del panel' },
+  { token: 'text/default',               property: 'color',            value: '#020618',             primitive: 'neutral/950',  description: 'Días del calendario' },
+  { token: 'text/subtlest',              property: 'color',            value: '#62748e',             primitive: 'neutral/500',  description: 'Días fuera del mes' },
+  { token: 'surface/semantic/brand/subtler',   property: 'background-color', value: '#005fdb',       primitive: 'blue/700',     description: 'Día seleccionado — fondo' },
+  { token: 'text/inverse',               property: 'color',            value: '#f8fafc',             primitive: 'neutral/50',   description: 'Día seleccionado — texto' },
+  { token: 'surface/accent/blue/subtlest',     property: 'background-color', value: '#e5f1ff',       primitive: 'blue/100',     description: 'Rango seleccionado' },
+  { token: 'surface/accent/neutral/subtlest',  property: 'background-color', value: '#f1f5f9',       primitive: 'neutral/100',  description: 'Hover de días' },
+  { token: 'Input/Surface/Default',      property: 'background-color', value: '#f8fafc',             primitive: 'neutral/50',   description: 'Fondo del input de fecha' },
+  { token: 'Input/Border/Default',       property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Borde del input' },
+  { token: 'Input/Border/Focus',         property: 'border-color',     value: '#45556c',             primitive: 'neutral/600',  description: 'Borde del input con foco' },
 ]
 
 // ── Code snippets ─────────────────────────────────────────────────────────────
@@ -160,6 +176,17 @@ export function DatePickerPage() {
               { label: 'shadcn/ui', href: 'https://ui.shadcn.com/docs/components/date-picker' },
             ]}
           />
+        </div>
+
+        <Divider />
+
+        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <SectionTitle id="tokens">Design Tokens</SectionTitle>
+            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
+          </div>
+          <TokenTable tokens={DATE_PICKER_TOKENS} />
         </div>
 
         <Divider />

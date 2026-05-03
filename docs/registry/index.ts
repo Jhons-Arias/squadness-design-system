@@ -8,6 +8,7 @@ import { TextareaPage }        from './textarea'
 import { SelectPage }          from './select'
 import { DatePickerPage }      from './date-picker'
 import { DateRangePickerPage } from './date-range-picker'
+import { LayoutPage }          from './layout'
 import { SideBarPage }         from './side-bar'
 import { TopBarPage }          from './top-bar'
 import { PaginationPage }      from './pagination'
@@ -66,6 +67,10 @@ export const registry: Record<string, RegistryEntry> = {
   'date-range-picker': {
     title: 'Date Range Picker',
     Component: DateRangePickerPage,
+  },
+  layout: {
+    title: 'Layout',
+    Component: LayoutPage,
   },
   'side-bar': {
     title: 'Side Bar',

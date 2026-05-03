@@ -1,4 +1,5 @@
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
+import { LightCodeBlock } from '@/components/docs/LightCodeBlock'
 
 const TOC: TocItem[] = [
   { id: 'escala',      label: 'Escala',            level: 1 },
@@ -16,14 +17,6 @@ function Desc({ children }: { children: React.ReactNode }) {
 
 function Divider() {
   return <hr className="docs-divider" />
-}
-
-function CodeBlock({ children }: { children: string }) {
-  return (
-    <div className="docs-code-wrap">
-      <pre className="docs-code-block" style={{ borderRadius: 8 }}>{children}</pre>
-    </div>
-  )
 }
 
 // ── Radius scale ──────────────────────────────────────────────────────────────
@@ -205,7 +198,7 @@ export function RadiusPage() {
             <SectionTitle id="uso">Uso en código</SectionTitle>
             <Desc>Referencia de qué token corresponde a cada tipo de componente.</Desc>
           </div>
-          <CodeBlock>{codeExample}</CodeBlock>
+          <LightCodeBlock code={codeExample} lang="css" />
         </div>
 
       </div>

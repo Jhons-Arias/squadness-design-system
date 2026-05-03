@@ -1,4 +1,5 @@
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
+import { LightCodeBlock } from '@/components/docs/LightCodeBlock'
 
 const TOC: TocItem[] = [
   { id: 'familias',  label: 'Familias tipográficas', level: 1 },
@@ -18,14 +19,6 @@ function Desc({ children }: { children: React.ReactNode }) {
 
 function Divider() {
   return <hr className="docs-divider" />
-}
-
-function CodeBlock({ children }: { children: string }) {
-  return (
-    <div className="docs-code-wrap">
-      <pre className="docs-code-block" style={{ borderRadius: 8 }}>{children}</pre>
-    </div>
-  )
 }
 
 // ── Typefaces ─────────────────────────────────────────────────────────────────
@@ -432,7 +425,7 @@ export function TypographyPage() {
             <SectionTitle id="uso">Uso en código</SectionTitle>
             <Desc>Los estilos tipográficos se aplican combinando la variable de familia con los valores de tamaño, peso y line-height correspondientes al estilo de Figma.</Desc>
           </div>
-          <CodeBlock>{codeExample}</CodeBlock>
+          <LightCodeBlock code={codeExample} lang="css" />
         </div>
 
       </div>
