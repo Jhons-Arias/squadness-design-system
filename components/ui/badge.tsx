@@ -8,7 +8,9 @@ export type BadgeVariant =
   | "success"
   | "warning"
   | "error"
-  | "info";
+  | "info"
+  | "brand"
+  | "indigo";
 
 export type BadgeSize = "sm" | "md";
 
@@ -134,39 +136,53 @@ export const BadgeStyles = `
 
   /* ── Variants ───────────────────────────────────────────── */
 
-  /* Neutral */
+  /* Neutral — surface/accent/neutral/subtler */
   .sq-badge-neutral {
-    background-color: #f8fafc;
+    background-color: #e2e8f0;
     border-color: rgba(11, 18, 14, 0.14);
-    color: #314158;
+    color: #1d293d;
   }
 
-  /* Success */
+  /* Success — surface/semantic/success/subtlest */
   .sq-badge-success {
-    background-color: #f4ffe3;
+    background-color: #ecfcca;
     border-color: #5ea500;
     color: #3c6300;
   }
 
-  /* Warning */
+  /* Warning — surface/semantic/warning/subtlest */
   .sq-badge-warning {
-    background-color: #fffbeb;
-    border-color: #d97706;
-    color: #92400e;
+    background-color: #ffedd4;
+    border-color: #f54a00;
+    color: #9f2d00;
   }
 
-  /* Error */
+  /* Error — surface/semantic/error/subtlest */
   .sq-badge-error {
-    background-color: #fff0f0;
+    background-color: #fedede;
     border-color: #cf121f;
     color: #6f040c;
   }
 
-  /* Info */
+  /* Info — surface/semantic/info/subtlest */
   .sq-badge-info {
-    background-color: #eff6ff;
-    border-color: rgba(0, 95, 219, 0.25);
-    color: #005fdb;
+    background-color: #ccf1ff;
+    border-color: #0095cc;
+    color: #004a66;
+  }
+
+  /* Brand — surface/semantic/brand/subtlest */
+  .sq-badge-brand {
+    background-color: #cce2ff;
+    border-color: #005fdb;
+    color: #0047a3;
+  }
+
+  /* Indigo — surface/accent/indigo/subtlest */
+  .sq-badge-indigo {
+    background-color: #e0e7ff;
+    border-color: #4f39f6;
+    color: #372aac;
   }
 
   /* ── Dot ────────────────────────────────────────────────── */

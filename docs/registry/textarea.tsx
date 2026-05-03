@@ -8,14 +8,14 @@ import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 
 const TOC: TocItem[] = [
-  { id: 'examples',           label: 'Examples',           level: 1 },
-  { id: 'appearance',         label: 'Appearance',         level: 1 },
+  { id: 'examples',           label: 'Ejemplos',           level: 1 },
+  { id: 'appearance',         label: 'Apariencia',         level: 1 },
   { id: 'state',              label: 'State',              level: 2 },
   { id: 'with-label',         label: 'With label',         level: 2 },
   { id: 'character-count',    label: 'Character count',    level: 2 },
   { id: 'resize',             label: 'Resize',             level: 2 },
-  { id: 'references',         label: 'References',         level: 1 },
-  { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
+  { id: 'references',         label: 'Referencias',        level: 1 },
+  { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
 // ── Code snippets ─────────────────────────────────────────────────────────────
@@ -121,14 +121,14 @@ export function TextareaPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Textarea</h1>
           <Desc>
-            Textareas let users enter and edit multi-line text. They support labels,
-            helper text, character counts, resize control, and full validation states.
+            Los Textareas permiten a los usuarios ingresar y editar texto de múltiples líneas. Admiten etiquetas,
+            texto de ayuda, conteo de caracteres, control de redimensionamiento y estados completos de validación.
           </Desc>
         </div>
 
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <SectionTitle id="examples">Examples</SectionTitle>
+          <SectionTitle id="examples">Ejemplos</SectionTitle>
           <ComponentPreview code={examplesCode} minHeight={160}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%', maxWidth: 400, margin: '0 auto' }}>
               <Textarea placeholder="Write your message…" label="Message" />
@@ -146,8 +146,8 @@ export function TextareaPage() {
         {/* ── Appearance ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>Textareas support five states, optional labels, character counts, and resize control.</Desc>
+            <SectionTitle id="appearance">Apariencia</SectionTitle>
+            <Desc>El Textarea soporta cinco estados, etiquetas opcionales, conteo de caracteres y control de redimensionamiento.</Desc>
           </div>
 
           {/* State */}
@@ -261,8 +261,8 @@ export function TextareaPage() {
         {/* ── References ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <SectionTitle id="references">Referencias</SectionTitle>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -277,21 +277,21 @@ export function TextareaPage() {
         {/* ── Content guidelines ────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for writing textarea labels, placeholders, and counts.</Desc>
+            <SectionTitle id="content-guidelines">Guías de contenido</SectionTitle>
+            <Desc>Reglas para escribir etiquetas, placeholders y conteos en Textareas.</Desc>
           </div>
           <DoDont
             do={[
-              'Set a maxLength and showCount when the input will be stored with a character limit (e.g. a bio or tweet)',
-              'Use helperText to give format guidance before the user starts typing',
-              'Set resize="none" when the layout is constrained and the textarea size must stay fixed',
+              'Establece maxLength y showCount cuando el texto se almacenará con un límite de caracteres (ej. una bio o descripción)',
+              'Usa helperText para dar orientación de formato antes de que el usuario comience a escribir',
+              'Establece resize="none" cuando el layout está restringido y el tamaño del Textarea debe mantenerse fijo',
             ]}
             dont={[
-              'Use a textarea when the user only needs to enter a single short value — use an Input instead',
-              'Use placeholder text as a substitute for a label — placeholders disappear on focus',
-              'Set resize="horizontal" in most cases — it breaks out of column-based layouts unexpectedly',
+              'Usar un Textarea cuando el usuario solo necesita ingresar un valor corto — usa un Input en su lugar',
+              'Usar el texto placeholder como sustituto de una etiqueta — los placeholders desaparecen al enfocar',
+              'Establecer resize="horizontal" en la mayoría de los casos — rompe los layouts de columna de forma inesperada',
             ]}
-            note="When using showCount, always set maxLength on the element as well — showCount requires it to calculate the counter. The counter turns red automatically when the limit is reached."
+            note="Al usar showCount, establece siempre maxLength también — showCount lo requiere para calcular el contador. El contador se pone en rojo automáticamente cuando se alcanza el límite."
           />
         </div>
 

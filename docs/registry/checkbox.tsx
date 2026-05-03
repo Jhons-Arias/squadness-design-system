@@ -5,13 +5,13 @@ import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 
 const TOC: TocItem[] = [
-  { id: 'examples',           label: 'Examples',           level: 1 },
-  { id: 'appearance',         label: 'Appearance',         level: 1 },
-  { id: 'state',              label: 'State',              level: 2 },
-  { id: 'with-label',         label: 'With label',         level: 2 },
-  { id: 'error',              label: 'Error',              level: 2 },
-  { id: 'references',         label: 'References',         level: 1 },
-  { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
+  { id: 'examples',           label: 'Ejemplos',              level: 1 },
+  { id: 'appearance',         label: 'Apariencia',            level: 1 },
+  { id: 'state',              label: 'State',                 level: 2 },
+  { id: 'with-label',         label: 'With label',            level: 2 },
+  { id: 'error',              label: 'Error',                 level: 2 },
+  { id: 'references',         label: 'Referencias',           level: 1 },
+  { id: 'content-guidelines', label: 'Guías de contenido',    level: 1 },
 ]
 
 // ── Check states shown in each row ────────────────────────────────────────────
@@ -141,14 +141,14 @@ export function CheckboxPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Checkbox</h1>
           <Desc>
-            Checkboxes let users select one or more options from a set independently.
-            They support three states: unselected, selected, and indeterminate.
+            Los Checkboxes permiten a los usuarios seleccionar una o más opciones de un conjunto de forma independiente.
+            Admiten tres estados: sin seleccionar, seleccionado e indeterminado.
           </Desc>
         </div>
 
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <SectionTitle id="examples">Examples</SectionTitle>
+          <SectionTitle id="examples">Ejemplos</SectionTitle>
           <ComponentPreview code={examplesCode} minHeight={80}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'center', justifyContent: 'center' }}>
               {CHECK_STATES.filter(s => s.checked !== false).map(({ label, checked }) => (
@@ -163,8 +163,8 @@ export function CheckboxPage() {
         {/* ── Appearance ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>Checkboxes have three check states and four interaction states.</Desc>
+            <SectionTitle id="appearance">Apariencia</SectionTitle>
+            <Desc>El Checkbox tiene tres estados de selección y cuatro estados de interacción.</Desc>
           </div>
 
           {/* State */}
@@ -218,8 +218,8 @@ export function CheckboxPage() {
         {/* ── References ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <SectionTitle id="references">Referencias</SectionTitle>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -234,21 +234,21 @@ export function CheckboxPage() {
         {/* ── Content guidelines ────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for writing checkbox labels and using states correctly.</Desc>
+            <SectionTitle id="content-guidelines">Guías de contenido</SectionTitle>
+            <Desc>Reglas para escribir etiquetas de Checkbox y usar los estados correctamente.</Desc>
           </div>
           <DoDont
             do={[
-              'Write labels as short, positive statements (e.g. "Send me updates")',
-              'Use indeterminate only when some — but not all — items in a group are selected',
-              'Stack checkboxes vertically when there are more than two options',
+              'Escribe las etiquetas como afirmaciones cortas y positivas (ej. "Enviarme actualizaciones")',
+              'Usa el estado indeterminado solo cuando algunos — pero no todos — los ítems de un grupo están seleccionados',
+              'Apila los Checkboxes verticalmente cuando hay más de dos opciones',
             ]}
             dont={[
-              'Use a checkbox for a mutually exclusive choice — use a radio button instead',
-              'Use indeterminate as a neutral or "not sure" state',
-              'Write labels that start with a verb and imply the unchecked action (e.g. "Do not contact me")',
+              'Usar un Checkbox para una elección mutuamente exclusiva — usa un Radio Button en su lugar',
+              'Usar el estado indeterminado como un estado neutro o de "no estoy seguro"',
+              'Escribir etiquetas que empiecen con un verbo e impliquen la acción no seleccionada (ej. "No contactarme")',
             ]}
-            note="The indeterminate state is not a third logical value — it only signals partial selection within a group. It must always resolve to either checked or unchecked when the user interacts with it."
+            note="El estado indeterminado no es un tercer valor lógico — solo indica una selección parcial dentro de un grupo. Siempre debe resolverse en seleccionado o no seleccionado cuando el usuario interactúa con él."
           />
         </div>
 

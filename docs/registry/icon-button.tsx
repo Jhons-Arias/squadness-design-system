@@ -5,12 +5,12 @@ import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 
 const TOC: TocItem[] = [
-  { id: 'examples',           label: 'Examples',           level: 1 },
-  { id: 'appearance',         label: 'Appearance',         level: 1 },
+  { id: 'examples',           label: 'Ejemplos',           level: 1 },
+  { id: 'appearance',         label: 'Apariencia',         level: 1 },
   { id: 'variant',            label: 'Variant',            level: 2 },
   { id: 'state',              label: 'State',              level: 2 },
-  { id: 'references',         label: 'References',         level: 1 },
-  { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
+  { id: 'references',         label: 'Referencias',        level: 1 },
+  { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
 const VARIANTS = ['primary', 'secondary', 'tertiary', 'outline', 'ghost', 'danger'] as const
@@ -139,14 +139,14 @@ export function IconButtonPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Icon Button</h1>
           <Desc>
-            Icon buttons trigger actions using only an icon, without a text label.
-            Use them when the action is universally understood from the icon alone and space is limited.
+            Los Icon Buttons ejecutan acciones usando únicamente un ícono, sin etiqueta de texto.
+            Úsalos cuando la acción se entiende por sí sola con el ícono y el espacio es limitado.
           </Desc>
         </div>
 
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <SectionTitle id="examples">Examples</SectionTitle>
+          <SectionTitle id="examples">Ejemplos</SectionTitle>
           <ComponentPreview code={examplesCode} minHeight={100}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', justifyContent: 'center' }}>
               {VARIANTS.map((v) => (
@@ -161,8 +161,8 @@ export function IconButtonPage() {
         {/* ── Appearance ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>Icon buttons come in six variants and four interaction states.</Desc>
+            <SectionTitle id="appearance">Apariencia</SectionTitle>
+            <Desc>El Icon Button viene en seis variantes y cuatro estados de interacción.</Desc>
           </div>
 
           {/* Variant */}
@@ -209,8 +209,8 @@ export function IconButtonPage() {
         {/* ── References ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <SectionTitle id="references">Referencias</SectionTitle>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -225,21 +225,21 @@ export function IconButtonPage() {
         {/* ── Content guidelines ────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for using icon buttons accessibly and in the right context.</Desc>
+            <SectionTitle id="content-guidelines">Guías de contenido</SectionTitle>
+            <Desc>Reglas para usar Icon Buttons de forma accesible y en el contexto correcto.</Desc>
           </div>
           <DoDont
             do={[
-              'Always provide a descriptive aria-label',
-              'Use for actions the icon communicates on its own (add, delete, close)',
-              'Pair with a tooltip to reinforce the action on hover',
+              'Siempre proporciona un aria-label descriptivo',
+              'Úsalo para acciones que el ícono comunica por sí solo (agregar, eliminar, cerrar)',
+              'Complementa con un tooltip para reforzar la acción al hacer hover',
             ]}
             dont={[
-              'Use without an aria-label — screen readers will have nothing to announce',
-              'Use for primary or complex actions where a text label adds clarity',
-              'Use the same icon for different actions in the same view',
+              'Usar sin un aria-label — los lectores de pantalla no tendrán nada que anunciar',
+              'Usar para acciones primarias o complejas donde una etiqueta de texto aporta claridad',
+              'Usar el mismo ícono para acciones diferentes en la misma vista',
             ]}
-            note="Icon buttons require an aria-label attribute — this is mandatory, not optional. The label should describe the action, not the icon itself: use 'Delete item' not 'Trash icon'."
+            note="Los Icon Buttons requieren el atributo aria-label — es obligatorio, no opcional. La etiqueta debe describir la acción, no el ícono: usa 'Eliminar ítem' en lugar de 'Ícono de papelera'."
           />
         </div>
 

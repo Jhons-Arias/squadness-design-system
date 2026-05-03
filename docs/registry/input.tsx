@@ -5,15 +5,15 @@ import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 
 const TOC: TocItem[] = [
-  { id: 'examples',           label: 'Examples',           level: 1 },
-  { id: 'appearance',         label: 'Appearance',         level: 1 },
+  { id: 'examples',           label: 'Ejemplos',           level: 1 },
+  { id: 'appearance',         label: 'Apariencia',         level: 1 },
   { id: 'state',              label: 'State',              level: 2 },
   { id: 'sizes',              label: 'Sizes',              level: 2 },
   { id: 'with-label',         label: 'With label',         level: 2 },
   { id: 'with-icons',         label: 'With icons',         level: 2 },
   { id: 'validation',         label: 'Validation',         level: 2 },
-  { id: 'references',         label: 'References',         level: 1 },
-  { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
+  { id: 'references',         label: 'Referencias',        level: 1 },
+  { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
 // ── Inline icon used in the "With icons" examples ─────────────────────────────
@@ -176,14 +176,14 @@ export function InputPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Input</h1>
           <Desc>
-            Text inputs let users enter and edit single-line text. They support labels,
-            helper text, icons, three sizes, and full validation states.
+            Los Inputs permiten a los usuarios ingresar y editar texto de una sola línea. Admiten etiquetas,
+            texto de ayuda, íconos, tres tamaños y estados completos de validación.
           </Desc>
         </div>
 
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <SectionTitle id="examples">Examples</SectionTitle>
+          <SectionTitle id="examples">Ejemplos</SectionTitle>
           <ComponentPreview code={examplesCode} minHeight={120}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%', maxWidth: 360, margin: '0 auto' }}>
               <Input placeholder="Enter your email…" label="Email" />
@@ -201,8 +201,8 @@ export function InputPage() {
         {/* ── Appearance ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>Inputs support seven states, three sizes, optional icons, and validation feedback.</Desc>
+            <SectionTitle id="appearance">Apariencia</SectionTitle>
+            <Desc>El Input soporta siete estados, tres tamaños, íconos opcionales y retroalimentación de validación.</Desc>
           </div>
 
           {/* State */}
@@ -311,8 +311,8 @@ export function InputPage() {
         {/* ── References ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <SectionTitle id="references">Referencias</SectionTitle>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -327,21 +327,21 @@ export function InputPage() {
         {/* ── Content guidelines ────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for writing input labels, placeholders, and feedback messages.</Desc>
+            <SectionTitle id="content-guidelines">Guías de contenido</SectionTitle>
+            <Desc>Reglas para escribir etiquetas, placeholders y mensajes de retroalimentación en Inputs.</Desc>
           </div>
           <DoDont
             do={[
-              'Write labels as short nouns or noun phrases (e.g. "Email address", "Full name")',
-              'Use placeholder text only as a format hint — never as a replacement for a label',
-              'Write error messages that explain what went wrong and how to fix it (e.g. "Enter a valid email address")',
+              'Escribe las etiquetas como sustantivos o frases nominales cortas (ej. "Correo electrónico", "Nombre completo")',
+              'Usa el texto placeholder solo como indicación de formato — nunca como sustituto de una etiqueta',
+              'Escribe mensajes de error que expliquen qué salió mal y cómo corregirlo (ej. "Ingresa un correo electrónico válido")',
             ]}
             dont={[
-              'Use placeholder text as the only label — it disappears when the user starts typing',
-              'Write vague error messages like "Invalid input" without explaining the expected format',
-              'Mark every field as required — only mark fields that are optional instead when most are required',
+              'Usar el texto placeholder como única etiqueta — desaparece cuando el usuario comienza a escribir',
+              'Escribir mensajes de error vagos como "Entrada no válida" sin explicar el formato esperado',
+              'Marcar todos los campos como requeridos — cuando la mayoría lo son, marca solo los opcionales',
             ]}
-            note="Always pair an error state with a specific errorMessage prop. A red border alone is not sufficient feedback for users who rely on screen readers or have color blindness."
+            note="Siempre acompaña un estado de error con un mensaje específico en la prop errorMessage. Un borde rojo solo no es suficiente retroalimentación para usuarios que dependen de lectores de pantalla o tienen daltonismo."
           />
         </div>
 

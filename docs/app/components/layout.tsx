@@ -3,14 +3,17 @@ import { Sidebar } from '@/components/layout/Sidebar'
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
+      {/* Fixed top bar — full viewport width */}
       <TopBar />
-      <div className="flex flex-1">
-        <Sidebar />
-        <main className="flex-1 min-w-0">
-          {children}
-        </main>
+
+      {/* Fixed left sidebar */}
+      <Sidebar />
+
+      {/* Scrollable main area — offset from fixed sidebar + topbar */}
+      <div className="docs-main-scroll">
+        {children}
       </div>
-    </div>
+    </>
   )
 }

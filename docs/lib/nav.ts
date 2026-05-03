@@ -24,6 +24,7 @@ export const navigation: NavSection[] = [
       { label: 'Typography',  slug: 'foundations/typography' },
       { label: 'Border',      slug: 'foundations/border' },
       { label: 'Radius',      slug: 'foundations/radius' },
+      { label: 'Icons',       slug: 'components/icons' },
     ],
   },
   {
@@ -73,12 +74,6 @@ export const navigation: NavSection[] = [
           { label: 'Tooltip', slug: 'components/tooltip' },
           { label: 'Dialog',  slug: 'components/dialog' },
           { label: 'Popover', slug: 'components/popover' },
-        ],
-      },
-      {
-        label: 'Images & icons',
-        items: [
-          { label: 'Icons', slug: 'components/icons' },
         ],
       },
     ],

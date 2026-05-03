@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 export interface TocItem {
   id: string
   label: string
-  level?: 1 | 2   // 1 = top-level, 2 = sub-item (bullet). Defaults to 1.
+  level?: 1 | 2   // 1 = top-level, 2 = sub-item. Defaults to 1.
 }
 
 export function OnThisPage({ items }: { items: TocItem[] }) {
@@ -29,8 +29,8 @@ export function OnThisPage({ items }: { items: TocItem[] }) {
 
   return (
     <aside className="docs-on-this-page">
-      <p className="docs-nav-section-label">On this page</p>
-      <div className="docs-nav-section" style={{ borderBottom: 'none', paddingBottom: 0 }}>
+      <p className="docs-menu-label">Menu</p>
+      <nav style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         {items.map((item) => {
           const isActive = active === item.id
           const isSub = item.level === 2
@@ -39,13 +39,9 @@ export function OnThisPage({ items }: { items: TocItem[] }) {
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="docs-nav-item"
+              className={`docs-menu-item${isActive ? ' active' : ''}`}
               style={{
-                paddingLeft: isSub ? 'var(--space-200)' : 'var(--space-075)',
-                fontWeight: isActive ? 500 : 400,
-                color: isActive
-                  ? 'var(--color-text-primary)'
-                  : 'var(--color-text-subtle)',
+                paddingLeft: isSub ? 12 : 0,
                 display: 'flex',
                 alignItems: 'center',
                 gap: isSub ? 6 : 0,
@@ -53,19 +49,19 @@ export function OnThisPage({ items }: { items: TocItem[] }) {
             >
               {isSub && (
                 <span style={{
-                  width: 4,
-                  height: 4,
+                  width: 3,
+                  height: 3,
                   borderRadius: '50%',
                   background: 'currentColor',
                   flexShrink: 0,
-                  opacity: 0.5,
+                  opacity: 0.4,
                 }} />
               )}
               {item.label}
             </a>
           )
         })}
-      </div>
+      </nav>
     </aside>
   )
 }

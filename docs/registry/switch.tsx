@@ -5,13 +5,13 @@ import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 
 const TOC: TocItem[] = [
-  { id: 'examples',           label: 'Examples',           level: 1 },
-  { id: 'appearance',         label: 'Appearance',         level: 1 },
+  { id: 'examples',           label: 'Ejemplos',           level: 1 },
+  { id: 'appearance',         label: 'Apariencia',         level: 1 },
   { id: 'state',              label: 'State',              level: 2 },
   { id: 'label-position',     label: 'Label position',     level: 2 },
   { id: 'loading',            label: 'Loading',            level: 2 },
-  { id: 'references',         label: 'References',         level: 1 },
-  { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
+  { id: 'references',         label: 'Referencias',        level: 1 },
+  { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
 // ── Hover style overrides ─────────────────────────────────────────────────────
@@ -133,14 +133,14 @@ export function SwitchPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Switch</h1>
           <Desc>
-            Switches toggle a single setting on or off. They take effect immediately —
-            no form submission required. Use a switch when the change is instant and reversible.
+            Los Switches activan o desactivan una configuración individual. El cambio se aplica de inmediato,
+            sin necesidad de enviar un formulario. Úsalos cuando el cambio sea instantáneo y reversible.
           </Desc>
         </div>
 
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <SectionTitle id="examples">Examples</SectionTitle>
+          <SectionTitle id="examples">Ejemplos</SectionTitle>
           <ComponentPreview code={examplesCode} minHeight={80}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'center', justifyContent: 'center' }}>
               <Switch checked={false} label="Dark mode" />
@@ -154,8 +154,8 @@ export function SwitchPage() {
         {/* ── Appearance ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>Switches have two toggle states and four interaction states.</Desc>
+            <SectionTitle id="appearance">Apariencia</SectionTitle>
+            <Desc>El Switch tiene dos estados de activación y cuatro estados de interacción.</Desc>
           </div>
 
           {/* State */}
@@ -199,8 +199,8 @@ export function SwitchPage() {
         {/* ── References ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <SectionTitle id="references">Referencias</SectionTitle>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -215,21 +215,21 @@ export function SwitchPage() {
         {/* ── Content guidelines ────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for writing switch labels and choosing when to use a switch.</Desc>
+            <SectionTitle id="content-guidelines">Guías de contenido</SectionTitle>
+            <Desc>Reglas para escribir etiquetas de Switch y elegir cuándo usarlo.</Desc>
           </div>
           <DoDont
             do={[
-              'Write labels as short, active nouns or noun phrases (e.g. "Dark mode", "Notifications")',
-              'Use a switch for settings that take effect immediately without a save action',
-              'Use the loading state when the toggle requires server confirmation before committing',
+              'Escribe las etiquetas como sustantivos o frases nominales cortas (ej. "Modo oscuro", "Notificaciones")',
+              'Usa un Switch para configuraciones que se aplican de inmediato sin necesidad de guardar',
+              'Usa el estado de carga cuando el toggle requiere confirmación del servidor antes de ejecutarse',
             ]}
             dont={[
-              'Use a switch inside a form that requires submitting — use a checkbox instead',
-              'Write labels that only make sense in one direction (e.g. "Turn off alerts")',
-              'Stack multiple switches without clear visual grouping or section headers',
+              'Usar un Switch dentro de un formulario que requiere envío — usa un Checkbox en su lugar',
+              'Escribir etiquetas que solo tengan sentido en una dirección (ej. "Desactivar alertas")',
+              'Apilar múltiples Switches sin agrupación visual clara o encabezados de sección',
             ]}
-            note="Switches imply immediate action. If the change is not instant — for example, it takes effect after saving a form — use a checkbox instead to avoid confusing users about when the change applies."
+            note="Los Switches implican acción inmediata. Si el cambio no es instantáneo — por ejemplo, se aplica después de guardar un formulario — usa un Checkbox para evitar confundir a los usuarios sobre cuándo se aplica el cambio."
           />
         </div>
 

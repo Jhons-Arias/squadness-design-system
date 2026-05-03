@@ -8,11 +8,11 @@ import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 
 const TOC: TocItem[] = [
-  { id: 'examples',           label: 'Examples',           level: 1 },
-  { id: 'appearance',         label: 'Appearance',         level: 1 },
+  { id: 'examples',           label: 'Ejemplos',           level: 1 },
+  { id: 'appearance',         label: 'Apariencia',         level: 1 },
   { id: 'state',              label: 'State',              level: 2 },
-  { id: 'references',         label: 'References',         level: 1 },
-  { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
+  { id: 'references',         label: 'Referencias',        level: 1 },
+  { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
 // ── Code snippets ─────────────────────────────────────────────────────────────
@@ -123,14 +123,14 @@ export function DateRangePickerPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Date Range Picker</h1>
           <Desc>
-            Date range pickers let users select a start and end date from a calendar dropdown.
-            Use when you need to filter records or define a time window.
+            Los Date Range Pickers permiten a los usuarios seleccionar una fecha de inicio y fin desde un calendario desplegable.
+            Úsalos cuando necesites filtrar registros o definir una ventana de tiempo.
           </Desc>
         </div>
 
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <SectionTitle id="examples">Examples</SectionTitle>
+          <SectionTitle id="examples">Ejemplos</SectionTitle>
           <ComponentPreview code={examplesCode} minHeight={60} overflowVisible>
             <ExampleDemo />
           </ComponentPreview>
@@ -141,8 +141,8 @@ export function DateRangePickerPage() {
         {/* ── Appearance ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>Date range pickers have four visual states: default, selecting, complete, and disabled.</Desc>
+            <SectionTitle id="appearance">Apariencia</SectionTitle>
+            <Desc>El Date Range Picker tiene cuatro estados visuales: default, selecting, complete y disabled.</Desc>
           </div>
 
           {/* State */}
@@ -170,8 +170,8 @@ export function DateRangePickerPage() {
         {/* ── References ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <SectionTitle id="references">Referencias</SectionTitle>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -185,21 +185,21 @@ export function DateRangePickerPage() {
         {/* ── Content guidelines ────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for labeling and using date range pickers in your UI.</Desc>
+            <SectionTitle id="content-guidelines">Guías de contenido</SectionTitle>
+            <Desc>Reglas para etiquetar y usar Date Range Pickers en tu interfaz.</Desc>
           </div>
           <DoDont
             do={[
-              'Use a date range picker when users need to define a period — e.g. "Filtrar por rango de fechas"',
-              'Use clear, descriptive placeholder text that tells users what the range represents',
-              'Show the full range in the trigger once selected: "10 mar. 2025 – 20 mar. 2025"',
+              'Usa un Date Range Picker cuando los usuarios necesiten definir un período — ej. "Filtrar por rango de fechas"',
+              'Usa un texto placeholder claro y descriptivo que indique qué representa el rango',
+              'Muestra el rango completo en el trigger una vez seleccionado: "10 mar. 2025 – 20 mar. 2025"',
             ]}
             dont={[
-              'Use a date range picker for a single date — use the Date Picker instead',
-              'Use vague placeholders like "Select…" — give the field enough context to be understood at a glance',
-              'Prevent users from clearing the range once selected — always offer a way to reset',
+              'Usar un Date Range Picker para una sola fecha — usa el Date Picker en su lugar',
+              'Usar placeholders vagos como "Seleccionar…" — dale al campo suficiente contexto para entenderse de un vistazo',
+              'Impedir que los usuarios limpien el rango una vez seleccionado — siempre ofrece una forma de reiniciarlo',
             ]}
-            note="If the range has a natural maximum (e.g. 30 days), communicate this constraint clearly near the component — don't silently reject invalid ranges."
+            note="Si el rango tiene un máximo natural (ej. 30 días), comunica esta restricción claramente cerca del componente — no rechaces rangos inválidos en silencio."
           />
         </div>
 

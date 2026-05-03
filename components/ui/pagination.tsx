@@ -1,49 +1,52 @@
-import * as React from "react";
-import { cn } from "@/lib/utils";
+import * as React from 'react'
+import { cn } from '@/lib/utils'
+export { PaginationStyles } from './pagination.styles'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface PaginationProps {
   /** Current active page (1-based). */
-  currentPage: number;
+  currentPage: number
   /** Total number of pages. */
-  totalPages: number;
-  /** Callback fired when a page is selected. */
-  onPageChange: (page: number) => void;
-  /** Max page buttons shown before collapsing to "…". */
-  siblingCount?: number;
-  /** Show "Rows per page" selector. */
-  showRowsPerPage?: boolean;
+  totalPages: number
+  /** Called when a page is selected. */
+  onPageChange: (page: number) => void
+  /** Siblings shown on each side of the current page before collapsing to "…". */
+  siblingCount?: number
+  /** Show the "Rows per page" selector. */
+  showRowsPerPage?: boolean
   /** Current rows-per-page value. */
-  rowsPerPage?: number;
+  rowsPerPage?: number
   /** Available rows-per-page options. */
-  rowsPerPageOptions?: number[];
-  /** Callback for rows-per-page change. */
-  onRowsPerPageChange?: (rows: number) => void;
-  /** Total item count — used for "X–Y of Z" label. */
-  totalItems?: number;
-  className?: string;
+  rowsPerPageOptions?: number[]
+  /** Called when rows-per-page selection changes. */
+  onRowsPerPageChange?: (rows: number) => void
+  /** Total item count — enables "X–Y de Z" range label. */
+  totalItems?: number
+  /** Show page-number buttons between prev/next arrows. */
+  showPageNumbers?: boolean
+  className?: string
 }
 
-// ─── Icons ────────────────────────────────────────────────────────────────────
+// ─── Icons (paths from /docs/public/icons) ───────────────────────────────────
 
 const ChevronLeftIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M10 4L6 8l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  <svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+    <path d="M6.99973 8.82685L4.17285 5.99997L6.99973 3.1731L7.5266 3.69997L5.2266 5.99997L7.5266 8.29997L6.99973 8.82685Z" fill="currentColor" />
   </svg>
-);
+)
 
 const ChevronRightIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  <svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+    <path d="M6.47285 5.99997L4.17285 3.69997L4.69973 3.1731L7.5266 5.99997L4.69973 8.82685L4.17285 8.29997L6.47285 5.99997Z" fill="currentColor" />
   </svg>
-);
+)
 
 const ChevronDownIcon = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-    <path d="M3 4.5l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M5.99973 7.52685L3.17285 4.69997L3.69973 4.1731L5.99973 6.4731L8.29973 4.1731L8.8266 4.69997L5.99973 7.52685Z" fill="currentColor" />
   </svg>
-);
+)
 
 // ─── usePaginationRange ───────────────────────────────────────────────────────
 
@@ -51,60 +54,53 @@ function usePaginationRange(
   currentPage: number,
   totalPages: number,
   siblingCount: number
-): (number | "dots")[] {
+): (number | 'dots')[] {
   return React.useMemo(() => {
-    const totalPageNumbers = siblingCount * 2 + 5; // siblings + first + last + current + 2 dots
+    const totalPageNumbers = siblingCount * 2 + 5
 
     if (totalPageNumbers >= totalPages) {
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
+      return Array.from({ length: totalPages }, (_, i) => i + 1)
     }
 
-    const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
-    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);
-
-    const showLeftDots = leftSiblingIndex > 2;
-    const showRightDots = rightSiblingIndex < totalPages - 1;
-
-    const firstPageIndex = 1;
-    const lastPageIndex = totalPages;
+    const leftSiblingIndex  = Math.max(currentPage - siblingCount, 1)
+    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages)
+    const showLeftDots      = leftSiblingIndex > 2
+    const showRightDots     = rightSiblingIndex < totalPages - 1
 
     if (!showLeftDots && showRightDots) {
-      const leftItemCount = 3 + 2 * siblingCount;
-      const leftRange = Array.from({ length: leftItemCount }, (_, i) => i + 1);
-      return [...leftRange, "dots", totalPages];
+      const leftItemCount = 3 + 2 * siblingCount
+      const leftRange = Array.from({ length: leftItemCount }, (_, i) => i + 1)
+      return [...leftRange, 'dots', totalPages]
     }
 
     if (showLeftDots && !showRightDots) {
-      const rightItemCount = 3 + 2 * siblingCount;
+      const rightItemCount = 3 + 2 * siblingCount
       const rightRange = Array.from(
         { length: rightItemCount },
         (_, i) => totalPages - rightItemCount + i + 1
-      );
-      return [firstPageIndex, "dots", ...rightRange];
+      )
+      return [1, 'dots', ...rightRange]
     }
 
     const middleRange = Array.from(
       { length: rightSiblingIndex - leftSiblingIndex + 1 },
       (_, i) => leftSiblingIndex + i
-    );
-    return [firstPageIndex, "dots", ...middleRange, "dots", lastPageIndex];
-  }, [currentPage, totalPages, siblingCount]);
+    )
+    return [1, 'dots', ...middleRange, 'dots', totalPages]
+  }, [currentPage, totalPages, siblingCount])
 }
 
 // ─── Pagination ───────────────────────────────────────────────────────────────
 
 /**
- * Pagination component with full state support:
- * Current Page · Default Page · First/Last Disabled · Hover · Focus
- *
- * Matches the footer design from the Figma "Baños Portátiles" screen:
- * rows-per-page selector + page info + prev/next arrows.
+ * Pagination with rows-per-page selector, page info, and prev/next arrows.
+ * Optionally shows page-number buttons between the arrows.
  *
  * @example
  * <Pagination
- *   currentPage={3}
- *   totalPages={10}
- *   totalItems={97}
+ *   currentPage={1}
+ *   totalPages={7}
+ *   totalItems={70}
  *   onPageChange={setPage}
  *   showRowsPerPage
  *   rowsPerPage={10}
@@ -121,41 +117,34 @@ const Pagination: React.FC<PaginationProps> = ({
   rowsPerPageOptions = [10, 25, 50, 100],
   onRowsPerPageChange,
   totalItems,
+  showPageNumbers = false,
   className,
 }) => {
-  const range = usePaginationRange(currentPage, totalPages, siblingCount);
+  const range = usePaginationRange(currentPage, totalPages, siblingCount)
+  const isFirst = currentPage <= 1
+  const isLast  = currentPage >= totalPages
 
-  const isFirst = currentPage <= 1;
-  const isLast = currentPage >= totalPages;
-
-  // "X–Y of Z" calculation
-  const rangeStart = (currentPage - 1) * rowsPerPage + 1;
-  const rangeEnd = Math.min(currentPage * rowsPerPage, totalItems ?? totalPages * rowsPerPage);
+  const rangeStart = (currentPage - 1) * rowsPerPage + 1
+  const rangeEnd   = Math.min(currentPage * rowsPerPage, totalItems ?? totalPages * rowsPerPage)
 
   return (
-    <nav
-      aria-label="Pagination"
-      className={cn(
-        "sq-pagination",
-        "d-flex align-items-center justify-content-between flex-wrap gap-2",
-        className
-      )}
-    >
-      {/* ── Left: total count ──────────────────────────────────────── */}
-      {totalItems !== undefined && (
+    <nav aria-label="Pagination" className={cn('sq-pagination', className)}>
+
+      {/* ── Total count ───────────────────────────────────────── */}
+      {totalItems !== undefined && !showRowsPerPage && (
         <span className="sq-pagination-total">
           {totalItems} resultados
         </span>
       )}
 
-      {/* ── Right cluster ──────────────────────────────────────────── */}
-      <div className="d-flex align-items-center gap-3 ms-auto">
+      {/* ── Right cluster ─────────────────────────────────────── */}
+      <div className="sq-pagination-right">
 
         {/* Rows per page */}
         {showRowsPerPage && (
-          <div className="d-flex align-items-center gap-2">
-            <span className="sq-pagination-label">Filas por página</span>
-            <div className="sq-pagination-rows-select position-relative d-flex align-items-center">
+          <div className="sq-pagination-rows">
+            <span className="sq-pagination-label">Row per page</span>
+            <div className="sq-pagination-select-wrap">
               <select
                 value={rowsPerPage}
                 onChange={(e) => onRowsPerPageChange?.(Number(e.target.value))}
@@ -174,188 +163,65 @@ const Pagination: React.FC<PaginationProps> = ({
         )}
 
         {/* Page info */}
-        {totalItems !== undefined && (
-          <span className="sq-pagination-label">
-            {rangeStart}–{rangeEnd} de {totalItems}
-          </span>
+        <span className="sq-pagination-page-info">
+          {totalItems !== undefined
+            ? `${rangeStart}–${rangeEnd} de ${totalItems}`
+            : `Page ${currentPage} of ${totalPages}`}
+        </span>
+
+        {/* Page number buttons */}
+        {showPageNumbers && (
+          <ol className="sq-pagination-pages">
+            {range.map((item, idx) =>
+              item === 'dots' ? (
+                <li key={`dots-${idx}`} aria-hidden="true">
+                  <span className="sq-pagination-dots">…</span>
+                </li>
+              ) : (
+                <li key={item}>
+                  <button
+                    className={cn(
+                      'sq-pagination-btn',
+                      currentPage === item && 'sq-pagination-btn-current'
+                    )}
+                    onClick={() => onPageChange(item)}
+                    aria-label={`Page ${item}`}
+                    aria-current={currentPage === item ? 'page' : undefined}
+                  >
+                    {item}
+                  </button>
+                </li>
+              )
+            )}
+          </ol>
         )}
 
-        {/* Page buttons */}
-        <ol className="sq-pagination-list list-unstyled d-flex align-items-center gap-1 m-0 p-0">
-          {/* ← Prev */}
-          <li>
-            <button
-              className={cn(
-                "sq-pagination-btn sq-pagination-btn-arrow",
-                isFirst && "sq-pagination-btn-disabled"
-              )}
-              onClick={() => !isFirst && onPageChange(currentPage - 1)}
-              disabled={isFirst}
-              aria-label="Previous page"
-            >
-              <ChevronLeftIcon />
-            </button>
-          </li>
-
-          {/* Page numbers */}
-          {range.map((item, idx) =>
-            item === "dots" ? (
-              <li key={`dots-${idx}`} aria-hidden="true">
-                <span className="sq-pagination-dots">…</span>
-              </li>
-            ) : (
-              <li key={item}>
-                <button
-                  className={cn(
-                    "sq-pagination-btn sq-pagination-btn-page",
-                    currentPage === item && "sq-pagination-btn-current"
-                  )}
-                  onClick={() => onPageChange(item)}
-                  aria-label={`Page ${item}`}
-                  aria-current={currentPage === item ? "page" : undefined}
-                >
-                  {item}
-                </button>
-              </li>
-            )
-          )}
-
-          {/* → Next */}
-          <li>
-            <button
-              className={cn(
-                "sq-pagination-btn sq-pagination-btn-arrow",
-                isLast && "sq-pagination-btn-disabled"
-              )}
-              onClick={() => !isLast && onPageChange(currentPage + 1)}
-              disabled={isLast}
-              aria-label="Next page"
-            >
-              <ChevronRightIcon />
-            </button>
-          </li>
-        </ol>
+        {/* Prev / Next */}
+        <div className="sq-pagination-arrows">
+          <button
+            className="sq-pagination-arrow"
+            onClick={() => !isFirst && onPageChange(currentPage - 1)}
+            disabled={isFirst}
+            aria-label="Previous page"
+            type="button"
+          >
+            <ChevronLeftIcon />
+          </button>
+          <button
+            className="sq-pagination-arrow"
+            onClick={() => !isLast && onPageChange(currentPage + 1)}
+            disabled={isLast}
+            aria-label="Next page"
+            type="button"
+          >
+            <ChevronRightIcon />
+          </button>
+        </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-// ─── CSS ──────────────────────────────────────────────────────────────────────
+Pagination.displayName = 'Pagination'
 
-export const PaginationStyles = `
-  /* ── Container ──────────────────────────────────────────── */
-  .sq-pagination {
-    padding: 12px 16px;
-    border-top: 1px solid rgba(11, 18, 14, 0.14);
-    background-color: #ffffff;
-  }
-
-  .sq-pagination-total,
-  .sq-pagination-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8125rem;
-    color: #62748e;
-    white-space: nowrap;
-  }
-
-  /* ── Rows-per-page select ───────────────────────────────── */
-  .sq-pagination-select {
-    appearance: none;
-    -webkit-appearance: none;
-    padding: 2px 24px 2px 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8125rem;
-    color: #314158;
-    background: #ffffff;
-    border: 1px solid rgba(11, 18, 14, 0.14);
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-  }
-
-  .sq-pagination-select:focus {
-    border-color: #005fdb;
-    box-shadow: 0 0 0 3px rgba(0, 95, 219, 0.2);
-  }
-
-  .sq-pagination-select-chevron {
-    position: absolute;
-    right: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #62748e;
-    display: flex;
-  }
-
-  /* ── Buttons ────────────────────────────────────────────── */
-  .sq-pagination-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 28px;
-    height: 28px;
-    padding: 0 4px;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8125rem;
-    color: #314158;
-    background-color: transparent;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.12s, border-color 0.12s, color 0.12s;
-  }
-
-  .sq-pagination-btn:hover:not(:disabled) {
-    background-color: #f8fafc;
-    border-color: rgba(11, 18, 14, 0.14);
-    color: #020618;
-  }
-
-  .sq-pagination-btn:focus-visible {
-    box-shadow: 0 0 0 3px rgba(0, 95, 219, 0.3);
-    border-color: #005fdb;
-  }
-
-  /* Current page */
-  .sq-pagination-btn-current {
-    background-color: #005fdb;
-    border-color: #005fdb;
-    color: #f8fafc;
-    font-weight: 500;
-  }
-
-  .sq-pagination-btn-current:hover {
-    background-color: #0047a3 !important;
-    border-color: #0047a3 !important;
-    color: #f8fafc !important;
-  }
-
-  /* Arrow buttons */
-  .sq-pagination-btn-arrow {
-    color: #62748e;
-  }
-
-  /* Disabled (first/last arrows) */
-  .sq-pagination-btn-disabled,
-  .sq-pagination-btn:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-
-  /* Dots */
-  .sq-pagination-dots {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 28px;
-    height: 28px;
-    font-size: 0.875rem;
-    color: #62748e;
-    user-select: none;
-  }
-`;
-
-export { Pagination };
+export { Pagination }

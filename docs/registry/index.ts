@@ -9,6 +9,17 @@ import { SelectPage }          from './select'
 import { DatePickerPage }      from './date-picker'
 import { DateRangePickerPage } from './date-range-picker'
 import { SideBarPage }         from './side-bar'
+import { TopBarPage }          from './top-bar'
+import { PaginationPage }      from './pagination'
+import { TablePage }           from './table'
+import { CardPage }            from './card'
+import { DragDropPage }        from './drag-drop'
+import { BadgePage }           from './badge'
+import { ToastPage }           from './toast'
+import { TooltipPage }         from './tooltip'
+import { DialogPage }          from './dialog'
+import { PopoverPage }         from './popover'
+import { IconsPage }           from './icons'
 
 export interface RegistryEntry {
   title: string
@@ -60,7 +71,49 @@ export const registry: Record<string, RegistryEntry> = {
     title: 'Side Bar',
     Component: SideBarPage,
   },
+  'top-bar': {
+    title: 'Top Bar',
+    Component: TopBarPage,
+  },
+  pagination: {
+    title: 'Pagination',
+    Component: PaginationPage,
+  },
+  table: {
+    title: 'Table',
+    Component: TablePage,
+  },
+  card: {
+    title: 'Card',
+    Component: CardPage,
+  },
+  'drag-drop': {
+    title: 'Drag & Drop',
+    Component: DragDropPage,
+  },
+  badge: {
+    title: 'Badge',
+    Component: BadgePage,
+  },
+  toast: {
+    title: 'Toast',
+    Component: ToastPage,
+  },
+  tooltip: {
+    title: 'Tooltip',
+    Component: TooltipPage,
+  },
+  dialog: {
+    title: 'Dialog',
+    Component: DialogPage,
+  },
+  popover: {
+    title: 'Popover',
+    Component: PopoverPage,
+  },
+  icons: {
+    title: 'Icons',
+    Component: IconsPage,
+  },
   // More components will be added here as they are documented:
-  // 'badge': { title: 'Badge', Component: BadgePage },
-  // ...
 }

@@ -10,9 +10,17 @@ import { SwitchStyles } from '@squadness/ui/switch'
 import { InputStyles } from '@squadness/ui/input'
 import { TextareaStyles } from '@squadness/ui/textarea'
 import { SidebarStyles } from '@squadness/ui/sidebar.styles'
-import { PaginationStyles } from '@squadness/ui/pagination'
+import { TopBarStyles } from '@squadness/ui/topbar.styles'
+import { PaginationStyles } from '@squadness/ui/pagination.styles'
 import { DateFilterDropdownStyles } from '@squadness/ui/date-filter-dropdown.styles'
 import { SelectStyles } from '@squadness/ui/select.styles'
+import { TableStyles } from '@squadness/ui/table.styles'
+import { CardStyles } from '@squadness/ui/card.styles'
+import { DragDropStyles } from '@squadness/ui/drag-drop.styles'
+import { ToastStyles }   from '@squadness/ui/toast.styles'
+import { TooltipStyles } from '@squadness/ui/tooltip.styles'
+import { DialogStyles }  from '@squadness/ui/dialog.styles'
+import { PopoverStyles } from '@squadness/ui/popover.styles'
 
 export const metadata: Metadata = {
   title: {
@@ -31,9 +39,17 @@ const allStyles = [
   InputStyles,
   TextareaStyles,
   SidebarStyles,
+  TopBarStyles,
   PaginationStyles,
   DateFilterDropdownStyles,
   SelectStyles,
+  TableStyles,
+  CardStyles,
+  DragDropStyles,
+  ToastStyles,
+  TooltipStyles,
+  DialogStyles,
+  PopoverStyles,
 ].join('\n')
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

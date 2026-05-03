@@ -5,12 +5,12 @@ import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 
 const TOC: TocItem[] = [
-  { id: 'examples',           label: 'Examples',           level: 1 },
-  { id: 'appearance',         label: 'Appearance',         level: 1 },
+  { id: 'examples',           label: 'Ejemplos',           level: 1 },
+  { id: 'appearance',         label: 'Apariencia',         level: 1 },
   { id: 'state',              label: 'State',              level: 2 },
   { id: 'with-label',         label: 'With label',         level: 2 },
-  { id: 'references',         label: 'References',         level: 1 },
-  { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
+  { id: 'references',         label: 'Referencias',        level: 1 },
+  { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
 // ── State rows ────────────────────────────────────────────────────────────────
@@ -154,14 +154,14 @@ export function RadioButtonPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Radio Button</h1>
           <Desc>
-            Radio buttons let users select exactly one option from a set.
-            Unlike checkboxes, selecting one radio button automatically deselects the others.
+            Los Radio Buttons permiten a los usuarios seleccionar exactamente una opción de un conjunto.
+            A diferencia de los Checkboxes, seleccionar uno desactiva automáticamente los demás.
           </Desc>
         </div>
 
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <SectionTitle id="examples">Examples</SectionTitle>
+          <SectionTitle id="examples">Ejemplos</SectionTitle>
           <ComponentPreview code={examplesCode} minHeight={120}>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <RadioGroup value="b">
@@ -178,8 +178,8 @@ export function RadioButtonPage() {
         {/* ── Appearance ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>Radio buttons have two selection states and four interaction states.</Desc>
+            <SectionTitle id="appearance">Apariencia</SectionTitle>
+            <Desc>El Radio Button tiene dos estados de selección y cuatro estados de interacción.</Desc>
           </div>
 
           {/* State */}
@@ -226,8 +226,8 @@ export function RadioButtonPage() {
         {/* ── References ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <SectionTitle id="references">Referencias</SectionTitle>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -242,21 +242,21 @@ export function RadioButtonPage() {
         {/* ── Content guidelines ────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for writing radio button labels and grouping options correctly.</Desc>
+            <SectionTitle id="content-guidelines">Guías de contenido</SectionTitle>
+            <Desc>Reglas para escribir etiquetas de Radio Button y agrupar las opciones correctamente.</Desc>
           </div>
           <DoDont
             do={[
-              'Write labels as short, noun-based options (e.g. "Monthly", "Annual")',
-              'Always group radio buttons inside a RadioGroup with a shared label or legend',
-              'List options in a logical order — most common first, or alphabetically',
+              'Escribe las etiquetas como opciones cortas basadas en sustantivos (ej. "Mensual", "Anual")',
+              'Agrupa siempre los Radio Buttons dentro de un RadioGroup con una etiqueta o leyenda compartida',
+              'Lista las opciones en un orden lógico — las más comunes primero, o en orden alfabético',
             ]}
             dont={[
-              'Use radio buttons when multiple selections should be allowed — use checkboxes instead',
-              'Use radio buttons for binary yes/no decisions — a toggle or switch is clearer',
-              'Leave a group with no default selection if one option is strongly preferred',
+              'Usar Radio Buttons cuando se deben permitir selecciones múltiples — usa Checkboxes en su lugar',
+              'Usar Radio Buttons para decisiones binarias de sí/no — un toggle o Switch es más claro',
+              'Dejar un grupo sin selección predeterminada si una opción es claramente preferida',
             ]}
-            note="A radio group should always have one option pre-selected unless explicitly asking the user to make a fresh choice. Pre-selecting prevents form submission errors and reduces cognitive load."
+            note="Un grupo de Radio Buttons siempre debe tener una opción preseleccionada, a menos que se le pida explícitamente al usuario hacer una elección nueva. La preselección evita errores de envío y reduce la carga cognitiva."
           />
         </div>
 

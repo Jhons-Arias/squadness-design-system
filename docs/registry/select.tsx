@@ -5,13 +5,13 @@ import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 
 const TOC: TocItem[] = [
-  { id: 'examples',           label: 'Examples',           level: 1 },
-  { id: 'appearance',         label: 'Appearance',         level: 1 },
-  { id: 'state',              label: 'State',              level: 2 },
-  { id: 'with-label',         label: 'With label',         level: 2 },
-  { id: 'validation',         label: 'Validation',         level: 2 },
-  { id: 'references',         label: 'References',         level: 1 },
-  { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
+  { id: 'examples',           label: 'Ejemplos',              level: 1 },
+  { id: 'appearance',         label: 'Apariencia',            level: 1 },
+  { id: 'state',              label: 'State',                 level: 2 },
+  { id: 'with-label',         label: 'With label',            level: 2 },
+  { id: 'validation',         label: 'Validation',            level: 2 },
+  { id: 'references',         label: 'Referencias',           level: 1 },
+  { id: 'content-guidelines', label: 'Guías de contenido',    level: 1 },
 ]
 
 // ── Shared option sets ────────────────────────────────────────────────────────
@@ -140,14 +140,14 @@ export function SelectPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Select</h1>
           <Desc>
-            Selects let users choose one option from a collapsible list.
-            Use a select when there are five or more options and space is limited.
+            Los Selects permiten a los usuarios elegir una opción de una lista desplegable.
+            Úsalos cuando haya cinco o más opciones y el espacio sea limitado.
           </Desc>
         </div>
 
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <SectionTitle id="examples">Examples</SectionTitle>
+          <SectionTitle id="examples">Ejemplos</SectionTitle>
           <ComponentPreview code={examplesCode} minHeight={80} overflowVisible>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center', alignItems: 'flex-start' }}>
               <div style={{ width: 240 }}>
@@ -171,8 +171,8 @@ export function SelectPage() {
         {/* ── Appearance ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>Selects have three visual states and support labels, helper text, and validation.</Desc>
+            <SectionTitle id="appearance">Apariencia</SectionTitle>
+            <Desc>El Select tiene tres estados visuales y soporta etiquetas, texto de ayuda y validación.</Desc>
           </div>
 
           {/* State */}
@@ -236,8 +236,8 @@ export function SelectPage() {
         {/* ── References ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <SectionTitle id="references">Referencias</SectionTitle>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -252,21 +252,21 @@ export function SelectPage() {
         {/* ── Content guidelines ────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for writing option labels and choosing when to use a select.</Desc>
+            <SectionTitle id="content-guidelines">Guías de contenido</SectionTitle>
+            <Desc>Reglas para escribir etiquetas de opciones y elegir cuándo usar un Select.</Desc>
           </div>
           <DoDont
             do={[
-              'Use a select when there are 5 or more options — fewer options are better served by radio buttons',
-              'Write option labels as short, parallel noun phrases at the same level of specificity',
-              'Include a placeholder that describes what the user is choosing (e.g. "Select a status")',
+              'Usa un Select cuando haya 5 o más opciones — con menos opciones, los Radio Buttons son más adecuados',
+              'Escribe las etiquetas de opciones como frases nominales cortas y paralelas al mismo nivel de especificidad',
+              'Incluye un placeholder que describa qué está eligiendo el usuario (ej. "Seleccionar un estado")',
             ]}
             dont={[
-              'Use a select for binary yes/no decisions — a toggle or checkbox is clearer',
-              'Use a select when all options should always be visible — use radio buttons instead',
-              'Write option labels that begin with articles ("a", "the") or vary in grammatical structure',
+              'Usar un Select para decisiones binarias de sí/no — un toggle o Checkbox es más claro',
+              'Usar un Select cuando todas las opciones deberían ser siempre visibles — usa Radio Buttons en su lugar',
+              'Escribir etiquetas de opciones que empiecen con artículos ("un", "el") o varíen en estructura gramatical',
             ]}
-            note="If the list of options can grow dynamically or requires search, consider a combobox or autocomplete input instead of a select."
+            note="Si la lista de opciones puede crecer dinámicamente o requiere búsqueda, considera un combobox o input con autocompletado en lugar de un Select."
           />
         </div>
 

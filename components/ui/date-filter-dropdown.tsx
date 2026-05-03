@@ -120,7 +120,7 @@ interface MiniCalendarProps {
   onDayHover: (date: Date | undefined) => void;
 }
 
-const MiniCalendar: React.FC<MiniCalendarProps> = ({
+export const MiniCalendar: React.FC<MiniCalendarProps> = ({
   viewYear,
   viewMonth,
   onMonthChange,
@@ -388,3 +388,4 @@ const DateFilterDropdown: React.FC<DateFilterDropdownProps> = ({
 };
 
 export { DateFilterDropdown };
+export type { MiniCalendarProps };

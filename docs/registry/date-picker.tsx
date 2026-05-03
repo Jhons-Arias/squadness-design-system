@@ -8,11 +8,11 @@ import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 
 const TOC: TocItem[] = [
-  { id: 'examples',           label: 'Examples',           level: 1 },
-  { id: 'appearance',         label: 'Appearance',         level: 1 },
+  { id: 'examples',           label: 'Ejemplos',           level: 1 },
+  { id: 'appearance',         label: 'Apariencia',         level: 1 },
   { id: 'state',              label: 'State',              level: 2 },
-  { id: 'references',         label: 'References',         level: 1 },
-  { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
+  { id: 'references',         label: 'Referencias',        level: 1 },
+  { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
 // ── Code snippets ─────────────────────────────────────────────────────────────
@@ -112,14 +112,14 @@ export function DatePickerPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Date Picker</h1>
           <Desc>
-            Date pickers let users select a single date from a calendar dropdown.
-            Use when you need to capture or filter by a specific date.
+            Los Date Pickers permiten a los usuarios seleccionar una fecha específica desde un calendario desplegable.
+            Úsalos cuando necesites capturar o filtrar por una fecha concreta.
           </Desc>
         </div>
 
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <SectionTitle id="examples">Examples</SectionTitle>
+          <SectionTitle id="examples">Ejemplos</SectionTitle>
           <ComponentPreview code={examplesCode} minHeight={60} overflowVisible>
             <ExampleDemo />
           </ComponentPreview>
@@ -130,8 +130,8 @@ export function DatePickerPage() {
         {/* ── Appearance ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>Date pickers have three visual states: default, filled, and disabled.</Desc>
+            <SectionTitle id="appearance">Apariencia</SectionTitle>
+            <Desc>El Date Picker tiene tres estados visuales: default, filled y disabled.</Desc>
           </div>
 
           {/* State */}
@@ -152,8 +152,8 @@ export function DatePickerPage() {
         {/* ── References ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <SectionTitle id="references">Referencias</SectionTitle>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -167,21 +167,21 @@ export function DatePickerPage() {
         {/* ── Content guidelines ────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for labeling and using date pickers in your UI.</Desc>
+            <SectionTitle id="content-guidelines">Guías de contenido</SectionTitle>
+            <Desc>Reglas para etiquetar y usar Date Pickers en tu interfaz.</Desc>
           </div>
           <DoDont
             do={[
-              'Use a date picker when the user needs to select a specific calendar date — not a relative time like "yesterday"',
-              'Write placeholders that describe what the date represents, e.g. "Fecha de inicio" or "Fecha de entrega"',
-              'Show the selected date in a consistent, unambiguous format (day-month-year)',
+              'Usa un Date Picker cuando el usuario necesita seleccionar una fecha de calendario específica — no un tiempo relativo como "ayer"',
+              'Escribe placeholders que describan qué representa la fecha, ej. "Fecha de inicio" o "Fecha de entrega"',
+              'Muestra la fecha seleccionada en un formato consistente e inequívoco (día-mes-año)',
             ]}
             dont={[
-              'Use a date picker for time selection — pair it with a separate time input if both are needed',
-              'Use a date picker when a text input with date validation is simpler and sufficient',
-              'Leave the placeholder as a generic "Select…" — give it context specific to the field',
+              'Usar un Date Picker para seleccionar hora — combínalo con un input de tiempo separado si ambos son necesarios',
+              'Usar un Date Picker cuando un input de texto con validación de fecha es más simple y suficiente',
+              'Dejar el placeholder como un genérico "Seleccionar…" — dale contexto específico al campo',
             ]}
-            note="For selecting a period or window of time, use the Date Range Picker instead."
+            note="Para seleccionar un período o ventana de tiempo, usa el Date Range Picker en su lugar."
           />
         </div>
 

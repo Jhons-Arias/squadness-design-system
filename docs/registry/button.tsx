@@ -5,13 +5,13 @@ import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 
 const TOC: TocItem[] = [
-  { id: 'examples',           label: 'Examples',           level: 1 },
-  { id: 'appearance',         label: 'Appearance',         level: 1 },
-  { id: 'variant',            label: 'Variant',            level: 2 },
-  { id: 'state',              label: 'State',              level: 2 },
-  { id: 'size',               label: 'Size',               level: 2 },
-  { id: 'references',         label: 'References',         level: 1 },
-  { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
+  { id: 'examples',           label: 'Ejemplos',              level: 1 },
+  { id: 'appearance',         label: 'Apariencia',            level: 1 },
+  { id: 'variant',            label: 'Variant',               level: 2 },
+  { id: 'state',              label: 'State',                 level: 2 },
+  { id: 'size',               label: 'Size',                  level: 2 },
+  { id: 'references',         label: 'Referencias',           level: 1 },
+  { id: 'content-guidelines', label: 'Guías de contenido',    level: 1 },
 ]
 
 const VARIANTS = ['primary', 'secondary', 'outline', 'ghost', 'danger'] as const
@@ -127,14 +127,14 @@ export function ButtonPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Button</h1>
           <Desc>
-            Buttons allow users to take actions with a single tap.
-            Choose the variant that best communicates the importance and intent of the action.
+            Los botones permiten a los usuarios ejecutar acciones con un solo clic.
+            Elige la variante que mejor comunique la importancia e intención de la acción.
           </Desc>
         </div>
 
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <SectionTitle id="examples">Examples</SectionTitle>
+          <SectionTitle id="examples">Ejemplos</SectionTitle>
           <ComponentPreview code={examplesCode} minHeight={120}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', justifyContent: 'center' }}>
               {VARIANTS.map((v) => <Button key={v} variant={v}>{label(v)}</Button>)}
@@ -147,8 +147,8 @@ export function ButtonPage() {
         {/* ── Appearance ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="appearance">Appearance</SectionTitle>
-            <Desc>Buttons come in five variants, four states, and two sizes.</Desc>
+            <SectionTitle id="appearance">Apariencia</SectionTitle>
+            <Desc>El Button viene en cinco variantes, cuatro estados y dos tamaños.</Desc>
           </div>
 
           {/* Variant */}
@@ -212,8 +212,8 @@ export function ButtonPage() {
         {/* ── References ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="references">References</SectionTitle>
-            <Desc>Explore how other design systems implement this component.</Desc>
+            <SectionTitle id="references">Referencias</SectionTitle>
+            <Desc>Explora cómo otros sistemas de diseño implementan este componente.</Desc>
           </div>
           <ReferenceLinks
             links={[
@@ -228,13 +228,13 @@ export function ButtonPage() {
         {/* ── Content guidelines ────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <SectionTitle id="content-guidelines">Content guidelines</SectionTitle>
-            <Desc>Rules for writing button labels that keep the UI clear and consistent.</Desc>
+            <SectionTitle id="content-guidelines">Guías de contenido</SectionTitle>
+            <Desc>Reglas para escribir etiquetas de botones que mantengan la interfaz clara y consistente.</Desc>
           </div>
           <DoDont
             do={['Save', 'Edit', 'Add tags', 'Delete']}
             dont={['Save product', 'Edit collection details', 'Add tag(s)', 'Click here to delete']}
-            note="Always write button text in sentence case — first word capitalized, the rest lowercase unless the term is a proper noun. Use short action verbs that describe exactly what happens when the button is pressed."
+            note="Escribe siempre el texto del botón en sentence case — primera palabra en mayúscula, el resto en minúsculas, salvo que el término sea un nombre propio. Usa verbos de acción cortos que describan exactamente lo que ocurre al presionar el botón."
           />
         </div>
 
