@@ -29,7 +29,7 @@ export function OnThisPage({ items }: { items: TocItem[] }) {
 
   return (
     <aside className="docs-on-this-page">
-      <p className="docs-menu-label">Menu</p>
+      <p className="docs-menu-label">Contenido</p>
       <nav style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         {items.map((item) => {
           const isActive = active === item.id

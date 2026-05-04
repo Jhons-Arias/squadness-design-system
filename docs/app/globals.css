@@ -176,7 +176,7 @@ a { text-decoration: none; }
   border-right: 1px solid var(--sq-border-subtle);
   display: flex;
   flex-direction: column;
-  gap: var(--sq-space-050);
+  gap: var(--sq-space-300);
   z-index: 40;
 }
 
@@ -222,6 +222,12 @@ a { text-decoration: none; }
 }
 
 /* ── Sidebar nav ──────────────────────────────────────────────────────────── */
+.docs-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sq-space-025);
+}
+
 .docs-nav-section-label {
   font-family: var(--sq-font-body);
   font-weight: 600;
@@ -247,8 +253,6 @@ a { text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: var(--sq-space-025);
-  padding: var(--sq-space-100) 0;
-  border-bottom: 1px solid var(--sq-border-subtle);
 }
 
 .docs-nav-item {

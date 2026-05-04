@@ -17,7 +17,7 @@ function NavItem({ label, slug }: { label: string; slug: string }) {
 
 function NavSection({ section }: { section: NavSection }) {
   return (
-    <>
+    <div className="docs-nav-group">
       <p className="docs-nav-section-label">{section.label}</p>
 
       {/* Flat items (Foundations) */}
@@ -38,7 +38,7 @@ function NavSection({ section }: { section: NavSection }) {
           ))}
         </div>
       ))}
-    </>
+    </div>
   )
 }
 
