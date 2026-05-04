@@ -276,7 +276,7 @@ export function TypographyPage() {
                 <code style={{
                   fontFamily: 'var(--sq-font-mono)', fontSize: 11,
                   color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
-                  padding: '2px 6px', borderRadius: 3,
+                  padding: '2px 6px', borderRadius: 3, width: 'fit-content',
                 }}>{h.style}</code>
                 <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 13, color: 'var(--sq-text-default)' }}>
                   {h.size}px
@@ -333,7 +333,7 @@ export function TypographyPage() {
                       <code style={{
                         fontFamily: 'var(--sq-font-mono)', fontSize: 11,
                         color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
-                        padding: '2px 6px', borderRadius: 3,
+                        padding: '2px 6px', borderRadius: 3, width: 'fit-content',
                       }}>body/{size.key}</code>
                     </td>
                     <td style={{ padding: '14px 12px', verticalAlign: 'middle' }}>
@@ -396,7 +396,7 @@ export function TypographyPage() {
                 <code style={{
                   fontFamily: 'var(--sq-font-mono)', fontSize: 11,
                   color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
-                  padding: '2px 6px', borderRadius: 3,
+                  padding: '2px 6px', borderRadius: 3, width: 'fit-content',
                 }}>{c.style}</code>
                 <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 13, color: 'var(--sq-text-default)' }}>
                   {c.size}px
