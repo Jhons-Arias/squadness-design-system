@@ -120,7 +120,7 @@ export function SpacingPage() {
                   className="docs-scale-row"
                 >
                   <code style={{
-                    fontFamily: 'var(--sq-font-mono)', fontSize: 12,
+                    fontFamily: 'var(--sq-font-mono)', fontSize: 12, width: 'fit-content',
                     color: 'var(--sq-brand)',
                     background: 'rgba(0,95,219,0.06)',
                     padding: '2px 6px', borderRadius: 4,
@@ -175,7 +175,7 @@ export function SpacingPage() {
                     <td style={{ padding: '10px 12px', color: 'var(--sq-text-subtle)' }}>{row.context}</td>
                     <td style={{ padding: '10px 12px' }}>
                       <code style={{
-                        fontFamily: 'var(--sq-font-mono)', fontSize: 12,
+                        fontFamily: 'var(--sq-font-mono)', fontSize: 12, width: 'fit-content',
                         color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
                         padding: '2px 6px', borderRadius: 4,
                       }}>{row.token}</code>
