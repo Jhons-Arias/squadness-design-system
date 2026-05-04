@@ -6,6 +6,8 @@ import { LightCodeBlock, type CodeLang } from './LightCodeBlock'
 interface ComponentPreviewProps {
   children: React.ReactNode
   code: string
+  /** Optional CSS source shown in the Styles tab */
+  styles?: string
   minHeight?: number
   /** Language for syntax highlighting in the Code tab */
   lang?: CodeLang
@@ -16,17 +18,29 @@ interface ComponentPreviewProps {
 export function ComponentPreview({
   children,
   code,
+  styles,
   minHeight = 160,
   lang = 'jsx',
   overflowVisible,
 }: ComponentPreviewProps) {
-  const [tab, setTab] = useState<'preview' | 'code'>('preview')
+  const tabs = styles
+    ? (['preview', 'code', 'styles'] as const)
+    : (['preview', 'code'] as const)
+
+  const [tab, setTab] = useState<'preview' | 'code' | 'styles'>('preview')
   const [copied, setCopied] = useState(false)
 
   async function handleCopy() {
-    await navigator.clipboard.writeText(code)
+    const text = tab === 'styles' ? styles! : code
+    await navigator.clipboard.writeText(text)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
+  }
+
+  const TAB_LABEL: Record<string, string> = {
+    preview: 'Preview',
+    code:    'index.jsx',
+    styles:  'styles.css',
   }
 
   return (
@@ -36,18 +50,18 @@ export function ComponentPreview({
     >
       {/* Tab bar */}
       <div className="docs-preview-tabs">
-        {(['preview', 'code'] as const).map((t) => (
+        {tabs.map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
             className={`docs-preview-tab${tab === t ? ' active' : ''}`}
           >
-            {t.charAt(0).toUpperCase() + t.slice(1)}
+            {TAB_LABEL[t]}
           </button>
         ))}
 
-        {/* Copy button — only visible when Code tab is active */}
-        {tab === 'code' && (
+        {/* Copy button — only in code/styles tabs */}
+        {(tab === 'code' || tab === 'styles') && (
           <button
             onClick={handleCopy}
             style={{
@@ -75,6 +89,8 @@ export function ComponentPreview({
         <div className="docs-preview-canvas" style={{ minHeight }}>
           {children}
         </div>
+      ) : tab === 'styles' ? (
+        <LightCodeBlock code={styles!} lang="css" embedded />
       ) : (
         <LightCodeBlock code={code} lang={lang} embedded />
       )}

@@ -1,9 +1,8 @@
-import { Button } from '@squadness/ui/button'
+import { Button, ButtonStyles } from '@squadness/ui/button'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
-import { TokenTable } from '@/components/docs/TokenTable'
 import { LightCodeBlock } from '@/components/docs/LightCodeBlock'
 
 const TOC: TocItem[] = [
@@ -14,11 +13,10 @@ const TOC: TocItem[] = [
   { id: 'size',               label: 'Size',                  level: 2 },
   { id: 'uso',                label: 'Uso en código',         level: 1 },
   { id: 'references',         label: 'Referencias',           level: 1 },
-  { id: 'tokens',             label: 'Design Tokens',         level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido',    level: 1 },
 ]
 
-const usageCode = `import { Button } from '@squadness/ui/button'
+const usageCode = `import { Button, ButtonStyles } from '@squadness/ui/button'
 import { ButtonStyles } from '@squadness/ui/button'
 
 // 1. Inyectar CSS una vez en tu root layout
@@ -50,24 +48,6 @@ interface ButtonProps {
   children:  React.ReactNode
 }`
 
-const BUTTON_TOKENS = [
-  { token: 'Button/Primary/Surface Default', property: 'background-color', value: '#005fdb', primitive: 'blue/700', description: 'Primary — default' },
-  { token: 'Button/Primary/Surface Hover',   property: 'background-color', value: '#0047a3', primitive: 'blue/800', description: 'Primary — hover & active' },
-  { token: 'Button/Primary/Content',         property: 'color',            value: '#f8ffff', primitive: 'blue/50',  description: 'Primary — label & icon' },
-  { token: 'Button/Secondary/Surface Default', property: 'background-color', value: '#e2e8f0', primitive: 'neutral/200', description: 'Secondary — default' },
-  { token: 'Button/Secondary/Surface Hover',   property: 'background-color', value: '#cad5e2', primitive: 'neutral/300', description: 'Secondary — hover' },
-  { token: 'Button/Secondary/Surface Active',  property: 'background-color', value: '#90a1b9', primitive: 'neutral/400', description: 'Secondary — active' },
-  { token: 'Button/Secondary/Content',         property: 'color',            value: '#0f172b', primitive: 'neutral/900', description: 'Secondary — label & icon' },
-  { token: 'Button/Outline/Surface Default',   property: 'background-color', value: '#f8fafc', primitive: 'neutral/50',  description: 'Outline — default' },
-  { token: 'Button/Outline/Border',            property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Outline — border' },
-  { token: 'Button/Outline/Content',           property: 'color',            value: '#314158', primitive: 'neutral/700', description: 'Outline — label & icon' },
-  { token: 'Button/Ghost/Surface Hover',       property: 'background-color', value: '#f8fafc', primitive: 'neutral/50',  description: 'Ghost — hover surface' },
-  { token: 'Button/Ghost/Content',             property: 'color',            value: '#0f172b', primitive: 'neutral/900', description: 'Ghost — label & icon' },
-  { token: 'Button/Danger/Surface Default',    property: 'background-color', value: '#9e0b15', primitive: 'red/700',    description: 'Danger — default' },
-  { token: 'Button/Danger/Surface Hover',      property: 'background-color', value: '#6f040c', primitive: 'red/800',    description: 'Danger — hover' },
-  { token: 'Button/Danger/Surface Active',     property: 'background-color', value: '#430204', primitive: 'red/900',    description: 'Danger — active' },
-  { token: 'Button/Danger/Content',            property: 'color',            value: '#feeded', primitive: 'red/50',     description: 'Danger — label & icon' },
-]
 
 const VARIANTS = ['primary', 'secondary', 'outline', 'ghost', 'danger'] as const
 type V = typeof VARIANTS[number]
@@ -190,7 +170,7 @@ export function ButtonPage() {
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={120}>
+          <ComponentPreview code={examplesCode} styles={ButtonStyles} minHeight={120}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', justifyContent: 'center' }}>
               {VARIANTS.map((v) => <Button key={v} variant={v}>{label(v)}</Button>)}
             </div>
@@ -298,16 +278,6 @@ export function ButtonPage() {
           />
         </div>
 
-        <Divider />
-
-        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="tokens">Design Tokens</SectionTitle>
-            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
-          </div>
-          <TokenTable tokens={BUTTON_TOKENS} />
-        </div>
 
         <Divider />
 
