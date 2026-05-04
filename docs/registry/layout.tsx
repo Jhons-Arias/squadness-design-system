@@ -438,50 +438,12 @@ export function LayoutPage() {
             <Desc>El Layout está compuesto por cuatro capas apiladas en dos ejes.</Desc>
           </div>
 
-          <div style={{
-            display: 'grid', gridTemplateColumns: '200px 1fr', gap: 12,
-            padding: '20px', border: '1px solid var(--sq-border-subtle)',
-            borderRadius: 12, fontFamily: 'var(--sq-font-body)', fontSize: 13,
-          }}>
-            {/* Sidebar col */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <div style={{
-                padding: '10px 12px', borderRadius: 8,
-                background: 'rgba(0,95,219,0.07)',
-                border: '1.5px dashed rgba(0,95,219,0.3)',
-                display: 'flex', flexDirection: 'column', gap: 4,
-              }}>
-                <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--sq-brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Sidebar</span>
-                <span style={{ color: 'var(--sq-text-subtlest)', fontSize: 12 }}>240px · 52px collapsed</span>
-              </div>
-              <div style={{ padding: '8px 12px', borderRadius: 8, background: 'var(--sq-surface-default)', border: '1px solid var(--sq-border-subtle)', color: 'var(--sq-text-subtlest)', fontSize: 12, lineHeight: 1.5 }}>
-                Logo + nav items<br/>con soporte de submenú y badge
-              </div>
-            </div>
-
-            {/* Main col */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <div style={{
-                padding: '10px 12px', borderRadius: 8,
-                background: 'rgba(0,95,219,0.04)',
-                border: '1.5px dashed rgba(0,95,219,0.2)',
-                display: 'flex', flexDirection: 'column', gap: 4,
-              }}>
-                <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--sq-brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>TopBar</span>
-                <span style={{ color: 'var(--sq-text-subtlest)', fontSize: 12 }}>56px de alto · toggle + usuario</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
-                <div style={{ padding: '8px 12px', borderRadius: 8, background: 'var(--sq-surface-default)', border: '1px solid var(--sq-border-subtle)', color: 'var(--sq-text-subtlest)', fontSize: 12, lineHeight: 1.5 }}>
-                  <strong style={{ color: 'var(--sq-text-subtle)' }}>Content Area</strong> — bg #f8fafc, p-16px<br/>
-                  <span style={{ fontSize: 11 }}>└ Inner card (white, radius 16px, overflow scroll)</span>
-                </div>
-                <div style={{ padding: '8px 12px', borderRadius: 8, background: 'var(--sq-surface-default)', border: '1px solid var(--sq-border-subtle)', color: 'var(--sq-text-subtlest)', fontSize: 12, lineHeight: 1.5 }}>
-                  <strong style={{ color: 'var(--sq-text-subtle)'  }}>&lt;PageHeader&gt;</strong> — title + description + actions<br/>
-                  <strong style={{ color: 'var(--sq-text-subtle)' }}>&lt;PageBody&gt;</strong> — área scrollable con p-16px
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${BASE}/Anatomía.png`}
+            alt="Anatomía del Layout"
+            style={{ width: '100%', display: 'block', borderRadius: 12 }}
+          />
         </div>
 
         <Divider />

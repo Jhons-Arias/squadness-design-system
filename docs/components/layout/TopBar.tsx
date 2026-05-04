@@ -17,7 +17,11 @@ function SearchIcon() {
   )
 }
 
-export function TopBar() {
+interface TopBarProps {
+  onMenuToggle?: () => void
+}
+
+export function TopBar({ onMenuToggle }: TopBarProps) {
   const router = useRouter()
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
@@ -91,6 +95,19 @@ export function TopBar() {
 
   return (
     <header className="docs-topbar">
+      {/* Hamburger — mobile only */}
+      {onMenuToggle && (
+        <button
+          className="docs-topbar-hamburger"
+          onClick={onMenuToggle}
+          aria-label="Abrir menú"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M2 4.5h14M2 9h14M2 13.5h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+          </svg>
+        </button>
+      )}
+
       {/* Logo + wordmark */}
       <Link href="/components/button" style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -116,7 +133,7 @@ export function TopBar() {
       <div style={{ flex: 1 }} />
 
       {/* Search bar */}
-      <div ref={wrapRef} style={{ position: 'relative', width: 248 }}>
+      <div ref={wrapRef} className="docs-topbar-search" style={{ position: 'relative', width: 248 }}>
         <div
           style={{
             display: 'flex', alignItems: 'center', gap: 8,
