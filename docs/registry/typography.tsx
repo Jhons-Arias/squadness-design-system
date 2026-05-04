@@ -159,7 +159,7 @@ export function TypographyPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <SectionTitle id="familias">Nuestras tipografías</SectionTitle>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
             {TYPEFACES.map(tf => (
               <div key={tf.name} style={{
                 border: '1px solid var(--sq-border-subtle)',
