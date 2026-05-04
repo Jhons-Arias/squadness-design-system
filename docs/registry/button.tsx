@@ -3,7 +3,6 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
-import { LightCodeBlock } from '@/components/docs/LightCodeBlock'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Ejemplos',              level: 1 },
@@ -11,42 +10,10 @@ const TOC: TocItem[] = [
   { id: 'variant',            label: 'Variant',               level: 2 },
   { id: 'state',              label: 'State',                 level: 2 },
   { id: 'size',               label: 'Size',                  level: 2 },
-  { id: 'uso',                label: 'Uso en código',         level: 1 },
   { id: 'references',         label: 'Referencias',           level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido',    level: 1 },
 ]
 
-const usageCode = `import { Button, ButtonStyles } from '@squadness/ui/button'
-import { ButtonStyles } from '@squadness/ui/button'
-
-// 1. Inyectar CSS una vez en tu root layout
-<style dangerouslySetInnerHTML={{ __html: ButtonStyles }} />
-
-// 2. Usar el componente
-<Button variant="primary" onClick={() => save()}>
-  Guardar cambios
-</Button>
-
-<Button variant="secondary" disabled>
-  Cancelar
-</Button>
-
-<Button variant="danger" loading>
-  Eliminando…
-</Button>`
-
-const installCode = `// Variantes disponibles
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
-
-// Props del componente
-interface ButtonProps {
-  variant?:  ButtonVariant        // default: 'primary'
-  size?:     'sm' | 'md' | 'lg'  // default: 'md'
-  disabled?: boolean
-  loading?:  boolean
-  onClick?:  () => void
-  children:  React.ReactNode
-}`
 
 
 const VARIANTS = ['primary', 'secondary', 'outline', 'ghost', 'danger'] as const
@@ -240,26 +207,6 @@ export function ButtonPage() {
               </div>
             </ComponentPreview>
           </div>
-        </div>
-
-        <Divider />
-
-        {/* ── Uso en código ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="uso">Uso en código</SectionTitle>
-            <Desc>Importa el componente y sus estilos, luego úsalo directamente en tu JSX.</Desc>
-          </div>
-          <LightCodeBlock
-            code={usageCode}
-            lang="jsx"
-            filename="components/MyPage.tsx"
-          />
-          <LightCodeBlock
-            code={installCode}
-            lang="jsx"
-            filename="types — referencia"
-          />
         </div>
 
         <Divider />
