@@ -328,7 +328,7 @@ a { text-decoration: none; }
   border-bottom: 2px solid transparent;
   cursor: pointer;
   transition: color 0.1s, border-color 0.1s;
-  text-transform: capitalize;
+  text-transform: none;
   margin-bottom: -1px;
 }
 .docs-preview-tab.active {
