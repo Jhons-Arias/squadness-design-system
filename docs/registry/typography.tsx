@@ -2,7 +2,7 @@ import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 import { LightCodeBlock } from '@/components/docs/LightCodeBlock'
 
 const TOC: TocItem[] = [
-  { id: 'familias',  label: 'Familias tipográficas', level: 1 },
+  { id: 'familias',  label: 'Nuestras tipografías',  level: 1 },
   { id: 'headings',  label: 'Headings',              level: 1 },
   { id: 'body',      label: 'Body',                  level: 1 },
   { id: 'code',      label: 'Code',                  level: 1 },
@@ -27,6 +27,7 @@ const TYPEFACES = [
   {
     token: 'font/family/heading',
     name: 'Pangram',
+    image: 'Pangram.png',
     variable: '--sq-font-heading',
     role: 'Headings',
     weights: ['Bold'],
@@ -38,6 +39,7 @@ const TYPEFACES = [
   {
     token: 'font/family/body',
     name: 'Inter',
+    image: 'Inter.png',
     variable: '--sq-font-body',
     role: 'Body & UI',
     weights: ['Regular', 'Medium', 'SemiBold', 'Bold'],
@@ -49,6 +51,7 @@ const TYPEFACES = [
   {
     token: 'font/family/code',
     name: 'Roboto Mono',
+    image: 'Roboto Mono.png',
     variable: '--sq-font-mono',
     role: 'Code & Tokens',
     weights: ['Regular'],
@@ -134,20 +137,6 @@ code {
   line-height: 24px;
 }`
 
-// ── Chip helper ───────────────────────────────────────────────────────────────
-
-function Chip({ children }: { children: React.ReactNode }) {
-  return (
-    <span style={{
-      fontSize: 11, fontFamily: 'var(--sq-font-body)',
-      color: 'var(--sq-text-subtlest)',
-      background: 'var(--sq-surface-default)',
-      padding: '2px 8px', borderRadius: 20,
-      border: '1px solid var(--sq-border-default)',
-    }}>{children}</span>
-  )
-}
-
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export function TypographyPage() {
@@ -168,7 +157,7 @@ export function TypographyPage() {
 
         {/* ── Familias tipográficas ─────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <SectionTitle id="familias">Familias tipográficas</SectionTitle>
+          <SectionTitle id="familias">Nuestras tipografías</SectionTitle>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {TYPEFACES.map(tf => (
@@ -176,66 +165,42 @@ export function TypographyPage() {
                 border: '1px solid var(--sq-border-subtle)',
                 borderRadius: 12, overflow: 'hidden',
               }}>
-                {/* Preview */}
-                <div style={{
-                  padding: '28px 32px',
-                  background: 'var(--sq-surface-default)',
-                  borderBottom: '1px solid var(--sq-border-subtle)',
-                }}>
-                  <p style={{
-                    fontFamily: tf.fontFamily,
-                    fontWeight: tf.fontWeight,
-                    fontSize: 28,
-                    color: 'var(--sq-text-default)',
-                    margin: 0,
-                    lineHeight: 1.2,
-                    letterSpacing: tf.name === 'Pangram' ? '-0.01em' : 0,
-                  }}>
-                    {tf.sample}
-                  </p>
-                </div>
+                {/* Font specimen image */}
+                <img
+                  src={`/squadness-design-system/${tf.image}`}
+                  alt={tf.name}
+                  style={{ width: '100%', display: 'block' }}
+                />
 
-                {/* Info */}
-                <div style={{
-                  padding: '18px 24px',
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr 1fr',
-                  gap: 20,
-                  alignItems: 'start',
-                }}>
-                  {/* Name + token */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <span style={{ fontFamily: 'var(--sq-font-body)', fontWeight: 700, fontSize: 16, color: 'var(--sq-text-default)' }}>
-                      {tf.name}
-                    </span>
-                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                      <code style={{
-                        fontFamily: 'var(--sq-font-mono)', fontSize: 11,
-                        color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
-                        padding: '1px 6px', borderRadius: 3,
-                      }}>{tf.variable}</code>
-                      <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 11, color: 'var(--sq-text-subtlest)' }}>
-                        {tf.token}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Role + weights */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <span style={{ fontFamily: 'var(--sq-font-body)', fontSize: 12, fontWeight: 600, color: 'var(--sq-text-subtlest)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                      Rol · Pesos
-                    </span>
-                    <span style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtle)' }}>{tf.role}</span>
-                    <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
-                      {tf.weights.map(w => <Chip key={w}>{w}</Chip>)}
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtle)', lineHeight: 1.6, margin: 0 }}>
-                    {tf.description}
-                  </p>
-                </div>
+                {/* Metadata table */}
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'var(--sq-font-body)', fontSize: 13 }}>
+                  <tbody>
+                    <tr style={{ borderTop: '1px solid var(--sq-border-subtle)' }}>
+                      <td style={{ padding: '10px 20px', color: 'var(--sq-text-subtlest)', fontWeight: 500, width: 140, whiteSpace: 'nowrap' }}>Variable CSS</td>
+                      <td style={{ padding: '10px 20px' }}>
+                        <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 12, color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)', padding: '2px 6px', borderRadius: 3, width: 'fit-content' }}>
+                          {tf.variable}
+                        </code>
+                      </td>
+                    </tr>
+                    <tr style={{ borderTop: '1px solid var(--sq-border-subtle)' }}>
+                      <td style={{ padding: '10px 20px', color: 'var(--sq-text-subtlest)', fontWeight: 500 }}>Token Figma</td>
+                      <td style={{ padding: '10px 20px', color: 'var(--sq-text-subtle)', fontFamily: 'var(--sq-font-mono)', fontSize: 12 }}>{tf.token}</td>
+                    </tr>
+                    <tr style={{ borderTop: '1px solid var(--sq-border-subtle)' }}>
+                      <td style={{ padding: '10px 20px', color: 'var(--sq-text-subtlest)', fontWeight: 500 }}>Rol</td>
+                      <td style={{ padding: '10px 20px', color: 'var(--sq-text-subtle)' }}>{tf.role}</td>
+                    </tr>
+                    <tr style={{ borderTop: '1px solid var(--sq-border-subtle)' }}>
+                      <td style={{ padding: '10px 20px', color: 'var(--sq-text-subtlest)', fontWeight: 500 }}>Pesos</td>
+                      <td style={{ padding: '10px 20px', color: 'var(--sq-text-subtle)' }}>{tf.weights.join(', ')}</td>
+                    </tr>
+                    <tr style={{ borderTop: '1px solid var(--sq-border-subtle)' }}>
+                      <td style={{ padding: '10px 20px', color: 'var(--sq-text-subtlest)', fontWeight: 500, verticalAlign: 'top' }}>Descripción</td>
+                      <td style={{ padding: '10px 20px', color: 'var(--sq-text-subtle)', lineHeight: 1.6 }}>{tf.description}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             ))}
           </div>
