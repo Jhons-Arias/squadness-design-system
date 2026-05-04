@@ -521,6 +521,33 @@ a { text-decoration: none; }
   font-weight: 500;
 }
 
+/* ── Colors page grids ────────────────────────────────────────────────────── */
+.colors-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.colors-surface-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  border: 1px solid var(--sq-border-subtle);
+  border-radius: 12px;
+  align-items: center;
+}
+
+/* ── Introduction page grids ──────────────────────────────────────────────── */
+.intro-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.intro-principles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    RESPONSIVE LAYOUT
    Desktop  ≥1200px : sidebar 288px + content + "Contenido" panel (default)
@@ -627,5 +654,20 @@ a { text-decoration: none; }
   .docs-do-dont {
     flex-direction: column;
     gap: var(--sq-space-300);
+  }
+
+  /* Introduction page — stats and principles cards stack in one column */
+  .intro-stats-grid,
+  .intro-principles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Colors page — all multi-column grids collapse to single column */
+  .colors-two-col {
+    grid-template-columns: 1fr;
+  }
+  .colors-surface-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }

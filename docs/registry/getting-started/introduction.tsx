@@ -118,9 +118,7 @@ export function IntroductionPage() {
             Es un sistema de diseño construido en React que combina <strong style={{ color: 'var(--sq-text-default)', fontWeight: 600 }}>componentes de UI</strong>, <strong style={{ color: 'var(--sq-text-default)', fontWeight: 600 }}>tokens de diseño</strong> y <strong style={{ color: 'var(--sq-text-default)', fontWeight: 600 }}>documentación viva</strong> en un único repositorio.
             Los tokens se definen en Figma como variables y se mapean 1:1 a CSS custom properties, de modo que diseño y código comparten el mismo lenguaje.
           </p>
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12,
-          }}>
+          <div className="intro-stats-grid">
             {[
               { num: '6', label: 'Foundations', sub: 'Tokens, Colors, Typography, Spacing, Border, Radius' },
               { num: '22+', label: 'Componentes', sub: 'Button, Input, Table, Badge y más' },
@@ -145,7 +143,7 @@ export function IntroductionPage() {
         {/* ── Principios ────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <SectionTitle id="principios">Principios de diseño</SectionTitle>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className="intro-principles-grid">
             {PRINCIPLES.map(({ icon, title, desc }) => (
               <div key={title} style={{
                 display: 'flex', flexDirection: 'column', gap: 10,

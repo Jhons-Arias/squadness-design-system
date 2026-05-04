@@ -227,6 +227,7 @@ export function ColorsPage() {
 
           {/* Color table */}
           <div style={{ overflowX: 'auto' }}>
+            <div style={{ minWidth: 560 }}>
             {/* Header row */}
             <div style={{
               display: 'grid',
@@ -252,10 +253,8 @@ export function ColorsPage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {PALETTE_ROWS.map(row => (
                 <div key={row.family} style={{
-                  display: 'grid',
-                  gridTemplateColumns: '80px repeat(11, 1fr)',
-                  gap: 6,
-                  alignItems: 'center',
+                  display: 'grid', gridTemplateColumns: '80px repeat(11, 1fr)',
+                  gap: 6, alignItems: 'center',
                 }}>
                   {/* Family label */}
                   <span style={{
@@ -288,6 +287,7 @@ export function ColorsPage() {
                 </div>
               ))}
             </div>
+            </div>{/* end minWidth wrapper */}
           </div>
 
           {/* Note */}
@@ -316,7 +316,7 @@ export function ColorsPage() {
             <Desc>El color de acento principal del sistema. Define la identidad visual y se aplica en acciones primarias, estados de foco y elementos interactivos destacados.</Desc>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className="colors-two-col">
             {[
               { label: 'Brand', token: '--sq-brand', hex: '#005fdb', primitive: 'blue/700', desc: 'Botones primarios, links, indicadores activos, anillo de foco.' },
               { label: 'Brand Hover', token: '--sq-brand-hover', hex: '#0047a3', primitive: 'blue/800', desc: 'Estado :hover de cualquier elemento que use el color brand.' },
@@ -352,7 +352,8 @@ export function ColorsPage() {
             <Desc>Cuatro niveles de jerarquía para el color de texto, todos derivados de la familia Neutral. La escala va de mayor a menor énfasis visual.</Desc>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <div style={{ overflowX: 'auto' }}>
+          <div style={{ minWidth: 480, display: 'flex', flexDirection: 'column', gap: 2 }}>
             <div style={{
               display: 'grid', gridTemplateColumns: '220px 1fr 1fr',
               gap: 16, padding: '6px 16px',
@@ -407,7 +408,8 @@ export function ColorsPage() {
                 </span>
               </div>
             ))}
-          </div>
+          </div>{/* end minWidth wrapper */}
+          </div>{/* end overflowX wrapper */}
         </div>
 
         <Divider />
@@ -421,9 +423,8 @@ export function ColorsPage() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             {SURFACE_TOKENS.map(row => (
-              <div key={row.token} style={{
-                display: 'grid', gridTemplateColumns: '260px 1fr',
-                gap: 24, padding: '20px 24px',
+              <div key={row.token} className="colors-surface-grid" style={{
+                padding: '20px 24px',
                 border: '1px solid var(--sq-border-subtle)',
                 borderRadius: 12, alignItems: 'center',
               }}>
@@ -477,7 +478,7 @@ export function ColorsPage() {
                   </span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                <div className="colors-two-col" style={{ borderRadius: 0 }}>
                   <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 14 }}>
                     {group.tokens.map(t => (
                       <div key={t.token} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
