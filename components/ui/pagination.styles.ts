@@ -5,7 +5,7 @@ export const PaginationStyles = `
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
   }
 
   /* ── Left: total count ───────────────────────────────────── */
@@ -13,7 +13,7 @@ export const PaginationStyles = `
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1rem;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     white-space: nowrap;
   }
 
@@ -37,7 +37,7 @@ export const PaginationStyles = `
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1rem;
-    color: #314158;
+    color: var(--sq-text-subtle);
     white-space: nowrap;
   }
 
@@ -51,13 +51,13 @@ export const PaginationStyles = `
     appearance: none;
     -webkit-appearance: none;
     padding: 4px 28px 4px 8px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1rem;
-    color: #314158;
-    background: #ffffff;
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    color: var(--sq-text-subtle);
+    background: var(--sq-surface-raised);
+    border: 1px solid var(--sq-border-default);
     border-radius: 5px;
     cursor: pointer;
     outline: none;
@@ -65,15 +65,15 @@ export const PaginationStyles = `
   }
 
   .sq-pagination-select:focus {
-    border-color: #005fdb;
-    box-shadow: 0 0 0 3px rgba(0, 95, 219, 0.2);
+    border-color: var(--sq-brand);
+    box-shadow: 0 0 0 3px var(--sq-glow-brand);
   }
 
   .sq-pagination-select-chevron {
     position: absolute;
     right: 6px;
     pointer-events: none;
-    color: #314158;
+    color: var(--sq-text-subtle);
     display: flex;
     align-items: center;
   }
@@ -83,7 +83,7 @@ export const PaginationStyles = `
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1rem;
-    color: #314158;
+    color: var(--sq-text-subtle);
     white-space: nowrap;
   }
 
@@ -102,9 +102,9 @@ export const PaginationStyles = `
     height: 32px;
     padding: 8px;
     border-radius: 12px;
-    border: 1px solid rgba(5, 21, 36, 0.06);
-    background-color: #f8fafc;
-    color: #314158;
+    border: 1px solid var(--sq-border-default);
+    background-color: var(--sq-surface-default);
+    color: var(--sq-text-subtle);
     cursor: pointer;
     flex-shrink: 0;
     box-sizing: border-box;
@@ -112,12 +112,12 @@ export const PaginationStyles = `
   }
 
   .sq-pagination-arrow:hover:not(:disabled) {
-    background-color: #f1f5f9;
-    border-color: rgba(5, 21, 36, 0.12);
+    background-color: var(--sq-surface-neutral-subtlest);
+    border-color: var(--sq-border-bold);
   }
 
   .sq-pagination-arrow:focus-visible {
-    outline: 2px solid #005fdb;
+    outline: 2px solid var(--sq-brand);
     outline-offset: 1px;
   }
 
@@ -145,11 +145,11 @@ export const PaginationStyles = `
     padding: 0 4px;
     border: 1px solid transparent;
     border-radius: 8px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1rem;
-    color: #314158;
+    color: var(--sq-text-subtle);
     background-color: transparent;
     cursor: pointer;
     outline: none;
@@ -157,26 +157,26 @@ export const PaginationStyles = `
   }
 
   .sq-pagination-btn:hover:not(:disabled) {
-    background-color: #e2e8f0;
-    color: #020618;
+    background-color: var(--sq-surface-neutral-subtler);
+    color: var(--sq-text-default);
   }
 
   .sq-pagination-btn:focus-visible {
-    outline: 2px solid #005fdb;
+    outline: 2px solid var(--sq-brand);
     outline-offset: 1px;
   }
 
   .sq-pagination-btn-current {
-    background-color: #005fdb;
-    border-color: #005fdb;
-    color: #f8fafc;
+    background-color: var(--sq-brand);
+    border-color: var(--sq-brand);
+    color: var(--sq-surface-default);
     font-weight: 500;
   }
 
   .sq-pagination-btn-current:hover {
-    background-color: #0047a3 !important;
-    border-color: #0047a3 !important;
-    color: #f8fafc !important;
+    background-color: var(--sq-brand-hover) !important;
+    border-color: var(--sq-brand-hover) !important;
+    color: var(--sq-surface-default) !important;
   }
 
   .sq-pagination-dots {
@@ -186,7 +186,7 @@ export const PaginationStyles = `
     min-width: 28px;
     height: 28px;
     font-size: 0.75rem;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     user-select: none;
   }
 `;

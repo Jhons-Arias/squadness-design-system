@@ -159,8 +159,8 @@ function StateRow({
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
       <span style={{
-        fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 12,
-        color: 'var(--color-text-muted)', width: 80, flexShrink: 0, textAlign: 'right',
+        fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 12,
+        color: 'var(--sq-text-subtlest)', width: 80, flexShrink: 0, textAlign: 'right',
       }}>
         {label}
       </span>
@@ -251,8 +251,8 @@ export function InputPage() {
                 ).map(({ size, label }) => (
                   <div key={size} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     <span style={{
-                      fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 11,
-                      color: 'var(--color-text-muted)', width: 56, flexShrink: 0, textAlign: 'right',
+                      fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 11,
+                      color: 'var(--sq-text-subtlest)', width: 56, flexShrink: 0, textAlign: 'right',
                     }}>
                       {label}
                     </span>

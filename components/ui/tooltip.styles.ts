@@ -5,13 +5,13 @@ export const TooltipStyles = `
     flex-direction: column;
     gap: 8px;
     padding: 12px;
-    background: #f1f5f9; /* surface/accent/neutral/subtlest */
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    background: var(--sq-surface-neutral-subtlest); /* surface/accent/neutral/subtlest */
+    border: 1px solid var(--sq-border-default);
     border-radius: 4px;
     width: 245px;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    box-shadow: 0 2px 8px rgba(5, 21, 36, 0.08);
+    font-family: var(--sq-font-body);
+    box-shadow: 0 2px 8px var(--sq-border-medium);
   }
 
   /* ── Header: name + date ─────────────────────────────────── */
@@ -25,7 +25,7 @@ export const TooltipStyles = `
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1rem;
-    color: #314158; /* text/subtle */
+    color: var(--sq-text-subtle); /* text/subtle */
     margin: 0;
     width: 100%;
   }
@@ -34,7 +34,7 @@ export const TooltipStyles = `
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
-    color: #020618; /* text/default */
+    color: var(--sq-text-default); /* text/default */
     margin: 0;
     width: 100%;
   }
@@ -52,7 +52,7 @@ export const TooltipStyles = `
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1rem;
-    color: #62748e; /* text/muted */
+    color: var(--sq-text-subtlest); /* text/muted */
     flex-shrink: 0;
   }
 
@@ -60,7 +60,7 @@ export const TooltipStyles = `
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1rem;
-    color: #314158; /* text/subtle */
+    color: var(--sq-text-subtle); /* text/subtle */
     overflow: hidden;
     text-overflow: ellipsis;
     min-width: 0;
@@ -74,11 +74,11 @@ export const TooltipStyles = `
     align-items: flex-end;
     gap: 4px;
     padding: 8px;
-    background: #f1f5f9; /* surface/accent/neutral/subtlest */
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    background: var(--sq-surface-neutral-subtlest); /* surface/accent/neutral/subtlest */
+    border: 1px solid var(--sq-border-default);
     border-radius: 4px;
     box-sizing: border-box;
-    box-shadow: 0 2px 8px rgba(5, 21, 36, 0.08);
+    box-shadow: 0 2px 8px var(--sq-border-medium);
   }
 
   /* Double variant: two images side by side */
@@ -95,7 +95,7 @@ export const TooltipStyles = `
     border-radius: 2px;
     overflow: hidden;
     flex-shrink: 0;
-    background: #cbd5e1; /* fallback when no src */
+    background: var(--sq-neutral-200); /* fallback when no src */
   }
 
   .sq-tooltip-image-map--double .sq-tooltip-image-map-img {
@@ -116,7 +116,7 @@ export const TooltipStyles = `
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(11, 18, 14, 0.14); /* color/neutral/300a */
+    background: var(--sq-border-subtle); /* color/neutral/300a */
     border-radius: 2px;
     pointer-events: none;
   }
@@ -132,7 +132,7 @@ export const TooltipStyles = `
     height: 0;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
-    border-top: 9px solid rgba(5, 21, 36, 0.06); /* border color */
+    border-top: 9px solid var(--sq-border-default); /* border color */
     pointer-events: none;
   }
 
@@ -146,7 +146,7 @@ export const TooltipStyles = `
     height: 0;
     border-left: 6.5px solid transparent;
     border-right: 6.5px solid transparent;
-    border-top: 8px solid #f1f5f9; /* matches bg */
+    border-top: 8px solid var(--sq-surface-neutral-subtlest); /* matches bg */
     pointer-events: none;
   }
 
@@ -158,21 +158,21 @@ export const TooltipStyles = `
     width: 32px;
     height: 32px;
     border-radius: 12px;
-    border: 1px solid rgba(5, 21, 36, 0.06);
-    background: #f8fafc;
+    border: 1px solid var(--sq-border-default);
+    background: var(--sq-surface-default);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
     box-sizing: border-box;
-    color: #314158;
+    color: var(--sq-text-subtle);
     z-index: 1;
     transition: background 120ms;
   }
 
   .sq-tooltip-image-map-close:hover {
-    background: #f1f5f9;
+    background: var(--sq-surface-neutral-subtlest);
   }
 
   .sq-tooltip-image-map-close svg {

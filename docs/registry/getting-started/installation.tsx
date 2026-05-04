@@ -49,14 +49,14 @@ export function InstallationPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <SectionTitle id="requisitos">Requisitos previos</SectionTitle>
           <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'var(--font-body)' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'var(--sq-font-body)' }}>
               <thead>
-                <tr style={{ borderBottom: '1px solid var(--color-border-subtle)' }}>
+                <tr style={{ borderBottom: '1px solid var(--sq-border-subtle)' }}>
                   {['Herramienta', 'Versión mínima', 'Notas'].map(h => (
                     <th key={h} style={{
                       padding: '8px 12px', textAlign: 'left',
                       fontSize: 11, fontWeight: 600,
-                      color: 'var(--color-text-muted)',
+                      color: 'var(--sq-text-subtlest)',
                       textTransform: 'uppercase', letterSpacing: '0.06em',
                     }}>{h}</th>
                   ))}
@@ -64,16 +64,16 @@ export function InstallationPage() {
               </thead>
               <tbody>
                 {PREREQS.map((row, i) => (
-                  <tr key={i} style={{ borderBottom: '1px solid var(--color-border-default)' }}>
+                  <tr key={i} style={{ borderBottom: '1px solid var(--sq-border-default)' }}>
                     <td style={{ padding: '10px 12px' }}>
                       <code style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 12,
-                        color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)',
+                        fontFamily: 'var(--sq-font-mono)', fontSize: 12,
+                        color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
                         padding: '2px 6px', borderRadius: 4,
                       }}>{row.item}</code>
                     </td>
-                    <td style={{ padding: '10px 12px', fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--color-text-primary)' }}>{row.version}</td>
-                    <td style={{ padding: '10px 12px', color: 'var(--color-text-muted)' }}>{row.note}</td>
+                    <td style={{ padding: '10px 12px', fontFamily: 'var(--sq-font-mono)', fontSize: 13, color: 'var(--sq-text-default)' }}>{row.version}</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--sq-text-subtlest)' }}>{row.note}</td>
                   </tr>
                 ))}
               </tbody>
@@ -98,20 +98,20 @@ export function InstallationPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <SectionTitle id="instalar">Instalar dependencias</SectionTitle>
-            <Desc>El sitio de documentación tiene sus propias dependencias dentro de la carpeta <code style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: 'var(--color-brand)' }}>docs/</code>.</Desc>
+            <Desc>El sitio de documentación tiene sus propias dependencias dentro de la carpeta <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 14, color: 'var(--sq-brand)' }}>docs/</code>.</Desc>
           </div>
           <LightCodeBlock code={`cd docs\nnpm install`} lang="bash" />
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
-            Esto instala Next.js, React, TypeScript, Radix UI y todas las dependencias de la documentación. Los componentes de UI en <code style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>../components/ui/</code> no requieren instalación separada.
+          <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtlest)', lineHeight: 1.6 }}>
+            Esto instala Next.js, React, TypeScript, Radix UI y todas las dependencias de la documentación. Los componentes de UI en <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 12, color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>../components/ui/</code> no requieren instalación separada.
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}>Levantar el servidor de desarrollo</p>
+            <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, fontWeight: 600, color: 'var(--sq-text-default)', margin: 0 }}>Levantar el servidor de desarrollo</p>
             <LightCodeBlock code={`npm run dev\n# http://localhost:3001`} lang="bash" />
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}>Generar el build estático para GitHub Pages</p>
+            <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, fontWeight: 600, color: 'var(--sq-text-default)', margin: 0 }}>Generar el build estático para GitHub Pages</p>
             <LightCodeBlock code={`npm run build\n# → docs/out/  (listo para desplegar)`} lang="bash" />
           </div>
         </div>
@@ -125,69 +125,56 @@ export function InstallationPage() {
             <Desc>Todos los tokens del sistema se declaran como CSS custom properties en el archivo global de estilos.</Desc>
           </div>
           <LightCodeBlock filename="docs/app/globals.css" lang="css" code={`:root {
-  /* Tipografía */
-  --font-body:    'Inter', sans-serif;
-  --font-heading: 'Inter', sans-serif;
-  --font-mono:    'Roboto Mono', monospace;
+  /* ── Tipografía ─────────────────────────── */
+  --sq-font-body:    'Inter', sans-serif;
+  --sq-font-heading: 'Inter', sans-serif;
+  --sq-font-mono:    'Roboto Mono', monospace;
 
-  /* Colores de marca */
-  --color-brand:       #005fdb;
-  --color-brand-hover: #0047a3;
+  /* ── Marca ──────────────────────────────── */
+  --sq-brand:        #005fdb;   /* color/brand/default */
+  --sq-brand-hover:  #0047a3;   /* color/brand/hover   */
+  --sq-brand-active: #0a74ff;   /* color/brand/active  */
 
-  /* Superficie */
-  --color-bg:            #ffffff;
-  --color-surface:       #f8fafc;
-  --color-surface-white: #ffffff;
+  /* ── Superficie ─────────────────────────── */
+  --sq-surface-raised:           #ffffff;   /* surface/raised          */
+  --sq-surface-default:          #f8fafc;   /* surface/default         */
+  --sq-surface-neutral-subtlest: #f1f5f9;   /* surface/neutral/subtlest */
+  --sq-surface-neutral-subtler:  #e2e8f0;   /* surface/neutral/subtler  */
 
-  /* Texto */
-  --color-text-primary: #020618;
-  --color-text-subtle:  #314158;
-  --color-text-muted:   #62748e;
-  --color-text-inverse: #ffffff;
+  /* ── Texto ──────────────────────────────── */
+  --sq-text-default:  #020618;   /* text/default  */
+  --sq-text-subtle:   #314158;   /* text/subtle   */
+  --sq-text-subtlest: #62748e;   /* text/subtlest */
+  --sq-text-inverse:  #ffffff;   /* text/inverse  */
+  --sq-text-success:  #3c6300;   /* text/semantic/success */
+  --sq-text-warning:  #9f2d00;   /* text/semantic/warning */
+  --sq-text-error:    #6f040c;   /* text/semantic/error   */
 
-  /* Espacio — escala 4px */
-  --space-050:  4px;
-  --space-100:  8px;
-  --space-200: 16px;
-  --space-300: 24px;
-  --space-400: 32px;
+  /* ── Bordes ─────────────────────────────── */
+  --sq-border-subtle:  rgba(11, 18, 14, 0.14);   /* border/subtle  */
+  --sq-border-default: rgba(5, 21, 36, 0.06);    /* border/default */
+  --sq-border-bold:    rgba(5, 21, 36, 0.12);    /* border/bold    */
+
+  /* ── Espacio — escala 4px ───────────────── */
+  --sq-space-050:  4px;
+  --sq-space-100:  8px;
+  --sq-space-200: 16px;
+  --sq-space-300: 24px;
+  --sq-space-400: 32px;
   /* … ver Foundations → Spacing */
 
-  /* Radio */
-  --radius-sm: 8px;
-  --radius-lg: 16px;
+  /* ── Radio ──────────────────────────────── */
+  --sq-radius-sm:   8px;
+  --sq-radius-md:  12px;
+  --sq-radius-lg:  16px;
+  --sq-radius-full: 9999px;
 }`} />
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
-            Para usar los componentes fuera del sitio docs, copia estas variables en el archivo CSS global de tu proyecto. Consulta la sección <strong style={{ color: 'var(--color-text-subtle)' }}>Foundations → Tokens</strong> para la lista completa.
+          <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtlest)', lineHeight: 1.6 }}>
+            Para usar los componentes fuera del sitio docs, copia estas variables en el archivo CSS global de tu proyecto. Consulta la sección <strong style={{ color: 'var(--sq-text-subtle)' }}>Foundations → Tokens</strong> para la lista completa.
           </p>
         </div>
 
         <Divider />
 
         {/* ── Alias webpack ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="alias">Alias de webpack</SectionTitle>
-            <Desc>
-              Los componentes no están publicados en npm — se importan mediante el alias <code style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: 'var(--color-brand)' }}>@squadness/ui</code> configurado en Next.js.
-            </Desc>
-          </div>
-          <LightCodeBlock filename="docs/next.config.mjs" lang="jsx" code={`webpack: (config) => {
-  config.resolve.alias = {
-    ...config.resolve.alias,
-    // Apunta al directorio de componentes fuera de /docs
-    '@squadness/ui': path.resolve(__dirname, '../components/ui'),
-  }
-  return config
-}`} />
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
-            Si integras los componentes en otro proyecto Next.js, agrega el mismo alias en su <code style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>next.config.mjs</code> apuntando a la ruta correcta de <code style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>components/ui</code>.
-          </p>
-        </div>
-
-      </div>
-
-      <OnThisPage items={TOC} />
-    </div>
-  )
-}
+        <

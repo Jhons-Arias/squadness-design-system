@@ -8,22 +8,22 @@ export const CardStyles = `
     width: 214px;
     padding: 4px 4px 8px 4px;
     border-radius: 4px;
-    border: 1px solid rgba(5, 21, 36, 0.06);
-    background: #f1f5f9; /* surface/accent/neutral/subtlest */
+    border: 1px solid var(--sq-border-default);
+    background: var(--sq-surface-neutral-subtlest); /* surface/accent/neutral/subtlest */
     box-sizing: border-box;
     cursor: pointer;
     transition: background-color 0.12s, border-color 0.12s;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
   }
 
   .sq-card:hover {
-    background: #e2e8f0; /* surface/accent/neutral/subtlest-hovered */
+    background: var(--sq-surface-neutral-subtler); /* surface/accent/neutral/subtlest-hovered */
   }
 
   .sq-card--selected,
   .sq-card--selected:hover {
-    background: #e5f1ff; /* surface/accent/blue/subtlest */
-    border-color: #0a74ff; /* border/accent/blue */
+    background: var(--sq-surface-brand-subtlest); /* surface/accent/blue/subtlest */
+    border-color: var(--sq-brand-active); /* border/accent/blue */
   }
 
   /* ── Image area ──────────────────────────────────────────── */
@@ -34,7 +34,7 @@ export const CardStyles = `
     overflow: hidden;
     flex-shrink: 0;
     position: relative;
-    background: #cbd5e1; /* placeholder bg */
+    background: var(--sq-neutral-200); /* placeholder bg */
   }
 
   .sq-card-image img {
@@ -50,19 +50,19 @@ export const CardStyles = `
     width: 100%;
     height: 100%;
     background-image:
-      linear-gradient(45deg, #c8d4e0 25%, transparent 25%),
-      linear-gradient(-45deg, #c8d4e0 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #c8d4e0 75%),
-      linear-gradient(-45deg, transparent 75%, #c8d4e0 75%);
+      linear-gradient(45deg, var(--sq-neutral-300) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--sq-neutral-300) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--sq-neutral-300) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--sq-neutral-300) 75%);
     background-size: 20px 20px;
     background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-    background-color: #dde6ef;
+    background-color: var(--sq-neutral-100);
   }
 
   .sq-card-image-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(11, 18, 14, 0.14);
+    background: var(--sq-border-subtle);
     border-radius: 2px;
     pointer-events: none;
   }
@@ -83,7 +83,7 @@ export const CardStyles = `
     justify-content: space-between;
     gap: 4px;
     padding: 4px 0;
-    border-bottom: 1px solid rgba(5, 21, 36, 0.06);
+    border-bottom: 1px solid var(--sq-border-default);
   }
 
   .sq-card-row:last-child {
@@ -93,27 +93,27 @@ export const CardStyles = `
   .sq-card-label {
     flex: 1;
     min-width: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1rem;
-    color: #314158; /* text/subtle */
+    color: var(--sq-text-subtle); /* text/subtle */
     white-space: nowrap;
   }
 
   .sq-card-value {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1rem;
-    color: #020618; /* text/default */
+    color: var(--sq-text-default); /* text/default */
     white-space: nowrap;
     flex-shrink: 0;
     text-align: right;
   }
 
   .sq-card-value--mono {
-    font-family: 'Roboto Mono', 'Courier New', monospace;
+    font-family: var(--sq-font-mono);
   }
 
   /* ── Checkbox (absolute top-right) ──────────────────────── */
@@ -133,8 +133,8 @@ export const CardStyles = `
     width: 16px;
     height: 16px;
     border-radius: 3px;
-    border: 1.5px solid rgba(11, 18, 14, 0.14);
-    background: #ffffff;
+    border: 1.5px solid var(--sq-border-subtle);
+    background: var(--sq-surface-raised);
     cursor: pointer;
     display: block;
     flex-shrink: 0;
@@ -143,15 +143,15 @@ export const CardStyles = `
   }
 
   .sq-card-checkbox:checked {
-    background-color: #005fdb;
-    border-color: #005fdb;
+    background-color: var(--sq-brand);
+    border-color: var(--sq-brand);
     background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.5L3.5 6.5L9 1' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
   }
 
   .sq-card-checkbox:focus-visible {
-    outline: 2px solid #005fdb;
+    outline: 2px solid var(--sq-brand);
     outline-offset: 1px;
   }
 
@@ -161,8 +161,8 @@ export const CardStyles = `
     left: 28px;
     top: 110px;
     width: 245px;
-    background: #f1f5f9; /* surface/accent/neutral/subtlest */
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    background: var(--sq-surface-neutral-subtlest); /* surface/accent/neutral/subtlest */
+    border: 1px solid var(--sq-border-default);
     border-radius: 4px;
     padding: 12px;
     display: flex;
@@ -171,7 +171,7 @@ export const CardStyles = `
     z-index: 20;
     pointer-events: none;
     box-sizing: border-box;
-    box-shadow: 0 2px 8px rgba(5, 21, 36, 0.08);
+    box-shadow: 0 2px 8px var(--sq-border-medium);
   }
 
   .sq-card-tooltip-header {
@@ -181,20 +181,20 @@ export const CardStyles = `
   }
 
   .sq-card-tooltip-name {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1rem;
-    color: #314158; /* text/subtle */
+    color: var(--sq-text-subtle); /* text/subtle */
     margin: 0;
   }
 
   .sq-card-tooltip-date {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
-    color: #020618; /* text/default */
+    color: var(--sq-text-default); /* text/default */
     margin: 0;
   }
 
@@ -207,20 +207,20 @@ export const CardStyles = `
   }
 
   .sq-card-tooltip-footer-label {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1rem;
-    color: #62748e; /* text/muted */
+    color: var(--sq-text-subtlest); /* text/muted */
     flex-shrink: 0;
   }
 
   .sq-card-tooltip-footer-value {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1rem;
-    color: #314158; /* text/subtle */
+    color: var(--sq-text-subtle); /* text/subtle */
     overflow: hidden;
     text-overflow: ellipsis;
     min-width: 0;

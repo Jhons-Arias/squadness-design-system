@@ -158,11 +158,11 @@ export function LightCodeBlock({
 
   return (
     <div style={{
-      background: 'var(--color-surface)',
-      border: embedded ? 'none' : '1px solid var(--color-border-subtle)',
+      background: 'var(--sq-surface-default)',
+      border: embedded ? 'none' : '1px solid var(--sq-border-subtle)',
       borderRadius: embedded ? 0 : 12,
       overflow: 'hidden',
-      fontFamily: 'var(--font-mono)',
+      fontFamily: 'var(--sq-font-mono)',
       fontSize: 13,
       lineHeight: '22px',
     }}>
@@ -173,8 +173,8 @@ export function LightCodeBlock({
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '8px 16px',
-          borderBottom: '1px solid var(--color-border-subtle)',
-          background: 'var(--color-surface-white)',
+          borderBottom: '1px solid var(--sq-border-subtle)',
+          background: 'var(--sq-surface-raised)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             {/* Traffic-light dots */}
@@ -185,8 +185,8 @@ export function LightCodeBlock({
             </div>
             {filename && (
               <span style={{
-                fontFamily: 'var(--font-mono)', fontSize: 11,
-                color: 'var(--color-text-muted)',
+                fontFamily: 'var(--sq-font-mono)', fontSize: 11,
+                color: 'var(--sq-text-subtlest)',
                 marginLeft: 4,
               }}>{filename}</span>
             )}
@@ -195,10 +195,10 @@ export function LightCodeBlock({
             onClick={handleCopy}
             style={{
               padding: '2px 10px',
-              fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500,
-              color: 'var(--color-text-muted)',
+              fontFamily: 'var(--sq-font-body)', fontSize: 11, fontWeight: 500,
+              color: 'var(--sq-text-subtlest)',
               background: 'transparent',
-              border: '1px solid var(--color-border-subtle)',
+              border: '1px solid var(--sq-border-subtle)',
               borderRadius: 6,
               cursor: 'pointer',
               transition: 'background 0.1s, color 0.1s',
@@ -222,7 +222,7 @@ export function LightCodeBlock({
                     textAlign: 'right',
                     padding: '0 16px 0 20px',
                     userSelect: 'none',
-                    color: 'var(--color-border-subtle)',
+                    color: 'var(--sq-border-subtle)',
                     fontSize: 12,
                     width: 1,
                     whiteSpace: 'nowrap',

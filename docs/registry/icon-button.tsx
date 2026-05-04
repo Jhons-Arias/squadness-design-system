@@ -131,8 +131,8 @@ function StateRow({
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
       <span style={{
-        fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 12,
-        color: 'var(--color-text-muted)', width: 56, flexShrink: 0, textAlign: 'right',
+        fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 12,
+        color: 'var(--sq-text-subtlest)', width: 56, flexShrink: 0, textAlign: 'right',
       }}>
         {stateLabel}
       </span>
@@ -203,8 +203,8 @@ export function IconButtonPage() {
                   <div key={v} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
                     <IconButton variant={v} aria-label={label(v)} icon={<AddIcon />} />
                     <span style={{
-                      fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 12,
-                      color: 'var(--color-text-muted)',
+                      fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 12,
+                      color: 'var(--sq-text-subtlest)',
                     }}>
                       {label(v)}
                     </span>

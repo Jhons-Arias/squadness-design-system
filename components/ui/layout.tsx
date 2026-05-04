@@ -12,8 +12,10 @@ export interface LayoutProps {
   sidebarItems: SidebarItem[]
   /** Currently active nav item id */
   activeId?: string
-  /** Logo element rendered inside the sidebar header */
+  /** Logo element rendered inside the sidebar header (expanded) */
   sidebarLogo?: React.ReactNode
+  /** Logo element shown when sidebar is collapsed (icon-only) */
+  sidebarLogoCollapsed?: React.ReactNode
   /** Footer element rendered at the bottom of the sidebar */
   sidebarFooter?: React.ReactNode
   /** User info shown in the TopBar */
@@ -121,6 +123,7 @@ const Layout: React.FC<LayoutProps> = ({
   sidebarItems,
   activeId,
   sidebarLogo,
+  sidebarLogoCollapsed,
   sidebarFooter,
   user,
   defaultCollapsed = false,
@@ -157,6 +160,7 @@ const Layout: React.FC<LayoutProps> = ({
           activeId={activeId}
           collapsed={collapsed}
           logo={sidebarLogo}
+          logoCollapsed={sidebarLogoCollapsed}
           footer={sidebarFooter}
           onItemClick={onItemClick}
         />

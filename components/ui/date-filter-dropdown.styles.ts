@@ -12,12 +12,12 @@ export const DateFilterDropdownStyles = `
     gap: 6px;
     height: 32px;
     padding: 0 10px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.8125rem;
     font-weight: 500;
-    background-color: #f8fafc;
-    border: 1px solid rgba(5, 21, 36, 0.06);
-    color: #020618;
+    background-color: var(--sq-surface-default);
+    border: 1px solid var(--sq-border-default);
+    color: var(--sq-text-default);
     border-radius: 8px;
     cursor: pointer;
     outline: none;
@@ -27,17 +27,17 @@ export const DateFilterDropdownStyles = `
   }
 
   .sq-dfd-trigger:hover:not(:disabled) {
-    border-color: rgba(5, 21, 36, 0.14);
+    border-color: var(--sq-border-bold);
   }
 
   .sq-dfd-trigger:focus-visible,
   .sq-dfd-trigger-open {
-    border-color: #005fdb;
-    box-shadow: 0 0 0 3px rgba(0, 95, 219, 0.2);
+    border-color: var(--sq-brand);
+    box-shadow: 0 0 0 3px var(--sq-glow-brand);
   }
 
   .sq-dfd-trigger-filled {
-    border-color: rgba(5, 21, 36, 0.10);
+    border-color: var(--sq-border-medium);
   }
 
   .sq-dfd-trigger-disabled {
@@ -47,7 +47,7 @@ export const DateFilterDropdownStyles = `
   }
 
   .sq-dfd-trigger-icon {
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     display: flex;
     align-items: center;
     flex-shrink: 0;
@@ -58,13 +58,13 @@ export const DateFilterDropdownStyles = `
     text-align: left;
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #020618;
+    color: var(--sq-text-default);
   }
 
-  .sq-dfd-trigger-placeholder { color: #62748e; }
+  .sq-dfd-trigger-placeholder { color: var(--sq-text-subtlest); }
 
   .sq-dfd-chevron {
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     display: flex;
     align-items: center;
     flex-shrink: 0;
@@ -79,7 +79,7 @@ export const DateFilterDropdownStyles = `
     height: 16px;
     border: none;
     background: transparent;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     cursor: pointer;
     border-radius: 50%;
     padding: 0;
@@ -88,8 +88,8 @@ export const DateFilterDropdownStyles = `
   }
 
   .sq-dfd-clear:hover {
-    color: #020618;
-    background-color: rgba(5, 21, 36, 0.06);
+    color: var(--sq-text-default);
+    background-color: var(--sq-border-default);
   }
 
   /* ── Panel ──────────────────────────────────────────────── */
@@ -98,10 +98,10 @@ export const DateFilterDropdownStyles = `
     top: calc(100% + 6px);
     left: 0;
     z-index: 999;
-    background-color: #f8fafc;
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    background-color: var(--sq-surface-default);
+    border: 1px solid var(--sq-border-default);
     border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(2, 6, 24, 0.10);
+    box-shadow: 0 4px 16px var(--sq-overlay-subtle);
     padding: 12px;
     min-width: 252px;
   }
@@ -115,10 +115,10 @@ export const DateFilterDropdownStyles = `
   }
 
   .sq-dfd-cal-title {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.8125rem;
     font-weight: 600;
-    color: #020618;
+    color: var(--sq-text-default);
   }
 
   .sq-dfd-cal-nav {
@@ -130,15 +130,15 @@ export const DateFilterDropdownStyles = `
     border: none;
     background: transparent;
     border-radius: 6px;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     cursor: pointer;
     padding: 0;
     transition: background-color 0.12s, color 0.12s;
   }
 
   .sq-dfd-cal-nav:hover {
-    background-color: rgba(5, 21, 36, 0.06);
-    color: #020618;
+    background-color: var(--sq-border-default);
+    color: var(--sq-text-default);
   }
 
   /* ── Calendar grid ──────────────────────────────────────── */
@@ -150,10 +150,10 @@ export const DateFilterDropdownStyles = `
 
   .sq-dfd-cal-dow {
     text-align: center;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.625rem;
     font-weight: 600;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     padding: 4px 0;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -166,10 +166,10 @@ export const DateFilterDropdownStyles = `
     justify-content: center;
     width: 100%;
     aspect-ratio: 1;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.75rem;
     font-weight: 500;
-    color: #020618;
+    color: var(--sq-text-default);
     background: transparent;
     border: none;
     border-radius: 6px;
@@ -179,35 +179,35 @@ export const DateFilterDropdownStyles = `
   }
 
   .sq-dfd-cal-day:hover {
-    background-color: rgba(5, 21, 36, 0.06);
+    background-color: var(--sq-border-default);
   }
 
   .sq-dfd-cal-day:focus-visible {
-    outline: 2px solid #005fdb;
+    outline: 2px solid var(--sq-brand);
     outline-offset: 1px;
   }
 
   /* Today */
   .sq-dfd-cal-day-today {
     font-weight: 700;
-    color: #005fdb;
+    color: var(--sq-brand);
   }
 
   /* Selected / range endpoints */
   .sq-dfd-cal-day-selected,
   .sq-dfd-cal-day-range-start,
   .sq-dfd-cal-day-range-end {
-    background-color: #005fdb !important;
-    color: #ffffff !important;
+    background-color: var(--sq-brand) !important;
+    color: var(--sq-surface-raised) !important;
     border-radius: 6px;
     font-weight: 600;
   }
 
   /* In-range highlight */
   .sq-dfd-cal-day-in-range {
-    background-color: #cce2ff;
+    background-color: var(--sq-surface-brand-subtler);
     border-radius: 0;
-    color: #020618;
+    color: var(--sq-text-default);
   }
 
   .sq-dfd-cal-day-range-start { border-radius: 6px 0 0 6px; }

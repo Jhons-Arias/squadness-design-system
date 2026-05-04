@@ -5,8 +5,8 @@ export const LayoutStyles = `
     flex-direction: row;
     height: 100vh;
     overflow: hidden;
-    background: #ffffff;
-    font-family: 'Inter', sans-serif;
+    background: var(--sq-surface-raised);
+    font-family: var(--sq-font-body);
   }
 
   /* ── Sidebar panel ───────────────────────────────────────── */
@@ -32,7 +32,7 @@ export const LayoutStyles = `
   .sq-layout-body {
     flex: 1 1 0%;
     overflow-y: auto;
-    background: #f8fafc;
+    background: var(--sq-surface-default);
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -42,8 +42,8 @@ export const LayoutStyles = `
   /* ── Inner white card ─────────────────────────────────────── */
   .sq-layout-card {
     flex: 1 1 0%;
-    background: #ffffff;
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    background: var(--sq-surface-raised);
+    border: 1px solid var(--sq-border-default);
     border-radius: 16px;
     overflow: hidden;
     display: flex;
@@ -64,7 +64,7 @@ export const LayoutStyles = `
     align-items: center;
     gap: 8px;
     padding: 16px 16px;
-    border-bottom: 1px solid rgba(5, 21, 36, 0.06);
+    border-bottom: 1px solid var(--sq-border-default);
     flex-shrink: 0;
   }
 
@@ -77,11 +77,11 @@ export const LayoutStyles = `
   }
 
   .sq-page-header-title {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 24px;
     font-weight: 700;
     line-height: 30px;
-    color: #020618;
+    color: var(--sq-text-default);
     letter-spacing: -0.02em;
     margin: 0;
     white-space: nowrap;
@@ -90,11 +90,11 @@ export const LayoutStyles = `
   }
 
   .sq-page-header-description {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 13px;
     font-weight: 400;
     line-height: 20px;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     margin: 0;
   }
 

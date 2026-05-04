@@ -97,15 +97,15 @@ const PALETTE_ROWS: { family: string; shades: Record<number, string> }[] = [
 
 const TEXT_TOKENS = [
   {
-    token: '--color-text-primary',
+    token: '--sq-text-default',
     hex: '#020618',
     primitive: 'neutral/950',
-    label: 'Primary',
+    label: 'Default',
     use: 'Títulos, labels, texto de alta jerarquía.',
     example: 'Heading principal',
   },
   {
-    token: '--color-text-subtle',
+    token: '--sq-text-subtle',
     hex: '#314158',
     primitive: 'neutral/700',
     label: 'Subtle',
@@ -113,17 +113,17 @@ const TEXT_TOKENS = [
     example: 'Texto de descripción',
   },
   {
-    token: '--color-text-muted',
+    token: '--sq-text-subtlest',
     hex: '#62748e',
     primitive: 'neutral/500',
-    label: 'Muted',
+    label: 'Subtlest',
     use: 'Placeholders, metadatos, texto deshabilitado.',
     example: 'Placeholder o hint',
   },
   {
-    token: '--color-text-inverse',
+    token: '--sq-text-inverse',
     hex: '#ffffff',
-    primitive: 'neutral/0',
+    primitive: 'neutral/50',
     label: 'Inverse',
     use: 'Texto sobre fondos oscuros o de color (ej. botón brand).',
     example: 'Label sobre brand',
@@ -132,25 +132,25 @@ const TEXT_TOKENS = [
 
 const SURFACE_TOKENS = [
   {
-    token: '--color-bg',
+    token: '--sq-surface-raised',
     hex: '#ffffff',
     primitive: 'neutral/0',
-    label: 'Background',
-    use: 'Fondo base de la aplicación y páginas.',
+    label: 'Raised',
+    use: 'Fondo de página, modals y elementos que flotan sobre la superficie por defecto.',
   },
   {
-    token: '--color-surface',
+    token: '--sq-surface-default',
     hex: '#f8fafc',
     primitive: 'neutral/50',
-    label: 'Surface',
-    use: 'Fondos de cards, paneles, sidebar y áreas diferenciadas.',
+    label: 'Default',
+    use: 'Fondos de cards, paneles, sidebar y áreas diferenciadas del fondo principal.',
   },
   {
-    token: '--color-surface-white',
-    hex: '#ffffff',
-    primitive: 'neutral/0',
-    label: 'Surface White',
-    use: 'Superficies que siempre deben ser blancas independientemente del tema.',
+    token: '--sq-surface-neutral-subtlest',
+    hex: '#f1f5f9',
+    primitive: 'neutral/100',
+    label: 'Neutral Subtlest',
+    use: 'Header de tabla, filas expandidas, fondos de secciones internas.',
   },
 ]
 
@@ -158,8 +158,8 @@ const STATUS_GROUPS = [
   {
     label: 'Success',
     tokens: [
-      { token: '--color-success-text',   hex: '#3c6300', primitive: 'lime/800', role: 'Text'   },
-      { token: '--color-success-border', hex: '#5ea500', primitive: 'lime/600', role: 'Border' },
+      { token: '--sq-text-success',   hex: '#3c6300', primitive: 'lime/800', role: 'Text'   },
+      { token: '--sq-border-success', hex: '#5ea500', primitive: 'lime/600', role: 'Border' },
     ],
     bg: 'rgba(94,165,0,0.07)',
     previewText: 'Cambios guardados correctamente',
@@ -170,8 +170,8 @@ const STATUS_GROUPS = [
   {
     label: 'Error',
     tokens: [
-      { token: '--color-error-text',   hex: '#6f040c', primitive: 'red/800', role: 'Text'   },
-      { token: '--color-error-border', hex: '#cf121f', primitive: 'red/600', role: 'Border' },
+      { token: '--sq-text-error',   hex: '#6f040c', primitive: 'red/800', role: 'Text'   },
+      { token: '--sq-border-error', hex: '#cf121f', primitive: 'red/600', role: 'Border' },
     ],
     bg: 'rgba(207,18,31,0.06)',
     previewText: 'No se pudo completar la acción',
@@ -184,21 +184,21 @@ const STATUS_GROUPS = [
 // ── Code example ──────────────────────────────────────────────────────────────
 
 const codeExample = `/* Brand — blue/700 & blue/800 */
-.button-primary       { background: var(--color-brand); }
-.button-primary:hover { background: var(--color-brand-hover); }
+.button-primary       { background: var(--sq-brand); }
+.button-primary:hover { background: var(--sq-brand-hover); }
 
 /* Texto — neutral/950 · neutral/700 · neutral/500 */
-h1, h2, h3    { color: var(--color-text-primary); }
-p, li         { color: var(--color-text-subtle); }
-::placeholder { color: var(--color-text-muted); }
+h1, h2, h3    { color: var(--sq-text-default); }
+p, li         { color: var(--sq-text-subtle); }
+::placeholder { color: var(--sq-text-subtlest); }
 
 /* Superficie — neutral/0 & neutral/50 */
-body  { background: var(--color-bg); }
-.card { background: var(--color-surface); }
+body  { background: var(--sq-surface-raised); }
+.card { background: var(--sq-surface-default); }
 
 /* Estado — lime & red primitives */
-.alert-success { color: var(--color-success-text); border-color: var(--color-success-border); }
-.alert-error   { color: var(--color-error-text);   border-color: var(--color-error-border);   }`
+.alert-success { color: var(--sq-text-success); border-color: var(--sq-border-success); }
+.alert-error   { color: var(--sq-text-error);   border-color: var(--sq-border-error);   }`
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -238,10 +238,10 @@ export function ColorsPage() {
               {SHADES.map(s => (
                 <div key={s} style={{
                   textAlign: 'center',
-                  fontFamily: 'var(--font-mono)',
+                  fontFamily: 'var(--sq-font-mono)',
                   fontSize: 11,
                   fontWeight: 500,
-                  color: 'var(--color-text-muted)',
+                  color: 'var(--sq-text-subtlest)',
                 }}>
                   {s}
                 </div>
@@ -259,10 +259,10 @@ export function ColorsPage() {
                 }}>
                   {/* Family label */}
                   <span style={{
-                    fontFamily: 'var(--font-body)',
+                    fontFamily: 'var(--sq-font-body)',
                     fontSize: 13,
                     fontWeight: 500,
-                    color: 'var(--color-text-subtle)',
+                    color: 'var(--sq-text-subtle)',
                     paddingRight: 8,
                   }}>
                     {row.family}
@@ -279,7 +279,7 @@ export function ColorsPage() {
                           aspectRatio: '1',
                           borderRadius: 8,
                           background: hex,
-                          border: shade <= 100 ? '1px solid var(--color-border-subtle)' : 'none',
+                          border: shade <= 100 ? '1px solid var(--sq-border-subtle)' : 'none',
                           minHeight: 36,
                         }}
                       />
@@ -297,10 +297,10 @@ export function ColorsPage() {
             border: '1px solid rgba(0,95,219,0.15)',
             borderRadius: 8, alignItems: 'flex-start',
           }}>
-            <span style={{ fontSize: 14, flexShrink: 0, color: 'var(--color-brand)' }}>ℹ</span>
+            <span style={{ fontSize: 14, flexShrink: 0, color: 'var(--sq-brand)' }}>ℹ</span>
             <p style={{
-              fontFamily: 'var(--font-body)', fontSize: 13,
-              color: 'var(--color-text-subtle)', lineHeight: 1.6, margin: 0,
+              fontFamily: 'var(--sq-font-body)', fontSize: 13,
+              color: 'var(--sq-text-subtle)', lineHeight: 1.6, margin: 0,
             }}>
               No uses estos valores directamente en código. Usa siempre los <strong>tokens semánticos</strong> que los referencian para garantizar coherencia y facilitar futuros cambios de tema.
             </p>
@@ -318,25 +318,25 @@ export function ColorsPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             {[
-              { label: 'Brand', token: '--color-brand', hex: '#005fdb', primitive: 'blue/700', desc: 'Botones primarios, links, indicadores activos, anillo de foco.' },
-              { label: 'Brand Hover', token: '--color-brand-hover', hex: '#0047a3', primitive: 'blue/800', desc: 'Estado :hover de cualquier elemento que use el color brand.' },
+              { label: 'Brand', token: '--sq-brand', hex: '#005fdb', primitive: 'blue/700', desc: 'Botones primarios, links, indicadores activos, anillo de foco.' },
+              { label: 'Brand Hover', token: '--sq-brand-hover', hex: '#0047a3', primitive: 'blue/800', desc: 'Estado :hover de cualquier elemento que use el color brand.' },
             ].map(item => (
-              <div key={item.token} style={{ border: '1px solid var(--color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
+              <div key={item.token} style={{ border: '1px solid var(--sq-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
                 <div style={{ height: 80, background: item.hex }} />
                 <div style={{ padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 14, color: 'var(--color-text-primary)' }}>{item.label}</span>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--color-text-muted)' }}>{item.primitive}</span>
+                    <span style={{ fontFamily: 'var(--sq-font-body)', fontWeight: 600, fontSize: 14, color: 'var(--sq-text-default)' }}>{item.label}</span>
+                    <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 11, color: 'var(--sq-text-subtlest)' }}>{item.primitive}</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <code style={{
-                      fontFamily: 'var(--font-mono)', fontSize: 12,
-                      color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)',
+                      fontFamily: 'var(--sq-font-mono)', fontSize: 12,
+                      color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
                       padding: '2px 8px', borderRadius: 4,
                     }}>{item.token}</code>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--color-text-muted)' }}>{item.hex}</span>
+                    <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 12, color: 'var(--sq-text-subtlest)' }}>{item.hex}</span>
                   </div>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--color-text-subtle)', lineHeight: 1.55, margin: 0 }}>{item.desc}</p>
+                  <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtle)', lineHeight: 1.55, margin: 0 }}>{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -356,13 +356,13 @@ export function ColorsPage() {
             <div style={{
               display: 'grid', gridTemplateColumns: '220px 1fr 1fr',
               gap: 16, padding: '6px 16px',
-              borderBottom: '1px solid var(--color-border-subtle)',
+              borderBottom: '1px solid var(--sq-border-subtle)',
             }}>
               {['Token', 'Uso', 'Preview'].map(h => (
                 <span key={h} style={{
                   fontSize: 11, fontWeight: 600, textTransform: 'uppercase',
-                  letterSpacing: '0.06em', color: 'var(--color-text-muted)',
-                  fontFamily: 'var(--font-body)',
+                  letterSpacing: '0.06em', color: 'var(--sq-text-subtlest)',
+                  fontFamily: 'var(--sq-font-body)',
                 }}>{h}</span>
               ))}
             </div>
@@ -372,31 +372,31 @@ export function ColorsPage() {
                 display: 'grid', gridTemplateColumns: '220px 1fr 1fr',
                 gap: 16, padding: '14px 16px', borderRadius: 8,
                 alignItems: 'center',
-                borderBottom: '1px solid var(--color-border-default)',
+                borderBottom: '1px solid var(--sq-border-default)',
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <div style={{
                     width: 28, height: 28, borderRadius: 6, flexShrink: 0,
                     background: row.hex,
-                    border: row.hex === '#ffffff' ? '1px solid var(--color-border-subtle)' : 'none',
+                    border: row.hex === '#ffffff' ? '1px solid var(--sq-border-subtle)' : 'none',
                   }} />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <code style={{
-                      fontFamily: 'var(--font-mono)', fontSize: 11,
-                      color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)',
+                      fontFamily: 'var(--sq-font-mono)', fontSize: 11,
+                      color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
                       padding: '1px 5px', borderRadius: 3,
                     }}>{row.token}</code>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--color-text-muted)' }}>
+                    <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 10, color: 'var(--sq-text-subtlest)' }}>
                       {row.hex} · {row.primitive}
                     </span>
                   </div>
                 </div>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--color-text-subtle)', lineHeight: 1.5, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtle)', lineHeight: 1.5, margin: 0 }}>
                   {row.use}
                 </p>
                 <span style={{
-                  fontFamily: 'var(--font-body)', fontSize: 14,
-                  fontWeight: row.label === 'Primary' ? 600 : 400,
+                  fontFamily: 'var(--sq-font-body)', fontSize: 14,
+                  fontWeight: row.label === 'Default' ? 600 : 400,
                   color: row.hex,
                   background: row.label === 'Inverse' ? '#020618' : 'transparent',
                   padding: row.label === 'Inverse' ? '4px 10px' : 0,
@@ -424,31 +424,31 @@ export function ColorsPage() {
               <div key={row.token} style={{
                 display: 'grid', gridTemplateColumns: '260px 1fr',
                 gap: 24, padding: '20px 24px',
-                border: '1px solid var(--color-border-subtle)',
+                border: '1px solid var(--sq-border-subtle)',
                 borderRadius: 12, alignItems: 'center',
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                   <div style={{
                     width: 56, height: 56, borderRadius: 10, flexShrink: 0,
                     background: row.hex,
-                    border: '1px solid var(--color-border-subtle)',
+                    border: '1px solid var(--sq-border-subtle)',
                     boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
                   }} />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                    <span style={{ fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 14, color: 'var(--color-text-primary)' }}>
+                    <span style={{ fontFamily: 'var(--sq-font-body)', fontWeight: 600, fontSize: 14, color: 'var(--sq-text-default)' }}>
                       {row.label}
                     </span>
                     <code style={{
-                      fontFamily: 'var(--font-mono)', fontSize: 11,
-                      color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)',
+                      fontFamily: 'var(--sq-font-mono)', fontSize: 11,
+                      color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
                       padding: '1px 6px', borderRadius: 3,
                     }}>{row.token}</code>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--color-text-muted)' }}>
+                    <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 10, color: 'var(--sq-text-subtlest)' }}>
                       {row.hex} · {row.primitive}
                     </span>
                   </div>
                 </div>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--color-text-subtle)', lineHeight: 1.6, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 14, color: 'var(--sq-text-subtle)', lineHeight: 1.6, margin: 0 }}>
                   {row.use}
                 </p>
               </div>
@@ -468,11 +468,11 @@ export function ColorsPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {STATUS_GROUPS.map(group => (
               <div key={group.label} style={{
-                border: '1px solid var(--color-border-subtle)',
+                border: '1px solid var(--sq-border-subtle)',
                 borderRadius: 12, overflow: 'hidden',
               }}>
-                <div style={{ padding: '12px 20px', borderBottom: '1px solid var(--color-border-subtle)' }}>
-                  <span style={{ fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 14, color: 'var(--color-text-primary)' }}>
+                <div style={{ padding: '12px 20px', borderBottom: '1px solid var(--sq-border-subtle)' }}>
+                  <span style={{ fontFamily: 'var(--sq-font-body)', fontWeight: 600, fontSize: 14, color: 'var(--sq-text-default)' }}>
                     {group.label}
                   </span>
                 </div>
@@ -484,11 +484,11 @@ export function ColorsPage() {
                         <div style={{ width: 32, height: 32, borderRadius: 6, flexShrink: 0, background: t.hex }} />
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                           <code style={{
-                            fontFamily: 'var(--font-mono)', fontSize: 11,
-                            color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)',
+                            fontFamily: 'var(--sq-font-mono)', fontSize: 11,
+                            color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
                             padding: '1px 6px', borderRadius: 3,
                           }}>{t.token}</code>
-                          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--color-text-muted)' }}>
+                          <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 10, color: 'var(--sq-text-subtlest)' }}>
                             {t.hex} · {t.primitive} · {t.role}
                           </span>
                         </div>
@@ -498,8 +498,8 @@ export function ColorsPage() {
 
                   <div style={{
                     padding: '20px 24px',
-                    background: 'var(--color-surface)',
-                    borderLeft: '1px solid var(--color-border-subtle)',
+                    background: 'var(--sq-surface-default)',
+                    borderLeft: '1px solid var(--sq-border-subtle)',
                     display: 'flex', alignItems: 'center',
                   }}>
                     <div style={{
@@ -512,7 +512,7 @@ export function ColorsPage() {
                         {group.previewIcon}
                       </span>
                       <p style={{
-                        fontFamily: 'var(--font-body)', fontSize: 13,
+                        fontFamily: 'var(--sq-font-body)', fontSize: 13,
                         color: group.previewTextColor, lineHeight: 1.5, margin: 0,
                       }}>
                         {group.previewText}
@@ -538,7 +538,4 @@ export function ColorsPage() {
 
       </div>
 
-      <OnThisPage items={TOC} />
-    </div>
-  )
-}
+      

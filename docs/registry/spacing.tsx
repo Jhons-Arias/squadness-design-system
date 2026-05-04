@@ -22,18 +22,18 @@ function Divider() {
 // ── Scale data ────────────────────────────────────────────────────────────────
 
 const SCALE = [
-  { token: '--space-025', px: 2,  rem: '0.125rem' },
-  { token: '--space-050', px: 4,  rem: '0.25rem'  },
-  { token: '--space-075', px: 6,  rem: '0.375rem' },
-  { token: '--space-100', px: 8,  rem: '0.5rem'   },
-  { token: '--space-150', px: 12, rem: '0.75rem'  },
-  { token: '--space-200', px: 16, rem: '1rem'      },
-  { token: '--space-250', px: 20, rem: '1.25rem'  },
-  { token: '--space-300', px: 24, rem: '1.5rem'   },
-  { token: '--space-400', px: 32, rem: '2rem'      },
-  { token: '--space-500', px: 40, rem: '2.5rem'   },
-  { token: '--space-600', px: 48, rem: '3rem'      },
-  { token: '--space-800', px: 64, rem: '4rem'      },
+  { token: '--sq-space-025', px: 2,  rem: '0.125rem' },
+  { token: '--sq-space-050', px: 4,  rem: '0.25rem'  },
+  { token: '--sq-space-075', px: 6,  rem: '0.375rem' },
+  { token: '--sq-space-100', px: 8,  rem: '0.5rem'   },
+  { token: '--sq-space-150', px: 12, rem: '0.75rem'  },
+  { token: '--sq-space-200', px: 16, rem: '1rem'      },
+  { token: '--sq-space-250', px: 20, rem: '1.25rem'  },
+  { token: '--sq-space-300', px: 24, rem: '1.5rem'   },
+  { token: '--sq-space-400', px: 32, rem: '2rem'      },
+  { token: '--sq-space-500', px: 40, rem: '2.5rem'   },
+  { token: '--sq-space-600', px: 48, rem: '3rem'      },
+  { token: '--sq-space-800', px: 64, rem: '4rem'      },
 ]
 
 const MAX_BAR = 240
@@ -41,33 +41,33 @@ const MAX_BAR = 240
 // ── Usage guide data ──────────────────────────────────────────────────────────
 
 const GUIDE = [
-  { context: 'Gap entre ícono y su label',               token: '--space-050', px: 4  },
-  { context: 'Padding interno de un badge o chip',       token: '--space-075', px: 6  },
-  { context: 'Padding de botón (vertical)',              token: '--space-100', px: 8  },
-  { context: 'Padding de botón (horizontal)',            token: '--space-150', px: 12 },
-  { context: 'Gap entre elementos de un formulario',     token: '--space-200', px: 16 },
-  { context: 'Padding horizontal del contenido',         token: '--space-300', px: 24 },
-  { context: 'Separación entre secciones de una página', token: '--space-400', px: 32 },
-  { context: 'Padding vertical de bloques grandes',      token: '--space-500', px: 40 },
+  { context: 'Gap entre ícono y su label',               token: '--sq-space-050', px: 4  },
+  { context: 'Padding interno de un badge o chip',       token: '--sq-space-075', px: 6  },
+  { context: 'Padding de botón (vertical)',              token: '--sq-space-100', px: 8  },
+  { context: 'Padding de botón (horizontal)',            token: '--sq-space-150', px: 12 },
+  { context: 'Gap entre elementos de un formulario',     token: '--sq-space-200', px: 16 },
+  { context: 'Padding horizontal del contenido',         token: '--sq-space-300', px: 24 },
+  { context: 'Separación entre secciones de una página', token: '--sq-space-400', px: 32 },
+  { context: 'Padding vertical de bloques grandes',      token: '--sq-space-500', px: 40 },
 ]
 
 // ── Code example ──────────────────────────────────────────────────────────────
 
 const codeExample = `/* Padding */
 .card {
-  padding: var(--space-300) var(--space-400); /* 24px 32px */
+  padding: var(--sq-space-300) var(--sq-space-400); /* 24px 32px */
 }
 
 /* Gap en flex/grid */
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-200); /* 16px */
+  gap: var(--sq-space-200); /* 16px */
 }
 
 /* Margin */
 .section + .section {
-  margin-top: var(--space-500); /* 40px */
+  margin-top: var(--sq-space-500); /* 40px */
 }`
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -99,13 +99,13 @@ export function SpacingPage() {
               gridTemplateColumns: '160px 56px 72px 1fr',
               gap: 12,
               padding: '6px 12px',
-              borderBottom: '1px solid var(--color-border-subtle)',
+              borderBottom: '1px solid var(--sq-border-subtle)',
             }}>
               {['Token', 'px', 'rem', 'Visual'].map(h => (
                 <span key={h} style={{
                   fontSize: 11, fontWeight: 600,
-                  color: 'var(--color-text-muted)',
-                  fontFamily: 'var(--font-body)',
+                  color: 'var(--sq-text-subtlest)',
+                  fontFamily: 'var(--sq-font-body)',
                   textTransform: 'uppercase', letterSpacing: '0.06em',
                 }}>{h}</span>
               ))}
@@ -120,15 +120,15 @@ export function SpacingPage() {
                   className="docs-scale-row"
                 >
                   <code style={{
-                    fontFamily: 'var(--font-mono)', fontSize: 12,
-                    color: 'var(--color-brand)',
+                    fontFamily: 'var(--sq-font-mono)', fontSize: 12,
+                    color: 'var(--sq-brand)',
                     background: 'rgba(0,95,219,0.06)',
                     padding: '2px 6px', borderRadius: 4,
                   }}>{token}</code>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--color-text-primary)' }}>
+                  <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 13, color: 'var(--sq-text-default)' }}>
                     {px}px
                   </span>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--color-text-muted)' }}>
+                  <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 13, color: 'var(--sq-text-subtlest)' }}>
                     {rem}
                   </span>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -136,7 +136,7 @@ export function SpacingPage() {
                       height: 10,
                       width: Math.max(barWidth, 3),
                       borderRadius: 2,
-                      background: 'var(--color-brand)',
+                      background: 'var(--sq-brand)',
                       opacity: 0.65,
                     }} />
                   </div>
@@ -156,14 +156,14 @@ export function SpacingPage() {
           </div>
 
           <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'var(--font-body)' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'var(--sq-font-body)' }}>
               <thead>
-                <tr style={{ borderBottom: '1px solid var(--color-border-subtle)' }}>
+                <tr style={{ borderBottom: '1px solid var(--sq-border-subtle)' }}>
                   {['Contexto', 'Token', 'Valor'].map(h => (
                     <th key={h} style={{
                       padding: '8px 12px', textAlign: 'left',
                       fontSize: 11, fontWeight: 600,
-                      color: 'var(--color-text-muted)',
+                      color: 'var(--sq-text-subtlest)',
                       textTransform: 'uppercase', letterSpacing: '0.06em',
                     }}>{h}</th>
                   ))}
@@ -171,16 +171,16 @@ export function SpacingPage() {
               </thead>
               <tbody>
                 {GUIDE.map((row, i) => (
-                  <tr key={i} style={{ borderBottom: '1px solid var(--color-border-default)' }}>
-                    <td style={{ padding: '10px 12px', color: 'var(--color-text-subtle)' }}>{row.context}</td>
+                  <tr key={i} style={{ borderBottom: '1px solid var(--sq-border-default)' }}>
+                    <td style={{ padding: '10px 12px', color: 'var(--sq-text-subtle)' }}>{row.context}</td>
                     <td style={{ padding: '10px 12px' }}>
                       <code style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 12,
-                        color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)',
+                        fontFamily: 'var(--sq-font-mono)', fontSize: 12,
+                        color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
                         padding: '2px 6px', borderRadius: 4,
                       }}>{row.token}</code>
                     </td>
-                    <td style={{ padding: '10px 12px', fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--color-text-muted)' }}>
+                    <td style={{ padding: '10px 12px', fontFamily: 'var(--sq-font-mono)', fontSize: 13, color: 'var(--sq-text-subtlest)' }}>
                       {row.px}px
                     </td>
                   </tr>

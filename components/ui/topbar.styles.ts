@@ -6,9 +6,9 @@ export const TopBarStyles = `
     height: 56px;
     padding: 8px 16px;
     gap: 4px;
-    background-color: #f8fafc;
-    border-bottom: 1px solid rgba(5, 21, 36, 0.06);
-    font-family: 'Inter', sans-serif;
+    background-color: var(--sq-surface-default);
+    border-bottom: 1px solid var(--sq-border-default);
+    font-family: var(--sq-font-body);
     box-sizing: border-box;
     width: 100%;
   }
@@ -38,28 +38,28 @@ export const TopBarStyles = `
     border: none;
     background: transparent;
     cursor: pointer;
-    color: #314158;
+    color: var(--sq-text-subtle);
     flex-shrink: 0;
     box-sizing: border-box;
     transition: background-color 0.12s;
   }
 
   .sq-topbar-icon-btn:hover {
-    background-color: #e2e8f0;
+    background-color: var(--sq-surface-neutral-subtler);
   }
 
   .sq-topbar-icon-btn:focus-visible {
-    outline: 2px solid #005fdb;
+    outline: 2px solid var(--sq-brand);
     outline-offset: 1px;
   }
 
   .sq-topbar-icon-btn-outline {
-    background-color: #f8fafc;
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    background-color: var(--sq-surface-default);
+    border: 1px solid var(--sq-border-default);
   }
 
   .sq-topbar-icon-btn-outline:hover {
-    background-color: #f1f5f9;
+    background-color: var(--sq-surface-neutral-subtlest);
   }
 
   /* ── Icon wrapper 16×16 ──────────────────────────────────── */
@@ -84,7 +84,7 @@ export const TopBarStyles = `
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
-    color: #314158;
+    color: var(--sq-text-subtle);
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
@@ -96,7 +96,7 @@ export const TopBarStyles = `
     width: 36px;
     height: 20px;
     border-radius: 10px;
-    background-color: #e2e8f0;
+    background-color: var(--sq-surface-neutral-subtler);
     cursor: pointer;
     transition: background-color 0.15s;
     flex-shrink: 0;
@@ -105,7 +105,7 @@ export const TopBarStyles = `
   }
 
   .sq-topbar-switch[data-checked="true"] {
-    background-color: #005fdb;
+    background-color: var(--sq-brand);
   }
 
   .sq-topbar-switch-thumb {
@@ -115,9 +115,9 @@ export const TopBarStyles = `
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background-color: #ffffff;
+    background-color: var(--sq-surface-raised);
     transition: transform 0.15s;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 2px var(--sq-shadow-lg);
     pointer-events: none;
   }
 
@@ -129,7 +129,7 @@ export const TopBarStyles = `
   .sq-topbar-separator {
     width: 1px;
     height: 24px;
-    background-color: rgba(5, 21, 36, 0.12);
+    background-color: var(--sq-border-bold);
     flex-shrink: 0;
   }
 
@@ -145,15 +145,15 @@ export const TopBarStyles = `
     transition: background-color 0.12s;
     border: none;
     background: transparent;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
   }
 
   .sq-topbar-user:hover {
-    background-color: #e2e8f0;
+    background-color: var(--sq-surface-neutral-subtler);
   }
 
   .sq-topbar-user:focus-visible {
-    outline: 2px solid #005fdb;
+    outline: 2px solid var(--sq-brand);
     outline-offset: 1px;
   }
 
@@ -163,14 +163,14 @@ export const TopBarStyles = `
     height: 32px;
     border-radius: 50%;
     flex-shrink: 0;
-    background-color: #cce2ff;
+    background-color: var(--sq-surface-brand-subtler);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #005fdb;
+    color: var(--sq-brand);
   }
 
   .sq-topbar-avatar img {
@@ -192,7 +192,7 @@ export const TopBarStyles = `
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
-    color: #020618;
+    color: var(--sq-text-default);
     white-space: nowrap;
   }
 
@@ -200,13 +200,13 @@ export const TopBarStyles = `
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1rem;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     white-space: nowrap;
   }
 
   /* ── Chevron ─────────────────────────────────────────────── */
   .sq-topbar-chevron {
-    color: #314158;
+    color: var(--sq-text-subtle);
     display: flex;
     align-items: center;
     flex-shrink: 0;

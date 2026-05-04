@@ -102,10 +102,10 @@ export function TopBar() {
           style={{ objectFit: 'contain' }}
         />
         <span style={{
-          fontFamily: 'var(--font-body)',
+          fontFamily: 'var(--sq-font-body)',
           fontWeight: 600,
           fontSize: 15,
-          color: 'var(--color-text-primary)',
+          color: 'var(--sq-text-default)',
           letterSpacing: '-0.01em',
         }}>
           Docs
@@ -121,10 +121,10 @@ export function TopBar() {
           style={{
             display: 'flex', alignItems: 'center', gap: 8,
             height: 34, padding: '0 10px',
-            background: 'var(--color-surface)',
-            border: '1px solid var(--color-border-subtle)',
-            borderRadius: 'var(--radius-sm)',
-            color: 'var(--color-text-muted)',
+            background: 'var(--sq-surface-default)',
+            border: '1px solid var(--sq-border-subtle)',
+            borderRadius: 'var(--sq-radius-sm)',
+            color: 'var(--sq-text-subtlest)',
             cursor: 'text',
           }}
           onClick={() => inputRef.current?.focus()}
@@ -142,8 +142,8 @@ export function TopBar() {
               flex: 1, border: 'none', outline: 'none',
               background: 'transparent',
               fontSize: 13,
-              fontFamily: 'var(--font-body)',
-              color: 'var(--color-text-primary)',
+              fontFamily: 'var(--sq-font-body)',
+              color: 'var(--sq-text-default)',
               minWidth: 0,
             }}
           />
@@ -153,21 +153,21 @@ export function TopBar() {
             <span style={{ display: 'flex', gap: 3, flexShrink: 0 }}>
               <kbd style={{
                 padding: '1px 5px',
-                background: 'var(--color-surface-white)',
-                border: '1px solid var(--color-border-subtle)',
+                background: 'var(--sq-surface-raised)',
+                border: '1px solid var(--sq-border-subtle)',
                 borderRadius: 4,
                 fontSize: 10,
-                fontFamily: 'var(--font-body)',
-                color: 'var(--color-text-muted)',
+                fontFamily: 'var(--sq-font-body)',
+                color: 'var(--sq-text-subtlest)',
               }}>⌘</kbd>
               <kbd style={{
                 padding: '1px 5px',
-                background: 'var(--color-surface-white)',
-                border: '1px solid var(--color-border-subtle)',
+                background: 'var(--sq-surface-raised)',
+                border: '1px solid var(--sq-border-subtle)',
                 borderRadius: 4,
                 fontSize: 10,
-                fontFamily: 'var(--font-body)',
-                color: 'var(--color-text-muted)',
+                fontFamily: 'var(--sq-font-body)',
+                color: 'var(--sq-text-subtlest)',
               }}>K</kbd>
             </span>
           )}
@@ -178,7 +178,7 @@ export function TopBar() {
               onClick={() => { setQuery(''); setOpen(false) }}
               style={{
                 border: 'none', background: 'none', cursor: 'pointer',
-                color: 'var(--color-text-muted)', padding: 0, lineHeight: 0, flexShrink: 0,
+                color: 'var(--sq-text-subtlest)', padding: 0, lineHeight: 0, flexShrink: 0,
               }}
             >
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -194,9 +194,9 @@ export function TopBar() {
             position: 'absolute',
             top: 'calc(100% + 6px)',
             left: 0, right: 0,
-            background: 'var(--color-surface-white)',
-            border: '1px solid var(--color-border-subtle)',
-            borderRadius: 'var(--radius-sm)',
+            background: 'var(--sq-surface-raised)',
+            border: '1px solid var(--sq-border-subtle)',
+            borderRadius: 'var(--sq-radius-sm)',
             boxShadow: '0 8px 24px rgba(5,21,36,0.10)',
             overflow: 'hidden',
             zIndex: 100,
@@ -213,20 +213,20 @@ export function TopBar() {
                   style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     width: '100%', padding: '8px 12px',
-                    background: isActive ? 'var(--color-surface)' : 'transparent',
-                    border: 'none', borderBottom: '1px solid var(--color-border-default)',
+                    background: isActive ? 'var(--sq-surface-default)' : 'transparent',
+                    border: 'none', borderBottom: '1px solid var(--sq-border-default)',
                     cursor: 'pointer', textAlign: 'left', gap: 8,
                   }}
                 >
                   <span style={{
-                    fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 500,
-                    color: 'var(--color-text-primary)',
+                    fontFamily: 'var(--sq-font-body)', fontSize: 13, fontWeight: 500,
+                    color: 'var(--sq-text-default)',
                   }}>
                     {item.label}
                   </span>
                   <span style={{
-                    fontFamily: 'var(--font-body)', fontSize: 11,
-                    color: 'var(--color-text-muted)', flexShrink: 0,
+                    fontFamily: 'var(--sq-font-body)', fontSize: 11,
+                    color: 'var(--sq-text-subtlest)', flexShrink: 0,
                   }}>
                     {sectionLabel}
                   </span>

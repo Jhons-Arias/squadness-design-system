@@ -34,7 +34,7 @@ const CONVENTIONS = [
   },
   {
     rule: 'Nombre de tokens CSS',
-    detail: '--color-*, --space-*, --radius-*, --font-* (sin prefijo sq-)',
+    detail: 'Prefijo --sq-  con ruta Figma en dash-case — --sq-text-default, --sq-surface-raised, --sq-brand…',
   },
   {
     rule: 'Estilos del componente',
@@ -66,7 +66,7 @@ export function UsagePage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <SectionTitle id="importar">Importar componentes</SectionTitle>
-            <Desc>Cada componente se importa desde su propio archivo mediante el alias <code style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: 'var(--color-brand)' }}>@squadness/ui</code>.</Desc>
+            <Desc>Cada componente se importa desde su propio archivo mediante el alias <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 14, color: 'var(--sq-brand)' }}>@squadness/ui</code>.</Desc>
           </div>
           <LightCodeBlock lang="jsx" code={`import { Button }   from '@squadness/ui/button'
 import { Input }    from '@squadness/ui/input'
@@ -82,8 +82,8 @@ export default function MyPage() {
     </div>
   )
 }`} />
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
-            Importa desde la ruta exacta del componente, no desde un barrel <code style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>index.ts</code> — esto evita bundlear componentes no usados.
+          <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtlest)', lineHeight: 1.6 }}>
+            Importa desde la ruta exacta del componente, no desde un barrel <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 12, color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>index.ts</code> — esto evita bundlear componentes no usados.
           </p>
         </div>
 
@@ -97,14 +97,14 @@ export default function MyPage() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}>En CSS / estilos de componentes</p>
+            <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, fontWeight: 600, color: 'var(--sq-text-default)', margin: 0 }}>En CSS / estilos de componentes</p>
             <LightCodeBlock lang="css" code={`/* ✅ Correcto — usa el token */
 .my-card {
-  padding: var(--space-300);          /* 24px */
-  border-radius: var(--radius-lg);    /* 16px */
-  background: var(--color-surface);
-  border: 1px solid var(--color-border-subtle);
-  color: var(--color-text-primary);
+  padding: var(--sq-space-300);             /* 24px */
+  border-radius: var(--sq-radius-lg);       /* 16px */
+  background: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-subtle);
+  color: var(--sq-text-default);
 }
 
 /* ❌ Incorrecto — valor literal */
@@ -116,12 +116,12 @@ export default function MyPage() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}>En inline styles (JSX)</p>
+            <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, fontWeight: 600, color: 'var(--sq-text-default)', margin: 0 }}>En inline styles (JSX)</p>
             <LightCodeBlock lang="jsx" code={`<div style={{
   display: 'flex',
-  gap: 'var(--space-200)',       /* 16px */
-  padding: 'var(--space-300)',   /* 24px */
-  color: 'var(--color-text-subtle)',
+  gap: 'var(--sq-space-200)',         /* 16px */
+  padding: 'var(--sq-space-300)',     /* 24px */
+  color: 'var(--sq-text-subtle)',
 }}>
   contenido
 </div>`} />
@@ -134,7 +134,7 @@ export default function MyPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <SectionTitle id="variantes">Variantes y props</SectionTitle>
-            <Desc>Los componentes exponen sus variantes mediante la prop <code style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: 'var(--color-brand)' }}>variant</code> y el estado mediante <code style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: 'var(--color-brand)' }}>disabled</code>, <code style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: 'var(--color-brand)' }}>loading</code>, etc.</Desc>
+            <Desc>Los componentes exponen sus variantes mediante la prop <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 14, color: 'var(--sq-brand)' }}>variant</code> y el estado mediante <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 14, color: 'var(--sq-brand)' }}>disabled</code>, <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 14, color: 'var(--sq-brand)' }}>loading</code>, etc.</Desc>
           </div>
           <LightCodeBlock lang="jsx" code={`{/* Button — 5 variantes */}
 <Button variant="primary">Primario</Button>
@@ -165,22 +165,22 @@ export default function MyPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <SectionTitle id="estilos">Personalización CSS</SectionTitle>
-            <Desc>Cada componente inyecta sus estilos vía un archivo <code style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: 'var(--color-brand)' }}>*.styles.ts</code>. Puedes sobrescribir clases en tu CSS global.</Desc>
+            <Desc>Cada componente inyecta sus estilos vía un archivo <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 14, color: 'var(--sq-brand)' }}>*.styles.ts</code>. Puedes sobrescribir clases en tu CSS global.</Desc>
           </div>
           <LightCodeBlock lang="css" filename="components/ui/button.styles.ts" code={`/* components/ui/button.styles.ts — estructura del archivo de estilos */
 export const ButtonStyles = \`
   .sq-btn { … }
-  .sq-btn--primary { background: var(--color-brand); … }
-  .sq-btn:hover { background: var(--color-brand-hover); … }
+  .sq-btn--primary { background: var(--sq-brand); … }
+  .sq-btn:hover    { background: var(--sq-brand-hover); … }
 \`
 
 /* Para sobrescribir en tu proyecto — mayor especificidad */
 .sq-btn--primary {
-  background: var(--color-brand);    /* cambia el token en :root */
-  border-radius: var(--radius-sm);   /* o ajusta el radio */
+  background:    var(--sq-brand);      /* cambia el token en :root */
+  border-radius: var(--sq-radius-sm);  /* o ajusta el radio */
 }`} />
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
-            La forma recomendada de personalizar es modificar los valores de los tokens en <code style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>:root</code> — todos los componentes reflejan el cambio automáticamente.
+          <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtlest)', lineHeight: 1.6 }}>
+            La forma recomendada de personalizar es modificar los valores de los tokens en <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 12, color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>:root</code> — todos los componentes reflejan el cambio automáticamente.
           </p>
         </div>
 
@@ -197,19 +197,14 @@ export const ButtonStyles = \`
               <div key={i} style={{
                 display: 'grid', gridTemplateColumns: '180px 1fr', gap: 16,
                 padding: '12px 0',
-                borderBottom: i < CONVENTIONS.length - 1 ? '1px solid var(--color-border-default)' : 'none',
+                borderBottom: i < CONVENTIONS.length - 1 ? '1px solid var(--sq-border-default)' : 'none',
                 alignItems: 'start',
               }}>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)', lineHeight: 1.5 }}>{row.rule}</span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--color-text-subtle)', lineHeight: 1.6 }}>{row.detail}</span>
+                <span style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, fontWeight: 600, color: 'var(--sq-text-default)', lineHeight: 1.5 }}>{row.rule}</span>
+                <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 12, color: 'var(--sq-text-subtle)', lineHeight: 1.6 }}>{row.detail}</span>
               </div>
             ))}
           </div>
         </div>
 
-      </div>
-
-      <OnThisPage items={TOC} />
-    </div>
-  )
-}
+     

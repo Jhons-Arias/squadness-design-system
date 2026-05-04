@@ -8,11 +8,11 @@ export const DragDropStyles = `
   }
 
   .sq-drag-title {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.875rem;
     font-weight: 600;
     line-height: 1.25rem;
-    color: #020618;
+    color: var(--sq-text-default);
     white-space: nowrap;
     margin: 0;
   }
@@ -23,8 +23,8 @@ export const DragDropStyles = `
     flex-direction: column;
     gap: 8px;
     padding: 8px;
-    background: #f8fafc;
-    border: 1px solid rgba(11, 18, 14, 0.14);
+    background: var(--sq-surface-default);
+    border: 1px solid var(--sq-border-subtle);
     border-radius: 8px;
     min-height: 120px;
     box-sizing: border-box;
@@ -34,8 +34,8 @@ export const DragDropStyles = `
 
   /* Drop zone active state */
   .sq-drag-list--over {
-    border-color: #005fdb;
-    background: #e5f1ff;
+    border-color: var(--sq-brand);
+    background: var(--sq-surface-brand-subtlest);
   }
 
   /* Empty state */
@@ -49,11 +49,11 @@ export const DragDropStyles = `
   }
 
   .sq-drag-empty-text {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     text-align: center;
     margin: 0;
   }
@@ -64,8 +64,8 @@ export const DragDropStyles = `
     align-items: center;
     gap: 4px;
     padding: 4px;
-    background: #f1f5f9;
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    background: var(--sq-surface-neutral-subtlest);
+    border: 1px solid var(--sq-border-default);
     border-radius: 4px;
     cursor: grab;
     user-select: none;
@@ -85,15 +85,15 @@ export const DragDropStyles = `
 
   /* Drop indicator: item that will be pushed down */
   .sq-drag-item--over {
-    border-top: 2px solid #005fdb;
+    border-top: 2px solid var(--sq-brand);
   }
 
   .sq-drag-item-label {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.875rem;
     font-weight: 600;
     line-height: 1.25rem;
-    color: #314158;
+    color: var(--sq-text-subtle);
     white-space: nowrap;
     flex: 1;
     min-width: 0;
@@ -109,6 +109,6 @@ export const DragDropStyles = `
     width: 12px;
     height: 12px;
     flex-shrink: 0;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
   }
 `;

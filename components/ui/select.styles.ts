@@ -17,14 +17,14 @@ export const SelectStyles = `
     width: 100%;
     height: 36px;
     padding: 0 12px;
-    background-color: #f8fafc;
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    background-color: var(--sq-surface-default);
+    border: 1px solid var(--sq-border-default);
     border-radius: 12px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
-    color: #020618;
+    color: var(--sq-text-default);
     cursor: pointer;
     outline: none;
     text-align: left;
@@ -32,22 +32,22 @@ export const SelectStyles = `
   }
 
   .sq-select-trigger:hover:not(:disabled) {
-    border-color: rgba(5, 21, 36, 0.14);
+    border-color: var(--sq-border-bold);
   }
 
   .sq-select-trigger-open,
   .sq-select-trigger:focus-visible {
-    border-color: #005fdb;
-    box-shadow: 0 0 0 3px rgba(0, 95, 219, 0.2);
+    border-color: var(--sq-brand);
+    box-shadow: 0 0 0 3px var(--sq-glow-brand);
   }
 
   .sq-select-trigger-error {
-    border-color: #cf121f !important;
+    border-color: var(--sq-border-error) !important;
   }
 
   .sq-select-trigger-error.sq-select-trigger-open,
   .sq-select-trigger-error:focus-visible {
-    box-shadow: 0 0 0 3px rgba(207, 18, 31, 0.2) !important;
+    box-shadow: 0 0 0 3px var(--sq-glow-error) !important;
   }
 
   .sq-select-trigger:disabled,
@@ -66,13 +66,13 @@ export const SelectStyles = `
     white-space: nowrap;
   }
 
-  .sq-select-placeholder { color: #62748e; }
+  .sq-select-placeholder { color: var(--sq-text-subtlest); }
 
   /* ── Chevron icon ───────────────────────────────────────── */
   .sq-select-icon {
     display: flex;
     align-items: center;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
     flex-shrink: 0;
   }
 
@@ -83,10 +83,10 @@ export const SelectStyles = `
     left: 0;
     right: 0;
     margin-top: 6px;
-    background-color: #f8fafc;
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    background-color: var(--sq-surface-default);
+    border: 1px solid var(--sq-border-default);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 6px var(--sq-shadow-sm);
     padding: 4px;
     z-index: 50;
     max-height: 240px;
@@ -101,26 +101,26 @@ export const SelectStyles = `
     gap: 8px;
     padding: 4px 6px;
     border-radius: 4px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1rem;
-    color: #020618;
+    color: var(--sq-text-default);
     cursor: pointer;
     user-select: none;
     transition: background-color 0.1s;
   }
 
   .sq-select-item-focused {
-    background-color: rgba(5, 21, 36, 0.04);
+    background-color: var(--sq-border-faint);
   }
 
   .sq-select-item-selected {
-    background-color: #cce2ff;
+    background-color: var(--sq-surface-brand-subtler);
   }
 
   .sq-select-item-selected.sq-select-item-focused {
-    background-color: #b8d6ff;
+    background-color: var(--sq-surface-brand-subtle-alt);
   }
 
   .sq-select-item-disabled {
@@ -132,33 +132,33 @@ export const SelectStyles = `
   .sq-select-item-indicator {
     display: flex;
     align-items: center;
-    color: #005fdb;
+    color: var(--sq-brand);
     flex-shrink: 0;
   }
 
   /* ── Label ──────────────────────────────────────────────── */
   .sq-select-label {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
-    color: #314158;
+    color: var(--sq-text-subtle);
     margin: 0;
   }
 
-  .sq-select-label-disabled { color: #62748e; }
+  .sq-select-label-disabled { color: var(--sq-text-subtlest); }
 
   .sq-select-required {
-    color: #cf121f;
+    color: var(--sq-border-error);
     margin-left: 2px;
   }
 
   /* ── Helper / feedback ──────────────────────────────────── */
   .sq-select-helper {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
     font-size: 0.75rem;
-    color: #62748e;
+    color: var(--sq-text-subtlest);
   }
 
-  .sq-select-helper-error { color: #6f040c; }
+  .sq-select-helper-error { color: var(--sq-text-error); }
 `;

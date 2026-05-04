@@ -150,8 +150,8 @@ function StateRow({
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
       <span style={{
-        fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 12,
-        color: 'var(--color-text-muted)', width: 56, flexShrink: 0, textAlign: 'right',
+        fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 12,
+        color: 'var(--sq-text-subtlest)', width: 56, flexShrink: 0, textAlign: 'right',
       }}>
         {stateLabel}
       </span>
@@ -214,7 +214,7 @@ export function ButtonPage() {
                 {VARIANTS.map((v) => (
                   <div key={v} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
                     <Button variant={v}>{label(v)}</Button>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 12, color: 'var(--color-text-muted)' }}>
+                    <span style={{ fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 12, color: 'var(--sq-text-subtlest)' }}>
                       {label(v)}
                     </span>
                   </div>
@@ -247,8 +247,8 @@ export function ButtonPage() {
                 ] as const).map(({ stateLabel, size }) => (
                   <div key={size} style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
                     <span style={{
-                      fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 12,
-                      color: 'var(--color-text-muted)', width: 56, flexShrink: 0, textAlign: 'right',
+                      fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 12,
+                      color: 'var(--sq-text-subtlest)', width: 56, flexShrink: 0, textAlign: 'right',
                     }}>
                       {stateLabel}
                     </span>

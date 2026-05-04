@@ -173,15 +173,15 @@ export function TextareaPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%', maxWidth: 400, margin: '0 auto' }}>
                 <div>
                   <span style={{
-                    fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 11,
-                    color: 'var(--color-text-muted)', display: 'block', marginBottom: 6,
+                    fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 11,
+                    color: 'var(--sq-text-subtlest)', display: 'block', marginBottom: 6,
                   }}>Default</span>
                   <Textarea placeholder="Placeholder" />
                 </div>
                 <div>
                   <span style={{
-                    fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 11,
-                    color: 'var(--color-text-muted)', display: 'block', marginBottom: 6,
+                    fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 11,
+                    color: 'var(--sq-text-subtlest)', display: 'block', marginBottom: 6,
                   }}>Success</span>
                   <Textarea
                     state="success"
@@ -192,8 +192,8 @@ export function TextareaPage() {
                 </div>
                 <div>
                   <span style={{
-                    fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 11,
-                    color: 'var(--color-text-muted)', display: 'block', marginBottom: 6,
+                    fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 11,
+                    color: 'var(--sq-text-subtlest)', display: 'block', marginBottom: 6,
                   }}>Error</span>
                   <Textarea
                     state="error"
@@ -203,15 +203,15 @@ export function TextareaPage() {
                 </div>
                 <div>
                   <span style={{
-                    fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 11,
-                    color: 'var(--color-text-muted)', display: 'block', marginBottom: 6,
+                    fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 11,
+                    color: 'var(--sq-text-subtlest)', display: 'block', marginBottom: 6,
                   }}>Disabled</span>
                   <Textarea placeholder="Placeholder" disabled />
                 </div>
                 <div>
                   <span style={{
-                    fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 11,
-                    color: 'var(--color-text-muted)', display: 'block', marginBottom: 6,
+                    fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 11,
+                    color: 'var(--sq-text-subtlest)', display: 'block', marginBottom: 6,
                   }}>Read-only</span>
                   <Textarea defaultValue="This content cannot be changed." readOnly />
                 </div>
@@ -259,8 +259,8 @@ export function TextareaPage() {
                 ).map(({ resize, label }) => (
                   <div key={resize}>
                     <span style={{
-                      fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 11,
-                      color: 'var(--color-text-muted)', display: 'block', marginBottom: 6,
+                      fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 11,
+                      color: 'var(--sq-text-subtlest)', display: 'block', marginBottom: 6,
                     }}>
                       {label}
                     </span>

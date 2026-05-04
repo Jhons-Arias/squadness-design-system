@@ -3,7 +3,7 @@ export const DialogStyles = `
   .sq-dialog-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(5, 12, 31, 0.66); /* surface/overlay */
+    background: var(--sq-overlay-dark); /* surface/overlay */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,7 +14,7 @@ export const DialogStyles = `
 
   /* ── Panel ──────────────────────────────────────────────────── */
   .sq-dialog-panel {
-    background: #ffffff; /* surface/raised */
+    background: var(--sq-surface-raised); /* surface/raised */
     border-radius: 16px;
     padding: 16px;
     width: 448px;
@@ -23,7 +23,7 @@ export const DialogStyles = `
     flex-direction: column;
     gap: 24px;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
   }
 
   /* ── Header block (title-row + optional description) ─────────── */
@@ -47,7 +47,7 @@ export const DialogStyles = `
     font-size: 1.75rem;    /* 28px — heading/xlarge */
     font-weight: 700;
     line-height: 2rem;     /* 32px */
-    color: #020618;        /* text/default */
+    color: var(--sq-text-default);        /* text/default */
     margin: 0;
     min-width: 0;
   }
@@ -61,17 +61,17 @@ export const DialogStyles = `
     height: 32px;
     flex-shrink: 0;
     border-radius: 12px;
-    border: 1px solid rgba(5, 21, 36, 0.06);
-    background: #f8fafc;
+    border: 1px solid var(--sq-border-default);
+    background: var(--sq-surface-default);
     cursor: pointer;
     padding: 0;
     box-sizing: border-box;
-    color: #314158;
+    color: var(--sq-text-subtle);
     transition: background 120ms;
   }
 
   .sq-dialog-close:hover {
-    background: #f1f5f9;
+    background: var(--sq-surface-neutral-subtlest);
   }
 
   .sq-dialog-close svg {
@@ -85,7 +85,7 @@ export const DialogStyles = `
     font-size: 1rem;       /* 16px — body/medium */
     font-weight: 400;
     line-height: 1.5rem;   /* 24px */
-    color: #314158;        /* text/subtle */
+    color: var(--sq-text-subtle);        /* text/subtle */
     margin: 0;
   }
 
@@ -115,12 +115,12 @@ export const DialogStyles = `
     align-items: center;
     gap: 24px;
     padding: 8px;
-    background: #f8fafc;          /* surface/default */
-    border: 1px solid rgba(5, 21, 36, 0.06);
+    background: var(--sq-surface-default);          /* surface/default */
+    border: 1px solid var(--sq-border-default);
     border-radius: 8px;
-    box-shadow: 0px 4px 11.2px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 4px 11.2px var(--sq-shadow-sm);
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sq-font-body);
   }
 
   /* Left section: count + select-all button */
@@ -135,7 +135,7 @@ export const DialogStyles = `
     font-size: 0.75rem;   /* 12px — body/xsmall */
     font-weight: 500;
     line-height: 1rem;    /* 16px */
-    color: #020618;       /* text/default */
+    color: var(--sq-text-default);       /* text/default */
     white-space: nowrap;
     margin: 0;
   }
@@ -148,20 +148,20 @@ export const DialogStyles = `
     height: 32px;
     padding: 0 12px;
     border-radius: 8px;
-    border: 1px solid rgba(5, 21, 36, 0.06);
-    background: #f8fafc;
+    border: 1px solid var(--sq-border-default);
+    background: var(--sq-surface-default);
     cursor: pointer;
     font-size: 0.75rem;   /* 12px */
     font-weight: 600;
     line-height: 1rem;
-    color: #314158;       /* button/outline/content */
+    color: var(--sq-text-subtle);       /* button/outline/content */
     white-space: nowrap;
     box-sizing: border-box;
     transition: background 120ms;
   }
 
   .sq-delete-dialog-select-all:hover {
-    background: #f1f5f9;
+    background: var(--sq-surface-neutral-subtlest);
   }
 
   /* Delete danger button */
@@ -174,12 +174,12 @@ export const DialogStyles = `
     padding: 0 12px;
     border-radius: 8px;
     border: none;
-    background: #9e0b15;  /* button/danger/surface-default */
+    background: var(--sq-text-error-bolder);  /* button/danger/surface-default */
     cursor: pointer;
     font-size: 0.75rem;   /* 12px */
     font-weight: 600;
     line-height: 1rem;
-    color: #feeded;       /* button/danger/content */
+    color: var(--sq-surface-error-subtlest);       /* button/danger/content */
     white-space: nowrap;
     box-sizing: border-box;
     flex-shrink: 0;
@@ -187,7 +187,7 @@ export const DialogStyles = `
   }
 
   .sq-delete-dialog-delete:hover {
-    background: #7f0910;
+    background: var(--sq-text-error-bold);
   }
 
   .sq-delete-dialog-delete svg {

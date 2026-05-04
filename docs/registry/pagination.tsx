@@ -212,13 +212,13 @@ export function PaginationPage() {
             <ComponentPreview code={firstLastCode} minHeight={160}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 11, color: 'var(--color-text-muted)', width: 48, flexShrink: 0, textAlign: 'right' }}>First</span>
+                  <span style={{ fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 11, color: 'var(--sq-text-subtlest)', width: 48, flexShrink: 0, textAlign: 'right' }}>First</span>
                   <div style={{ flex: 1 }}>
                     <Pagination currentPage={1} totalPages={7} onPageChange={() => {}} />
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 11, color: 'var(--color-text-muted)', width: 48, flexShrink: 0, textAlign: 'right' }}>Last</span>
+                  <span style={{ fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 11, color: 'var(--sq-text-subtlest)', width: 48, flexShrink: 0, textAlign: 'right' }}>Last</span>
                   <div style={{ flex: 1 }}>
                     <Pagination currentPage={7} totalPages={7} onPageChange={() => {}} />
                   </div>

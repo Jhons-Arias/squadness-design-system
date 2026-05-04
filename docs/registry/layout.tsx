@@ -114,7 +114,7 @@ function LayoutPreview() {
   return (
     <div style={{
       width: '100%', height: 480, borderRadius: 12,
-      border: '1px solid var(--color-border-subtle)',
+      border: '1px solid var(--sq-border-subtle)',
       overflow: 'hidden', position: 'relative',
     }}>
       <Layout
@@ -130,9 +130,9 @@ function LayoutPreview() {
           actions={
             <button style={{
               height: 32, padding: '0 14px',
-              background: 'var(--color-brand)', color: '#fff',
+              background: 'var(--sq-brand)', color: '#fff',
               border: 'none', borderRadius: 8, cursor: 'pointer',
-              fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600,
+              fontFamily: 'var(--sq-font-body)', fontSize: 13, fontWeight: 600,
             }}>
               Nuevo servicio
             </button>
@@ -147,11 +147,11 @@ function LayoutPreview() {
             ].map(({ label, value, color }) => (
               <div key={label} style={{
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                padding: '12px 16px', border: '1px solid var(--color-border-subtle)',
-                borderRadius: 10, background: 'var(--color-surface)',
+                padding: '12px 16px', border: '1px solid var(--sq-border-subtle)',
+                borderRadius: 10, background: 'var(--sq-surface-default)',
               }}>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--color-text-subtle)' }}>{label}</span>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: 18, fontWeight: 700, color }}>{value}</span>
+                <span style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtle)' }}>{label}</span>
+                <span style={{ fontFamily: 'var(--sq-font-body)', fontSize: 18, fontWeight: 700, color }}>{value}</span>
               </div>
             ))}
           </div>
@@ -173,26 +173,26 @@ function CollapsedPreview() {
           onClick={() => setCollapsed(false)}
           style={{
             padding: '6px 14px', borderRadius: 8, cursor: 'pointer',
-            fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 500,
-            border: '1px solid var(--color-border-subtle)',
-            background: !collapsed ? 'var(--color-brand)' : 'var(--color-surface)',
-            color: !collapsed ? '#fff' : 'var(--color-text-subtle)',
+            fontFamily: 'var(--sq-font-body)', fontSize: 12, fontWeight: 500,
+            border: '1px solid var(--sq-border-subtle)',
+            background: !collapsed ? 'var(--sq-brand)' : 'var(--sq-surface-default)',
+            color: !collapsed ? '#fff' : 'var(--sq-text-subtle)',
           }}
         >Expandido</button>
         <button
           onClick={() => setCollapsed(true)}
           style={{
             padding: '6px 14px', borderRadius: 8, cursor: 'pointer',
-            fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 500,
-            border: '1px solid var(--color-border-subtle)',
-            background: collapsed ? 'var(--color-brand)' : 'var(--color-surface)',
-            color: collapsed ? '#fff' : 'var(--color-text-subtle)',
+            fontFamily: 'var(--sq-font-body)', fontSize: 12, fontWeight: 500,
+            border: '1px solid var(--sq-border-subtle)',
+            background: collapsed ? 'var(--sq-brand)' : 'var(--sq-surface-default)',
+            color: collapsed ? '#fff' : 'var(--sq-text-subtle)',
           }}
         >Colapsado</button>
       </div>
       <div style={{
         width: '100%', height: 380, borderRadius: 12,
-        border: '1px solid var(--color-border-subtle)',
+        border: '1px solid var(--sq-border-subtle)',
         overflow: 'hidden',
       }}>
         <Layout
@@ -205,7 +205,7 @@ function CollapsedPreview() {
         >
           <PageHeader title="Inicio" />
           <PageBody>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--color-text-muted)' }}>
+            <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtlest)' }}>
               Haz clic en el ícono de sidebar en el TopBar para colapsar / expandir el panel.
             </p>
           </PageBody>
@@ -221,32 +221,32 @@ function PageHeaderVariants() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {/* Solo título */}
-      <div style={{ border: '1px solid var(--color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
+      <div style={{ border: '1px solid var(--sq-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
         <PageHeader title="Solo título" />
       </div>
       {/* Título + descripción */}
-      <div style={{ border: '1px solid var(--color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
+      <div style={{ border: '1px solid var(--sq-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
         <PageHeader
           title="Título con descripción"
           description="Texto de apoyo que describe el contenido de esta página."
         />
       </div>
       {/* Título + acción */}
-      <div style={{ border: '1px solid var(--color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
+      <div style={{ border: '1px solid var(--sq-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
         <PageHeader
           title="Con acción primaria"
           actions={
             <button style={{
               height: 32, padding: '0 14px',
-              background: 'var(--color-brand)', color: '#fff',
+              background: 'var(--sq-brand)', color: '#fff',
               border: 'none', borderRadius: 8, cursor: 'pointer',
-              fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600,
+              fontFamily: 'var(--sq-font-body)', fontSize: 13, fontWeight: 600,
             }}>Nuevo</button>
           }
         />
       </div>
       {/* Título + descripción + múltiples acciones */}
-      <div style={{ border: '1px solid var(--color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
+      <div style={{ border: '1px solid var(--sq-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
         <PageHeader
           title="Completo"
           description="Título, descripción y múltiples acciones."
@@ -254,15 +254,15 @@ function PageHeaderVariants() {
             <>
               <button style={{
                 height: 32, padding: '0 14px',
-                background: 'var(--color-surface)', color: 'var(--color-text-subtle)',
-                border: '1px solid var(--color-border-subtle)', borderRadius: 8, cursor: 'pointer',
-                fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 500,
+                background: 'var(--sq-surface-default)', color: 'var(--sq-text-subtle)',
+                border: '1px solid var(--sq-border-subtle)', borderRadius: 8, cursor: 'pointer',
+                fontFamily: 'var(--sq-font-body)', fontSize: 13, fontWeight: 500,
               }}>Exportar</button>
               <button style={{
                 height: 32, padding: '0 14px',
-                background: 'var(--color-brand)', color: '#fff',
+                background: 'var(--sq-brand)', color: '#fff',
                 border: 'none', borderRadius: 8, cursor: 'pointer',
-                fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600,
+                fontFamily: 'var(--sq-font-body)', fontSize: 13, fontWeight: 600,
               }}>Nuevo servicio</button>
             </>
           }
@@ -298,28 +298,28 @@ const PAGEHEADER_PROPS = [
 function PropsTable({ rows }: { rows: typeof LAYOUT_PROPS }) {
   return (
     <div style={{ overflowX: 'auto' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'var(--font-body)' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'var(--sq-font-body)' }}>
         <thead>
-          <tr style={{ borderBottom: '1px solid var(--color-border-subtle)' }}>
+          <tr style={{ borderBottom: '1px solid var(--sq-border-subtle)' }}>
             {['Prop', 'Tipo', 'Default', 'Descripción'].map(h => (
               <th key={h} style={{
                 padding: '8px 12px', textAlign: 'left', fontSize: 11, fontWeight: 600,
-                color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em',
+                color: 'var(--sq-text-subtlest)', textTransform: 'uppercase', letterSpacing: '0.06em',
               }}>{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} style={{ borderBottom: '1px solid var(--color-border-default)' }}>
+            <tr key={i} style={{ borderBottom: '1px solid var(--sq-border-default)' }}>
               <td style={{ padding: '10px 12px' }}>
-                <code style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)', padding: '2px 6px', borderRadius: 4 }}>{row.prop}</code>
+                <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 12, color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)', padding: '2px 6px', borderRadius: 4 }}>{row.prop}</code>
               </td>
               <td style={{ padding: '10px 12px' }}>
-                <code style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--color-text-muted)' }}>{row.type}</code>
+                <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 11, color: 'var(--sq-text-subtlest)' }}>{row.type}</code>
               </td>
-              <td style={{ padding: '10px 12px', fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--color-text-muted)' }}>{row.default}</td>
-              <td style={{ padding: '10px 12px', color: 'var(--color-text-subtle)', lineHeight: 1.5 }}>{row.desc}</td>
+              <td style={{ padding: '10px 12px', fontFamily: 'var(--sq-font-mono)', fontSize: 12, color: 'var(--sq-text-subtlest)' }}>{row.default}</td>
+              <td style={{ padding: '10px 12px', color: 'var(--sq-text-subtle)', lineHeight: 1.5 }}>{row.desc}</td>
             </tr>
           ))}
         </tbody>
@@ -428,7 +428,7 @@ export function LayoutPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <h1 className="docs-page-title">Layout</h1>
           <Desc>
-            Shell de aplicación completo: sidebar colapsable + topbar + área de contenido en tarjeta blanca. Orquesta <code style={{ fontFamily: 'var(--font-mono)', fontSize: 16 }}>Sidebar</code> y <code style={{ fontFamily: 'var(--font-mono)', fontSize: 16 }}>TopBar</code> con estado de collapse integrado.
+            Shell de aplicación completo: sidebar colapsable + topbar + área de contenido en tarjeta blanca. Orquesta <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 16 }}>Sidebar</code> y <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 16 }}>TopBar</code> con estado de collapse integrado.
           </Desc>
         </div>
 
@@ -451,8 +451,8 @@ export function LayoutPage() {
 
           <div style={{
             display: 'grid', gridTemplateColumns: '200px 1fr', gap: 12,
-            padding: '20px', border: '1px solid var(--color-border-subtle)',
-            borderRadius: 12, fontFamily: 'var(--font-body)', fontSize: 13,
+            padding: '20px', border: '1px solid var(--sq-border-subtle)',
+            borderRadius: 12, fontFamily: 'var(--sq-font-body)', fontSize: 13,
           }}>
             {/* Sidebar col */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -462,10 +462,10 @@ export function LayoutPage() {
                 border: '1.5px dashed rgba(0,95,219,0.3)',
                 display: 'flex', flexDirection: 'column', gap: 4,
               }}>
-                <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--color-brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Sidebar</span>
-                <span style={{ color: 'var(--color-text-muted)', fontSize: 12 }}>240px · 52px collapsed</span>
+                <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--sq-brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Sidebar</span>
+                <span style={{ color: 'var(--sq-text-subtlest)', fontSize: 12 }}>240px · 52px collapsed</span>
               </div>
-              <div style={{ padding: '8px 12px', borderRadius: 8, background: 'var(--color-surface)', border: '1px solid var(--color-border-subtle)', color: 'var(--color-text-muted)', fontSize: 12, lineHeight: 1.5 }}>
+              <div style={{ padding: '8px 12px', borderRadius: 8, background: 'var(--sq-surface-default)', border: '1px solid var(--sq-border-subtle)', color: 'var(--sq-text-subtlest)', fontSize: 12, lineHeight: 1.5 }}>
                 Logo + nav items<br/>con soporte de submenú y badge
               </div>
             </div>
@@ -478,17 +478,17 @@ export function LayoutPage() {
                 border: '1.5px dashed rgba(0,95,219,0.2)',
                 display: 'flex', flexDirection: 'column', gap: 4,
               }}>
-                <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--color-brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>TopBar</span>
-                <span style={{ color: 'var(--color-text-muted)', fontSize: 12 }}>56px de alto · toggle + usuario</span>
+                <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--sq-brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>TopBar</span>
+                <span style={{ color: 'var(--sq-text-subtlest)', fontSize: 12 }}>56px de alto · toggle + usuario</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
-                <div style={{ padding: '8px 12px', borderRadius: 8, background: 'var(--color-surface)', border: '1px solid var(--color-border-subtle)', color: 'var(--color-text-muted)', fontSize: 12, lineHeight: 1.5 }}>
-                  <strong style={{ color: 'var(--color-text-subtle)' }}>Content Area</strong> — bg #f8fafc, p-16px<br/>
+                <div style={{ padding: '8px 12px', borderRadius: 8, background: 'var(--sq-surface-default)', border: '1px solid var(--sq-border-subtle)', color: 'var(--sq-text-subtlest)', fontSize: 12, lineHeight: 1.5 }}>
+                  <strong style={{ color: 'var(--sq-text-subtle)' }}>Content Area</strong> — bg #f8fafc, p-16px<br/>
                   <span style={{ fontSize: 11 }}>└ Inner card (white, radius 16px, overflow scroll)</span>
                 </div>
-                <div style={{ padding: '8px 12px', borderRadius: 8, background: 'var(--color-surface)', border: '1px solid var(--color-border-subtle)', color: 'var(--color-text-muted)', fontSize: 12, lineHeight: 1.5 }}>
-                  <strong style={{ color: 'var(--color-text-subtle)'  }}>&lt;PageHeader&gt;</strong> — title + description + actions<br/>
-                  <strong style={{ color: 'var(--color-text-subtle)' }}>&lt;PageBody&gt;</strong> — área scrollable con p-16px
+                <div style={{ padding: '8px 12px', borderRadius: 8, background: 'var(--sq-surface-default)', border: '1px solid var(--sq-border-subtle)', color: 'var(--sq-text-subtlest)', fontSize: 12, lineHeight: 1.5 }}>
+                  <strong style={{ color: 'var(--sq-text-subtle)'  }}>&lt;PageHeader&gt;</strong> — title + description + actions<br/>
+                  <strong style={{ color: 'var(--sq-text-subtle)' }}>&lt;PageBody&gt;</strong> — área scrollable con p-16px
                 </div>
               </div>
             </div>

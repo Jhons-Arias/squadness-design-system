@@ -26,8 +26,10 @@ export interface SidebarProps {
   onCollapsedChange?: (collapsed: boolean) => void;
   /** Callback fired when a nav item is clicked. */
   onItemClick?: (item: SidebarItem) => void;
-  /** Logo area (rendered at the top). */
+  /** Logo area (rendered at the top, expanded state). */
   logo?: React.ReactNode;
+  /** Logo shown when sidebar is collapsed (icon-only). Falls back to `logo` if not provided. */
+  logoCollapsed?: React.ReactNode;
   /** Footer area (rendered at the bottom). */
   footer?: React.ReactNode;
   className?: string;
@@ -160,9 +162,11 @@ const Sidebar: React.FC<SidebarProps> = ({
   onCollapsedChange,
   onItemClick,
   logo,
+  logoCollapsed,
   footer,
   className,
 }) => {
+  const activeLogo = collapsed ? (logoCollapsed ?? logo) : logo
   return (
     <nav
       className={cn(
@@ -173,9 +177,9 @@ const Sidebar: React.FC<SidebarProps> = ({
       aria-label="Main navigation"
     >
       {/* ── Header: Logo ─────────────────────────────────────────── */}
-      {logo && (
+      {activeLogo && (
         <div className={cn("sq-sidebar-header", collapsed && "sq-sidebar-header-collapsed")}>
-          <div className="sq-sidebar-logo">{logo}</div>
+          <div className="sq-sidebar-logo">{activeLogo}</div>
         </div>
       )}
 

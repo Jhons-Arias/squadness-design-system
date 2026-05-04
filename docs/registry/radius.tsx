@@ -23,14 +23,14 @@ function Divider() {
 
 const SCALE = [
   {
-    token: '--radius-sm',
+    token: '--sq-radius-sm',
     value: '8px',
     label: 'Small',
     components: ['Button', 'Input', 'Textarea', 'Badge', 'Dropdown', 'Checkbox', 'Switch', 'Nav item'],
     description: 'Radio estándar para la mayoría de elementos interactivos y controles de formulario.',
   },
   {
-    token: '--radius-lg',
+    token: '--sq-radius-lg',
     value: '16px',
     label: 'Large',
     components: ['Card', 'Modal', 'Dialog', 'Popover', 'Toast', 'Panel', 'Preview box'],
@@ -43,40 +43,40 @@ const SCALE = [
 const RULES = [
   {
     icon: '✓',
-    color: 'var(--color-success-text)',
+    color: 'var(--sq-text-success)',
     bg: 'rgba(94,165,0,0.07)',
-    border: 'var(--color-success-border)',
+    border: 'var(--sq-border-success)',
     text: 'Usa siempre uno de los dos tokens del sistema. Nunca escribas valores literales como border-radius: 6px o border-radius: 12px.',
   },
   {
     icon: '✓',
-    color: 'var(--color-success-text)',
+    color: 'var(--sq-text-success)',
     bg: 'rgba(94,165,0,0.07)',
-    border: 'var(--color-success-border)',
-    text: 'Aplica --radius-sm a controles interactivos pequeños (botones, inputs, chips) y --radius-lg a superficies que contienen otros elementos.',
+    border: 'var(--sq-border-success)',
+    text: 'Aplica --sq-radius-sm a controles interactivos pequeños (botones, inputs, chips) y --sq-radius-lg a superficies que contienen otros elementos.',
   },
   {
     icon: '✗',
-    color: 'var(--color-error-text)',
+    color: 'var(--sq-text-error)',
     bg: 'rgba(207,18,31,0.06)',
-    border: 'var(--color-error-border)',
-    text: 'No mezcles radios distintos dentro del mismo componente compuesto. Un card con --radius-lg no debe tener acciones internas con border-radius diferente.',
+    border: 'var(--sq-border-error)',
+    text: 'No mezcles radios distintos dentro del mismo componente compuesto. Un card con --sq-radius-lg no debe tener acciones internas con border-radius diferente.',
   },
 ]
 
 // ── Code example ──────────────────────────────────────────────────────────────
 
-const codeExample = `/* Controles interactivos → radius-sm */
-.button        { border-radius: var(--radius-sm); } /* 8px */
-.input         { border-radius: var(--radius-sm); }
-.badge         { border-radius: var(--radius-sm); }
-.dropdown-menu { border-radius: var(--radius-sm); }
+const codeExample = `/* Controles interactivos → sq-radius-sm */
+.button        { border-radius: var(--sq-radius-sm); } /* 8px */
+.input         { border-radius: var(--sq-radius-sm); }
+.badge         { border-radius: var(--sq-radius-sm); }
+.dropdown-menu { border-radius: var(--sq-radius-sm); }
 
-/* Contenedores y superficies → radius-lg */
-.card    { border-radius: var(--radius-lg); } /* 16px */
-.dialog  { border-radius: var(--radius-lg); }
-.popover { border-radius: var(--radius-lg); }
-.toast   { border-radius: var(--radius-lg); }`
+/* Contenedores y superficies → sq-radius-lg */
+.card    { border-radius: var(--sq-radius-lg); } /* 16px */
+.dialog  { border-radius: var(--sq-radius-lg); }
+.popover { border-radius: var(--sq-radius-lg); }
+.toast   { border-radius: var(--sq-radius-lg); }`
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -103,20 +103,20 @@ export function RadiusPage() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
             {SCALE.map(item => (
               <div key={item.token} style={{
-                border: '1px solid var(--color-border-subtle)',
+                border: '1px solid var(--sq-border-subtle)',
                 borderRadius: 12,
                 overflow: 'hidden',
               }}>
                 {/* Visual preview */}
                 <div style={{
                   padding: '32px 24px',
-                  background: 'var(--color-surface)',
+                  background: 'var(--sq-surface-default)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   <div style={{
                     width: 80, height: 80,
                     borderRadius: item.value,
-                    background: 'var(--color-brand)',
+                    background: 'var(--sq-brand)',
                     opacity: 0.8,
                   }} />
                 </div>
@@ -124,33 +124,33 @@ export function RadiusPage() {
                 {/* Info */}
                 <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-                    <span style={{ fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: 16, color: 'var(--color-text-primary)' }}>
+                    <span style={{ fontFamily: 'var(--sq-font-body)', fontWeight: 700, fontSize: 16, color: 'var(--sq-text-default)' }}>
                       {item.label}
                     </span>
                     <code style={{
-                      fontFamily: 'var(--font-mono)', fontSize: 12,
-                      color: 'var(--color-brand)', background: 'rgba(0,95,219,0.06)',
+                      fontFamily: 'var(--sq-font-mono)', fontSize: 12,
+                      color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)',
                       padding: '2px 6px', borderRadius: 4,
                     }}>{item.token}</code>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--color-text-muted)', marginLeft: 'auto' }}>
+                    <span style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 13, color: 'var(--sq-text-subtlest)', marginLeft: 'auto' }}>
                       {item.value}
                     </span>
                   </div>
 
                   <p style={{
-                    fontFamily: 'var(--font-body)', fontSize: 13,
-                    color: 'var(--color-text-subtle)', lineHeight: 1.55, margin: 0,
+                    fontFamily: 'var(--sq-font-body)', fontSize: 13,
+                    color: 'var(--sq-text-subtle)', lineHeight: 1.55, margin: 0,
                   }}>{item.description}</p>
 
                   {/* Component chips */}
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                     {item.components.map(c => (
                       <span key={c} style={{
-                        fontSize: 11, fontFamily: 'var(--font-body)',
-                        color: 'var(--color-text-muted)',
-                        background: 'var(--color-surface)',
+                        fontSize: 11, fontFamily: 'var(--sq-font-body)',
+                        color: 'var(--sq-text-subtlest)',
+                        background: 'var(--sq-surface-default)',
                         padding: '2px 8px', borderRadius: 20,
-                        border: '1px solid var(--color-border-default)',
+                        border: '1px solid var(--sq-border-default)',
                       }}>{c}</span>
                     ))}
                   </div>
@@ -178,12 +178,12 @@ export function RadiusPage() {
                 borderRadius: 10, alignItems: 'flex-start',
               }}>
                 <span style={{
-                  fontFamily: 'var(--font-body)', fontWeight: 700,
+                  fontFamily: 'var(--sq-font-body)', fontWeight: 700,
                   fontSize: 15, color: rule.color, flexShrink: 0, lineHeight: 1.5,
                 }}>{rule.icon}</span>
                 <p style={{
-                  fontFamily: 'var(--font-body)', fontSize: 14,
-                  color: 'var(--color-text-subtle)', lineHeight: 1.6, margin: 0,
+                  fontFamily: 'var(--sq-font-body)', fontSize: 14,
+                  color: 'var(--sq-text-subtle)', lineHeight: 1.6, margin: 0,
                 }}>{rule.text}</p>
               </div>
             ))}

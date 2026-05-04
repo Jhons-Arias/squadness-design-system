@@ -9,7 +9,7 @@ const nextConfig = {
   // ── Static export for GitHub Pages ──────────────────────────
   output: 'export',
   // Replace 'squadness-design-system' with the exact name of your GitHub repo
-  basePath: '/squadness-design-system',
+  // basePath: '/squadness-design-system',  ← activar solo para GitHub Pages
   images: { unoptimized: true },
 
   // components/ui lives outside docs/ so TypeScript can't resolve its deps via

@@ -123,8 +123,8 @@ function StateRow({
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
       <span style={{
-        fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 12,
-        color: 'var(--color-text-muted)', width: 72, flexShrink: 0, textAlign: 'right',
+        fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 12,
+        color: 'var(--sq-text-subtlest)', width: 72, flexShrink: 0, textAlign: 'right',
       }}>
         {stateLabel}
       </span>
@@ -145,8 +145,8 @@ function StateRow({
               />
             </RadioGroup>
             <span style={{
-              fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 12,
-              color: 'var(--color-text-muted)',
+              fontFamily: 'var(--sq-font-mono)', fontWeight: 700, fontSize: 12,
+              color: 'var(--sq-text-subtlest)',
             }}>
               {label}
             </span>
