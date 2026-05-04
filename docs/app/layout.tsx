@@ -23,12 +23,18 @@ import { DialogStyles }  from '@squadness/ui/dialog.styles'
 import { PopoverStyles } from '@squadness/ui/popover.styles'
 import { LayoutStyles }  from '@squadness/ui/layout.styles'
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 export const metadata: Metadata = {
   title: {
     default: 'Squadness Design System',
     template: '%s — Squadness',
   },
   description: 'Component documentation, design tokens, and usage guidelines for the Squadness Design System.',
+  icons: {
+    icon: `${BASE}/Logo Squadness.png`,
+    apple: `${BASE}/Logo Squadness.png`,
+  },
 }
 
 const allStyles = [
