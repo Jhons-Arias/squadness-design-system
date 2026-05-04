@@ -7,7 +7,6 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
-import { TokenTable } from '@/components/docs/TokenTable'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Ejemplos',           level: 1 },
@@ -16,20 +15,9 @@ const TOC: TocItem[] = [
   { id: 'hover',              label: 'Hover',              level: 2 },
   { id: 'selected',           label: 'Selected',           level: 2 },
   { id: 'references',         label: 'Referencias',        level: 1 },
-  { id: 'tokens',             label: 'Design Tokens',      level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
-const CARD_TOKENS = [
-  { token: 'border/default',                          property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Borde del card' },
-  { token: 'surface/accent/neutral/subtlest',         property: 'background-color', value: '#f1f5f9',             primitive: 'neutral/100',  description: 'Fondo por defecto' },
-  { token: 'surface/accent/neutral/subtlest-hovered', property: 'background-color', value: '#e2e8f0',             primitive: 'neutral/200',  description: 'Fondo hover' },
-  { token: 'surface/accent/blue/subtlest',            property: 'background-color', value: '#e5f1ff',             primitive: 'blue/100',     description: 'Fondo seleccionado' },
-  { token: 'border/accent/blue',                      property: 'border-color',     value: '#0a74ff',             primitive: 'blue/600',     description: 'Borde seleccionado' },
-  { token: 'text/default',                            property: 'color',            value: '#020618',             primitive: 'neutral/950',  description: 'Título del card' },
-  { token: 'text/subtle',                             property: 'color',            value: '#314158',             primitive: 'neutral/700',  description: 'Descripción del card' },
-  { token: 'border/subtle',                           property: 'border-color',     value: 'rgba(11,18,14,0.14)', primitive: 'neutral/300a', description: 'Separador del footer' },
-]
 
 // ── Sample data ───────────────────────────────────────────────────────────────
 
@@ -267,15 +255,6 @@ export function CardPage() {
         </div>
 
         <Divider />
-
-        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="tokens">Design Tokens</SectionTitle>
-            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
-          </div>
-          <TokenTable tokens={CARD_TOKENS} />
-        </div>
 
         <Divider />
 

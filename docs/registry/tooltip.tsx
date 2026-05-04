@@ -6,7 +6,6 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
-import { TokenTable } from '@/components/docs/TokenTable'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Ejemplos',           level: 1 },
@@ -17,17 +16,9 @@ const TOC: TocItem[] = [
   { id: 'image-map-single',   label: 'Una imagen',         level: 3 },
   { id: 'image-map-double',   label: 'Dos imágenes',       level: 3 },
   { id: 'references',         label: 'Referencias',        level: 1 },
-  { id: 'tokens',             label: 'Design Tokens',      level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
-const TOOLTIP_TOKENS = [
-  { token: 'surface/accent/neutral/subtlest',  property: 'background-color', value: '#f1f5f9',             primitive: 'neutral/100',  description: 'Fondo del tooltip' },
-  { token: 'border/default',                   property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Borde' },
-  { token: 'text/subtle',                      property: 'color',            value: '#314158',             primitive: 'neutral/700',  description: 'Texto de descripción' },
-  { token: 'text/default',                     property: 'color',            value: '#020618',             primitive: 'neutral/950',  description: 'Texto principal / título' },
-  { token: 'text/subtlest',                    property: 'color',            value: '#62748e',             primitive: 'neutral/500',  description: 'Texto secundario' },
-]
 
 // ── Placeholder image ─────────────────────────────────────────────────────────
 
@@ -218,15 +209,6 @@ export function TooltipPage() {
         </div>
 
         <Divider />
-
-        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="tokens">Design Tokens</SectionTitle>
-            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
-          </div>
-          <TokenTable tokens={TOOLTIP_TOKENS} />
-        </div>
 
         <Divider />
 

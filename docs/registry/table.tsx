@@ -8,7 +8,6 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
-import { TokenTable } from '@/components/docs/TokenTable'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Ejemplos',           level: 1 },
@@ -17,20 +16,9 @@ const TOC: TocItem[] = [
   { id: 'selected',           label: 'Selected',           level: 2 },
   { id: 'expanded',           label: 'Expanded (View)',    level: 2 },
   { id: 'references',         label: 'Referencias',        level: 1 },
-  { id: 'tokens',             label: 'Design Tokens',      level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
-const TABLE_TOKENS = [
-  { token: 'surface/raised',             property: 'background-color', value: '#ffffff',             primitive: 'neutral/0',    description: 'Fila par (blanco)' },
-  { token: 'surface/default',            property: 'background-color', value: '#f8fafc',             primitive: 'neutral/50',   description: 'Fila impar (gris tenue)' },
-  { token: 'surface/accent/neutral/subtlest', property: 'background-color', value: '#f1f5f9',         primitive: 'neutral/100',  description: 'Header y estados hover' },
-  { token: 'border/default',             property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Bordes de celda' },
-  { token: 'text/default',               property: 'color',            value: '#020618',             primitive: 'neutral/950',  description: 'Texto de celdas' },
-  { token: 'surface/accent/blue/subtlest', property: 'background-color', value: '#e5f1ff',            primitive: 'blue/100',     description: 'Fila seleccionada' },
-  { token: 'border/accent/blue',         property: 'border-color',     value: '#0a74ff',             primitive: 'blue/600',     description: 'Borde fila seleccionada' },
-  { token: 'surface/semantic/brand/subtler', property: 'border-color', value: '#005fdb',             primitive: 'blue/700',     description: 'Sort indicator activo' },
-]
 
 // ── Sample data ───────────────────────────────────────────────────────────────
 
@@ -352,15 +340,6 @@ export function TablePage() {
         </div>
 
         <Divider />
-
-        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="tokens">Design Tokens</SectionTitle>
-            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
-          </div>
-          <TokenTable tokens={TABLE_TOKENS} />
-        </div>
 
         <Divider />
 

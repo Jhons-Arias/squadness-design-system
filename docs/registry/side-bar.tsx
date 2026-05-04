@@ -9,7 +9,6 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
-import { TokenTable } from '@/components/docs/TokenTable'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Examples',           level: 1 },
@@ -19,19 +18,9 @@ const TOC: TocItem[] = [
   { id: 'active-item',        label: 'Active item',        level: 2 },
   { id: 'with-submenu',       label: 'With sub-menu',      level: 2 },
   { id: 'references',         label: 'References',         level: 1 },
-  { id: 'tokens',             label: 'Design Tokens',      level: 1 },
   { id: 'content-guidelines', label: 'Content guidelines', level: 1 },
 ]
 
-const SIDEBAR_TOKENS = [
-  { token: 'surface/default',            property: 'background-color', value: '#f8fafc',             primitive: 'neutral/50',   description: 'Fondo del sidebar' },
-  { token: 'border/default',             property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Borde derecho' },
-  { token: 'text/subtle',                property: 'color',            value: '#314158',             primitive: 'neutral/700',  description: 'Label del nav item' },
-  { token: 'surface/accent/neutral/subtler',   property: 'background-color', value: '#e2e8f0',       primitive: 'neutral/200',  description: 'Nav item hover' },
-  { token: 'surface/semantic/brand/subtler',   property: 'background-color', value: '#005fdb',       primitive: 'blue/700',     description: 'Nav item activo — fondo' },
-  { token: 'text/inverse',               property: 'color',            value: '#f8fafc',             primitive: 'neutral/50',   description: 'Nav item activo — label' },
-  { token: 'surface/semantic/brand/subtler',   property: 'background-color', value: '#005fdb',       primitive: 'blue/700',     description: 'Logotipo background colapsado' },
-]
 
 // ── Design system icon components ─────────────────────────────────────────────
 // Paths sourced from /docs/public/icons — fill="currentColor" for theming
@@ -311,15 +300,6 @@ export function SideBarPage() {
         </div>
 
         <Divider />
-
-        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="tokens">Design Tokens</SectionTitle>
-            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
-          </div>
-          <TokenTable tokens={SIDEBAR_TOKENS} />
-        </div>
 
         <Divider />
 

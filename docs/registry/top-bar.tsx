@@ -7,7 +7,6 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
-import { TokenTable } from '@/components/docs/TokenTable'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Ejemplos',           level: 1 },
@@ -16,18 +15,9 @@ const TOC: TocItem[] = [
   { id: 'with-theme',         label: 'With theme toggle',  level: 2 },
   { id: 'no-user',            label: 'Without user',       level: 2 },
   { id: 'references',         label: 'Referencias',        level: 1 },
-  { id: 'tokens',             label: 'Design Tokens',      level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
-const TOPBAR_TOKENS = [
-  { token: 'surface/default',            property: 'background-color', value: '#f8fafc',             primitive: 'neutral/50',   description: 'Fondo del topbar' },
-  { token: 'border/default',             property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Borde inferior' },
-  { token: 'text/subtle',                property: 'color',            value: '#314158',             primitive: 'neutral/700',  description: 'Texto de búsqueda' },
-  { token: 'surface/accent/neutral/subtler',   property: 'background-color', value: '#e2e8f0',       primitive: 'neutral/200',  description: 'Hover en controles' },
-  { token: 'surface/semantic/brand/subtler',   property: 'background-color', value: '#005fdb',       primitive: 'blue/700',     description: 'Avatar / indicador activo' },
-  { token: 'surface/accent/neutral/subtlest',  property: 'background-color', value: '#f1f5f9',       primitive: 'neutral/100',  description: 'Fondo del dropdown de búsqueda' },
-]
 
 // ── Shared user data ──────────────────────────────────────────────────────────
 const DEMO_USER = {
@@ -251,15 +241,6 @@ export function TopBarPage() {
         </div>
 
         <Divider />
-
-        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="tokens">Design Tokens</SectionTitle>
-            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
-          </div>
-          <TokenTable tokens={TOPBAR_TOKENS} />
-        </div>
 
         <Divider />
 

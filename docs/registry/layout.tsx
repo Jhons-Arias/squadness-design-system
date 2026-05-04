@@ -6,7 +6,6 @@ import { type SidebarItem } from '@squadness/ui/sidebar'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
-import { TokenTable } from '@/components/docs/TokenTable'
 import { LightCodeBlock } from '@/components/docs/LightCodeBlock'
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
@@ -19,7 +18,6 @@ const TOC: TocItem[] = [
   { id: 'page-header', label: 'PageHeader',          level: 1 },
   { id: 'colapsado',   label: 'Sidebar colapsado',   level: 1 },
   { id: 'props',       label: 'Props',               level: 1 },
-  { id: 'tokens',      label: 'Design Tokens',       level: 1 },
   { id: 'uso',         label: 'Uso en código',       level: 1 },
 ]
 
@@ -330,15 +328,6 @@ function PropsTable({ rows }: { rows: typeof LAYOUT_PROPS }) {
 
 // ─── Tokens ───────────────────────────────────────────────────────────────────
 
-const LAYOUT_TOKENS = [
-  { token: 'surface/default',   property: 'background (sidebar, topbar)', value: '#f8fafc', primitive: 'neutral/50',  description: 'Fondo del sidebar y topbar.' },
-  { token: 'surface/raised',    property: 'background (inner card)',       value: '#ffffff', primitive: 'neutral/0',   description: 'Fondo del contenedor de contenido.' },
-  { token: 'border/default',    property: 'border-color',                 value: 'rgba(5,21,36,0.06)', primitive: 'neutral/950@6%', description: 'Bordes del sidebar, topbar y card.' },
-  { token: 'surface/brand/subtler', property: 'background (active item)', value: '#005fdb', primitive: 'blue/700',   description: 'Ítem activo de navegación.' },
-  { token: 'text/default',      property: 'color (page title)',           value: '#020618', primitive: 'neutral/950', description: 'Título de página.' },
-  { token: 'text/subtle',       property: 'color (nav items)',            value: '#314158', primitive: 'neutral/700', description: 'Ítems de navegación sin seleccionar.' },
-  { token: 'text/inverse',      property: 'color (active nav label)',     value: '#ffffff', primitive: 'neutral/0',   description: 'Texto del ítem de nav activo.' },
-]
 
 // ─── Code examples ────────────────────────────────────────────────────────────
 
@@ -535,15 +524,6 @@ export function LayoutPage() {
         </div>
 
         <Divider />
-
-        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="tokens">Design Tokens</SectionTitle>
-            <Desc>Variables de Figma que controlan la apariencia del Layout.</Desc>
-          </div>
-          <TokenTable tokens={LAYOUT_TOKENS} />
-        </div>
 
         <Divider />
 

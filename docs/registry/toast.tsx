@@ -6,7 +6,6 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
-import { TokenTable } from '@/components/docs/TokenTable'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Ejemplos',           level: 1 },
@@ -17,28 +16,9 @@ const TOC: TocItem[] = [
   { id: 'info',               label: 'Info',               level: 2 },
   { id: 'error',              label: 'Error',              level: 2 },
   { id: 'references',         label: 'Referencias',        level: 1 },
-  { id: 'tokens',             label: 'Design Tokens',      level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
-const TOAST_TOKENS = [
-  { token: 'surface/default',                  property: 'background-color', value: '#f8fafc', primitive: 'neutral/50',   description: 'Default — fondo' },
-  { token: 'border/default',                   property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Default — borde' },
-  { token: 'surface/semantic/success/subtlest',property: 'background-color', value: '#ecfcca', primitive: 'lime/100',     description: 'Success — fondo' },
-  { token: 'border/semantic/success',          property: 'border-color',     value: '#5ea500', primitive: 'lime/600',     description: 'Success — borde' },
-  { token: 'text/semantic/success',            property: 'color',            value: '#3c6300', primitive: 'lime/800',     description: 'Success — icono' },
-  { token: 'surface/semantic/warning/subtlest',property: 'background-color', value: '#ffedd4', primitive: 'orange/100',   description: 'Warning — fondo' },
-  { token: 'border/semantic/warning',          property: 'border-color',     value: '#f54a00', primitive: 'orange/600',   description: 'Warning — borde' },
-  { token: 'text/semantic/warning',            property: 'color',            value: '#9f2d00', primitive: 'orange/800',   description: 'Warning — icono' },
-  { token: 'surface/semantic/info/subtlest',   property: 'background-color', value: '#ccf1ff', primitive: 'sky/100',      description: 'Info — fondo' },
-  { token: 'border/semantic/info',             property: 'border-color',     value: '#0095cc', primitive: 'sky/600',      description: 'Info — borde' },
-  { token: 'text/semantic/info',               property: 'color',            value: '#004a66', primitive: 'sky/800',      description: 'Info — icono' },
-  { token: 'surface/semantic/error/subtlest',  property: 'background-color', value: '#fedede', primitive: 'red/100',      description: 'Error — fondo' },
-  { token: 'border/semantic/error',            property: 'border-color',     value: '#cf121f', primitive: 'red/600',      description: 'Error — borde' },
-  { token: 'text/semantic/error',              property: 'color',            value: '#6f040c', primitive: 'red/800',      description: 'Error — icono' },
-  { token: 'text/default',                     property: 'color',            value: '#020618', primitive: 'neutral/950',  description: 'Título' },
-  { token: 'text/subtle',                      property: 'color',            value: '#314158', primitive: 'neutral/700',  description: 'Mensaje / descripción' },
-]
 
 // ── Code snippets ─────────────────────────────────────────────────────────────
 
@@ -175,15 +155,6 @@ export function ToastPage() {
         </div>
 
         <Divider />
-
-        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="tokens">Design Tokens</SectionTitle>
-            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
-          </div>
-          <TokenTable tokens={TOAST_TOKENS} />
-        </div>
 
         <Divider />
 

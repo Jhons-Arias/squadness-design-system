@@ -7,7 +7,6 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
 import { OnThisPage, type TocItem } from '@/components/layout/OnThisPage'
-import { TokenTable } from '@/components/docs/TokenTable'
 
 const TOC: TocItem[] = [
   { id: 'examples',           label: 'Ejemplos',           level: 1 },
@@ -15,21 +14,9 @@ const TOC: TocItem[] = [
   { id: 'active',             label: 'Con ítems',          level: 2 },
   { id: 'empty',              label: 'Vacío',              level: 2 },
   { id: 'references',         label: 'Referencias',        level: 1 },
-  { id: 'tokens',             label: 'Design Tokens',      level: 1 },
   { id: 'content-guidelines', label: 'Guías de contenido', level: 1 },
 ]
 
-const DRAG_DROP_TOKENS = [
-  { token: 'surface/default',            property: 'background-color', value: '#f8fafc',             primitive: 'neutral/50',   description: 'Fondo del ítem' },
-  { token: 'border/subtle',              property: 'border-color',     value: 'rgba(11,18,14,0.14)', primitive: 'neutral/300a', description: 'Borde del ítem' },
-  { token: 'surface/semantic/brand/subtler', property: 'background-color', value: '#005fdb',          primitive: 'blue/700',     description: 'Borde de drop target activo' },
-  { token: 'surface/accent/blue/subtlest',   property: 'background-color', value: '#e5f1ff',           primitive: 'blue/100',     description: 'Fondo del ítem arrastrado' },
-  { token: 'surface/accent/neutral/subtlest',property: 'background-color', value: '#f1f5f9',           primitive: 'neutral/100',  description: 'Fondo del drop zone' },
-  { token: 'border/default',             property: 'border-color',     value: 'rgba(5,21,36,0.06)', primitive: 'neutral/200a', description: 'Borde del drop zone' },
-  { token: 'text/default',               property: 'color',            value: '#020618',             primitive: 'neutral/950',  description: 'Texto del ítem' },
-  { token: 'text/subtle',                property: 'color',            value: '#314158',             primitive: 'neutral/700',  description: 'Descripción del ítem' },
-  { token: 'text/subtlest',              property: 'color',            value: '#62748e',             primitive: 'neutral/500',  description: 'Texto placeholder del drop zone' },
-]
 
 // ── Sample data ───────────────────────────────────────────────────────────────
 
@@ -277,15 +264,6 @@ export function DragDropPage() {
         </div>
 
         <Divider />
-
-        {/* ── Design Tokens ─────────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <SectionTitle id="tokens">Design Tokens</SectionTitle>
-            <Desc>Variables de Figma que controlan la apariencia visual de este componente.</Desc>
-          </div>
-          <TokenTable tokens={DRAG_DROP_TOKENS} />
-        </div>
 
         <Divider />
 
