@@ -538,4 +538,7 @@ export function ColorsPage() {
 
       </div>
 
-      
+      <OnThisPage items={TOC} />
+    </div>
+  )
+}

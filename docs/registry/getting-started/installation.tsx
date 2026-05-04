@@ -177,4 +177,33 @@ export function InstallationPage() {
         <Divider />
 
         {/* ── Alias webpack ─────────────────────────────────────────────────── */}
-        <
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <SectionTitle id="alias">Alias webpack</SectionTitle>
+            <Desc>
+              El alias <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 14, color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>@squadness/ui</code> apunta
+              a la carpeta de componentes del sistema. Ya esta configurado en <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 14, color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>tsconfig.json</code>.
+            </Desc>
+          </div>
+          <LightCodeBlock code={`// tsconfig.json
+{
+  "compilerOptions": {
+    "paths": {
+      "@squadness/ui": ["../components/ui/index.ts"],
+      "@squadness/ui/*": ["../components/ui/*"]
+    }
+  }
+}`} lang="json" />
+          <p style={{ fontFamily: 'var(--sq-font-body)', fontSize: 13, color: 'var(--sq-text-subtlest)', lineHeight: 1.6 }}>
+            Con este alias puedes importar cualquier componente con{' '}
+            <code style={{ fontFamily: 'var(--sq-font-mono)', fontSize: 13, color: 'var(--sq-brand)', background: 'rgba(0,95,219,0.06)', padding: '1px 5px', borderRadius: 4 }}>import {'{ Button }'} from '@squadness/ui'</code>{' '}
+            desde cualquier archivo del proyecto.
+          </p>
+        </div>
+
+      </div>
+
+      <OnThisPage items={TOC} />
+    </div>
+  )
+}
