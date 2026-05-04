@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Dialog, DeleteDialog } from '@squadness/ui/dialog'
+import { DialogStyles } from '@squadness/ui/dialog.styles'
 import { Button } from '@squadness/ui/button'
 import { Input } from '@squadness/ui/input'
 import { Select } from '@squadness/ui/select'
@@ -181,7 +182,7 @@ export function DialogPage() {
         {/* ── Ejemplos ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={confirmCode}>
+          <ComponentPreview code={confirmCode} styles={DialogStyles}>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
               <ConfirmDemo />
               <FormDemo />

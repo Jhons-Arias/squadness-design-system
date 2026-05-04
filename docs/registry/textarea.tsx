@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { Textarea } from '@squadness/ui/textarea'
+import { Textarea, TextareaStyles } from '@squadness/ui/textarea'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -145,7 +145,7 @@ export function TextareaPage() {
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={160}>
+          <ComponentPreview code={examplesCode} minHeight={160} styles={TextareaStyles}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%', maxWidth: 400, margin: '0 auto' }}>
               <Textarea placeholder="Write your message…" label="Message" />
               <Textarea

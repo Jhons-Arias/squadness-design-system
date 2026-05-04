@@ -1,4 +1,4 @@
-import { IconButton } from '@squadness/ui/button'
+import { IconButton, ButtonStyles } from '@squadness/ui/button'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -171,7 +171,7 @@ export function IconButtonPage() {
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={100}>
+          <ComponentPreview code={examplesCode} minHeight={100} styles={ButtonStyles}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', justifyContent: 'center' }}>
               {VARIANTS.map((v) => (
                 <IconButton key={v} variant={v} aria-label={label(v)} icon={<AddIcon />} />

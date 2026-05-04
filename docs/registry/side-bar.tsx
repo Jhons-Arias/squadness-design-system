@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Sidebar, type SidebarItem } from '@squadness/ui/sidebar'
+import { SidebarStyles } from '@squadness/ui/sidebar.styles'
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
@@ -197,7 +198,7 @@ export function SideBarPage() {
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Examples</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={380}>
+          <ComponentPreview code={examplesCode} minHeight={380} styles={SidebarStyles}>
             <SidebarBox>
               <Sidebar
                 items={NAV_ITEMS}

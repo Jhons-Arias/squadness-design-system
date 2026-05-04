@@ -1,4 +1,4 @@
-import { Switch } from '@squadness/ui/switch'
+import { Switch, SwitchStyles } from '@squadness/ui/switch'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -155,7 +155,7 @@ export function SwitchPage() {
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={80}>
+          <ComponentPreview code={examplesCode} minHeight={80} styles={SwitchStyles}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'center', justifyContent: 'center' }}>
               <Switch checked={false} label="Dark mode" />
               <Switch checked={true}  label="Dark mode" />

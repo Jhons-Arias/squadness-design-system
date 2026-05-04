@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { DragDrop, type DragDropItem } from '@squadness/ui/drag-drop'
+import { DragDropStyles } from '@squadness/ui/drag-drop.styles'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -217,7 +218,7 @@ export function DragDropPage() {
         {/* ── Ejemplos ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={300}>
+          <ComponentPreview code={examplesCode} minHeight={300} styles={DragDropStyles}>
             <ExampleDemo />
           </ComponentPreview>
         </div>

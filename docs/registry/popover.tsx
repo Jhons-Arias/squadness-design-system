@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Popover } from '@squadness/ui/popover'
+import { PopoverStyles } from '@squadness/ui/popover.styles'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -163,7 +164,7 @@ export function PopoverPage() {
         {/* ── Ejemplos ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={fullCode}>
+          <ComponentPreview code={fullCode} styles={PopoverStyles}>
             <FullDemo />
           </ComponentPreview>
         </div>

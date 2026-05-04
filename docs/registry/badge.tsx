@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge } from '@squadness/ui/badge'
+import { Badge, BadgeStyles } from '@squadness/ui/badge'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -105,7 +105,7 @@ export function BadgePage() {
         {/* ── Ejemplos ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode}>
+          <ComponentPreview code={examplesCode} styles={BadgeStyles}>
             <Row>
               <Badge variant="neutral">Neutral</Badge>
               <Badge variant="success">Activo</Badge>

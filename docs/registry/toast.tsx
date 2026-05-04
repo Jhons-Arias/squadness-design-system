@@ -1,6 +1,7 @@
 'use client'
 
 import { Toast } from '@squadness/ui/toast'
+import { ToastStyles } from '@squadness/ui/toast.styles'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -93,7 +94,7 @@ export function ToastPage() {
         {/* ── Ejemplos ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={300}>
+          <ComponentPreview code={examplesCode} minHeight={300} styles={ToastStyles}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <Toast type="default">Operación completada.</Toast>
               <Toast type="success">Los cambios fueron guardados correctamente.</Toast>

@@ -1,4 +1,4 @@
-import { RadioGroup, RadioButton } from '@squadness/ui/radio-button'
+import { RadioGroup, RadioButton, RadioButtonStyles } from '@squadness/ui/radio-button'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -176,7 +176,7 @@ export function RadioButtonPage() {
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={120}>
+          <ComponentPreview code={examplesCode} minHeight={120} styles={RadioButtonStyles}>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <RadioGroup value="b">
                 <RadioButton value="a" label="Option A" />

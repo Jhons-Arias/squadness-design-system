@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Pagination } from '@squadness/ui/pagination'
+import { PaginationStyles } from '@squadness/ui/pagination.styles'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -145,7 +146,7 @@ export function PaginationPage() {
         {/* ── Ejemplos ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={80}>
+          <ComponentPreview code={examplesCode} minHeight={80} styles={PaginationStyles}>
             <ExampleDemo />
           </ComponentPreview>
         </div>

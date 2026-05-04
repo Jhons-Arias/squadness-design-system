@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { DateFilterDropdown } from '@squadness/ui/date-filter-dropdown'
+import { DateFilterDropdownStyles } from '@squadness/ui/date-filter-dropdown.styles'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -136,7 +137,7 @@ export function DatePickerPage() {
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={60} overflowVisible>
+          <ComponentPreview code={examplesCode} minHeight={60} overflowVisible styles={DateFilterDropdownStyles}>
             <ExampleDemo />
           </ComponentPreview>
         </div>

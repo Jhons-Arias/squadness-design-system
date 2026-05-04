@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Table } from '@squadness/ui/table'
+import { TableStyles } from '@squadness/ui/table.styles'
 import { Badge } from '@squadness/ui/badge'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
@@ -272,7 +273,7 @@ export function TablePage() {
         {/* ── Ejemplos ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={200}>
+          <ComponentPreview code={examplesCode} minHeight={200} styles={TableStyles}>
             <ExampleDemo />
           </ComponentPreview>
         </div>

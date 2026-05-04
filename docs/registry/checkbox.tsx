@@ -1,4 +1,4 @@
-import { Checkbox } from '@squadness/ui/checkbox'
+import { Checkbox, CheckboxStyles } from '@squadness/ui/checkbox'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -163,7 +163,7 @@ export function CheckboxPage() {
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={80}>
+          <ComponentPreview code={examplesCode} minHeight={80} styles={CheckboxStyles}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'center', justifyContent: 'center' }}>
               {CHECK_STATES.filter(s => s.checked !== false).map(({ label, checked }) => (
                 <Checkbox key={label} checked={checked} />

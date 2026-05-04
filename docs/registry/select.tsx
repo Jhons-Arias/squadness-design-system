@@ -1,4 +1,5 @@
 import { Select } from '@squadness/ui/select'
+import { SelectStyles } from '@squadness/ui/select.styles'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -164,7 +165,7 @@ export function SelectPage() {
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={80} overflowVisible>
+          <ComponentPreview code={examplesCode} minHeight={80} overflowVisible styles={SelectStyles}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center', alignItems: 'flex-start' }}>
               <div style={{ width: 240 }}>
                 <Select

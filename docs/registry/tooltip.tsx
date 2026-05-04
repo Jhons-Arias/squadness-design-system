@@ -1,6 +1,7 @@
 'use client'
 
 import { Tooltip, TooltipImageMap } from '@squadness/ui/tooltip'
+import { TooltipStyles } from '@squadness/ui/tooltip.styles'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -108,7 +109,7 @@ export function TooltipPage() {
         {/* ── Ejemplos ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode}>
+          <ComponentPreview code={examplesCode} styles={TooltipStyles}>
             <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' }}>
               <Tooltip
                 name="Marianne Licea"

@@ -1,4 +1,4 @@
-import { Input } from '@squadness/ui/input'
+import { Input, InputStyles } from '@squadness/ui/input'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DoDont } from '@/components/docs/DoDont'
 import { ReferenceLinks } from '@/components/docs/ReferenceLinks'
@@ -200,7 +200,7 @@ export function InputPage() {
         {/* ── Examples ──────────────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <SectionTitle id="examples">Ejemplos</SectionTitle>
-          <ComponentPreview code={examplesCode} minHeight={120}>
+          <ComponentPreview code={examplesCode} minHeight={120} styles={InputStyles}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%', maxWidth: 360, margin: '0 auto' }}>
               <Input placeholder="Enter your email…" label="Email" />
               <Input
