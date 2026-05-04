@@ -23,11 +23,10 @@ export function ComponentPreview({
   lang = 'jsx',
   overflowVisible,
 }: ComponentPreviewProps) {
-  const tabs = styles
-    ? (['preview', 'code', 'styles'] as const)
-    : (['preview', 'code'] as const)
+  type Tab = 'preview' | 'code' | 'styles'
+  const tabs: Tab[] = styles ? ['preview', 'code', 'styles'] : ['preview', 'code']
 
-  const [tab, setTab] = useState<'preview' | 'code' | 'styles'>('preview')
+  const [tab, setTab] = useState<Tab>('preview')
   const [copied, setCopied] = useState(false)
 
   async function handleCopy() {
