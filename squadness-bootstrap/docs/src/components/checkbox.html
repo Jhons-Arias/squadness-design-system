@@ -1,0 +1,78 @@
+<!--
+  SQUADNESS DS — Checkbox
+  ───────────────────────────────────────────────────────────────
+  Clases clave: .form-check  .form-check-input  .form-check-label
+  El color checked (azul de marca) viene de --bs-form-check-input-checked-bg-color
+  definido en tokens.css.
+-->
+
+<!-- ── Básico ───────────────────────────────────────────────── -->
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" id="check-basic" />
+  <label class="form-check-label" for="check-basic">
+    Aceptar términos y condiciones
+  </label>
+</div>
+
+<!-- ── Marcado por defecto ───────────────────────────────────── -->
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" id="check-checked" checked />
+  <label class="form-check-label" for="check-checked">
+    Recibir notificaciones por email
+  </label>
+</div>
+
+<!-- ── Deshabilitado ─────────────────────────────────────────── -->
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" id="check-disabled" disabled />
+  <label class="form-check-label" for="check-disabled" style="color:var(--sq-text-subtlest);">
+    Opción no disponible
+  </label>
+</div>
+
+<!-- ── Deshabilitado y marcado ───────────────────────────────── -->
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" id="check-disabled-checked" checked disabled />
+  <label class="form-check-label" for="check-disabled-checked" style="color:var(--sq-text-subtlest);">
+    Permiso heredado (no editable)
+  </label>
+</div>
+
+<!-- ── Grupo de checkboxes ───────────────────────────────────── -->
+<fieldset>
+  <legend class="form-label">Permisos del rol</legend>
+  <div class="d-flex flex-column gap-2">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="perm-read" checked />
+      <label class="form-check-label" for="perm-read">Ver registros</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="perm-create" checked />
+      <label class="form-check-label" for="perm-create">Crear registros</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="perm-edit" />
+      <label class="form-check-label" for="perm-edit">Editar registros</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="perm-delete" />
+      <label class="form-check-label" for="perm-delete">Eliminar registros</label>
+    </div>
+  </div>
+</fieldset>
+
+<!-- ── Inline ────────────────────────────────────────────────── -->
+<div class="d-flex gap-4">
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="inline-1" checked />
+    <label class="form-check-label" for="inline-1">Lunes</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="inline-2" />
+    <label class="form-check-label" for="inline-2">Martes</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="inline-3" checked />
+    <label class="form-check-label" for="inline-3">Miércoles</label>
+  </div>
+</div>

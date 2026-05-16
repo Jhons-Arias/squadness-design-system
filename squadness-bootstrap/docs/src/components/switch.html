@@ -1,0 +1,61 @@
+<!--
+  SQUADNESS DS — Switch
+  ───────────────────────────────────────────────────────────────
+  Clases clave: .form-check.form-switch  .form-check-input[type="checkbox"][role="switch"]
+-->
+
+<!-- ── Básico ───────────────────────────────────────────────── -->
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="switch-basic" />
+  <label class="form-check-label" for="switch-basic">Activar notificaciones</label>
+</div>
+
+<!-- ── Activado por defecto ──────────────────────────────────── -->
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="switch-on" checked />
+  <label class="form-check-label" for="switch-on">Modo oscuro</label>
+</div>
+
+<!-- ── Deshabilitado ─────────────────────────────────────────── -->
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="switch-off-disabled" disabled />
+  <label class="form-check-label" for="switch-off-disabled" style="color:var(--sq-text-subtlest);">
+    Sincronización en tiempo real (no disponible)
+  </label>
+</div>
+
+<!-- ── Grupo de switches ─────────────────────────────────────── -->
+<div class="card" style="max-width:420px;">
+  <div class="card-header">Preferencias de notificación</div>
+  <div class="card-body d-flex flex-column gap-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <div style="font-size:14px;font-weight:500;">Notificaciones de email</div>
+        <div style="font-size:12px;color:var(--sq-text-subtlest);">Recibe resúmenes diarios</div>
+      </div>
+      <div class="form-check form-switch mb-0">
+        <input class="form-check-input" type="checkbox" role="switch" id="notif-email" checked />
+      </div>
+    </div>
+    <hr class="sq-divider my-0">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <div style="font-size:14px;font-weight:500;">Notificaciones push</div>
+        <div style="font-size:12px;color:var(--sq-text-subtlest);">Alertas en el navegador</div>
+      </div>
+      <div class="form-check form-switch mb-0">
+        <input class="form-check-input" type="checkbox" role="switch" id="notif-push" />
+      </div>
+    </div>
+    <hr class="sq-divider my-0">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <div style="font-size:14px;font-weight:500;">Alertas de seguridad</div>
+        <div style="font-size:12px;color:var(--sq-text-subtlest);">Inicios de sesión sospechosos</div>
+      </div>
+      <div class="form-check form-switch mb-0">
+        <input class="form-check-input" type="checkbox" role="switch" id="notif-security" checked />
+      </div>
+    </div>
+  </div>
+</div>

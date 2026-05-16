@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integración PHP — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="src/squadness.css" />
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Getting Started</p>
+      <h1 class="docs-title">Integración PHP</h1>
+      <p class="docs-desc">Cómo integrar Squadness Bootstrap en proyectos PHP puros y en aplicaciones Laravel + Blade. Incluye estructura de carpetas, layout base, partials reutilizables, y un ejemplo de CRUD completo.</p>
+      <hr class="docs-divider" />
+
+      <!-- ── ESTRUCTURA DE CARPETAS ── -->
+      <h2 class="docs-section-title" id="estructura">Estructura de carpetas</h2>
+      <p style="font-size:14px;color:var(--sq-text-subtle);margin-bottom:12px;">Copia la carpeta <code>src/</code> del repositorio dentro de tus assets públicos. Solo necesitas tres archivos CSS.</p>
+
+      <div class="docs-preview-box">
+        <div class="docs-code-content" style="display:block;">
+          <pre>
+<span style="color:#62748e;">tu-proyecto/</span>
+├── public/
+│   └── assets/
+│       ├── squadness/
+│       │   ├── tokens.css          <span style="color:#62748e;">← tokens --sq-* + overrides --bs-*</span>
+│       │   └── squadness.css       <span style="color:#62748e;">← estilos de componentes</span>
+│       └── css/
+│           └── app.css             <span style="color:#62748e;">← tus estilos propios</span>
+├── partials/
+│   ├── head.php                    <span style="color:#62748e;">← &lt;head&gt; con imports</span>
+│   ├── navbar.php                  <span style="color:#62748e;">← topbar / navbar</span>
+│   ├── sidebar.php                 <span style="color:#62748e;">← sidebar de navegación</span>
+│   └── scripts.php                 <span style="color:#62748e;">← JS al final del body</span>
+├── pages/
+│   ├── dashboard.php
+│   ├── users/
+│   │   ├── index.php               <span style="color:#62748e;">← listado</span>
+│   │   ├── create.php              <span style="color:#62748e;">← formulario nuevo</span>
+│   │   └── edit.php                <span style="color:#62748e;">← formulario edición</span>
+└── index.php</pre>
+        </div>
+      </div>
+
+      <div class="docs-callout tip">
+        <strong>Alternativa dist/</strong>: Usa <code>dist/squadness-bootstrap.min.css</code> (25 KB) como único archivo CSS, reemplazando tanto <code>tokens.css</code> como <code>squadness.css</code>. No incluye Bootstrap — sigue necesitando <code>bootstrap.min.css</code>.
+      </div>
+
+      <!-- ── LAYOUT BASE PHP ── -->
+      <h2 class="docs-section-title" id="layout-php">Layout base PHP</h2>
+      <p style="font-size:14px;color:var(--sq-text-subtle);margin-bottom:12px;">Patrón recomendado con partials para proyectos PHP sin framework.</p>
+
+      <div class="docs-preview-box">
+        <div class="docs-preview-tabs">
+          <button class="docs-tab-btn active" data-panel="php-head-preview">Resultado</button>
+          <button class="docs-tab-btn" data-panel="php-head-code">partials/head.php</button>
+          <button class="docs-tab-btn" data-panel="php-layout-code">layout.php</button>
+        </div>
+        <div class="docs-preview-content" data-panel="php-head-preview">
+          <div class="p-3 d-flex gap-3 align-items-center" style="background:var(--sq-surface-neutral-subtlest);border-radius:var(--sq-radius-sm);">
+            <div>
+              <span class="badge bg-success">200 OK</span>
+            </div>
+            <div style="font-size:13px;color:var(--sq-text-subtle);">
+              El layout carga <strong>tokens.css → bootstrap.min.css → squadness.css</strong> en el orden correcto. Bootstrap hereda todos los tokens <code>--sq-*</code> automáticamente.
+            </div>
+          </div>
+        </div>
+        <div class="docs-code-content" data-panel="php-head-code" style="display:none;">
+          <pre>&lt;?php // partials/head.php ?&gt;
+&lt;meta charset="UTF-8" /&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+&lt;title&gt;&lt;?= htmlspecialchars($pageTitle ?? 'Mi App') ?&gt;&lt;/title&gt;
+
+&lt;!-- Fuentes --&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700
+  &amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet" /&gt;
+
+&lt;!-- 1. Tokens Squadness (--sq-* y overrides --bs-*) --&gt;
+&lt;link rel="stylesheet" href="/assets/squadness/tokens.css" /&gt;
+
+&lt;!-- 2. Bootstrap 5 --&gt;
+&lt;link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" /&gt;
+
+&lt;!-- 3. Componentes Squadness --&gt;
+&lt;link rel="stylesheet" href="/assets/squadness/squadness.css" /&gt;
+
+&lt;!-- 4. Estilos propios (opcional) --&gt;
+&lt;link rel="stylesheet" href="/assets/css/app.css" /&gt;</pre>
+        </div>
+        <div class="docs-code-content" data-panel="php-layout-code" style="display:none;">
+          <pre>&lt;?php
+// layout.php — incluir en cada página:
+// $pageTitle = 'Dashboard';
+// require 'layout.php';
+// ... contenido ...
+// require 'partials/footer.php';
+?&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;?php require __DIR__ . '/partials/head.php'; ?&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- Navbar superior --&gt;
+&lt;?php require __DIR__ . '/partials/navbar.php'; ?&gt;
+
+&lt;div class="d-flex" style="min-height:calc(100vh - 56px); margin-top:56px;"&gt;
+
+  &lt;!-- Sidebar (oculto en móvil via offcanvas) --&gt;
+  &lt;?php require __DIR__ . '/partials/sidebar.php'; ?&gt;
+
+  &lt;!-- Contenido principal --&gt;
+  &lt;main class="flex-grow-1 p-4" style="min-width:0;"&gt;</pre>
+        </div>
+      </div>
+
+      <!-- ── LARAVEL BLADE ── -->
+      <h2 class="docs-section-title" id="laravel">Laravel + Blade</h2>
+      <p style="font-size:14px;color:var(--sq-text-subtle);margin-bottom:12px;">Ejemplo completo del layout maestro Blade con soporte para stacks de CSS y JS.</p>
+
+      <div class="docs-preview-box">
+        <div class="docs-preview-tabs">
+          <button class="docs-tab-btn active" data-panel="blade-layout">resources/views/layouts/app.blade.php</button>
+          <button class="docs-tab-btn" data-panel="blade-page">Página hija (ejemplo)</button>
+        </div>
+        <div class="docs-code-content" data-panel="blade-layout" style="display:block;">
+          <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="{{ str_replace('_', '-', app()->getLocale()) }}"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;meta name="csrf-token" content="{{ csrf_token() }}" /&gt;
+  &lt;title&gt;@yield('title', config('app.name'))&lt;/title&gt;
+
+  &lt;!-- Fuentes --&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700
+    &amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet" /&gt;
+
+  &lt;!-- 1. Tokens --&gt;
+  &lt;link rel="stylesheet" href="{{ asset('assets/squadness/tokens.css') }}" /&gt;
+  &lt;!-- 2. Bootstrap 5 --&gt;
+  &lt;link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" /&gt;
+  &lt;!-- 3. Squadness --&gt;
+  &lt;link rel="stylesheet" href="{{ asset('assets/squadness/squadness.css') }}" /&gt;
+
+  @stack('styles')
+&lt;/head&gt;
+&lt;body&gt;
+
+  @include('partials.navbar')
+
+  &lt;div class="d-flex" style="min-height:calc(100vh - 56px);margin-top:56px;"&gt;
+    @include('partials.sidebar')
+    &lt;main class="flex-grow-1 p-4" style="min-width:0;"&gt;
+      @yield('content')
+    &lt;/main&gt;
+  &lt;/div&gt;
+
+  &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+  @stack('scripts')
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </div>
+        <div class="docs-code-content" data-panel="blade-page" style="display:none;">
+          <pre>@extends('layouts.app')
+@section('title', 'Usuarios')
+
+@section('content')
+  &lt;div class="d-flex justify-content-between align-items-center mb-4"&gt;
+    &lt;h1 class="h4 mb-0"&gt;Usuarios&lt;/h1&gt;
+    &lt;button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+            data-bs-target="#modalNuevoUsuario"&gt;
+      + Nuevo usuario
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  {{-- tabla de usuarios --}}
+  @include('users.partials.table', ['users' => $users])
+@endsection
+
+@push('scripts')
+&lt;script&gt;
+  // JS específico de esta página
+&lt;/script&gt;
+@endpush</pre>
+        </div>
+      </div>
+
+      <!-- ── CRUD COMPLETO ── -->
+      <h2 class="docs-section-title" id="crud">Ejemplo CRUD — Gestión de usuarios</h2>
+      <p style="font-size:14px;color:var(--sq-text-subtle);margin-bottom:12px;">Patrón completo: tabla con toolbar, modal de creación/edición, y formulario de validación. Listo para copiar y adaptar.</p>
+
+      <div class="docs-preview-box">
+        <div class="docs-preview-tabs">
+          <button class="docs-tab-btn active" data-panel="crud-preview">Preview</button>
+          <button class="docs-tab-btn" data-panel="crud-table">Tabla + toolbar</button>
+          <button class="docs-tab-btn" data-panel="crud-modal">Modal form</button>
+          <button class="docs-tab-btn" data-panel="crud-php">PHP controller</button>
+        </div>
+
+        <!-- PREVIEW -->
+        <div class="docs-preview-content" data-panel="crud-preview">
+          <!-- Toolbar -->
+          <div class="d-flex gap-2 align-items-center mb-3 flex-wrap">
+            <input type="text" class="form-control form-control-sm" style="max-width:240px;" placeholder="Buscar usuario…" />
+            <select class="form-select form-select-sm" style="max-width:160px;">
+              <option value="">Todos los roles</option>
+              <option>Admin</option>
+              <option>Editor</option>
+              <option>Viewer</option>
+            </select>
+            <div class="ms-auto">
+              <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#crudModal">+ Nuevo usuario</button>
+            </div>
+          </div>
+          <!-- Tabla -->
+          <div class="table-responsive">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" class="form-check-input" /></th>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Rol</th>
+                  <th>Estado</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td><span class="fw-medium">Ana García</span></td>
+                  <td style="font-size:13px;color:var(--sq-text-subtle);">ana@empresa.com</td>
+                  <td><span class="badge bg-primary">Admin</span></td>
+                  <td><span class="badge bg-success">Activo</span></td>
+                  <td class="text-end">
+                    <div class="dropdown">
+                      <button class="btn btn-ghost btn-sm px-2" data-bs-toggle="dropdown">⋯</button>
+                      <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                        <li><a class="dropdown-item text-danger" href="#">Eliminar</a></li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td><span class="fw-medium">Carlos López</span></td>
+                  <td style="font-size:13px;color:var(--sq-text-subtle);">carlos@empresa.com</td>
+                  <td><span class="badge bg-secondary">Editor</span></td>
+                  <td><span class="badge bg-warning">Inactivo</span></td>
+                  <td class="text-end">
+                    <div class="dropdown">
+                      <button class="btn btn-ghost btn-sm px-2" data-bs-toggle="dropdown">⋯</button>
+                      <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                        <li><a class="dropdown-item text-danger" href="#">Eliminar</a></li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td><span class="fw-medium">María Torres</span></td>
+                  <td style="font-size:13px;color:var(--sq-text-subtle);">maria@empresa.com</td>
+                  <td><span class="badge bg-info">Viewer</span></td>
+                  <td><span class="badge bg-success">Activo</span></td>
+                  <td class="text-end">
+                    <div class="dropdown">
+                      <button class="btn btn-ghost btn-sm px-2" data-bs-toggle="dropdown">⋯</button>
+                      <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                        <li><a class="dropdown-item text-danger" href="#">Eliminar</a></li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Paginación -->
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <span style="font-size:13px;color:var(--sq-text-subtlest);">Mostrando 1–3 de 24 usuarios</span>
+            <nav>
+              <ul class="pagination pagination-sm mb-0">
+                <li class="page-item disabled"><a class="page-link" href="#">‹</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">›</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <!-- TABLE CODE -->
+        <div class="docs-code-content" data-panel="crud-table" style="display:none;"><pre>&lt;?php // pages/users/index.php
+$pageTitle = 'Usuarios';
+require '../../layout.php';
+?&gt;
+
+&lt;!-- Toolbar --&gt;
+&lt;div class="d-flex gap-2 align-items-center mb-3 flex-wrap"&gt;
+  &lt;form method="GET" class="d-flex gap-2 flex-wrap"&gt;
+    &lt;input type="text" name="q" class="form-control form-control-sm"
+           style="max-width:240px;"
+           placeholder="Buscar usuario…"
+           value="&lt;?= htmlspecialchars($_GET['q'] ?? '') ?&gt;" /&gt;
+    &lt;select name="role" class="form-select form-select-sm" style="max-width:160px;"&gt;
+      &lt;option value=""&gt;Todos los roles&lt;/option&gt;
+      &lt;option value="admin"   &lt;?= ($_GET['role']??'')==='admin'?'selected':'' ?&gt;&gt;Admin&lt;/option&gt;
+      &lt;option value="editor"  &lt;?= ($_GET['role']??'')==='editor'?'selected':'' ?&gt;&gt;Editor&lt;/option&gt;
+      &lt;option value="viewer"  &lt;?= ($_GET['role']??'')==='viewer'?'selected':'' ?&gt;&gt;Viewer&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/form&gt;
+  &lt;div class="ms-auto"&gt;
+    &lt;button class="btn btn-primary btn-sm"
+            data-bs-toggle="modal" data-bs-target="#modalUsuario"&gt;
+      + Nuevo usuario
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tabla --&gt;
+&lt;div class="table-responsive"&gt;
+&lt;table class="docs-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;input type="checkbox" class="form-check-input" id="selectAll" /&gt;&lt;/th&gt;
+      &lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Email&lt;/th&gt;&lt;th&gt;Rol&lt;/th&gt;&lt;th&gt;Estado&lt;/th&gt;&lt;th&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+  &lt;?php foreach ($users as $user): ?&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;input type="checkbox" class="form-check-input row-check"
+               value="&lt;?= $user['id'] ?&gt;" /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class="fw-medium"&gt;&lt;?= htmlspecialchars($user['name']) ?&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td style="font-size:13px;color:var(--sq-text-subtle);"&gt;
+        &lt;?= htmlspecialchars($user['email']) ?&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge bg-primary"&gt;&lt;?= $user['role'] ?&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;
+        &lt;?php if ($user['active']): ?&gt;
+          &lt;span class="badge bg-success"&gt;Activo&lt;/span&gt;
+        &lt;?php else: ?&gt;
+          &lt;span class="badge bg-warning"&gt;Inactivo&lt;/span&gt;
+        &lt;?php endif; ?&gt;
+      &lt;/td&gt;
+      &lt;td class="text-end"&gt;
+        &lt;div class="dropdown"&gt;
+          &lt;button class="btn btn-ghost btn-sm px-2"
+                  data-bs-toggle="dropdown"&gt;⋯&lt;/button&gt;
+          &lt;ul class="dropdown-menu dropdown-menu-end"&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="edit.php?id=&lt;?= $user['id'] ?&gt;"&gt;Editar&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
+            &lt;li&gt;
+              &lt;form method="POST" action="delete.php"
+                    onsubmit="return confirm('¿Eliminar usuario?')"&gt;
+                &lt;input type="hidden" name="id" value="&lt;?= $user['id'] ?&gt;" /&gt;
+                &lt;button type="submit" class="dropdown-item text-danger"&gt;Eliminar&lt;/button&gt;
+              &lt;/form&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;?php endforeach; ?&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- Paginación --&gt;
+&lt;div class="d-flex justify-content-between align-items-center mt-2"&gt;
+  &lt;span style="font-size:13px;color:var(--sq-text-subtlest);"&gt;
+    Mostrando &lt;?= $from ?&gt;–&lt;?= $to ?&gt; de &lt;?= $total ?&gt; usuarios
+  &lt;/span&gt;
+  &lt;nav&gt;
+    &lt;ul class="pagination pagination-sm mb-0"&gt;
+      &lt;?php for ($p = 1; $p &lt;= $totalPages; $p++): ?&gt;
+        &lt;li class="page-item &lt;?= $p===$currentPage?'active':'' ?&gt;"&gt;
+          &lt;a class="page-link" href="?page=&lt;?= $p ?&gt;&amp;q=&lt;?= urlencode($_GET['q']??'') ?&gt;"&gt;
+            &lt;?= $p ?&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+      &lt;?php endfor; ?&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;
+
+&lt;?php require '../../partials/footer.php'; ?&gt;</pre></div>
+
+        <!-- MODAL CODE -->
+        <div class="docs-code-content" data-panel="crud-modal" style="display:none;"><pre>&lt;!-- Modal crear / editar usuario --&gt;
+&lt;div class="modal fade" id="modalUsuario" tabindex="-1" aria-hidden="true"&gt;
+  &lt;div class="modal-dialog modal-dialog-centered"&gt;
+    &lt;div class="modal-content"&gt;
+
+      &lt;div class="modal-header"&gt;
+        &lt;h5 class="modal-title" id="modalUsuarioTitle"&gt;Nuevo usuario&lt;/h5&gt;
+        &lt;button type="button" class="btn-close" data-bs-dismiss="modal"&gt;&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;form method="POST" action="save.php" id="formUsuario"
+            novalidate class="needs-validation"&gt;
+        &lt;input type="hidden" name="id" id="userId" value="" /&gt;
+        &lt;input type="hidden" name="_token" value="&lt;?= $_SESSION['csrf'] ?&gt;" /&gt;
+
+        &lt;div class="modal-body d-flex flex-column gap-3"&gt;
+
+          &lt;div&gt;
+            &lt;label class="form-label" for="userName"&gt;Nombre completo&lt;/label&gt;
+            &lt;input type="text" id="userName" name="name"
+                   class="form-control" required
+                   placeholder="Ej. Ana García" /&gt;
+            &lt;div class="invalid-feedback"&gt;El nombre es requerido.&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div&gt;
+            &lt;label class="form-label" for="userEmail"&gt;Email&lt;/label&gt;
+            &lt;input type="email" id="userEmail" name="email"
+                   class="form-control" required
+                   placeholder="ana@empresa.com" /&gt;
+            &lt;div class="invalid-feedback"&gt;Ingresa un email válido.&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class="row g-3"&gt;
+            &lt;div class="col-6"&gt;
+              &lt;label class="form-label" for="userRole"&gt;Rol&lt;/label&gt;
+              &lt;select id="userRole" name="role" class="form-select" required&gt;
+                &lt;option value=""&gt;Seleccionar…&lt;/option&gt;
+                &lt;option value="admin"&gt;Admin&lt;/option&gt;
+                &lt;option value="editor"&gt;Editor&lt;/option&gt;
+                &lt;option value="viewer"&gt;Viewer&lt;/option&gt;
+              &lt;/select&gt;
+              &lt;div class="invalid-feedback"&gt;Selecciona un rol.&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-6"&gt;
+              &lt;label class="form-label" for="userStatus"&gt;Estado&lt;/label&gt;
+              &lt;select id="userStatus" name="active" class="form-select"&gt;
+                &lt;option value="1"&gt;Activo&lt;/option&gt;
+                &lt;option value="0"&gt;Inactivo&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div id="passwordGroup"&gt;
+            &lt;label class="form-label" for="userPassword"&gt;
+              Contraseña &lt;span class="text-muted" style="font-size:12px;"&gt;(solo nuevo)&lt;/span&gt;
+            &lt;/label&gt;
+            &lt;input type="password" id="userPassword" name="password"
+                   class="form-control" minlength="8"
+                   placeholder="Mínimo 8 caracteres" /&gt;
+            &lt;div class="invalid-feedback"&gt;Mínimo 8 caracteres.&lt;/div&gt;
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+
+        &lt;div class="modal-footer"&gt;
+          &lt;button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal"&gt;Cancelar&lt;/button&gt;
+          &lt;button type="submit" class="btn btn-primary"&gt;Guardar&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// Abrir modal en modo edición
+document.querySelectorAll('[data-edit-user]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var user = JSON.parse(this.dataset.editUser);
+    document.getElementById('modalUsuarioTitle').textContent = 'Editar usuario';
+    document.getElementById('userId').value        = user.id;
+    document.getElementById('userName').value      = user.name;
+    document.getElementById('userEmail').value     = user.email;
+    document.getElementById('userRole').value      = user.role;
+    document.getElementById('userStatus').value    = user.active ? '1' : '0';
+    document.getElementById('passwordGroup').style.display = 'none';
+    new bootstrap.Modal(document.getElementById('modalUsuario')).show();
+  });
+});
+
+// Bootstrap validation
+document.getElementById('formUsuario').addEventListener('submit', function(e) {
+  if (!this.checkValidity()) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  this.classList.add('was-validated');
+});
+&lt;/script&gt;</pre></div>
+
+        <!-- PHP CONTROLLER -->
+        <div class="docs-code-content" data-panel="crud-php" style="display:none;"><pre>&lt;?php
+// pages/users/save.php — procesa crear y editar
+
+session_start();
+require_once '../../config/db.php';
+
+// CSRF
+if (!isset($_POST['_token']) || $_POST['_token'] !== $_SESSION['csrf']) {
+  http_response_code(403);
+  exit('CSRF mismatch');
+}
+
+$id    = (int)($_POST['id'] ?? 0);
+$name  = trim($_POST['name'] ?? '');
+$email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+$role  = in_array($_POST['role'], ['admin','editor','viewer']) ? $_POST['role'] : null;
+$active = (int)($_POST['active'] ?? 1);
+
+// Validación básica
+$errors = [];
+if (!$name)    $errors[] = 'El nombre es requerido.';
+if (!$email)   $errors[] = 'Email inválido.';
+if (!$role)    $errors[] = 'Rol inválido.';
+
+if ($errors) {
+  $_SESSION['flash_error'] = implode(' ', $errors);
+  header('Location: index.php');
+  exit;
+}
+
+if ($id === 0) {
+  // Crear
+  $password = password_hash($_POST['password'] ?? '', PASSWORD_DEFAULT);
+  $stmt = $pdo->prepare(
+    'INSERT INTO users (name, email, role, active, password, created_at)
+     VALUES (?, ?, ?, ?, ?, NOW())'
+  );
+  $stmt->execute([$name, $email, $role, $active, $password]);
+  $_SESSION['flash_success'] = 'Usuario creado correctamente.';
+} else {
+  // Editar
+  $stmt = $pdo->prepare(
+    'UPDATE users SET name=?, email=?, role=?, active=?, updated_at=NOW()
+     WHERE id=?'
+  );
+  $stmt->execute([$name, $email, $role, $active, $id]);
+  $_SESSION['flash_success'] = 'Usuario actualizado.';
+}
+
+header('Location: index.php');
+exit;</pre></div>
+      </div>
+
+      <!-- ── FLASH MESSAGES ── -->
+      <h2 class="docs-section-title" id="flash">Flash messages con Session</h2>
+      <p style="font-size:14px;color:var(--sq-text-subtle);margin-bottom:12px;">Patrón para mostrar alertas de éxito/error después de un redirect POST.</p>
+
+      <div class="docs-preview-box">
+        <div class="docs-preview-tabs">
+          <button class="docs-tab-btn active" data-panel="flash-preview">Preview</button>
+          <button class="docs-tab-btn" data-panel="flash-code">Código PHP</button>
+        </div>
+        <div class="docs-preview-content" data-panel="flash-preview">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>¡Listo!</strong> Usuario creado correctamente.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error:</strong> El email ya está registrado.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        </div>
+        <div class="docs-code-content" data-panel="flash-code" style="display:none;"><pre>&lt;?php // partials/flash.php
+session_start();
+?&gt;
+&lt;?php if (!empty($_SESSION['flash_success'])): ?&gt;
+  &lt;div class="alert alert-success alert-dismissible fade show" role="alert"&gt;
+    &lt;strong&gt;¡Listo!&lt;/strong&gt; &lt;?= htmlspecialchars($_SESSION['flash_success']) ?&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;?php unset($_SESSION['flash_success']); ?&gt;
+&lt;?php endif; ?&gt;
+
+&lt;?php if (!empty($_SESSION['flash_error'])): ?&gt;
+  &lt;div class="alert alert-danger alert-dismissible fade show" role="alert"&gt;
+    &lt;strong&gt;Error:&lt;/strong&gt; &lt;?= htmlspecialchars($_SESSION['flash_error']) ?&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;?php unset($_SESSION['flash_error']); ?&gt;
+&lt;?php endif; ?&gt;</pre></div>
+      </div>
+
+      <!-- ── DIST ── -->
+      <h2 class="docs-section-title" id="dist">Usar dist/ en producción</h2>
+      <p style="font-size:14px;color:var(--sq-text-subtle);margin-bottom:12px;">Para producción puedes usar el bundle pre-compilado de <code>dist/</code> y reducir el número de requests HTTP.</p>
+
+      <div class="docs-preview-box">
+        <div class="docs-code-content" style="display:block;"><pre>&lt;!-- Producción: 1 solo archivo Squadness (25 KB minificado) --&gt;
+&lt;link rel="stylesheet" href="/assets/dist/squadness-bootstrap.min.css" /&gt;
+&lt;link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" /&gt;
+
+&lt;!-- Nota: el orden importa.
+     squadness-bootstrap.min.css debe ir ANTES de bootstrap.min.css --&gt;</pre>
+        </div>
+      </div>
+
+      <table class="docs-table">
+        <thead><tr><th>Archivo</th><th>Tamaño</th><th>Contenido</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>dist/squadness-bootstrap.css</code></td>
+            <td>44 KB</td>
+            <td>Bundle completo sin minificar (desarrollo/debugging)</td>
+          </tr>
+          <tr>
+            <td><code>dist/squadness-bootstrap.min.css</code></td>
+            <td>25 KB</td>
+            <td>Bundle minificado para producción (42% más pequeño)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="getting-started.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Getting Started
+          </a>
+          <span></span>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link" href="#estructura">Estructura de carpetas</a>
+        <a class="docs-toc-link" href="#layout-php">Layout base PHP</a>
+        <a class="docs-toc-link" href="#laravel">Laravel + Blade</a>
+        <a class="docs-toc-link" href="#crud">Ejemplo CRUD</a>
+        <a class="docs-toc-link" href="#flash">Flash messages</a>
+        <a class="docs-toc-link" href="#dist">Usar dist/</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/nav.js"></script>
+</body>
+</html>

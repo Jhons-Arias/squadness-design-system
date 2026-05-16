@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">Card</h1>
+      <p class="docs-desc">Contenedor seleccionable con área de imagen, filas de datos y checkbox. Combina <code>.card</code> con <code>.sq-card-image</code> y soporta tres estados: Default, Hover y Active.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ CARD IMAGEN ════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="imagen">Card imagen</h2>
+      <p class="docs-section-desc">Variante seleccionable con área de imagen, filas de datos y checkbox. Usa la clase <code>.sq-card-image</code> sobre <code>.card</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="align-items:flex-end; gap:48px; flex-wrap:wrap;">
+
+          <!-- Default -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+            <div class="card sq-card-image" style="width:200px;">
+              <div class="sq-tooltip sq-tooltip-card">
+                <div class="sq-tooltip-row">
+                  <span class="sq-tooltip-label">Marianne Licea</span>
+                  <span class="sq-tooltip-value">Junio 12, 2026 — 10:07am</span>
+                </div>
+                <div class="sq-tooltip-inline">
+                  <span class="sq-tooltip-inline-label">Firmado por.</span>
+                  <span class="sq-tooltip-inline-value">Marianne Licea</span>
+                </div>
+              </div>
+              <div class="sq-card-checkbox">
+                <input class="form-check-input" type="checkbox" />
+              </div>
+              <div class="sq-card-img">
+                <div class="sq-card-img-placeholder">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="sq-card-info">
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Latitud:</span>
+                  <span class="sq-card-info-value">25.22863630</span>
+                </div>
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Longitud:</span>
+                  <span class="sq-card-info-value">-101.17133600</span>
+                </div>
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Sello:</span>
+                  <span class="sq-card-info-value">01d9-42e7</span>
+                </div>
+              </div>
+            </div>
+            <span class="docs-state-label">Default</span>
+          </div>
+
+          <!-- Hover (tooltip forzado visible) -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+            <div class="card sq-card-image" style="width:200px; background-color: var(--sq-surface-neutral-subtler);">
+              <!-- Tooltip forzado visible para la documentación -->
+              <div class="sq-tooltip sq-tooltip-card" style="display:flex;">
+                <div class="sq-tooltip-row">
+                  <span class="sq-tooltip-label">Marianne Licea</span>
+                  <span class="sq-tooltip-value">Junio 12, 2026 — 10:07am</span>
+                </div>
+                <div class="sq-tooltip-inline">
+                  <span class="sq-tooltip-inline-label">Firmado por.</span>
+                  <span class="sq-tooltip-inline-value">Marianne Licea</span>
+                </div>
+              </div>
+              <div class="sq-card-checkbox">
+                <input class="form-check-input" type="checkbox" />
+              </div>
+              <div class="sq-card-img">
+                <div class="sq-card-img-placeholder">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="sq-card-info">
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Latitud:</span>
+                  <span class="sq-card-info-value">25.22863630</span>
+                </div>
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Longitud:</span>
+                  <span class="sq-card-info-value">-101.17133600</span>
+                </div>
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Sello:</span>
+                  <span class="sq-card-info-value">01d9-42e7</span>
+                </div>
+              </div>
+            </div>
+            <span class="docs-state-label">Hover</span>
+          </div>
+
+          <!-- Active -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+            <div class="card sq-card-image active" style="width:200px;">
+              <div class="sq-card-checkbox">
+                <input class="form-check-input" type="checkbox" checked />
+              </div>
+              <div class="sq-card-img">
+                <div class="sq-card-img-placeholder">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="sq-card-info">
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Latitud:</span>
+                  <span class="sq-card-info-value">25.22863630</span>
+                </div>
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Longitud:</span>
+                  <span class="sq-card-info-value">-101.17133600</span>
+                </div>
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Sello:</span>
+                  <span class="sq-card-info-value">01d9-42e7</span>
+                </div>
+              </div>
+            </div>
+            <span class="docs-state-label">Active</span>
+          </div>
+
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"card sq-card-image"</span><span class="tag">&gt;</span>
+  <span class="cmt">&lt;!-- Tooltip (se muestra en hover automáticamente) --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip sq-tooltip-card"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-row"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-label"</span><span class="tag">&gt;</span>Marianne Licea<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-value"</span><span class="tag">&gt;</span>Junio 12, 2026 — 10:07am<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline-label"</span><span class="tag">&gt;</span>Firmado por.<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline-value"</span><span class="tag">&gt;</span>Marianne Licea<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-checkbox"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"checkbox"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-img"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="at">src</span>=<span class="str">"imagen.jpg"</span> <span class="at">alt</span>=<span class="str">""</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-info"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-info-row"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-label"</span><span class="tag">&gt;</span>Latitud:<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-value"</span><span class="tag">&gt;</span>25.22863630<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-info-row"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-label"</span><span class="tag">&gt;</span>Longitud:<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-value"</span><span class="tag">&gt;</span>-101.17133600<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-info-row"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-label"</span><span class="tag">&gt;</span>Sello:<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-value"</span><span class="tag">&gt;</span>01d9-42e7-9451-a07b<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- Active --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"card sq-card-image active"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-checkbox"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"checkbox"</span> <span class="at">checked</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-img"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="at">src</span>=<span class="str">"imagen.jpg"</span> <span class="at">alt</span>=<span class="str">""</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-info"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-info-row"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-label"</span><span class="tag">&gt;</span>Latitud:<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-value"</span><span class="tag">&gt;</span>25.22863630<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-info-row"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-label"</span><span class="tag">&gt;</span>Longitud:<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-value"</span><span class="tag">&gt;</span>-101.17133600<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-info-row"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-label"</span><span class="tag">&gt;</span>Sello:<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-card-info-value"</span><span class="tag">&gt;</span>01d9-42e7-9451-a07b<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ESTADOS ════════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="estados">Estados</h2>
+      <p class="docs-section-desc">La card admite tres estados de interacción que reflejan su situación en la interfaz.</p>
+
+      <!-- Default -->
+      <h3 class="docs-subsection-title" id="default">Default</h3>
+      <p class="docs-section-desc">Estado de reposo. El fondo usa <code>sq-surface-neutral-subtlest</code> y el borde <code>sq-border-default</code>. El checkbox aparece sin marcar. No se aplica ninguna clase adicional.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="align-items:flex-start;">
+          <div class="card sq-card-image" style="width:200px;">
+            <div class="sq-tooltip sq-tooltip-card">
+              <div class="sq-tooltip-row">
+                <span class="sq-tooltip-label">Marianne Licea</span>
+                <span class="sq-tooltip-value">Junio 12, 2026 — 10:07am</span>
+              </div>
+              <div class="sq-tooltip-inline">
+                <span class="sq-tooltip-inline-label">Firmado por.</span>
+                <span class="sq-tooltip-inline-value">Marianne Licea</span>
+              </div>
+            </div>
+            <div class="sq-card-checkbox">
+              <input class="form-check-input" type="checkbox" />
+            </div>
+            <div class="sq-card-img">
+              <div class="sq-card-img-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+                </svg>
+              </div>
+            </div>
+            <div class="sq-card-info">
+              <div class="sq-card-info-row">
+                <span class="sq-card-info-label">Latitud:</span>
+                <span class="sq-card-info-value">25.22863630</span>
+              </div>
+              <div class="sq-card-info-row">
+                <span class="sq-card-info-label">Longitud:</span>
+                <span class="sq-card-info-value">-101.17133600</span>
+              </div>
+              <div class="sq-card-info-row">
+                <span class="sq-card-info-label">Sello:</span>
+                <span class="sq-card-info-value">01d9-42e7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"card sq-card-image"</span><span class="tag">&gt;</span>
+  <span class="cmt">&lt;!-- Tooltip (se muestra automáticamente en :hover) --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip sq-tooltip-card"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-row"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-label"</span><span class="tag">&gt;</span>Marianne Licea<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-value"</span><span class="tag">&gt;</span>Junio 12, 2026 — 10:07am<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline-label"</span><span class="tag">&gt;</span>Firmado por.<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline-value"</span><span class="tag">&gt;</span>Marianne Licea<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hover -->
+      <h3 class="docs-subsection-title" id="hover">Hover</h3>
+      <p class="docs-section-desc">Al pasar el cursor, el fondo cambia a <code>sq-surface-neutral-subtler</code> y aparece un tooltip sobre la card con la información de firma. Se usa <code>.sq-tooltip.sq-tooltip-card</code> con <code>.sq-tooltip-row</code> para el label/valor y <code>.sq-tooltip-inline</code> para la firma. Se activa automáticamente en <code>:hover</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="align-items:flex-start;">
+          <div class="card sq-card-image" style="width:200px; background-color: var(--sq-surface-neutral-subtler);">
+            <div class="sq-tooltip sq-tooltip-card" style="display:flex;">
+              <div class="sq-tooltip-row">
+                <span class="sq-tooltip-label">Sello</span>
+                <span class="sq-tooltip-value">01d9-42e7-9451-a07b</span>
+              </div>
+              <div class="sq-tooltip-inline">
+                <span class="sq-tooltip-inline-label">Firmado por.</span>
+                <span class="sq-tooltip-inline-value">Marianne Licea</span>
+              </div>
+            </div>
+            <div class="sq-card-checkbox">
+              <input class="form-check-input" type="checkbox" />
+            </div>
+            <div class="sq-card-img">
+              <div class="sq-card-img-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+                </svg>
+              </div>
+            </div>
+            <div class="sq-card-info">
+              <div class="sq-card-info-row">
+                <span class="sq-card-info-label">Latitud:</span>
+                <span class="sq-card-info-value">25.22863630</span>
+              </div>
+              <div class="sq-card-info-row">
+                <span class="sq-card-info-label">Longitud:</span>
+                <span class="sq-card-info-value">-101.17133600</span>
+              </div>
+              <div class="sq-card-info-row">
+                <span class="sq-card-info-label">Sello:</span>
+                <span class="sq-card-info-value">01d9-42e7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"card sq-card-image"</span><span class="tag">&gt;</span>
+  <span class="cmt">&lt;!-- Tooltip visible en :hover --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip sq-tooltip-card"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-row"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-label"</span><span class="tag">&gt;</span>Marianne Licea<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-value"</span><span class="tag">&gt;</span>Junio 12, 2026 — 10:07am<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline-label"</span><span class="tag">&gt;</span>Firmado por.<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline-value"</span><span class="tag">&gt;</span>Marianne Licea<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active -->
+      <h3 class="docs-subsection-title" id="active">Active</h3>
+      <p class="docs-section-desc">Estado seleccionado. Añade la clase <code>.active</code> a la card. El fondo cambia a <code>sq-surface-brand-subtlest</code> y el borde a <code>sq-brand-active</code>. El checkbox queda marcado.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="align-items:flex-start;">
+          <div class="card sq-card-image active" style="width:200px;">
+            <div class="sq-card-checkbox">
+              <input class="form-check-input" type="checkbox" checked />
+            </div>
+            <div class="sq-card-img">
+              <div class="sq-card-img-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+                </svg>
+              </div>
+            </div>
+            <div class="sq-card-info">
+              <div class="sq-card-info-row">
+                <span class="sq-card-info-label">Latitud:</span>
+                <span class="sq-card-info-value">25.22863630</span>
+              </div>
+              <div class="sq-card-info-row">
+                <span class="sq-card-info-label">Longitud:</span>
+                <span class="sq-card-info-value">-101.17133600</span>
+              </div>
+              <div class="sq-card-info-row">
+                <span class="sq-card-info-label">Sello:</span>
+                <span class="sq-card-info-value">01d9-42e7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"card sq-card-image active"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-card-checkbox"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"checkbox"</span> <span class="at">checked</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="datepicker.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: DatePicker
+          </a>
+          <a href="table.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Table
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link active" href="#imagen">Card imagen</a>
+        <a class="docs-toc-link" href="#estados">Estados</a>
+        <a class="docs-toc-link" style="padding-left:1.25rem;" href="#default">Default</a>
+        <a class="docs-toc-link" style="padding-left:1.25rem;" href="#hover">Hover</a>
+        <a class="docs-toc-link" style="padding-left:1.25rem;" href="#active">Active</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+<script>
+  // Hacer interactivas las cards en los ejemplos de docs
+  // Click en cualquier parte de la card alterna el estado active + checkbox
+  document.querySelectorAll('.docs-example .sq-card-image').forEach(card => {
+    card.addEventListener('click', function (e) {
+      // Si el click fue directamente en el checkbox, dejar que actúe solo
+      // pero igualmente sincronizar el estado de la card
+      const cb = this.querySelector('.form-check-input');
+      if (e.target !== cb) {
+        // Toggle active en la card
+        this.classList.toggle('active');
+        // Sincronizar checkbox
+        if (cb) cb.checked = this.classList.contains('active');
+      } else {
+        // El checkbox fue el target: sincronizar clase active con su estado
+        this.classList.toggle('active', cb.checked);
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!--
+  SQUADNESS DS — Input
+  ───────────────────────────────────────────────────────────────
+  Clases clave: .form-control  .form-label  .form-text
+  Validación:   .is-valid | .is-invalid  +  .valid-feedback | .invalid-feedback
+-->
+
+<!-- ── Básico ───────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="input-basic">Nombre completo</label>
+  <input type="text" class="form-control" id="input-basic" placeholder="Ej. Ana Martínez" />
+</div>
+
+<!-- ── Con texto de ayuda ────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="input-email">Correo electrónico</label>
+  <input type="email" class="form-control" id="input-email" placeholder="correo@empresa.com" />
+  <div class="form-text">Nunca compartiremos tu correo con terceros.</div>
+</div>
+
+<!-- ── Contraseña ────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="input-password">Contraseña</label>
+  <input type="password" class="form-control" id="input-password" placeholder="Mínimo 8 caracteres" />
+</div>
+
+<!-- ── Válido ────────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="input-valid">Usuario</label>
+  <input type="text" class="form-control is-valid" id="input-valid" value="ana.martinez" />
+  <div class="valid-feedback">Usuario disponible.</div>
+</div>
+
+<!-- ── Inválido ──────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="input-invalid">Correo</label>
+  <input type="email" class="form-control is-invalid" id="input-invalid" value="correo-invalido" />
+  <div class="invalid-feedback">Ingresa un correo válido.</div>
+</div>
+
+<!-- ── Deshabilitado ─────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="input-disabled">ID de usuario</label>
+  <input type="text" class="form-control" id="input-disabled" value="USR-00142" disabled />
+  <div class="form-text">Este campo no es editable.</div>
+</div>
+
+<!-- ── Solo lectura ──────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="input-readonly">Token de API</label>
+  <input type="text" class="form-control" id="input-readonly"
+         value="sq_live_Kx9m2P..." readonly />
+</div>
+
+<!-- ── Con ícono (grupo de input) ───────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="input-search">Buscar usuario</label>
+  <div class="input-group">
+    <span class="input-group-text" style="background:var(--sq-surface-neutral-subtlest);border-color:var(--sq-border-subtle);">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="7" cy="7" r="5" stroke="var(--sq-text-subtlest)" stroke-width="1.5"/>
+        <path d="M11 11l2.5 2.5" stroke="var(--sq-text-subtlest)" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <input type="text" class="form-control" id="input-search" placeholder="Buscar por nombre o email..." />
+  </div>
+</div>
+
+<!-- ── Con botón adjunto ─────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label">Código de invitación</label>
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Pega tu código aquí" />
+    <button class="btn btn-primary">Aplicar</button>
+  </div>
+</div>
+
+<!-- ── Número ────────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="input-number">Cantidad</label>
+  <input type="number" class="form-control" id="input-number"
+         min="1" max="999" value="1" style="max-width:140px;" />
+</div>
+
+<!-- ── Fecha ─────────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="input-date">Fecha de inicio</label>
+  <input type="date" class="form-control" id="input-date" style="max-width:200px;" />
+</div>

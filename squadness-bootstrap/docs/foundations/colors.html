@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colores — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+  <style>
+    .color-row { display:flex; align-items:center; gap:16px; padding:10px 0; border-bottom:1px solid var(--sq-border-default); }
+    .color-row:last-child { border-bottom:none; }
+    .color-swatch { width:48px; height:48px; border-radius:var(--sq-radius-sm); border:1px solid var(--sq-border-subtle); flex-shrink:0; }
+    .color-name { font-family:var(--sq-font-mono); font-size:12px; color:var(--sq-brand); background:rgba(0,95,219,.07); padding:2px 6px; border-radius:var(--sq-radius-xs); }
+    .color-hex { font-family:var(--sq-font-mono); font-size:12px; color:var(--sq-text-subtlest); }
+    .color-desc { font-size:13px; color:var(--sq-text-subtle); flex:1; }
+    .color-group { margin-bottom:32px; }
+    .color-group-title { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.07em; color:var(--sq-text-subtlest); padding-bottom:8px; border-bottom:1px solid var(--sq-border-subtle); margin-bottom:4px; }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Foundations</p>
+      <h1 class="docs-title">Colores</h1>
+      <p class="docs-desc">Paleta de colores semánticos del sistema. Todos los tokens están disponibles como CSS custom properties <code>--sq-*</code> en <code>tokens.css</code>.</p>
+      <hr class="docs-divider" />
+
+      <!-- Marca -->
+      <h2 class="docs-section-title" id="brand">Colores de marca</h2>
+      <div class="color-group">
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-brand);"></div>
+          <div><code class="color-name">--sq-brand</code> <span class="color-hex">#005fdb</span></div>
+          <div class="color-desc">Color primario. Botones, links, foco activo.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-brand-hover);"></div>
+          <div><code class="color-name">--sq-brand-hover</code> <span class="color-hex">#0047a3</span></div>
+          <div class="color-desc">Estado hover de elementos de marca.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-brand-active);"></div>
+          <div><code class="color-name">--sq-brand-active</code> <span class="color-hex">#0a74ff</span></div>
+          <div class="color-desc">Estado active / focus ring.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-brand-pressed);"></div>
+          <div><code class="color-name">--sq-brand-pressed</code> <span class="color-hex">#004ec4</span></div>
+          <div class="color-desc">Estado pressed (mousedown).</div>
+        </div>
+      </div>
+
+      <!-- Superficies -->
+      <h2 class="docs-section-title" id="superficies">Superficies</h2>
+      <div class="color-group">
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-surface-raised);border-color:var(--sq-border-subtle);"></div>
+          <div><code class="color-name">--sq-surface-raised</code> <span class="color-hex">#ffffff</span></div>
+          <div class="color-desc">Cards, modales, dropdowns — elementos elevados.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-surface-default);"></div>
+          <div><code class="color-name">--sq-surface-default</code> <span class="color-hex">#f8fafc</span></div>
+          <div class="color-desc">Fondo de página.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-surface-neutral-subtlest);"></div>
+          <div><code class="color-name">--sq-surface-neutral-subtlest</code> <span class="color-hex">#f1f5f9</span></div>
+          <div class="color-desc">Hover de filas, inputs deshabilitados, fondos sutiles.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-surface-brand-subtlest);"></div>
+          <div><code class="color-name">--sq-surface-brand-subtlest</code> <span class="color-hex">#e5f1ff</span></div>
+          <div class="color-desc">Fondo de badges, nav-link activo, estado activo de items.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-surface-success-subtlest);"></div>
+          <div><code class="color-name">--sq-surface-success-subtlest</code> <span class="color-hex">#ecfcca</span></div>
+          <div class="color-desc">Fondo de alertas y badges de éxito.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-surface-warning-subtlest);"></div>
+          <div><code class="color-name">--sq-surface-warning-subtlest</code> <span class="color-hex">#ffedd4</span></div>
+          <div class="color-desc">Fondo de alertas y badges de advertencia.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-surface-error-subtlest);"></div>
+          <div><code class="color-name">--sq-surface-error-subtlest</code> <span class="color-hex">#feeded</span></div>
+          <div class="color-desc">Fondo de alertas y badges de error.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-surface-info-subtlest);"></div>
+          <div><code class="color-name">--sq-surface-info-subtlest</code> <span class="color-hex">#ccf1ff</span></div>
+          <div class="color-desc">Fondo de alertas y badges informativos.</div>
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <h2 class="docs-section-title" id="texto">Texto</h2>
+      <div class="color-group">
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-text-default);"></div>
+          <div><code class="color-name">--sq-text-default</code> <span class="color-hex">#020618</span></div>
+          <div class="color-desc">Texto principal, headings, labels.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-text-subtle);"></div>
+          <div><code class="color-name">--sq-text-subtle</code> <span class="color-hex">#314158</span></div>
+          <div class="color-desc">Texto secundario, descripciones, body text.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-text-subtlest);"></div>
+          <div><code class="color-name">--sq-text-subtlest</code> <span class="color-hex">#62748e</span></div>
+          <div class="color-desc">Placeholders, fechas, texto terciario.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-text-brand);"></div>
+          <div><code class="color-name">--sq-text-brand</code> <span class="color-hex">#005fdb</span></div>
+          <div class="color-desc">Links, texto de marca, badges brand.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-text-success);"></div>
+          <div><code class="color-name">--sq-text-success</code> <span class="color-hex">#3c6300</span></div>
+          <div class="color-desc">Texto en alertas y badges de éxito.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-text-warning);"></div>
+          <div><code class="color-name">--sq-text-warning</code> <span class="color-hex">#9f2d00</span></div>
+          <div class="color-desc">Texto en alertas y badges de advertencia.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-text-error);"></div>
+          <div><code class="color-name">--sq-text-error</code> <span class="color-hex">#6f040c</span></div>
+          <div class="color-desc">Texto en alertas, badges de error y mensajes de validación.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-text-info);"></div>
+          <div><code class="color-name">--sq-text-info</code> <span class="color-hex">#004a66</span></div>
+          <div class="color-desc">Texto en alertas y badges informativos.</div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:var(--sq-text-inverse);border:1px solid var(--sq-border-subtle);"></div>
+          <div><code class="color-name">--sq-text-inverse</code> <span class="color-hex">#ffffff</span></div>
+          <div class="color-desc">Texto sobre fondos oscuros o de color (botones primary).</div>
+        </div>
+      </div>
+
+      <!-- Bordes -->
+      <h2 class="docs-section-title" id="bordes">Bordes</h2>
+      <div class="color-group">
+        <div class="color-row">
+          <div class="color-swatch" style="background:transparent;border:3px solid var(--sq-border-subtle);"></div>
+          <div><code class="color-name">--sq-border-subtle</code></div>
+          <div class="color-desc">Borde principal de cards, inputs, tablas. <code>rgba(11,18,14,0.14)</code></div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:transparent;border:3px solid var(--sq-border-bold);"></div>
+          <div><code class="color-name">--sq-border-bold</code></div>
+          <div class="color-desc">Borde en hover, énfasis. <code>rgba(5,21,36,0.12)</code></div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" style="background:transparent;border:3px solid var(--sq-border-brand);"></div>
+          <div><code class="color-name">--sq-border-brand</code> <span class="color-hex">#0a74ff</span></div>
+          <div class="color-desc">Borde de inputs en foco, elementos de marca.</div>
+        </div>
+      </div>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <span></span>
+          <a href="typography.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Tipografía
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoi

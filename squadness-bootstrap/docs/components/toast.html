@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toast — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">Toast</h1>
+      <p class="docs-desc">Notificación compacta no intrusiva. Usa la clase <code>.sq-toast</code> junto con el modificador de variante (<code>.sq-toast--success</code>, <code>--warning</code>, <code>--info</code>, <code>--error</code>). Para el comportamiento de show/hide usa Bootstrap <code>.toast</code> en el mismo elemento.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ VARIANTES ════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="variantes">Variantes</h2>
+      <p class="docs-section-desc">Cinco variantes semánticas. Las variantes con ícono usan <code>gap: 8px</code> y el SVG hereda el color del texto mediante <code>currentColor</code>. La variante Default no lleva ícono y tiene <code>gap: 0</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="flex-direction:column; align-items:flex-start; gap:12px;">
+
+          <!-- Default -->
+          <div class="sq-toast">
+            <span class="sq-toast-text">Title</span>
+          </div>
+
+          <!-- Success -->
+          <div class="sq-toast sq-toast--success">
+            <svg class="sq-toast-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M5 8l2.5 2.5L11 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="sq-toast-text">Title</span>
+          </div>
+
+          <!-- Warning -->
+          <div class="sq-toast sq-toast--warning">
+            <svg class="sq-toast-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 2L14.5 13.5H1.5L8 2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M8 6.5v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="8" cy="11.5" r="0.75" fill="currentColor"/>
+            </svg>
+            <span class="sq-toast-text">Title</span>
+          </div>
+
+          <!-- Info -->
+          <div class="sq-toast sq-toast--info">
+            <svg class="sq-toast-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M8 7.5v3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="8" cy="5.5" r="0.75" fill="currentColor"/>
+            </svg>
+            <span class="sq-toast-text">Title</span>
+          </div>
+
+          <!-- Error -->
+          <div class="sq-toast sq-toast--error">
+            <svg class="sq-toast-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span class="sq-toast-text">Title</span>
+          </div>
+
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cmt">&lt;!-- Default --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-toast"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-toast-text"</span><span class="tag">&gt;</span>Title<span class="tag">&lt;/span&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- Success --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-toast sq-toast--success"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-toast-icon"</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;circle</span> <span class="at">cx</span>=<span class="str">"8"</span> <span class="at">cy</span>=<span class="str">"8"</span> <span class="at">r</span>=<span class="str">"6.5"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M5 8l2.5 2.5L11 5.5"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span> <span class="at">stroke-linecap</span>=<span class="str">"round"</span> <span class="at">stroke-linejoin</span>=<span class="str">"round"</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/svg&gt;</span>
+  <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-toast-text"</span><span class="tag">&gt;</span>Title<span class="tag">&lt;/span&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- Warning --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-toast sq-toast--warning"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-toast-icon"</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M8 2L14.5 13.5H1.5L8 2Z"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span> <span class="at">stroke-linejoin</span>=<span class="str">"round"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M8 6.5v3"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span> <span class="at">stroke-linecap</span>=<span class="str">"round"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;circle</span> <span class="at">cx</span>=<span class="str">"8"</span> <span class="at">cy</span>=<span class="str">"11.5"</span> <span class="at">r</span>=<span class="str">"0.75"</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/svg&gt;</span>
+  <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-toast-text"</span><span class="tag">&gt;</span>Title<span class="tag">&lt;/span&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- Info --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-toast sq-toast--info"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-toast-icon"</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;circle</span> <span class="at">cx</span>=<span class="str">"8"</span> <span class="at">cy</span>=<span class="str">"8"</span> <span class="at">r</span>=<span class="str">"6.5"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M8 7.5v3.5"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span> <span class="at">stroke-linecap</span>=<span class="str">"round"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;circle</span> <span class="at">cx</span>=<span class="str">"8"</span> <span class="at">cy</span>=<span class="str">"5.5"</span> <span class="at">r</span>=<span class="str">"0.75"</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/svg&gt;</span>
+  <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-toast-text"</span><span class="tag">&gt;</span>Title<span class="tag">&lt;/span&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- Error --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-toast sq-toast--error"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-toast-icon"</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;circle</span> <span class="at">cx</span>=<span class="str">"8"</span> <span class="at">cy</span>=<span class="str">"8"</span> <span class="at">r</span>=<span class="str">"6.5"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M5.5 5.5l5 5M10.5 5.5l-5 5"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span> <span class="at">stroke-linecap</span>=<span class="str">"round"</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/svg&gt;</span>
+  <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-toast-text"</span><span class="tag">&gt;</span>Title<span class="tag">&lt;/span&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ DEMO INTERACTIVO ════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="demo">Demo interactivo</h2>
+      <p class="docs-section-desc">Combina <code>.sq-toast</code> con la clase <code>.toast</code> de Bootstrap en el mismo elemento para obtener el comportamiento de show/hide animado. El toast aparece en la esquina inferior derecha.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="flex-direction:column; align-items:flex-start; gap:8px;">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-sm btn-secondary"
+                    onclick="showToast('sq-toast-demo-default')">Default</button>
+            <button class="btn btn-sm btn-success"
+                    onclick="showToast('sq-toast-demo-success')">Success</button>
+            <button class="btn btn-sm btn-warning"
+                    onclick="showToast('sq-toast-demo-warning')">Warning</button>
+            <button class="btn btn-sm btn-info"
+                    onclick="showToast('sq-toast-demo-info')">Info</button>
+            <button class="btn btn-sm btn-danger"
+                    onclick="showToast('sq-toast-demo-error')">Error</button>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cmt">&lt;!-- Contenedor de toasts — esquina inferior derecha --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"toast-container position-fixed bottom-0 end-0 p-3"</span> <span class="at">style</span>=<span class="str">"z-index:1090"</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;div</span> <span class="at">id</span>=<span class="str">"myToast"</span>
+       <span class="at">class</span>=<span class="str">"toast sq-toast sq-toast--success"</span>
+       <span class="at">role</span>=<span class="str">"alert"</span> <span class="at">aria-live</span>=<span class="str">"assertive"</span> <span class="at">aria-atomic</span>=<span class="str">"true"</span>
+       <span class="at">data-bs-delay</span>=<span class="str">"4000"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-toast-icon"</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;circle</span> <span class="at">cx</span>=<span class="str">"8"</span> <span class="at">cy</span>=<span class="str">"8"</span> <span class="at">r</span>=<span class="str">"6.5"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M5 8l2.5 2.5L11 5.5"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span> <span class="at">stroke-linecap</span>=<span class="str">"round"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/svg&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-toast-text"</span><span class="tag">&gt;</span>Cambios guardados correctamente<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- Trigger --&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">onclick</span>=<span class="str">"new bootstrap.Toast(document.getElementById('myToast')).show()"</span><span class="tag">&gt;</span>
+  Mostrar toast
+<span class="tag">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="modal.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Modal
+          </a>
+          <a href="tooltip.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Tooltip
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link active" href="#variantes">Variantes</a>
+        <a class="docs-toc-link" href="#demo">Demo interactivo</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+
+<!-- ══ TOAST CONTAINER (instancia global) ═══════════════════════ -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1090; gap:8px; display:flex; flex-direction:column;">
+
+  <div id="sq-toast-demo-default"
+       class="toast sq-toast"
+       role="alert" aria-live="assertive" aria-atomic="true"
+       data-bs-delay="4000" data-bs-autohide="true">
+    <span class="sq-toast-text">Enlace copiado al portapapeles</span>
+  </div>
+
+  <div id="sq-toast-demo-success"
+       class="toast sq-toast sq-toast--success"
+       role="alert" aria-live="assertive" aria-atomic="true"
+       data-bs-delay="4000" data-bs-autohide="true">
+    <svg class="sq-toast-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M5 8l2.5 2.5L11 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="sq-toast-text">Cambios guardados correctamente</span>
+  </div>
+
+  <div id="sq-toast-demo-warning"
+       class="toast sq-toast sq-toast--warning"
+       role="alert" aria-live="polite" aria-atomic="true"
+       data-bs-delay="4000" data-bs-autohide="true">
+    <svg class="sq-toast-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M8 2L14.5 13.5H1.5L8 2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8 6.5v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="8" cy="11.5" r="0.75" fill="currentColor"/>
+    </svg>
+    <span class="sq-toast-text">Tu sesión expirará en 5 minutos</span>
+  </div>
+
+  <div id="sq-toast-demo-info"
+       class="toast sq-toast sq-toast--info"
+       role="alert" aria-live="polite" aria-atomic="true"
+       data-bs-delay="4000" data-bs-autohide="true">
+    <svg class="sq-toast-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M8 7.5v3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="8" cy="5.5" r="0.75" fill="currentColor"/>
+    </svg>
+    <span class="sq-toast-text">Nueva versión disponible</span>
+  </div>
+
+  <div id="sq-toast-demo-error"
+       class="toast sq-toast sq-toast--error"
+       role="alert" aria-live="assertive" aria-atomic="true"
+       data-bs-delay="4000" data-bs-autohide="true">
+    <svg class="sq-toast-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    <span class="sq-toast-text">No fue posible conectar con el servidor</span>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+<script>
+  function showToast(id) {
+    const el = document.getElementById(id);
+    if (el) bootstrap.Toast.getOrCreateInstance(el).show();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">Input</h1>
+      <p class="docs-desc">Campo de texto de línea simple. Soporta tipos HTML5, validación, íconos adjuntos y grupos de input con botones.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ BÁSICO ════════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="basico">Básico</h2>
+      <p class="docs-section-desc">Clases clave: <code>.form-control</code> <code>.form-label</code> <code>.form-text</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example column">
+          <div class="mb-3">
+            <label class="form-label" for="input-basic">Nombre completo</label>
+            <input type="text" class="form-control" id="input-basic" placeholder="Ej. Ana Martínez" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="input-email">Correo electrónico</label>
+            <input type="email" class="form-control" id="input-email" placeholder="correo@empresa.com" />
+            <div class="form-text">Nunca compartiremos tu correo con terceros.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="input-password">Contraseña</label>
+            <input type="password" class="form-control" id="input-password" placeholder="Mínimo 8 caracteres" />
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"mb-3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-label"</span> <span class="at">for</span>=<span class="str">"input-basic"</span><span class="tag">&gt;</span>Nombre completo<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="at">type</span>=<span class="str">"text"</span> <span class="at">class</span>=<span class="str">"form-control"</span> <span class="at">id</span>=<span class="str">"input-basic"</span> <span class="at">placeholder</span>=<span class="str">"Ej. Ana Martínez"</span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"mb-3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-label"</span> <span class="at">for</span>=<span class="str">"input-email"</span><span class="tag">&gt;</span>Correo electrónico<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="at">type</span>=<span class="str">"email"</span> <span class="at">class</span>=<span class="str">"form-control"</span> <span class="at">id</span>=<span class="str">"input-email"</span> <span class="at">placeholder</span>=<span class="str">"correo@empresa.com"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-text"</span><span class="tag">&gt;</span>Nunca compartiremos tu correo con terceros.<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"mb-3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-label"</span> <span class="at">for</span>=<span class="str">"input-password"</span><span class="tag">&gt;</span>Contraseña<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="at">type</span>=<span class="str">"password"</span> <span class="at">class</span>=<span class="str">"form-control"</span> <span class="at">id</span>=<span class="str">"input-password"</span> <span class="at">placeholder</span>=<span class="str">"Mínimo 8 caracteres"</span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ VALIDACIÓN ════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="validacion">Validación</h2>
+      <p class="docs-section-desc">Usa <code>.is-valid</code> / <code>.is-invalid</code> junto con <code>.valid-feedback</code> / <code>.invalid-feedback</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example column">
+          <div class="mb-3">
+            <label class="form-label" for="input-valid">Usuario</label>
+            <input type="text" class="form-control is-valid" id="input-valid" value="ana.martinez" />
+            <div class="valid-feedback">Usuario disponible.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="input-invalid">Correo</label>
+            <input type="email" class="form-control is-invalid" id="input-invalid" value="correo-invalido" />
+            <div class="invalid-feedback">Ingresa un correo válido.</div>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"mb-3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-label"</span> <span class="at">for</span>=<span class="str">"input-valid"</span><span class="tag">&gt;</span>Usuario<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="at">type</span>=<span class="str">"text"</span> <span class="at">class</span>=<span class="str">"form-control is-valid"</span> <span class="at">id</span>=<span class="str">"input-valid"</span> <span class="at">value</span>=<span class="str">"ana.martinez"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"valid-feedback"</span><span class="tag">&gt;</span>Usuario disponible.<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"mb-3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-label"</span> <span class="at">for</span>=<span class="str">"input-invalid"</span><span class="tag">&gt;</span>Correo<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="at">type</span>=<span class="str">"email"</span> <span class="at">class</span>=<span class="str">"form-control is-invalid"</span> <span class="at">id</span>=<span class="str">"input-invalid"</span> <span class="at">value</span>=<span class="str">"correo-invalido"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"invalid-feedback"</span><span class="tag">&gt;</span>Ingresa un correo válido.<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ DESHABILITADO / SOLO LECTURA ══════════════════════════════ -->
+      <h2 class="docs-section-title" id="deshabilitado">Deshabilitado y solo lectura</h2>
+      <p class="docs-section-desc">Usa <code>disabled</code> para bloquear el campo y <code>readonly</code> para mostrar un valor no editable.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example column">
+          <div class="mb-3">
+            <label class="form-label" for="input-disabled">ID de usuario</label>
+            <input type="text" class="form-control" id="input-disabled" value="USR-00142" disabled />
+            <div class="form-text">Este campo no es editable.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="input-readonly">Token de API</label>
+            <input type="text" class="form-control" id="input-readonly"
+                   value="sq_live_Kx9m2P..." readonly />
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"mb-3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-label"</span> <span class="at">for</span>=<span class="str">"input-disabled"</span><span class="tag">&gt;</span>ID de usuario<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="at">type</span>=<span class="str">"text"</span> <span class="at">class</span>=<span class="str">"form-control"</span> <span class="at">id</span>=<span class="str">"input-disabled"</span> <span class="at">value</span>=<span class="str">"USR-00142"</span> <span class="at">disabled</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-text"</span><span class="tag">&gt;</span>Este campo no es editable.<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"mb-3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-label"</span> <span class="at">for</span>=<span class="str">"input-readonly"</span><span class="tag">&gt;</span>Token de API<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="at">type</span>=<span class="str">"text"</span> <span class="at">class</span>=<span class="str">"form-control"</span> <span class="at">id</span>=<span class="str">"input-readonly"</span>
+         <span class="at">value</span>=<span class="str">"sq_live_Kx9m2P..."</span> <span class="at">readonly</span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ GRUPOS DE INPUT ═══════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="grupos">Grupos de input</h2>
+      <p class="docs-section-desc">Usa <code>.input-group</code> para adjuntar íconos, texto o botones al input.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example column">
+          <div class="mb-3">
+            <label class="form-label" for="input-search">Buscar usuario</label>
+            <div class="input-group">
+              <span class="input-group-text" style="background:var(--sq-surface-neutral-subtlest);border-color:var(--sq-border-subtle);">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle cx="7" cy="7" r="5" stroke="var(--sq-text-subtlest)" stroke-width="1.5"/>
+                  <path d="M11 11l2.5 2.5" stroke="var(--sq-text-subtlest)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <input type="text" class="form-control" id="input-search" placeholder="Buscar por nombre o email..." />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Código de invitación</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Pega tu código aquí" />
+              <button class="btn btn-primary">Aplicar</button>
+            </div>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"mb-3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-label"</span> <span class="at">for</span>=<span class="str">"input-search"</span><span class="tag">&gt;</span>Buscar usuario<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"input-group"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"input-group-text"</span> <span class="at">style</span>=<span class="str">"background:var(--sq-surface-neutral-subtlest);border-color:var(--sq-border-subtle);"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;svg</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;circle</span> <span class="at">cx</span>=<span class="str">"7"</span> <span class="at">cy</span>=<span class="str">"7"</span> <span class="at">r</span>=<span class="str">"5"</span> <span class="at">stroke</span>=<span class="str">"var(--sq-text-subtlest)"</span> <span class="at">stroke-width</span>=<span class="str">"1.5"</span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M11 11l2.5 2.5"</span> <span class="at">stroke</span>=<span class="str">"var(--sq-text-subtlest)"</span> <span class="at">stroke-width</span>=<span class="str">"1.5"</span> <span class="at">stroke-linecap</span>=<span class="str">"round"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/svg&gt;</span>
+    <span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;input</span> <span class="at">type</span>=<span class="str">"text"</span> <span class="at">class</span>=<span class="str">"form-control"</span> <span class="at">id</span>=<span class="str">"input-search"</span> <span class="at">placeholder</span>=<span class="str">"Buscar por nombre o email..."</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"mb-3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-label"</span><span class="tag">&gt;</span>Código de invitación<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"input-group"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;input</span> <span class="at">type</span>=<span class="str">"text"</span> <span class="at">class</span>=<span class="str">"form-control"</span> <span class="at">placeholder</span>=<span class="str">"Pega tu código aquí"</span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"btn btn-primary"</span><span class="tag">&gt;</span>Aplicar<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="switch.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Switch
+          </a>
+          <a href="textarea.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Textarea
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link active" href="#basico">Básico</a>
+        <a class="docs-toc-link" href="#validacion">Validación</a>
+        <a class="docs-toc-link" href="#deshabilitado">Deshabilitado y solo lectura</a>
+        <a class="docs-toc-link" href="#grupos">Grupos de input</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

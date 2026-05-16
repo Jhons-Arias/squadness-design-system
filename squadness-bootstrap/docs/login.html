@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/tokens/tokens.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--sq-surface-neutral-subtlest, #f1f5f9);
+      font-family: var(--sq-font-body, 'Inter', sans-serif);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .login-card {
+      background: var(--sq-surface-default, #f8fafc);
+      border: 1px solid var(--sq-border-default, rgba(5,21,36,0.06));
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      margin: 16px;
+    }
+
+    .login-logo {
+      display: block;
+      height: 32px;
+      width: auto;
+      margin: 0 auto 32px;
+    }
+
+    .login-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--sq-text-default, #020618);
+      text-align: center;
+      margin: 0 0 6px;
+    }
+
+    .login-subtitle {
+      font-size: 13px;
+      color: var(--sq-text-subtle, #6b7a99);
+      text-align: center;
+      margin: 0 0 32px;
+    }
+
+    .login-field {
+      margin-bottom: 16px;
+    }
+
+    .login-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--sq-text-subtle, #6b7a99);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .login-input {
+      width: 100%;
+      height: 40px;
+      padding: 0 12px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--sq-text-default, #020618);
+      background: var(--sq-surface-default, #f8fafc);
+      border: 1.5px solid var(--sq-border-default, rgba(5,21,36,0.12));
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .login-input:focus {
+      border-color: var(--sq-brand, #005fdb);
+      box-shadow: 0 0 0 3px rgba(0,95,219,0.12);
+    }
+
+    .login-input.error {
+      border-color: var(--sq-border-error, #c0001a);
+      box-shadow: 0 0 0 3px rgba(192,0,26,0.10);
+    }
+
+    .login-error {
+      display: none;
+      font-size: 12px;
+      color: var(--sq-text-error, #6f040c);
+      margin-top: 8px;
+    }
+
+    .login-error.visible {
+      display: block;
+    }
+
+    .login-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 40px;
+      margin-top: 24px;
+      padding: 0 16px;
+      background: var(--sq-brand, #005fdb);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .login-btn:hover  { background: var(--sq-brand-hover, #0051bf); }
+    .login-btn:active { background: var(--sq-brand-active, #0047a8); }
+
+    .login-footer {
+      font-size: 11px;
+      color: var(--sq-text-subtlest, #90a1b9);
+      text-align: center;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <img class="login-logo" src="assets/logo/Logotipo Docs.png" alt="Squadness Design System" />
+
+    <h1 class="login-title">Acceso al Design System</h1>
+    <p class="login-subtitle">Ingresa la contraseña para continuar</p>
+
+    <form id="loginForm" autocomplete="off" novalidate>
+      <div class="login-field">
+        <label class="login-label" for="password">Contraseña</label>
+        <input
+          class="login-input"
+          type="password"
+          id="password"
+          placeholder="••••••••"
+          autofocus
+        />
+        <p class="login-error" id="loginError">Contraseña incorrecta. Inténtalo de nuevo.</p>
+      </div>
+
+      <button type="submit" class="login-btn">Ingresar</button>
+    </form>
+
+    <p class="login-footer">Squadness Design System &mdash; uso interno</p>
+  </div>
+
+  <script>
+    /* ── Configuración ───────────────────────────────────────────────
+       Cambia DOCS_PASSWORD por la contraseña que quieras usar.
+       ─────────────────────────────────────────────────────────────── */
+    var DOCS_PASSWORD   = 'squadness#2026';
+    var SESSION_KEY     = 'sq_docs_auth';
+    var SESSION_VALUE   = 'granted';
+
+    /* Si ya está autenticado, ir directo al inicio */
+    if (sessionStorage.getItem(SESSION_KEY) === SESSION_VALUE) {
+      window.location.replace('index.html');
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input    = document.getElementById('password');
+      var errorEl  = document.getElementById('loginError');
+      var entered  = input.value;
+
+      if (entered === DOCS_PASSWORD) {
+        sessionStorage.setItem(SESSION_KEY, SESSION_VALUE);
+        /* Redirigir a la página que intentaba visitar, o al inicio */
+        var redirect = sessionStorage.getItem('sq_docs_redirect') || 'index.html';
+        sessionStorage.removeItem('sq_docs_redirect');
+        window.location.replace(redirect);
+      } else {
+        input.classList.add('error');
+        errorEl.classList.add('visible');
+        input.value = '';
+        input.focus();
+        /* Limpiar el error al escribir de nuevo */
+        input.addEventListener('input', function clear() {
+          input.classList.remove('error');
+          errorEl.classList.remove('visible');
+          input.removeEventListener('input', clear);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

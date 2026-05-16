@@ -1,0 +1,46 @@
+<!--
+  SQUADNESS DS — Textarea
+  ───────────────────────────────────────────────────────────────
+  Clases clave: .form-control  (en un <textarea>)
+  El resize:vertical y min-height vienen de squadness.css.
+-->
+
+<!-- ── Básico ───────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="textarea-basic">Descripción</label>
+  <textarea class="form-control" id="textarea-basic" rows="3"
+            placeholder="Escribe una descripción..."></textarea>
+</div>
+
+<!-- ── Con contador de caracteres (JS) ──────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="textarea-counter">Notas internas</label>
+  <textarea class="form-control" id="textarea-counter" rows="4"
+            maxlength="500" placeholder="Máximo 500 caracteres..."
+            oninput="document.getElementById('counter').textContent=this.value.length"></textarea>
+  <div class="d-flex justify-content-between mt-1">
+    <div class="form-text">Visible solo para administradores.</div>
+    <div class="form-text"><span id="counter">0</span>/500</div>
+  </div>
+</div>
+
+<!-- ── Inválido ──────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="textarea-invalid">Motivo de rechazo</label>
+  <textarea class="form-control is-invalid" id="textarea-invalid" rows="3"></textarea>
+  <div class="invalid-feedback">Este campo es requerido.</div>
+</div>
+
+<!-- ── Deshabilitado ─────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="textarea-disabled">Comentarios del sistema</label>
+  <textarea class="form-control" id="textarea-disabled" rows="3"
+            disabled>Registro creado automáticamente el 2024-01-15.</textarea>
+</div>
+
+<!-- ── Altura fija (no redimensionable) ─────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="textarea-fixed">Respuesta predefinida</label>
+  <textarea class="form-control" id="textarea-fixed" rows="5"
+            style="resize:none;">Estimado cliente, gracias por contactarnos...</textarea>
+</div>

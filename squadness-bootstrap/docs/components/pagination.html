@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagination — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">Pagination</h1>
+      <p class="docs-desc">Componente de navegación entre páginas. Combina el selector de filas por página con el contador de página actual y los botones de navegación (<code>.sq-icon-btn</code>). Usa la clase <code>.sq-pagination</code> como contenedor.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ PAGINATION ════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="pagination">Pagination</h2>
+      <p class="docs-section-desc">Dos grupos alineados en fila: el selector de <em>rows per page</em> a la izquierda y el contador de página con los botones de navegación a la derecha. Gap de 16px entre grupos, 8px entre elementos dentro de cada grupo.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <nav class="sq-pagination" aria-label="Paginación">
+
+            <!-- Grupo: filas por página -->
+            <div class="sq-pagination-group">
+              <span class="sq-pagination-label">Row per page</span>
+              <div class="sq-pagination-rows">
+                <select id="rowsPerPage" aria-label="Filas por página">
+                  <option value="10" selected>10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Grupo: página actual -->
+            <div class="sq-pagination-group">
+              <span class="sq-pagination-info" id="pageInfo">Page 1 of 7</span>
+              <div class="sq-pagination-nav">
+                <button class="sq-icon-btn sq-icon-btn-outline" id="prevBtn" aria-label="Página anterior" disabled>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <button class="sq-icon-btn sq-icon-btn-outline" id="nextBtn" aria-label="Página siguiente">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+          </nav>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;nav</span> <span class="at">class</span>=<span class="str">"sq-pagination"</span> <span class="at">aria-label</span>=<span class="str">"Paginación"</span><span class="tag">&gt;</span>
+
+  <span class="cmt">&lt;!-- Grupo: filas por página --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-pagination-group"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-pagination-label"</span><span class="tag">&gt;</span>Row per page<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-pagination-rows"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;select</span> <span class="at">aria-label</span>=<span class="str">"Filas por página"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;option</span> <span class="at">value</span>=<span class="str">"10"</span> <span class="at">selected</span><span class="tag">&gt;</span>10<span class="tag">&lt;/option&gt;</span>
+        <span class="tag">&lt;option</span> <span class="at">value</span>=<span class="str">"25"</span><span class="tag">&gt;</span>25<span class="tag">&lt;/option&gt;</span>
+        <span class="tag">&lt;option</span> <span class="at">value</span>=<span class="str">"50"</span><span class="tag">&gt;</span>50<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;/select&gt;</span>
+      <span class="cmt">&lt;!-- chevron-down SVG --&gt;</span>
+      <span class="tag">&lt;svg</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M4 6l4 4 4-4"</span> <span class="at">stroke</span>=<span class="str">"#314158"</span> <span class="at">stroke-width</span>=<span class="str">"1.4"</span> <span class="at">stroke-linecap</span>=<span class="str">"round"</span> <span class="at">stroke-linejoin</span>=<span class="str">"round"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/svg&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+  <span class="cmt">&lt;!-- Grupo: página actual --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-pagination-group"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-pagination-info"</span><span class="tag">&gt;</span>Page 1 of 7<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-pagination-nav"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-icon-btn sq-icon-btn-outline"</span> <span class="at">aria-label</span>=<span class="str">"Página anterior"</span><span class="tag">&gt;</span>
+        <span class="cmt">&lt;!-- chevron-left SVG --&gt;</span>
+      <span class="tag">&lt;/button&gt;</span>
+      <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-icon-btn sq-icon-btn-outline"</span> <span class="at">aria-label</span>=<span class="str">"Página siguiente"</span><span class="tag">&gt;</span>
+        <span class="cmt">&lt;!-- chevron-right SVG --&gt;</span>
+      <span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;/nav&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ESTADOS DE BOTONES ════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="estados">Estados de navegación</h2>
+      <p class="docs-section-desc">Los botones de navegación usan el componente <code>.sq-icon-btn</code>. Cuando se está en la primera página, el botón anterior se deshabilita con el atributo <code>disabled</code>; en la última, el siguiente.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="gap: 32px; flex-direction: column; align-items: flex-start;">
+
+          <!-- Primera página (prev disabled) -->
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span class="docs-state-label">Primera página — anterior deshabilitado</span>
+            <nav class="sq-pagination">
+              <div class="sq-pagination-group">
+                <span class="sq-pagination-label">Row per page</span>
+                <div class="sq-pagination-rows">
+                  <select><option>10</option><option>25</option><option>50</option></select>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+              <div class="sq-pagination-group">
+                <span class="sq-pagination-info">Page 1 of 7</span>
+                <div class="sq-pagination-nav">
+                  <button class="sq-icon-btn sq-icon-btn-outline" disabled aria-label="Página anterior">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button class="sq-icon-btn sq-icon-btn-outline" aria-label="Página siguiente">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          <!-- Página intermedia (ambos activos) -->
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span class="docs-state-label">Página intermedia — ambos activos</span>
+            <nav class="sq-pagination">
+              <div class="sq-pagination-group">
+                <span class="sq-pagination-label">Row per page</span>
+                <div class="sq-pagination-rows">
+                  <select><option>10</option><option>25</option><option>50</option></select>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+              <div class="sq-pagination-group">
+                <span class="sq-pagination-info">Page 4 of 7</span>
+                <div class="sq-pagination-nav">
+                  <button class="sq-icon-btn sq-icon-btn-outline" aria-label="Página anterior">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button class="sq-icon-btn sq-icon-btn-outline" aria-label="Página siguiente">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          <!-- Última página (next disabled) -->
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span class="docs-state-label">Última página — siguiente deshabilitado</span>
+            <nav class="sq-pagination">
+              <div class="sq-pagination-group">
+                <span class="sq-pagination-label">Row per page</span>
+                <div class="sq-pagination-rows">
+                  <select><option>10</option><option>25</option><option>50</option></select>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+              <div class="sq-pagination-group">
+                <span class="sq-pagination-info">Page 7 of 7</span>
+                <div class="sq-pagination-nav">
+                  <button class="sq-icon-btn sq-icon-btn-outline" aria-label="Página anterior">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button class="sq-icon-btn sq-icon-btn-outline" disabled aria-label="Página siguiente">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cmt">&lt;!-- Botón deshabilitado con atributo disabled --&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-icon-btn sq-icon-btn-outline"</span> <span class="at">disabled</span><span class="tag">&gt;</span>
+  <span class="cmt">&lt;!-- chevron SVG --&gt;</span>
+<span class="tag">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="table.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Table
+          </a>
+          <a href="modal.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Modal
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link active" href="#pagination">Pagination</a>
+        <a class="docs-toc-link" href="#estados">Estados de navegación</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+<script>
+  // Demo interactivo del pagination principal
+  const totalPages = 7;
+  let currentPage = 1;
+
+  const pageInfo  = document.getElementById('pageInfo');
+  const prevBtn   = document.getElementById('prevBtn');
+  const nextBtn   = document.getElementById('nextBtn');
+
+  function updatePagination() {
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
+  }
+
+  prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; updatePagination(); } });
+  nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; updatePagination(); } });
+
+  updatePagination();
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!--
+  SQUADNESS DS — Toast
+  ───────────────────────────────────────────────────────────────
+  Requiere: Bootstrap JS
+  Clases clave: .toast  .toast-header  .toast-body
+  Posición: envolver en .toast-container con clases de posición Bootstrap.
+  Mostrar por JS: new bootstrap.Toast(el).show()
+  Los estilos (bg, border, radius, sombra) vienen de tokens.css via --bs-toast-*.
+-->
+
+<!-- ── Contenedor de toasts (esquina inferior derecha) ───────── -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1090;">
+
+  <!-- Toast de éxito -->
+  <div id="toast-success" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="me-2" style="flex-shrink:0;">
+        <circle cx="7" cy="7" r="6" fill="var(--sq-surface-success-subtlest)" stroke="var(--sq-border-success)" stroke-width="1.2"/>
+        <path d="M4.5 7l2 2 3-3.5" stroke="var(--sq-text-success)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <strong class="me-auto" style="font-size:13px;">Cambios guardados</strong>
+      <small style="color:var(--sq-text-subtlest);">Ahora</small>
+      <button type="button" class="btn-close btn-close-sm ms-2" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">
+      Los datos del usuario fueron actualizados correctamente.
+    </div>
+  </div>
+
+  <!-- Toast de error -->
+  <div id="toast-error" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="me-2" style="flex-shrink:0;">
+        <circle cx="7" cy="7" r="6" fill="var(--sq-surface-error-subtlest)" stroke="var(--sq-border-error)" stroke-width="1.2"/>
+        <path d="M5 5l4 4M9 5L5 9" stroke="var(--sq-text-error)" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <strong class="me-auto" style="font-size:13px;color:var(--sq-text-error);">Error al guardar</strong>
+      <small style="color:var(--sq-text-subtlest);">Ahora</small>
+      <button type="button" class="btn-close btn-close-sm ms-2" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">
+      No fue posible conectar con el servidor. Intenta de nuevo.
+    </div>
+  </div>
+
+  <!-- Toast de advertencia -->
+  <div id="toast-warning" class="toast" role="alert" aria-live="polite" aria-atomic="true">
+    <div class="toast-header">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="me-2" style="flex-shrink:0;">
+        <path d="M7 1.5L12.5 11.5H1.5L7 1.5Z" fill="var(--sq-surface-warning-subtlest)" stroke="var(--sq-border-warning)" stroke-width="1.2"/>
+        <path d="M7 5.5v3M7 10v.5" stroke="var(--sq-text-warning)" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <strong class="me-auto" style="font-size:13px;">Sesión por expirar</strong>
+      <small style="color:var(--sq-text-subtlest);">5 min</small>
+      <button type="button" class="btn-close btn-close-sm ms-2" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">
+      Tu sesión expirará pronto.
+      <a href="#" style="color:var(--sq-brand);font-weight:500;">Extender →</a>
+    </div>
+  </div>
+
+  <!-- Toast simple (sin header) -->
+  <div id="toast-simple" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" style="font-size:13px;">
+        Enlace copiado al portapapeles.
+      </div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Botones de disparo para demo ─────────────────────────── -->
+<div class="d-flex gap-2 flex-wrap">
+  <button class="btn btn-success btn-sm"
+    onclick="new bootstrap.Toast(document.getElementById('toast-success')).show()">
+    Toast éxito
+  </button>
+  <button class="btn btn-danger btn-sm"
+    onclick="new bootstrap.Toast(document.getElementById('toast-error')).show()">
+    Toast error
+  </button>
+  <button class="btn btn-warning btn-sm"
+    onclick="new bootstrap.Toast(document.getElementById('toast-warning')).show()">
+    Toast advertencia
+  </button>
+  <button class="btn btn-secondary btn-sm"
+    onclick="new bootstrap.Toast(document.getElementById('toast-simple')).show()">
+    Toast simple
+  </button>
+</div>

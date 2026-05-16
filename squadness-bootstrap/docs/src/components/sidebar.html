@@ -1,0 +1,122 @@
+<!--
+  SQUADNESS DS — Sidebar
+  ───────────────────────────────────────────────────────────────
+  Dos implementaciones:
+    A) Sidebar fija en desktop + offcanvas en móvil (recomendado para apps)
+    B) Offcanvas puro (siempre drawer, para dashboards simples)
+
+  Requiere: Bootstrap JS (para offcanvas en móvil)
+  Clases clave: .offcanvas  .offcanvas-start
+  Estilos vienen de tokens.css via --bs-offcanvas-*.
+-->
+
+<!-- ════════════════════════════════════════════════════════════
+     A) LAYOUT COMPLETO: Sidebar fija + Offcanvas en móvil
+     ════════════════════════════════════════════════════════════ -->
+
+<!-- TopBar con botón hamburguesa (solo visible en móvil) -->
+<nav class="navbar sticky-top">
+  <div class="container-fluid">
+    <!-- Botón hamburguesa — visible solo en pantallas <992px -->
+    <button class="btn btn-secondary btn-sm d-lg-none me-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sidebar-mobile"
+            aria-controls="sidebar-mobile"
+            aria-label="Abrir menú">
+      ☰
+    </button>
+    <a class="navbar-brand" href="#"><strong style="color:var(--sq-brand);">MiApp</strong></a>
+    <div class="ms-auto d-flex gap-2 align-items-center">
+      <span style="font-size:13px;color:var(--sq-text-subtlest);">Ana Martínez</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Layout principal -->
+<div class="d-flex" style="min-height:calc(100vh - 56px);">
+
+  <!-- Sidebar fija — visible en desktop (≥992px) -->
+  <aside class="d-none d-lg-flex flex-column"
+         style="width:260px;flex-shrink:0;border-right:1px solid var(--sq-border-subtle);
+                padding:16px;background:var(--sq-surface-raised);position:sticky;
+                top:56px;height:calc(100vh - 56px);overflow-y:auto;">
+    <nav class="d-flex flex-column gap-1">
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;
+                   letter-spacing:0.06em;color:var(--sq-text-subtlest);
+                   padding:8px 10px 4px;">Principal</span>
+      <a href="#" class="nav-link active">Dashboard</a>
+      <a href="#" class="nav-link">Usuarios</a>
+      <a href="#" class="nav-link">Reportes</a>
+
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;
+                   letter-spacing:0.06em;color:var(--sq-text-subtlest);
+                   padding:16px 10px 4px;">Sistema</span>
+      <a href="#" class="nav-link">Configuración</a>
+      <a href="#" class="nav-link">Integraciones</a>
+      <a href="#" class="nav-link" style="color:var(--sq-text-error);">Cerrar sesión</a>
+    </nav>
+  </aside>
+
+  <!-- Offcanvas sidebar — visible en móvil -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar-mobile" aria-labelledby="sidebar-mobile-title">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sidebar-mobile-title">
+        <strong style="color:var(--sq-brand);">MiApp</strong>
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body p-2">
+      <nav class="d-flex flex-column gap-1">
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;
+                     letter-spacing:0.06em;color:var(--sq-text-subtlest);
+                     padding:4px 10px 4px;">Principal</span>
+        <a href="#" class="nav-link active" data-bs-dismiss="offcanvas">Dashboard</a>
+        <a href="#" class="nav-link" data-bs-dismiss="offcanvas">Usuarios</a>
+        <a href="#" class="nav-link" data-bs-dismiss="offcanvas">Reportes</a>
+
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;
+                     letter-spacing:0.06em;color:var(--sq-text-subtlest);
+                     padding:12px 10px 4px;">Sistema</span>
+        <a href="#" class="nav-link" data-bs-dismiss="offcanvas">Configuración</a>
+        <a href="#" class="nav-link" data-bs-dismiss="offcanvas">Integraciones</a>
+        <a href="#" class="nav-link" data-bs-dismiss="offcanvas"
+           style="color:var(--sq-text-error);">Cerrar sesión</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <main class="flex-grow-1 p-4" style="max-width:100%;overflow-x:hidden;">
+    <!-- Tu contenido PHP aquí -->
+    <h1 style="font-size:22px;font-weight:700;">Dashboard</h1>
+    <p style="color:var(--sq-text-subtlest);">Bienvenido a tu panel de control.</p>
+  </main>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     B) NAV ITEMS INDIVIDUALES (para sidebar personalizada)
+     ════════════════════════════════════════════════════════════ -->
+
+<!-- Item activo -->
+<a href="#" class="nav-link active">Dashboard</a>
+
+<!-- Item normal -->
+<a href="#" class="nav-link">Usuarios</a>
+
+<!-- Item con badge -->
+<a href="#" class="nav-link d-flex justify-content-between align-items-center">
+  Reportes
+  <span class="badge bg-danger" style="font-size:9px;">3</span>
+</a>
+
+<!-- Separador de sección -->
+<span style="font-size:11px;font-weight:600;text-transform:uppercase;
+             letter-spacing:0.06em;color:var(--sq-text-subtlest);
+             padding:16px 10px 4px;display:block;">Sistema</span>
+
+<!-- Item deshabilitado -->
+<a href="#" class="nav-link disabled" aria-disabled="true" tabindex="-1">
+  Facturación
+</a>

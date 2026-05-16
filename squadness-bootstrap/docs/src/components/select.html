@@ -1,0 +1,70 @@
+<!--
+  SQUADNESS DS — Select
+  ───────────────────────────────────────────────────────────────
+  Clases clave: .form-select
+-->
+
+<!-- ── Básico ───────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="select-basic">Estado del registro</label>
+  <select class="form-select" id="select-basic">
+    <option value="" selected disabled>Seleccionar...</option>
+    <option value="active">Activo</option>
+    <option value="inactive">Inactivo</option>
+    <option value="pending">Pendiente</option>
+    <option value="archived">Archivado</option>
+  </select>
+</div>
+
+<!-- ── Con valor preseleccionado ─────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="select-preselected">Rol del usuario</label>
+  <select class="form-select" id="select-preselected">
+    <option value="admin">Administrador</option>
+    <option value="editor" selected>Editor</option>
+    <option value="viewer">Solo lectura</option>
+  </select>
+</div>
+
+<!-- ── Tamaño pequeño ────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="select-sm">Registros por página</label>
+  <select class="form-select form-select-sm" id="select-sm" style="max-width:120px;">
+    <option value="10" selected>10</option>
+    <option value="25">25</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
+  </select>
+</div>
+
+<!-- ── Inválido ──────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="select-invalid">Categoría</label>
+  <select class="form-select is-invalid" id="select-invalid">
+    <option value="" selected disabled>Seleccionar...</option>
+    <option value="a">Categoría A</option>
+    <option value="b">Categoría B</option>
+  </select>
+  <div class="invalid-feedback">Selecciona una categoría.</div>
+</div>
+
+<!-- ── Deshabilitado ─────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="select-disabled">País</label>
+  <select class="form-select" id="select-disabled" disabled>
+    <option>México</option>
+  </select>
+</div>
+
+<!-- ── Múltiple ──────────────────────────────────────────────── -->
+<div class="mb-3">
+  <label class="form-label" for="select-multiple">Módulos con acceso</label>
+  <select class="form-select" id="select-multiple" multiple size="5">
+    <option selected>Dashboard</option>
+    <option selected>Usuarios</option>
+    <option>Reportes</option>
+    <option>Configuración</option>
+    <option>Facturación</option>
+  </select>
+  <div class="form-text">Mantén Ctrl para seleccionar múltiples.</div>
+</div>

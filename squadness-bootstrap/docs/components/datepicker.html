@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DatePicker — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">DatePicker</h1>
+      <p class="docs-desc">Panel de calendario para selección de fechas individuales o rangos. El <strong>DatePicker</strong> muestra un solo mes navegable; el <strong>Date Range Picker</strong> combina opciones rápidas de período con campos de fecha personalizados.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ DATEPICKER ════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="datepicker">DatePicker</h2>
+      <p class="docs-section-desc">Panel de calendario standalone. Clic en el campo de fecha para abrir/cerrar el calendario. Navega entre meses con ← →. Clase base: <code>.sq-datepicker-panel</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="padding: 32px; align-items: flex-start; min-height: 380px;">
+          <!-- Trigger + panel anclado (position:relative como en popover) -->
+          <div style="position: relative; display: inline-block;">
+            <div class="sq-date-input" id="dp-trigger" style="width: 200px; cursor: pointer;">
+              <span id="dp-label">Seleccionar fecha</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2.33325 14.343V3.00965H4.46142V1.59949H5.48709V3.00965H10.5384V1.59949H11.5384V3.00965H13.6666V14.343H2.33325ZM3.33325 13.343H12.6666V6.88149H3.33325V13.343Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="sq-datepicker-panel" id="dp-panel" style="top: calc(100% + 4px); left: 0;">
+              <div class="sq-datepicker-header">
+                <button class="sq-datepicker-nav sq-datepicker-nav--prev" id="dp-prev">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <span class="sq-datepicker-month-label" id="dp-month-label">Mayo 2026</span>
+                <button class="sq-datepicker-nav sq-datepicker-nav--next" id="dp-next">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+              <div class="sq-datepicker-grid" id="dp-grid"></div>
+            </div>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cmt">&lt;!-- Wrapper con position:relative para anclar el panel --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">style</span>=<span class="str">"position:relative; display:inline-block;"</span><span class="tag">&gt;</span>
+
+  <span class="cmt">&lt;!-- Trigger de fecha --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-date-input"</span> <span class="at">id</span>=<span class="str">"dp-trigger"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">id</span>=<span class="str">"dp-label"</span><span class="tag">&gt;</span>Seleccionar fecha<span class="tag">&lt;/span&gt;</span>
+    <span class="cmt">&lt;!-- icono calendario --&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+  <span class="cmt">&lt;!-- Panel: agregar .is-open para mostrarlo --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-datepicker-panel"</span> <span class="at">id</span>=<span class="str">"dp-panel"</span>
+       <span class="at">style</span>=<span class="str">"top:calc(100% + 4px); left:0;"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-datepicker-header"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-datepicker-nav sq-datepicker-nav--prev"</span><span class="tag">&gt;</span><span class="cmt">&lt;!-- ← --&gt;</span><span class="tag">&lt;/button&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-datepicker-month-label"</span><span class="tag">&gt;</span>Mayo 2026<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-datepicker-nav sq-datepicker-nav--next"</span><span class="tag">&gt;</span><span class="cmt">&lt;!-- → --&gt;</span><span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-datepicker-grid"</span> <span class="at">id</span>=<span class="str">"dp-grid"</span><span class="tag">&gt;</span><span class="cmt">&lt;!-- generado por JS --&gt;</span><span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- API Table -->
+      <h3 class="docs-subsection-title" id="datepicker-api">Clases disponibles</h3>
+      <table class="docs-table">
+        <thead><tr><th>Clase</th><th>Descripción</th></tr></thead>
+        <tbody>
+          <tr><td><code>.sq-datepicker-panel</code></td><td>Contenedor del calendario (276px, oculto por defecto, <code>position: absolute</code>).</td></tr>
+          <tr><td><code>.sq-datepicker-panel.is-open</code></td><td>Muestra el panel.</td></tr>
+          <tr><td><code>.sq-datepicker-header</code></td><td>Fila de navegación: botones prev/next y label del mes.</td></tr>
+          <tr><td><code>.sq-datepicker-nav</code></td><td>Botón de navegación (28×28px). Modificadores: <code>--prev</code>, <code>--next</code>.</td></tr>
+          <tr><td><code>.sq-datepicker-month-label</code></td><td>Texto "Mes Año" centrado en el header.</td></tr>
+          <tr><td><code>.sq-datepicker-grid</code></td><td>Grid de 7 columnas × n filas con los días del mes.</td></tr>
+          <tr><td><code>.sq-datepicker-cell</code></td><td>Celda de día. Modificadores: <code>--header</code>, <code>--other</code>, <code>--today</code>, <code>--selected</code>.</td></tr>
+        </tbody>
+      </table>
+
+      <hr class="docs-divider" />
+
+      <!-- ══ DATE RANGE PICKER ══════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="date-range-picker">Date Range Picker</h2>
+      <p class="docs-section-desc">Panel completo de selección de rango. Combina <code>.sq-radio-date</code> con opciones rápidas y un calendario que aparece al seleccionar "Fechas personalizadas". Clase: <code>.sq-date-range-picker</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="padding: 32px; align-items: flex-start; min-height: 420px;">
+          <div class="sq-date-range-picker">
+            <div class="sq-radio-date">
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="drp-period" id="drp-24h" checked />
+                <span class="sq-radio-date-label">Últimas 24 horas</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="drp-period" id="drp-7d" />
+                <span class="sq-radio-date-label">Últimos 7 días</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="drp-period" id="drp-15d" />
+                <span class="sq-radio-date-label">Últimos 15 días</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="drp-period" id="drp-30d" />
+                <span class="sq-radio-date-label">Últimos 30 días</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="drp-period" id="drp-3m" />
+                <span class="sq-radio-date-label">Últimos 3 meses</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="drp-period" id="drp-6m" />
+                <span class="sq-radio-date-label">Últimos 6 meses</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="drp-period" id="drp-12m" />
+                <span class="sq-radio-date-label">Últimos 12 meses</span>
+              </label>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <label class="sq-radio-date-option" style="width:100%;">
+                  <input class="form-check-input" type="radio" name="drp-period" id="drp-custom" />
+                  <span class="sq-radio-date-label">Fechas personalizadas</span>
+                </label>
+                <div class="sq-radio-date-inputs">
+                  <div class="sq-date-input" id="drp-start-input" style="cursor:pointer;">
+                    <span id="drp-start-label">YYYY-M-D</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M2.33325 14.343V3.00965H4.46142V1.59949H5.48709V3.00965H10.5384V1.59949H11.5384V3.00965H13.6666V14.343H2.33325ZM3.33325 13.343H12.6666V6.88149H3.33325V13.343Z" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <div class="sq-date-input" id="drp-end-input" style="cursor:pointer;">
+                    <span id="drp-end-label">YYYY-M-D</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M2.33325 14.343V3.00965H4.46142V1.59949H5.48709V3.00965H10.5384V1.59949H11.5384V3.00965H13.6666V14.343H2.33325ZM3.33325 13.343H12.6666V6.88149H3.33325V13.343Z" fill="currentColor"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary w-100" id="drp-apply">Aplicar</button>
+
+            <!-- Calendario: position:absolute a la derecha del picker, oculto hasta clic -->
+            <div class="sq-date-range-picker__calendar" id="drp-calendar">
+              <div class="sq-datepicker-panel is-open" id="drp-panel">
+                <div class="sq-datepicker-header">
+                  <button class="sq-datepicker-nav sq-datepicker-nav--prev" id="drp-prev">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <span class="sq-datepicker-month-label" id="drp-month-label">Mayo 2026</span>
+                  <button class="sq-datepicker-nav sq-datepicker-nav--next" id="drp-next">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+                <div class="sq-datepicker-grid" id="drp-grid"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-date-range-picker"</span><span class="tag">&gt;</span>
+
+  <span class="cmt">&lt;!-- Opciones rápidas + fechas personalizadas --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-radio-date"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"sq-radio-date-option"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"period"</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-radio-date-label"</span><span class="tag">&gt;</span>Últimas 24 horas<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/label&gt;</span>
+    <span class="cmt">&lt;!-- más opciones... --&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">style</span>=<span class="str">"display:flex;flex-direction:column;gap:4px;"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"sq-radio-date-option"</span> <span class="at">style</span>=<span class="str">"width:100%;"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"period"</span> <span class="tag">/&gt;</span>
+        <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-radio-date-label"</span><span class="tag">&gt;</span>Fechas personalizadas<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;/label&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-radio-date-inputs"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-date-input"</span><span class="tag">&gt;</span><span class="tag">&lt;span&gt;</span>YYYY-M-D<span class="tag">&lt;/span&gt;</span><span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-date-input"</span><span class="tag">&gt;</span><span class="tag">&lt;span&gt;</span>YYYY-M-D<span class="tag">&lt;/span&gt;</span><span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+  <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"btn btn-primary w-100"</span><span class="tag">&gt;</span>Aplicar<span class="tag">&lt;/button&gt;</span>
+
+  <span class="cmt">&lt;!-- Calendario flotante (position:absolute) --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-date-range-picker__calendar is-open"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-datepicker-panel is-open"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-datepicker-header"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-datepicker-nav sq-datepicker-nav--prev"</span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
+        <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-datepicker-month-label"</span><span class="tag">&gt;</span>Mayo 2026<span class="tag">&lt;/span&gt;</span>
+        <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-datepicker-nav sq-datepicker-nav--next"</span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-datepicker-grid"</span><span class="tag">&gt;</span><span class="cmt">&lt;!-- generado por JS --&gt;</span><span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- API Table -->
+      <h3 class="docs-subsection-title" id="drp-api">Clases disponibles</h3>
+      <table class="docs-table">
+        <thead><tr><th>Clase</th><th>Descripción</th></tr></thead>
+        <tbody>
+          <tr><td><code>.sq-date-range-picker</code></td><td>Contenedor principal (292px, fondo <code>#f8fafc</code>, <code>position: relative</code>).</td></tr>
+          <tr><td><code>.sq-radio-date</code></td><td>Lista de opciones de período. Dentro del picker ocupa el 100% del ancho.</td></tr>
+          <tr><td><code>.sq-radio-date-option</code></td><td>Fila seleccionable: radio + label. Se usa como <code>&lt;label&gt;</code>.</td></tr>
+          <tr><td><code>.sq-radio-date-inputs</code></td><td>Fila con dos <code>.sq-date-input</code> para el rango personalizado.</td></tr>
+          <tr><td><code>.sq-date-input</code></td><td>Campo de fecha (32px, borde <code>#ddd</code>, 8px radius).</td></tr>
+          <tr><td><code>.sq-date-range-picker__calendar</code></td><td>Wrapper absoluto del calendario. Añadir <code>.is-open</code> para mostrarlo.</td></tr>
+          <tr><td><code>.sq-datepicker-cell--range-start / --range-end</code></td><td>Extremos del rango seleccionado.</td></tr>
+          <tr><td><code>.sq-datepicker-cell--in-range</code></td><td>Días dentro del rango (fondo brand subtlest).</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="select.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Select
+          </a>
+          <a href="card.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Card
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link" href="#datepicker">DatePicker</a>
+        <a class="docs-toc-link" href="#datepicker-api">— API</a>
+        <a class="docs-toc-link" href="#date-range-picker">Date Range Picker</a>
+        <a class="docs-toc-link" href="#drp-api">— API</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+<script>
+(function () {
+
+  const MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+                  'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const DAYS   = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+  function isSameDay(a, b) {
+    return b && a.getFullYear() === b.getFullYear() &&
+               a.getMonth()    === b.getMonth()    &&
+               a.getDate()     === b.getDate();
+  }
+  function formatDate(d) {
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  }
+
+  /* ─── Función genérica de render ────────────────────────────── */
+  function buildCalendar(gridId, labelId, year, month, selected, rangeStart, rangeEnd, onDayClick) {
+    const grid  = document.getElementById(gridId);
+    const label = document.getElementById(labelId);
+    if (!grid || !label) return;
+
+    label.textContent = MONTHS[month] + ' ' + year;
+
+    const firstDay = new Date(year, month, 1);
+    const lastDay  = new Date(year, month + 1, 0);
+    const startDow = firstDay.getDay();
+    const todayNow = new Date();
+    let html = '';
+
+    DAYS.forEach(d => {
+      html += `<div class="sq-datepicker-cell sq-datepicker-cell--header">${d}</div>`;
+    });
+
+    const prevLast = new Date(year, month, 0).getDate();
+    for (let i = startDow - 1; i >= 0; i--) {
+      html += `<div class="sq-datepicker-cell sq-datepicker-cell--other">${prevLast - i}</div>`;
+    }
+
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+      const d = new Date(year, month, day);
+      let cls = 'sq-datepicker-cell';
+      if (rangeStart && rangeEnd) {
+        if      (isSameDay(d, rangeStart))           cls += ' sq-datepicker-cell--range-start';
+        else if (isSameDay(d, rangeEnd))             cls += ' sq-datepicker-cell--range-end';
+        else if (d > rangeStart && d < rangeEnd)     cls += ' sq-datepicker-cell--in-range';
+        else if (isSameDay(d, todayNow))             cls += ' sq-datepicker-cell--today';
+      } else if (rangeStart && isSameDay(d, rangeStart)) {
+        cls += ' sq-datepicker-cell--selected';
+      } else if (selected && isSameDay(d, selected)) {
+        cls += ' sq-datepicker-cell--selected';
+      } else if (isSameDay(d, todayNow)) {
+        cls += ' sq-datepicker-cell--today';
+      }
+      html += `<div class="${cls}" data-day="${day}" data-month="${month}" data-year="${year}">${day}</div>`;
+    }
+
+    const total = startDow + lastDay.getDate();
+    const rem   = total % 7 === 0 ? 0 : 7 - (total % 7);
+    for (let day = 1; day <= rem; day++) {
+      html += `<div class="sq-datepicker-cell sq-datepicker-cell--other">${day}</div>`;
+    }
+
+    grid.innerHTML = html;
+
+    grid.querySelectorAll('.sq-datepicker-cell[data-month]').forEach(cell => {
+      cell.addEventListener('click', function (e) {
+        e.stopPropagation();
+        onDayClick(new Date(+this.dataset.year, +this.dataset.month, +this.dataset.day));
+      });
+    });
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     1. DATEPICKER STANDALONE
+  ══════════════════════════════════════════════════════════ */
+  let dpYear = 2026, dpMonth = 4;
+  let dpSelected = null;
+  const dpPanel   = document.getElementById('dp-panel');
+  const dpTrigger = document.getElementById('dp-trigger');
+
+  function renderDP() {
+    buildCalendar('dp-grid', 'dp-month-label', dpYear, dpMonth, dpSelected, null, null, function (date) {
+      dpSelected = date;
+      const lbl = document.getElementById('dp-label');
+      if (lbl) { lbl.textContent = formatDate(dpSelected); lbl.style.color = 'var(--sq-text-default)'; }
+      dpPanel.classList.remove('is-open'); // cierra al seleccionar
+      renderDP();
+    });
+  }
+
+  // Abrir/cerrar al clic en el trigger
+  dpTrigger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    const open = dpPanel.classList.toggle('is-open');
+    if (open) renderDP();
+  });
+
+  // Evitar que el clic dentro del panel lo cierre
+  dpPanel.addEventListener('click', function (e) { e.stopPropagation(); });
+
+  document.getElementById('dp-prev').addEventListener('click', function (e) {
+    e.stopPropagation();
+    dpMonth--; if (dpMonth < 0) { dpMonth = 11; dpYear--; } renderDP();
+  });
+  document.getElementById('dp-next').addEventListener('click', function (e) {
+    e.stopPropagation();
+    dpMonth++; if (dpMonth > 11) { dpMonth = 0; dpYear++; } renderDP();
+  });
+
+  /* ══════════════════════════════════════════════════════════
+     2. DATE RANGE PICKER
+  ══════════════════════════════════════════════════════════ */
+  let drpYear = 2026, drpMonth = 4;
+  let drpStart = null, drpEnd = null;
+  const drpCalendar   = document.getElementById('drp-calendar');
+  const drpStartInput = document.getElementById('drp-start-input');
+  const drpEndInput   = document.getElementById('drp-end-input');
+  const drpCustom     = document.getElementById('drp-custom');
+
+  function openDRPCalendar() {
+    drpCalendar.classList.add('is-open');
+    drpCustom.checked = true;
+    renderDRP();
+  }
+  function closeDRPCalendar() {
+    drpCalendar.classList.remove('is-open');
+  }
+
+  function renderDRP() {
+    buildCalendar('drp-grid', 'drp-month-label', drpYear, drpMonth, null, drpStart, drpEnd, function (clicked) {
+      if (!drpStart || (drpStart && drpEnd)) {
+        drpStart = clicked; drpEnd = null;
+      } else {
+        if (clicked < drpStart) { drpEnd = drpStart; drpStart = clicked; }
+        else drpEnd = clicked;
+        if (drpEnd) closeDRPCalendar(); // cierra al completar el rango
+      }
+      const sl = document.getElementById('drp-start-label');
+      const el = document.getElementById('drp-end-label');
+      if (sl) { sl.textContent = drpStart ? formatDate(drpStart) : 'YYYY-M-D'; sl.style.color = drpStart ? 'var(--sq-text-default)' : ''; }
+      if (el) { el.textContent = drpEnd   ? formatDate(drpEnd)   : 'YYYY-M-D'; el.style.color = drpEnd   ? 'var(--sq-text-default)' : ''; }
+      renderDRP();
+    });
+  }
+
+  // Abrir calendario al clic en cualquiera de los dos inputs
+  [drpStartInput, drpEndInput].forEach(input => {
+    input.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (drpCalendar.classList.contains('is-open')) {
+        closeDRPCalendar();
+      } else {
+        openDRPCalendar();
+      }
+    });
+  });
+
+  // Evitar que el clic dentro del calendario lo cierre
+  drpCalendar.addEventListener('click', function (e) { e.stopPropagation(); });
+
+  document.getElementById('drp-prev').addEventListener('click', function (e) {
+    e.stopPropagation();
+    drpMonth--; if (drpMonth < 0) { drpMonth = 11; drpYear--; } renderDRP();
+  });
+  document.getElementById('drp-next').addEventListener('click', function (e) {
+    e.stopPropagation();
+    drpMonth++; if (drpMonth > 11) { drpMonth = 0; drpYear++; } renderDRP();
+  });
+
+  // Radios de período
+  document.querySelectorAll('input[name="drp-period"]').forEach(r => {
+    r.addEventListener('change', function () {
+      if (this.id === 'drp-custom') {
+        openDRPCalendar();
+      } else {
+        closeDRPCalendar();
+        drpStart = null; drpEnd = null;
+        const sl = document.getElementById('drp-start-label');
+        const el = document.getElementById('drp-end-label');
+        if (sl) { sl.textContent = 'YYYY-M-D'; sl.style.color = ''; }
+        if (el) { el.textContent = 'YYYY-M-D'; el.style.color = ''; }
+      }
+    });
+  });
+
+  /* ── Cierre global al hacer clic fuera ──────────────────────── */
+  document.addEventListener('click', function () {
+    if (dpPanel) dpPanel.classList.remove('is-open');
+    closeDRPCalendar();
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!--
+  SQUADNESS DS — Badge
+  ───────────────────────────────────────────────────────────────
+  Clases clave: .badge  .bg-{variant}
+  Nota: las clases .bg-* están sobreescritas en squadness.css
+        para usar fondos sutiles con texto de color (estilo DS).
+  Para badge relleno (fondo sólido) usa: .text-bg-{variant}
+-->
+
+<!-- ── Variantes sutiles (estilo DS) ─────────────────────────── -->
+<span class="badge bg-primary">Brand</span>
+<span class="badge bg-success">Activo</span>
+<span class="badge bg-warning">Pendiente</span>
+<span class="badge bg-danger">Error</span>
+<span class="badge bg-info">Info</span>
+<span class="badge bg-secondary">Inactivo</span>
+
+<!-- ── Variantes sólidas (Bootstrap nativo) ──────────────────── -->
+<span class="badge text-bg-primary">Primary</span>
+<span class="badge text-bg-success">Success</span>
+<span class="badge text-bg-warning">Warning</span>
+<span class="badge text-bg-danger">Danger</span>
+
+<!-- ── Con contador ──────────────────────────────────────────── -->
+<button class="btn btn-secondary position-relative">
+  Notificaciones
+  <span class="position-absolute top-0 start-100 translate-middle badge bg-danger"
+        style="font-size:10px;">
+    3
+  </span>
+</button>
+
+<!-- ── Inline en texto ───────────────────────────────────────── -->
+<h5>Usuarios <span class="badge bg-primary">24</span></h5>
+<p>Estado: <span class="badge bg-success">Activo</span></p>
+
+<!-- ── En tabla (caso de uso más común) ──────────────────────── -->
+<td><span class="badge bg-success">Activo</span></td>
+<td><span class="badge bg-warning">Pendiente</span></td>
+<td><span class="badge bg-danger">Rechazado</span></td>
+<td><span class="badge bg-secondary">Inactivo</span></td>
+<td><span class="badge bg-info">En revisión</span></td>

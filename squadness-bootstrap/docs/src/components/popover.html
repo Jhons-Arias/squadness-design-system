@@ -1,0 +1,84 @@
+<!--
+  SQUADNESS DS — Popover
+  ───────────────────────────────────────────────────────────────
+  Requiere: Bootstrap JS
+  Activar con JS:
+    document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el =>
+      new bootstrap.Popover(el)
+    )
+  Los estilos (bg, border, radius, sombra) vienen de tokens.css via --bs-popover-*.
+-->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-bs-toggle="popover"]').forEach(function (el) {
+      new bootstrap.Popover(el);
+    });
+  });
+</script>
+
+<!-- ── Básico ────────────────────────────────────────────────── -->
+<button class="btn btn-secondary"
+        data-bs-toggle="popover"
+        data-bs-placement="right"
+        data-bs-title="Información del campo"
+        data-bs-content="El código de empresa es el identificador único asignado al darte de alta en el sistema.">
+  ¿Qué es el código de empresa?
+</button>
+
+<!-- ── Con HTML en el contenido ─────────────────────────────── -->
+<button class="btn btn-secondary"
+        data-bs-toggle="popover"
+        data-bs-placement="bottom"
+        data-bs-html="true"
+        data-bs-title="Requisitos de contraseña"
+        data-bs-content="
+          <ul class='mb-0 ps-3' style='font-size:13px;'>
+            <li>Mínimo 8 caracteres</li>
+            <li>Al menos una mayúscula</li>
+            <li>Al menos un número</li>
+            <li>Al menos un carácter especial</li>
+          </ul>
+        ">
+  Ver requisitos
+</button>
+
+<!-- ── Popover de confirmación rápida ───────────────────────── -->
+<!-- Para confirmar acciones sin abrir un modal completo -->
+<button class="btn btn-danger btn-sm"
+        data-bs-toggle="popover"
+        data-bs-placement="top"
+        data-bs-trigger="focus"
+        data-bs-html="true"
+        data-bs-title="¿Confirmar eliminación?"
+        data-bs-content="
+          <div class='d-flex gap-2 justify-content-end mt-1'>
+            <button class='btn btn-secondary btn-sm' onclick='bootstrap.Popover.getInstance(this.closest(\".popover\").previousElementSibling)?.hide()'>No</button>
+            <button class='btn btn-danger btn-sm'>Sí, eliminar</button>
+          </div>
+        ">
+  Eliminar
+</button>
+
+<!-- ── En ícono de ayuda ─────────────────────────────────────── -->
+<div class="d-flex align-items-center gap-2">
+  <label class="form-label mb-0">Token de autenticación</label>
+  <span tabindex="0"
+        data-bs-toggle="popover"
+        data-bs-placement="right"
+        data-bs-html="true"
+        data-bs-title="¿Cómo obtener el token?"
+        data-bs-content="
+          <ol class='ps-3 mb-0' style='font-size:12px;'>
+            <li>Ve a <strong>Configuración → API</strong></li>
+            <li>Clic en <strong>Generar token</strong></li>
+            <li>Copia y pega el valor aquí</li>
+          </ol>
+        "
+        style="cursor:help;width:18px;height:18px;border-radius:50%;
+               background:var(--sq-surface-neutral-subtler);
+               display:inline-flex;align-items:center;justify-content:center;
+               font-size:11px;font-weight:600;color:var(--sq-text-subtlest);">
+    ?
+  </span>
+</div>

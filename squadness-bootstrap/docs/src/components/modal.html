@@ -1,0 +1,144 @@
+<!--
+  SQUADNESS DS — Modal / Dialog
+  ───────────────────────────────────────────────────────────────
+  Requiere: Bootstrap JS (bootstrap.bundle.min.js)
+  Clases clave: .modal  .modal-dialog  .modal-content
+  Disparar con: data-bs-toggle="modal" data-bs-target="#modalId"
+  Los estilos (bg, border, radius, backdrop) vienen de tokens.css.
+-->
+
+<!-- ── Botones de disparo ────────────────────────────────────── -->
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-confirm">
+  Confirmar acción
+</button>
+<button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-delete">
+  Eliminar registro
+</button>
+<button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal-form">
+  Nuevo usuario
+</button>
+
+<!-- ── Modal de confirmación ─────────────────────────────────── -->
+<div class="modal fade" id="modal-confirm" tabindex="-1" aria-labelledby="modal-confirm-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-confirm-title">Confirmar acción</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas continuar con esta operación? Esta acción no se puede deshacer.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Modal destructivo ─────────────────────────────────────── -->
+<div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="modal-delete-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-delete-title" style="color:var(--sq-text-error);">
+          Eliminar registro
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        Estás a punto de eliminar el registro <strong>USR-00142</strong>.
+        Esta acción eliminará permanentemente todos sus datos asociados.
+        <div class="alert alert-danger mt-3 mb-0">
+          <strong>Atención:</strong> Esta operación no se puede deshacer.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Eliminar definitivamente</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Modal con formulario ──────────────────────────────────── -->
+<div class="modal fade" id="modal-form" tabindex="-1" aria-labelledby="modal-form-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-form-title">Nuevo usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" placeholder="Juan" />
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label">Apellido</label>
+            <input type="text" class="form-control" placeholder="García" />
+          </div>
+          <div class="col-12">
+            <label class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" placeholder="juan@empresa.com" />
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label">Rol</label>
+            <select class="form-select">
+              <option value="" disabled selected>Seleccionar...</option>
+              <option>Administrador</option>
+              <option>Editor</option>
+              <option>Solo lectura</option>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label">Departamento</label>
+            <select class="form-select">
+              <option value="" disabled selected>Seleccionar...</option>
+              <option>Tecnología</option>
+              <option>Ventas</option>
+              <option>Operaciones</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="modal-send-invite" checked />
+              <label class="form-check-label" for="modal-send-invite">
+                Enviar invitación por correo
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Crear usuario</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Modal de información (sin acciones) ───────────────────── -->
+<div class="modal fade" id="modal-info" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Términos de servicio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--sq-text-subtle);">
+          Al usar este servicio, aceptas los siguientes términos...
+        </p>
+        <!-- contenido largo aquí -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

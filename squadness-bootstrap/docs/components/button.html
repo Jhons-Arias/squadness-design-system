@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Button — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">Button</h1>
+      <p class="docs-desc">Usa los botones de Squadness para acciones en formularios, diálogos y más. Cinco variantes, tres tamaños y soporte completo de estados.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ VARIANTES ══════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="variantes">Variantes</h2>
+      <p class="docs-section-desc">Squadness incluye 5 variantes, cada una con un propósito semántico definido.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <button type="button" class="btn btn-primary">Primary</button>
+          <button type="button" class="btn btn-secondary">Secondary</button>
+          <button type="button" class="btn btn-outline-secondary">Outline</button>
+          <button type="button" class="btn btn-ghost">Ghost</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-primary"</span><span class="tag">&gt;</span>Primary<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-secondary"</span><span class="tag">&gt;</span>Secondary<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-outline-secondary"</span><span class="tag">&gt;</span>Outline<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-ghost"</span><span class="tag">&gt;</span>Ghost<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-danger"</span><span class="tag">&gt;</span>Delete<span class="tag">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ TAMAÑOS ════════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="tamanos">Tamaños</h2>
+      <p class="docs-section-desc">Usa <code>.btn-lg</code> o <code>.btn-sm</code> para tamaños adicionales.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <button type="button" class="btn btn-primary btn-lg">Large button</button>
+          <button type="button" class="btn btn-secondary btn-lg">Large button</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg">Large button</button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-primary btn-lg"</span><span class="tag">&gt;</span>Large button<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-secondary btn-lg"</span><span class="tag">&gt;</span>Large button<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-outline-secondary btn-lg"</span><span class="tag">&gt;</span>Large button<span class="tag">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <button type="button" class="btn btn-primary">Default button</button>
+          <button type="button" class="btn btn-secondary">Default button</button>
+          <button type="button" class="btn btn-outline-secondary">Default button</button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-primary"</span><span class="tag">&gt;</span>Default button<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-secondary"</span><span class="tag">&gt;</span>Default button<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-outline-secondary"</span><span class="tag">&gt;</span>Default button<span class="tag">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <button type="button" class="btn btn-primary btn-sm">Small button</button>
+          <button type="button" class="btn btn-secondary btn-sm">Small button</button>
+          <button type="button" class="btn btn-outline-secondary btn-sm">Small button</button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-primary btn-sm"</span><span class="tag">&gt;</span>Small button<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-secondary btn-sm"</span><span class="tag">&gt;</span>Small button<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-outline-secondary btn-sm"</span><span class="tag">&gt;</span>Small button<span class="tag">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ESTADO: DESHABILITADO ══════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="disabled">Estado deshabilitado</h2>
+      <p class="docs-section-desc">Haz que los botones luzcan inactivos agregando el atributo <code>disabled</code>. Para <code>&lt;a&gt;</code>, usa la clase <code>.disabled</code> junto con <code>aria-disabled="true"</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <button type="button" class="btn btn-primary" disabled>Primary</button>
+          <button type="button" class="btn btn-secondary" disabled>Secondary</button>
+          <button type="button" class="btn btn-outline-secondary" disabled>Outline</button>
+          <button type="button" class="btn btn-ghost" disabled>Ghost</button>
+          <button type="button" class="btn btn-danger" disabled>Delete</button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cm">&lt;!-- Botones HTML — atributo disabled --&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-primary"</span> <span class="at">disabled</span><span class="tag">&gt;</span>Primary<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-secondary"</span> <span class="at">disabled</span><span class="tag">&gt;</span>Secondary<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-outline-secondary"</span> <span class="at">disabled</span><span class="tag">&gt;</span>Outline<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-ghost"</span> <span class="at">disabled</span><span class="tag">&gt;</span>Ghost<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-danger"</span> <span class="at">disabled</span><span class="tag">&gt;</span>Delete<span class="tag">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- Links — clase .disabled --&gt;</span>
+<span class="tag">&lt;a</span> <span class="at">class</span>=<span class="str">"btn btn-primary disabled"</span> <span class="at">aria-disabled</span>=<span class="str">"true"</span><span class="tag">&gt;</span>Primary<span class="tag">&lt;/a&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ESTADO: ACTIVO ═════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="active">Estado activo</h2>
+      <p class="docs-section-desc">Fuerza el estado de presionado con la clase <code>.active</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <button type="button" class="btn btn-primary active">Primary</button>
+          <button type="button" class="btn btn-secondary active">Secondary</button>
+          <button type="button" class="btn btn-outline-secondary active">Outline</button>
+          <button type="button" class="btn btn-ghost active">Ghost</button>
+          <button type="button" class="btn btn-danger active">Delete</button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-primary active"</span><span class="tag">&gt;</span>Primary<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-secondary active"</span><span class="tag">&gt;</span>Secondary<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-outline-secondary active"</span><span class="tag">&gt;</span>Outline<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-ghost active"</span><span class="tag">&gt;</span>Ghost<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-danger active"</span><span class="tag">&gt;</span>Delete<span class="tag">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ESTADO: LOADING ════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="loading">Estado loading</h2>
+      <p class="docs-section-desc">Combina el spinner de Bootstrap con <code>disabled</code> para indicar que una acción está en progreso.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <button type="button" class="btn btn-primary d-inline-flex align-items-center gap-2" disabled>
+            <span class="spinner-border" style="width:14px;height:14px;border-width:2px;" role="status" aria-hidden="true"></span>
+            Guardando...
+          </button>
+          <button type="button" class="btn btn-secondary d-inline-flex align-items-center gap-2" disabled>
+            <span class="spinner-border" style="width:14px;height:14px;border-width:2px;" role="status" aria-hidden="true"></span>
+            Cargando...
+          </button>
+          <button type="button" class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" disabled>
+            <span class="spinner-border" style="width:14px;height:14px;border-width:2px;" role="status" aria-hidden="true"></span>
+            Procesando...
+          </button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span>
+        <span class="at">class</span>=<span class="str">"btn btn-primary d-inline-flex align-items-center gap-2"</span>
+        <span class="at">disabled</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"spinner-border"</span>
+         <span class="at">style</span>=<span class="str">"width:14px;height:14px;border-width:2px;"</span>
+         <span class="at">role</span>=<span class="str">"status"</span> <span class="at">aria-hidden</span>=<span class="str">"true"</span><span class="tag">&gt;&lt;/span&gt;</span>
+  Guardando...
+<span class="tag">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ CON ICONOS ═════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="iconos">Con iconos</h2>
+      <p class="docs-section-desc">Agrega <code>d-inline-flex align-items-center gap-1</code> para alinear un ícono SVG con el texto del botón.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <button type="button" class="btn btn-primary d-inline-flex align-items-center gap-1">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            Nuevo
+          </button>
+          <button type="button" class="btn btn-secondary d-inline-flex align-items-center gap-1">
+            Exportar
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l3 3M7 1l-3 3M7 1v8M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="btn btn-outline-secondary d-inline-flex align-items-center gap-1">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9.5 2.5l2 2-7 7H2.5v-2l7-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            Editar
+          </button>
+          <button type="button" class="btn btn-danger d-inline-flex align-items-center gap-1">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4h10M5 4V2.5h4V4M5.5 6.5v4M8.5 6.5v4M3 4l.7 7.5h6.6L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Eliminar
+          </button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cm">&lt;!-- Ícono izquierda --&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-primary d-inline-flex align-items-center gap-1"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="at">width</span>=<span class="str">"14"</span> <span class="at">height</span>=<span class="str">"14"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/svg&gt;</span>
+  Nuevo
+<span class="tag">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- Ícono derecha --&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-secondary d-inline-flex align-items-center gap-1"</span><span class="tag">&gt;</span>
+  Exportar
+  <span class="tag">&lt;svg</span> <span class="at">width</span>=<span class="str">"14"</span> <span class="at">height</span>=<span class="str">"14"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/svg&gt;</span>
+<span class="tag">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ANCHO COMPLETO ═════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="block">Ancho completo</h2>
+      <p class="docs-section-desc">Usa la utilidad <code>.w-100</code> de Bootstrap para que el botón ocupe todo el ancho de su contenedor.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example column">
+          <button type="button" class="btn btn-primary w-100">Guardar cambios</button>
+          <button type="button" class="btn btn-outline-secondary w-100">Cancelar</button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-primary w-100"</span><span class="tag">&gt;</span>Guardar cambios<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">type</span>=<span class="str">"button"</span> <span class="at">class</span>=<span class="str">"btn btn-outline-secondary w-100"</span><span class="tag">&gt;</span>Cancelar<span class="tag">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ REFERENCIA ══════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="referencia">Referencia de variantes</h2>
+      <table class="docs-table">
+        <thead>
+          <tr><th>Variante</th><th>Clase</th><th>Fondo</th><th>Texto</th><th>Uso recomendado</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><button class="btn btn-primary btn-sm">Primary</button></td>
+            <td><code>.btn.btn-primary</code></td>
+            <td><code>#005fdb</code></td>
+            <td><code>#f8ffff</code></td>
+            <td>Acción principal de la pantalla. Solo uno por sección.</td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-secondary btn-sm">Secondary</button></td>
+            <td><code>.btn.btn-secondary</code></td>
+            <td><code>#e2e8f0</code></td>
+            <td><code>#0f172b</code></td>
+            <td>Acción secundaria, acompañamiento al primary.</td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-outline-secondary btn-sm">Outline</button></td>
+            <td><code>.btn.btn-outline-secondary</code></td>
+            <td><code>#f8fafc</code></td>
+            <td><code>#314158</code></td>
+            <td>Acción terciaria, toolbars, filtros.</td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-secondary btn-sm">Ghost</button></td>
+            <td><code>.btn.btn-ghost</code></td>
+            <td>transparent</td>
+            <td><code>#0f172b</code></td>
+            <td>Acciones inline, filas de tabla, nav items.</td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-danger btn-sm">Delete</button></td>
+            <td><code>.btn.btn-danger</code></td>
+            <td><code>#9e0b15</code></td>
+            <td><code>#feeded</code></td>
+            <td>Acciones destructivas. Siempre con confirmación.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="docs-section-title" id="tamanos-ref">Referencia de tamaños</h2>
+      <table class="docs-table">
+        <thead>
+          <tr><th>Tamaño</th><th>Clase</th><th>Altura</th><th>Padding H/V</th><th>Font</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Large</td><td><code>.btn.btn-lg</code></td><td>~40px</td><td>10px / 24px</td><td>16px · 600</td></tr>
+          <tr><td>Default</td><td><code>.btn</code></td><td>36px</td><td>8px / 16px</td><td>14px · 600</td></tr>
+          <tr><td>Medium</td><td><code>.btn.btn-sm</code></td><td>32px</td><td>8px / 12px</td><td>12px · 600</td></tr>
+        </tbody>
+      </table>
+
+      <p class="docs-section-desc">Agrega siempre <code>type="button"</code> en botones dentro de un <code>&lt;form&gt;</code> para evitar un submit accidental.</p>
+      <p class="docs-section-desc">Usa solo <strong>un</strong> <code>btn-primary</code> por sección o formulario. Las acciones secundarias usan <code>btn-secondary</code> o <code>btn-outline-secondary</code>.</p>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="../foundations/spacing.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Anterior: Spacing
+          </a>
+          <a href="icon-button.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Icon Button
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link" href="#variantes">Variantes</a>
+        <a class="docs-toc-link" href="#tamanos">Tamaños</a>
+        <a class="docs-toc-link" href="#disabled">Estado deshabilitado</a>
+        <a class="docs-toc-link" href="#active">Estado activo</a>
+        <a class="docs-toc-link" href="#loading">Loading</a>
+        <a class="docs-toc-link" href="#iconos">Con iconos</a>
+        <a class="docs-toc-link" href="#block">Ancho completo</a>
+        <a class="docs-toc-link" href="#referencia">Referencia variantes</a>
+        <a class="docs-toc-link" href="#tamanos-ref">Referencia tamaños</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>
+                                           

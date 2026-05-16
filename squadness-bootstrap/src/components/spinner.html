@@ -1,0 +1,84 @@
+<!--
+  SQUADNESS DS — Spinner / Loading
+  ───────────────────────────────────────────────────────────────
+  Clases clave: .spinner-border  .spinner-grow
+  El color por defecto es var(--sq-brand) via --bs-spinner-color en tokens.css.
+-->
+
+<!-- ── Tipos ─────────────────────────────────────────────────── -->
+<div class="spinner-border" role="status">
+  <span class="visually-hidden">Cargando...</span>
+</div>
+
+<div class="spinner-grow" role="status">
+  <span class="visually-hidden">Cargando...</span>
+</div>
+
+<!-- ── Tamaños ───────────────────────────────────────────────── -->
+<div class="d-flex align-items-center gap-3">
+  <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+  <div class="spinner-border" role="status" aria-hidden="true"></div>
+  <div class="spinner-border" style="width:2.5rem;height:2.5rem;" role="status" aria-hidden="true"></div>
+</div>
+
+<!-- ── Colores semánticos ────────────────────────────────────── -->
+<div class="d-flex gap-3">
+  <div class="spinner-border" style="color:var(--sq-brand);" role="status" aria-hidden="true"></div>
+  <div class="spinner-border text-success" role="status" aria-hidden="true"></div>
+  <div class="spinner-border text-warning" role="status" aria-hidden="true"></div>
+  <div class="spinner-border text-danger" role="status" aria-hidden="true"></div>
+  <div class="spinner-border" style="color:var(--sq-text-subtlest);" role="status" aria-hidden="true"></div>
+</div>
+
+<!-- ── En botón ──────────────────────────────────────────────── -->
+<button class="btn btn-primary" disabled>
+  <span class="spinner-border spinner-border-sm me-2"
+        style="width:14px;height:14px;border-width:2px;"
+        role="status" aria-hidden="true"></span>
+  Guardando...
+</button>
+
+<button class="btn btn-secondary" disabled>
+  <span class="spinner-border spinner-border-sm me-2"
+        style="width:14px;height:14px;border-width:2px;"
+        role="status" aria-hidden="true"></span>
+  Exportando...
+</button>
+
+<!-- ── Estado de carga de página completa ────────────────────── -->
+<div class="d-flex flex-column align-items-center justify-content-center gap-3"
+     style="padding:64px 0;">
+  <div class="spinner-border" style="width:2rem;height:2rem;" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+  <p style="font-size:14px;color:var(--sq-text-subtlest);margin:0;">Cargando información...</p>
+</div>
+
+<!-- ── Estado de carga dentro de una card ────────────────────── -->
+<div class="card" style="max-width:400px;">
+  <div class="card-body d-flex align-items-center justify-content-center gap-3"
+       style="min-height:120px;">
+    <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+    <span style="font-size:14px;color:var(--sq-text-subtlest);">Cargando registros...</span>
+  </div>
+</div>
+
+<!-- ── Overlay de carga sobre un contenido ────────────────────── -->
+<div class="position-relative" style="min-height:160px;">
+  <!-- Contenido que se oscurece -->
+  <div style="opacity:0.3;pointer-events:none;">
+    <p>Contenido de la sección...</p>
+    <button class="btn btn-primary btn-sm">Acción</button>
+  </div>
+  <!-- Overlay con spinner -->
+  <div class="position-absolute top-0 start-0 w-100 h-100
+              d-flex align-items-center justify-content-center"
+       style="background:rgba(248,250,252,0.8);border-radius:var(--sq-radius-lg);">
+    <div class="d-flex flex-column align-items-center gap-2">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <span style="font-size:13px;color:var(--sq-text-subtlest);">Procesando...</span>
+    </div>
+  </div>
+</div>

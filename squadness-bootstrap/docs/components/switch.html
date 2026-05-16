@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Switch — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">Switch</h1>
+      <p class="docs-desc">Control de activación on/off. Reemplaza al checkbox cuando la acción tiene efecto inmediato sin necesidad de confirmar.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ BÁSICO ════════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="basico">Básico</h2>
+      <p class="docs-section-desc">Clases clave: <code>.form-check.form-switch</code> <code>.form-check-input[type="checkbox"][role="switch"]</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example column">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switch-basic" />
+            <label class="form-check-label" for="switch-basic">Activar notificaciones</label>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switch-on" checked />
+            <label class="form-check-label" for="switch-on">Modo oscuro</label>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check form-switch"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"checkbox"</span> <span class="at">role</span>=<span class="str">"switch"</span> <span class="at">id</span>=<span class="str">"switch-basic"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"switch-basic"</span><span class="tag">&gt;</span>Activar notificaciones<span class="tag">&lt;/label&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check form-switch"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"checkbox"</span> <span class="at">role</span>=<span class="str">"switch"</span> <span class="at">id</span>=<span class="str">"switch-on"</span> <span class="at">checked</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"switch-on"</span><span class="tag">&gt;</span>Modo oscuro<span class="tag">&lt;/label&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ DESHABILITADO ═════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="deshabilitado">Deshabilitado</h2>
+      <p class="docs-section-desc">Agrega el atributo <code>disabled</code> para bloquear la interacción.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example column">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switch-off-disabled" disabled />
+            <label class="form-check-label" for="switch-off-disabled" style="color:var(--sq-text-subtlest);">
+              Sincronización en tiempo real (no disponible)
+            </label>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check form-switch"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"checkbox"</span> <span class="at">role</span>=<span class="str">"switch"</span> <span class="at">id</span>=<span class="str">"switch-off-disabled"</span> <span class="at">disabled</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"switch-off-disabled"</span> <span class="at">style</span>=<span class="str">"color:var(--sq-text-subtlest);"</span><span class="tag">&gt;</span>
+    Sincronización en tiempo real (no disponible)
+  <span class="tag">&lt;/label&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ GRUPO DE SWITCHES ══════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="grupo">Grupo de switches</h2>
+      <p class="docs-section-desc">Switches en una tarjeta de preferencias, sin label visible pero con texto descriptivo adyacente.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="align-items:stretch;">
+          <div class="card w-100">
+            <div class="card-header">Preferencias de notificación</div>
+            <div class="card-body d-flex flex-column gap-3">
+              <div class="d-flex align-items-center">
+                <div>
+                  <div style="font-size:14px;font-weight:500;">Notificaciones de email</div>
+                  <div style="font-size:12px;color:var(--sq-text-subtlest);">Recibe resúmenes diarios</div>
+                </div>
+                <div class="form-check form-switch mb-0 ms-auto ps-0">
+                  <input class="form-check-input m-0" type="checkbox" role="switch" id="notif-email" checked />
+                </div>
+              </div>
+              <hr class="sq-divider my-0">
+              <div class="d-flex align-items-center">
+                <div>
+                  <div style="font-size:14px;font-weight:500;">Notificaciones push</div>
+                  <div style="font-size:12px;color:var(--sq-text-subtlest);">Alertas en el navegador</div>
+                </div>
+                <div class="form-check form-switch mb-0 ms-auto ps-0">
+                  <input class="form-check-input m-0" type="checkbox" role="switch" id="notif-push" />
+                </div>
+              </div>
+              <hr class="sq-divider my-0">
+              <div class="d-flex align-items-center">
+                <div>
+                  <div style="font-size:14px;font-weight:500;">Alertas de seguridad</div>
+                  <div style="font-size:12px;color:var(--sq-text-subtlest);">Inicios de sesión sospechosos</div>
+                </div>
+                <div class="form-check form-switch mb-0 ms-auto ps-0">
+                  <input class="form-check-input m-0" type="checkbox" role="switch" id="notif-security" checked />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"card w-100"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"card-header"</span><span class="tag">&gt;</span>Preferencias de notificación<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"card-body d-flex flex-column gap-3"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"d-flex align-items-center"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">style</span>=<span class="str">"font-size:14px;font-weight:500;"</span><span class="tag">&gt;</span>Notificaciones de email<span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">style</span>=<span class="str">"font-size:12px;color:var(--sq-text-subtlest);"</span><span class="tag">&gt;</span>Recibe resúmenes diarios<span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check form-switch mb-0 ms-auto ps-0"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input m-0"</span> <span class="at">type</span>=<span class="str">"checkbox"</span> <span class="at">role</span>=<span class="str">"switch"</span> <span class="at">checked</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;hr</span> <span class="at">class</span>=<span class="str">"sq-divider my-0"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"d-flex align-items-center"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">style</span>=<span class="str">"font-size:14px;font-weight:500;"</span><span class="tag">&gt;</span>Notificaciones push<span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">style</span>=<span class="str">"font-size:12px;color:var(--sq-text-subtlest);"</span><span class="tag">&gt;</span>Alertas en el navegador<span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check form-switch mb-0 ms-auto ps-0"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input m-0"</span> <span class="at">type</span>=<span class="str">"checkbox"</span> <span class="at">role</span>=<span class="str">"switch"</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;hr</span> <span class="at">class</span>=<span class="str">"sq-divider my-0"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"d-flex align-items-center"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">style</span>=<span class="str">"font-size:14px;font-weight:500;"</span><span class="tag">&gt;</span>Alertas de seguridad<span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">style</span>=<span class="str">"font-size:12px;color:var(--sq-text-subtlest);"</span><span class="tag">&gt;</span>Inicios de sesión sospechosos<span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check form-switch mb-0 ms-auto ps-0"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input m-0"</span> <span class="at">type</span>=<span class="str">"checkbox"</span> <span class="at">role</span>=<span class="str">"switch"</span> <span class="at">checked</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="radio-button.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Radio Button
+          </a>
+          <a href="input.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Input
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link active" href="#basico">Básico</a>
+        <a class="docs-toc-link" href="#deshabilitado">Deshabilitado</a>
+        <a class="docs-toc-link" href="#grupo">Grupo de switches</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

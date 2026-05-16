@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listado de Baños Portátiles — Squadness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: var(--sq-surface-subtle, #f8fafc); }
+  </style>
+</head>
+<body>
+
+<div class="sq-app">
+
+  <!-- ══ SIDEBAR ══════════════════════════════════════════════════════ -->
+  <div class="sq-sidebar" id="appSidebar">
+    <div class="sq-sidebar-header">
+      <img class="sq-sidebar-logo-expanded" src="../assets/logo/Logo Sideber.png" alt="Squadness" />
+      <img class="sq-sidebar-logo-collapsed" src="../assets/logo/Logo Sideber Collapsed.png" alt="Squadness" />
+    </div>
+
+    <nav class="sq-sidebar-menu">
+
+      <a class="sq-sidebar-item" href="#" title="Inicio">
+        <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 13.6579V6.15785L8 2.39502L13 6.15785V13.6579H9.26917V9.19635H6.73083V13.6579H3Z" fill="currentColor"/>
+        </svg>
+        <span class="sq-sidebar-item-label">Inicio</span>
+      </a>
+
+      <a class="sq-sidebar-item" href="#" title="Administración">
+        <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M7.39752 7.11048V2.84131H14.3334V7.11048H7.39752ZM1.66669 12.8413V8.57214H7.93585V12.8413H1.66669ZM1.66669 7.11048V2.84131H5.93585V7.11048H1.66669ZM11.2435 14.1105L11.1077 13.3156C10.9359 13.2644 10.7746 13.1997 10.6237 13.1215C10.4729 13.0433 10.33 12.9405 10.1949 12.8131L9.43335 13.0746L8.92052 12.2361L9.53335 11.7105C9.48547 11.5234 9.46152 11.3362 9.46152 11.149C9.46152 10.9618 9.48547 10.7746 9.53335 10.5875L8.92052 10.0618L9.43335 9.22331L10.1949 9.48498C10.3256 9.35753 10.4675 9.25475 10.6205 9.17664C10.7735 9.09842 10.9359 9.03364 11.1077 8.98231L11.2435 8.18748H12.2435L12.3795 8.98231C12.5513 9.03364 12.7137 9.09842 12.8667 9.17664C13.0197 9.25475 13.1616 9.35753 13.2924 9.48498L14.0539 9.22331L14.5667 10.0618L13.9539 10.5875C14.0017 10.7746 14.0257 10.9618 14.0257 11.149C14.0257 11.3362 14.0017 11.5234 13.9539 11.7105L14.5667 12.2361L14.0539 13.0746L13.2924 12.8131C13.1572 12.9405 13.0143 13.0433 12.8635 13.1215C12.7126 13.1997 12.5513 13.2644 12.3795 13.3156L12.2435 14.1105H11.2435ZM12.7237 12.1291C12.9934 11.8595 13.1282 11.5328 13.1282 11.149C13.1282 10.7652 12.9934 10.4385 12.7237 10.1688C12.454 9.89914 12.1273 9.76431 11.7435 9.76431C11.3599 9.76431 11.0332 9.89914 10.7635 10.1688C10.4939 10.4385 10.359 10.7652 10.359 11.149C10.359 11.5328 10.4939 11.8595 10.7635 12.1291C11.0332 12.3988 11.3599 12.5336 11.7435 12.5336C12.1273 12.5336 12.454 12.3988 12.7237 12.1291Z" fill="currentColor"/>
+        </svg>
+        <span class="sq-sidebar-item-label">Administración</span>
+      </a>
+
+      <!-- Baños Portátiles — expandido con subítem activo -->
+      <div class="sq-sidebar-group is-open" id="groupBanos">
+        <div class="sq-sidebar-group-trigger" title="Baños Portátiles">
+          <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M1.66669 13.6666V12.6666H3.00002V2.33325H13V12.6666H14.3334V13.6666H1.66669ZM7.25002 12.6666H8.75002V3.33325H7.25002V12.6666Z" fill="currentColor"/>
+          </svg>
+          <span class="sq-sidebar-group-label">Baños Portátiles</span>
+          <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+          </svg>
+        </div>
+        <div class="sq-sidebar-group-sub">
+          <div class="sq-sidebar-sub-divider"></div>
+          <div class="sq-sidebar-sub-list">
+            <a class="sq-sidebar-sub-item active" href="#">Estado de inventario</a>
+            <a class="sq-sidebar-sub-item" href="#">Servicios en almacén</a>
+            <a class="sq-sidebar-sub-item" href="#">Servicios de entrega</a>
+            <a class="sq-sidebar-sub-item" href="#">Servicios de recolección</a>
+            <a class="sq-sidebar-sub-item" href="#">Servicios realizados en campo</a>
+            <a class="sq-sidebar-sub-item" href="#">Servicios no realizados en campo</a>
+          </div>
+        </div>
+      </div>
+
+      <a class="sq-sidebar-item" href="#" title="Rutas de Trabajo">
+        <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8.85185 7.55623C9.08741 7.32078 9.20518 7.03684 9.20518 6.70439C9.20518 6.37195 9.08741 6.08795 8.85185 5.85239C8.61641 5.61695 8.33246 5.49923 8.00002 5.49923C7.66757 5.49923 7.38363 5.61695 7.14818 5.85239C6.91263 6.08795 6.79485 6.37195 6.79485 6.70439C6.79485 7.03684 6.91263 7.32078 7.14818 7.55623C7.38363 7.79167 7.66757 7.90939 8.00002 7.90939C8.33246 7.90939 8.61641 7.79167 8.85185 7.55623ZM8.00002 14.3389C6.32224 12.8851 5.06413 11.5322 4.22568 10.2801C3.38724 9.02784 2.96802 7.87823 2.96802 6.83123C2.96802 5.29278 3.46563 4.04728 4.46085 3.09473C5.45618 2.14217 6.63591 1.66589 8.00002 1.66589C9.36413 1.66589 10.5439 2.14217 11.5392 3.09473C12.5344 4.04728 13.032 5.29278 13.032 6.83123C13.032 7.87823 12.6128 9.02784 11.7744 10.2801C10.9359 11.5322 9.6778 12.8851 8.00002 14.3389Z" fill="currentColor"/>
+        </svg>
+        <span class="sq-sidebar-item-label">Rutas de Trabajo</span>
+      </a>
+
+      <div class="sq-sidebar-group" id="groupMapa">
+        <div class="sq-sidebar-group-trigger" title="Mapa Rutas">
+          <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M9.99998 13.641L5.99998 12.241L2.33331 13.6628V3.61033L5.99998 2.35899L9.99998 3.75899L13.6666 2.33716V12.409L9.99998 13.641ZM9.49998 12.418V4.61799L6.49998 3.56916V11.3692L9.49998 12.418Z" fill="currentColor"/>
+          </svg>
+          <span class="sq-sidebar-group-label">Mapa Rutas</span>
+          <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+          </svg>
+        </div>
+        <div class="sq-sidebar-group-sub">
+          <div class="sq-sidebar-sub-divider"></div>
+          <div class="sq-sidebar-sub-list">
+            <a class="sq-sidebar-sub-item" href="#">Vista general</a>
+            <a class="sq-sidebar-sub-item" href="#">Optimización</a>
+          </div>
+        </div>
+      </div>
+
+      <a class="sq-sidebar-item" href="#" title="Clientes">
+        <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3.4615 14.1539C3.29506 14.1539 3.14639 14.087 3.0155 13.9532C2.88472 13.8194 2.81934 13.6701 2.81934 13.5052V11.889C2.81934 10.9655 3.1065 10.1497 3.68084 9.44169C4.25517 8.73369 4.99361 8.28219 5.89617 8.08719C5.48428 8.37608 5.16506 8.73975 4.9385 9.17819C4.71195 9.61664 4.59867 10.0865 4.59867 10.5879V13.5039C4.59867 13.6164 4.61534 13.7289 4.64867 13.8414C4.682 13.9539 4.73334 14.0581 4.80267 14.1539H3.4615ZM5.72284 14.1539C5.5485 14.1539 5.39728 14.0895 5.26917 13.9607C5.14106 13.832 5.077 13.6802 5.077 13.5052V10.5885C5.077 9.8663 5.32956 9.2543 5.83467 8.75252C6.33978 8.25086 6.95345 8.00002 7.67567 8.00002H10.587C11.3059 8.00002 11.9162 8.25086 12.418 8.75252C12.9197 9.2543 13.1705 9.8663 13.1705 10.5885V11.5654C13.1705 12.2876 12.9197 12.8995 12.418 13.4012C11.9162 13.903 11.3042 14.1539 10.582 14.1539H5.72284ZM8 6.70253C7.32378 6.70253 6.75006 6.4673 6.27884 5.99686C5.8075 5.5263 5.57184 4.95214 5.57184 4.27436C5.57184 3.59658 5.8075 3.02247 6.27884 2.55202C6.75006 2.08147 7.32378 1.84619 8 1.84619C8.67622 1.84619 9.24995 2.08147 9.72117 2.55202C10.1925 3.02247 10.4282 3.59658 10.4282 4.27436C10.4282 4.95214 10.1925 5.5263 9.72117 5.99686C9.24995 6.4673 8.67622 6.70253 8 6.70253Z" fill="currentColor"/>
+        </svg>
+        <span class="sq-sidebar-item-label">Clientes</span>
+      </a>
+
+      <a class="sq-sidebar-item" href="#" title="Contratos">
+        <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M5.4615 8.43579H10.5385V7.43579H5.4615V8.43579ZM5.4615 10.359H10.5385V9.35896H5.4615V10.359ZM5.4615 12.282H8.5385V11.282H5.4615V12.282ZM3 14.3333V1.66663H9.5L13 5.16663V14.3333H3ZM9 5.66663H12L9 2.66663V5.66663Z" fill="currentColor"/>
+        </svg>
+        <span class="sq-sidebar-item-label">Contratos</span>
+      </a>
+
+      <a class="sq-sidebar-item" href="#" title="Localización Inventario">
+        <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M1.66669 13V3H14.3334V13H1.66669ZM7.56985 7.8275C7.45497 7.71261 7.39752 7.56928 7.39752 7.3975C7.39752 7.22572 7.45497 7.08233 7.56985 6.96733C7.68485 6.85233 7.82824 6.79483 8.00002 6.79483C8.1718 6.79483 8.31519 6.85233 8.43019 6.96733C8.54508 7.08233 8.60252 7.22572 8.60252 7.3975C8.60252 7.56928 8.54508 7.71261 8.43019 7.8275C8.31519 7.9425 8.1718 8 8.00002 8C7.82824 8 7.68485 7.9425 7.56985 7.8275ZM8.00002 11.0128C8.81024 10.3231 9.41452 9.68311 9.81285 9.093C10.2111 8.50278 10.4102 7.95767 10.4102 7.45767C10.4102 6.70133 10.1675 6.1005 9.68202 5.65517C9.19658 5.20983 8.63591 4.98717 8.00002 4.98717C7.36413 4.98717 6.80346 5.20983 6.31802 5.65517C5.83258 6.1005 5.58985 6.70133 5.58985 7.45767C5.58985 7.95767 5.78897 8.50278 6.18719 9.093C6.58552 9.68311 7.1898 10.3231 8.00002 11.0128Z" fill="currentColor"/>
+        </svg>
+        <span class="sq-sidebar-item-label">Localización Inventario</span>
+      </a>
+
+      <a class="sq-sidebar-item" href="#" title="Secuencias para rutas">
+        <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M5.33333 12.3333C4.12622 12.3333 3.10222 11.913 2.26133 11.0723C1.42044 10.2317 1 9.20802 1 8.00113C1 6.79435 1.42044 5.77024 2.26133 4.92879C3.10222 4.08735 4.12622 3.66663 5.33333 3.66663H10.6667C11.8738 3.66663 12.8978 4.08696 13.7387 4.92763C14.5796 5.76818 15 6.7919 15 7.99879C15 9.20557 14.5796 10.2297 13.7387 11.0711C12.8978 11.9126 11.8738 12.3333 10.6667 12.3333H5.33333ZM6 7.49996C6 8.13496 6.21067 8.69352 6.632 9.17563C7.05345 9.65763 7.50944 10.1033 8 10.5128C8.49056 10.1033 8.94656 9.65763 9.368 9.17563C9.78933 8.69352 10 8.13496 10 7.49996C10 6.94607 9.80522 6.47429 9.41567 6.08463C9.02611 5.69485 8.5545 5.49996 8.00083 5.49996C7.44728 5.49996 6.97544 5.69485 6.58533 6.08463C6.19511 6.47429 6 6.94607 6 7.49996ZM7.525 7.80829C7.39722 7.68052 7.33333 7.52218 7.33333 7.33329C7.33333 7.1444 7.39722 6.98607 7.525 6.85829C7.65278 6.73051 7.81111 6.66663 8 6.66663C8.18889 6.66663 8.34722 6.73051 8.475 6.85829C8.60278 6.98607 8.66667 7.1444 8.66667 7.33329C8.66667 7.52218 8.60278 7.68052 8.475 7.80829C8.34722 7.93607 8.18889 7.99996 8 7.99996C7.81111 7.99996 7.65278 7.93607 7.525 7.80829Z" fill="currentColor"/>
+        </svg>
+        <span class="sq-sidebar-item-label">Secuencias para rutas</span>
+      </a>
+
+      <a class="sq-sidebar-item" href="#" title="Bitácora de Incidentes">
+        <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4.07702 11.2564H5.25635V10.077H4.07702V11.2564ZM4.16669 8.92321H5.16669V4.83337H4.16669V8.92321ZM7.50002 11.1667H11.8334V10.1667H7.50002V11.1667ZM7.50002 8.50004H11.8334V7.50004H7.50002V8.50004ZM7.50002 5.83337H11.8334V4.83337H7.50002V5.83337ZM1.66669 13.6667V2.33337H14.3334V13.6667H1.66669Z" fill="currentColor"/>
+        </svg>
+        <span class="sq-sidebar-item-label">Bitácora de Incidentes</span>
+      </a>
+
+      <a class="sq-sidebar-item" href="#" title="Evidencias Servicios">
+        <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M9.92636 9.67487C10.4541 9.1461 10.718 8.50399 10.718 7.74854C10.718 6.9931 10.4536 6.35149 9.92486 5.82371C9.39609 5.29593 8.75397 5.03204 7.99853 5.03204C7.24309 5.03204 6.60147 5.29643 6.0737 5.82521C5.54592 6.35399 5.28203 6.9961 5.28203 7.75154C5.28203 8.50699 5.54642 9.1486 6.0752 9.67637C6.60397 10.2042 7.24609 10.468 8.00153 10.468C8.75697 10.468 9.39859 10.2037 9.92636 9.67487ZM6.72503 9.02504C6.37503 8.67504 6.20003 8.25004 6.20003 7.75004C6.20003 7.25004 6.37503 6.82504 6.72503 6.47504C7.07503 6.12504 7.50003 5.95004 8.00003 5.95004C8.50003 5.95004 8.92503 6.12504 9.27503 6.47504C9.62503 6.82504 9.80003 7.25004 9.80003 7.75004C9.80003 8.25004 9.62503 8.67504 9.27503 9.02504C8.92503 9.37504 8.50003 9.55004 8.00003 9.55004C7.50003 9.55004 7.07503 9.37504 6.72503 9.02504ZM3.81036 11.148C2.5497 10.3024 1.62147 9.16971 1.0257 7.75004C1.62147 6.33037 2.54936 5.19771 3.80936 4.35204C5.06947 3.50626 6.46609 3.08337 7.9992 3.08337C9.5322 3.08337 10.929 3.50626 12.1897 4.35204C13.4504 5.19771 14.3786 6.33037 14.9744 7.75004C14.3786 9.16971 13.4507 10.3024 12.1907 11.148C10.9306 11.9938 9.53397 12.4167 8.00086 12.4167C6.46786 12.4167 5.07103 11.9938 3.81036 11.148Z" fill="currentColor"/>
+        </svg>
+        <span class="sq-sidebar-item-label">Evidencias Servicios</span>
+      </a>
+
+      <div class="sq-sidebar-group" id="groupSFD">
+        <div class="sq-sidebar-group-trigger" title="SFD">
+          <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2.57052 12.4887C2.2073 12.1255 2.02569 11.6832 2.02569 11.1619H0.897522V2.99524H11.1795V5.53374H12.9487L15.1025 8.41841V11.1619H13.8975C13.8975 11.6832 13.7159 12.1255 13.3525 12.4887C12.9893 12.8521 12.547 13.0337 12.0257 13.0337C11.5044 13.0337 11.062 12.8521 10.6987 12.4887C10.3355 12.1255 10.1539 11.6832 10.1539 11.1619H5.76919C5.76919 11.6832 5.58758 12.1255 5.22436 12.4887C4.86113 12.8521 4.41886 13.0337 3.89752 13.0337C3.37608 13.0337 2.93374 12.8521 2.57052 12.4887Z" fill="currentColor"/>
+          </svg>
+          <span class="sq-sidebar-group-label">SFD</span>
+          <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+          </svg>
+        </div>
+        <div class="sq-sidebar-group-sub">
+          <div class="sq-sidebar-sub-divider"></div>
+          <div class="sq-sidebar-sub-list">
+            <a class="sq-sidebar-sub-item" href="#">Gestión</a>
+            <a class="sq-sidebar-sub-item" href="#">Reportes</a>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+  </div><!-- /sq-sidebar -->
+
+
+  <!-- ══ PANEL PRINCIPAL ══════════════════════════════════════════════ -->
+  <div class="sq-app-panel">
+
+    <!-- TOP BAR -->
+    <div class="sq-topbar">
+      <div class="sq-topbar-left">
+        <button class="sq-topbar-icon-btn" id="topbarToggleBtn" title="Colapsar sidebar">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.25"/>
+            <path d="M10.5 2.5v11" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+        </button>
+      </div>
+      <div class="sq-topbar-right">
+        <button class="sq-topbar-icon-btn sq-topbar-icon-btn--outline" title="Notificaciones">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 1.5A4.5 4.5 0 003.5 6v2.5L2 10h12l-1.5-1.5V6A4.5 4.5 0 008 1.5z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+            <path d="M6.5 11.5a1.5 1.5 0 003 0" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+        </button>
+        <div class="sq-topbar-divider"></div>
+        <div style="position:relative;" id="topbarUserWrap">
+          <div class="sq-topbar-user" id="topbarUser">
+            <div class="sq-topbar-user-avatar">JD</div>
+            <div class="sq-topbar-user-info">
+              <span class="sq-topbar-user-name">Julia Doe</span>
+              <span class="sq-topbar-user-role">Coordinador General</span>
+            </div>
+            <svg class="sq-topbar-user-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0; color:var(--sq-text-subtle); transition:transform .15s ease;">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="sq-popover-menu" id="userMenu" style="left:auto; right:0; top:calc(100% + 4px); width:187px; display:none;">
+            <a class="sq-popover-menu-item" href="#">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 8a3 3 0 100-6 3 3 0 000 6zm-4 5s-.5-4 4-4 4 4 4 4H4z" fill="currentColor"/></svg>
+              Mi perfil
+            </a>
+            <a class="sq-popover-menu-item" href="#">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M7.72 1l-.28 1.4A5 5 0 005.1 3.7L3.76 3.2l-1.44 2.48 1.1.92A5.1 5.1 0 003.3 8c0 .48.06.96.12 1.4l-1.1.92 1.44 2.48 1.34-.5a5 5 0 002.34 1.3L7.72 15h2.56l.28-1.4a5 5 0 002.34-1.3l1.34.5 1.44-2.48-1.1-.92c.06-.44.12-.92.12-1.4s-.06-.96-.12-1.4l1.1-.92-1.44-2.48-1.34.5A5 5 0 0010.28 2.4L10 1H7.72zM8 5.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5z" fill="currentColor"/></svg>
+              Configuración
+            </a>
+            <div class="sq-popover-menu-divider"></div>
+            <a class="sq-popover-menu-item sq-popover-menu-item--danger" href="#">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 2H3.5A1.5 1.5 0 002 3.5v9A1.5 1.5 0 003.5 14H6M10 11l3-3-3-3M13 8H6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Cerrar sesión
+            </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /sq-topbar -->
+
+
+    <!-- CONTENIDO -->
+    <div class="sq-app-content">
+      <div class="sq-page">
+        <div class="sq-lv-card">
+          <div class="sq-lv-card-body">
+
+            <!-- ── Cabecera de página ── -->
+            <div class="sq-page-header">
+              <h1 class="sq-page-title">Listado de baños portátiles</h1>
+              <button class="btn btn-primary btn-sm d-flex align-items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
+                  <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                </svg>
+                Agregar
+              </button>
+            </div>
+
+            <!-- ── Toolbar: fecha · filtros · resultados · exportar ── -->
+            <div class="sq-page-toolbar">
+
+              <!-- GRUPO IZQUIERDO -->
+              <div class="d-flex align-items-center gap-2 flex-wrap" style="flex:1; min-width:0;">
+
+                <!-- "Últimos 30 días" pill (date-range selector) -->
+                <div class="sq-filter-trigger" id="dateRangeTrigger">
+                  <img src="../assets/icons/Calendar Icon.svg" width="16" height="16" alt="" style="display:block; flex-shrink:0;">
+                  <span class="sq-filter-trigger-label">Últimos 30 días</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
+                    <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <!-- Filter bar con popover anclado -->
+                <div style="position:relative;" id="filterWrap">
+
+                  <div class="sq-filter-bar" id="filterBar">
+                    <!-- Trigger "Agregar filtro" -->
+                    <div class="sq-filter-trigger" id="filterTrigger">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;">
+                  <path d="M4.25 5.61C6.27 8.2 10 13 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-6s3.72-4.8 5.74-7.39C20.25 4.95 19.78 4 18.95 4H5.04C4.21 4 3.74 4.95 4.25 5.61z"/>
+                </svg>
+                <span class="sq-filter-trigger-label">Agregar filtro</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+                    <!-- chips se inyectan aquí por JS -->
+                  </div>
+
+            <!-- ════ POPOVER FILTRO AVANZADO ════ -->
+            <div class="sq-popover-filter" id="filterPopover" style="display:none; position:absolute; top:40px; left:0; z-index:300;">
+              <span class="sq-popover-filter-title">Filtrar por</span>
+              <div class="sq-popover-filter-rows">
+
+                <!-- Fecha -->
+                <div class="sq-popover-filter-row" id="filter-row-fecha" data-filter-key="fecha">
+                  <span class="sq-popover-filter-label">Fecha</span>
+                  <div class="sq-popover-ctrl sq-popover-ctrl--date" id="filter-ctrl-fecha">
+                    <span class="sq-popover-ctrl-text" id="filter-fecha-text">YYYY-M-D</span>
+                    <span class="sq-popover-ctrl-icon">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2.33325 14.343V3.00965H4.46142V1.59949H5.48709V3.00965H10.5384V1.59949H11.5384V3.00965H13.6666V14.343H2.33325ZM3.33325 13.343H12.6666V6.88149H3.33325V13.343Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Estado -->
+                <div class="sq-popover-filter-row" data-filter-key="estado">
+                  <span class="sq-popover-filter-label">Estado</span>
+                  <div class="sq-popover-ctrl sq-popover-ctrl--select" data-menu="filter-menu-estado">
+                    <span class="sq-popover-ctrl-text">Seleccionar</span>
+                    <span class="sq-popover-ctrl-icon">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Chapilla -->
+                <div class="sq-popover-filter-row" data-filter-key="chapilla">
+                  <span class="sq-popover-filter-label">Chapilla</span>
+                  <div class="sq-popover-ctrl sq-popover-ctrl--select" data-menu="filter-menu-chapilla">
+                    <span class="sq-popover-ctrl-text">Seleccionar</span>
+                    <span class="sq-popover-ctrl-icon">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Clave de equipo -->
+                <div class="sq-popover-filter-row" data-filter-key="clave">
+                  <span class="sq-popover-filter-label">Clave de equipo</span>
+                  <div class="sq-popover-ctrl sq-popover-ctrl--text">
+                    <input class="sq-popover-ctrl-input" type="text" placeholder="" />
+                  </div>
+                </div>
+
+                <!-- Cliente -->
+                <div class="sq-popover-filter-row" data-filter-key="cliente">
+                  <span class="sq-popover-filter-label">Cliente</span>
+                  <div class="sq-popover-ctrl sq-popover-ctrl--select" data-menu="filter-menu-cliente">
+                    <span class="sq-popover-ctrl-text">Seleccionar</span>
+                    <span class="sq-popover-ctrl-icon">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Ruta -->
+                <div class="sq-popover-filter-row" data-filter-key="ruta">
+                  <span class="sq-popover-filter-label">Ruta</span>
+                  <div class="sq-popover-ctrl sq-popover-ctrl--select" data-menu="filter-menu-ruta">
+                    <span class="sq-popover-ctrl-text">Seleccionar</span>
+                    <span class="sq-popover-ctrl-icon">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              <button class="btn btn-primary w-100" id="filterApply" style="height:36px; font-size:14px; font-weight:600;">Aplicar</button>
+
+              <!-- Datepicker panel -->
+              <div class="sq-datepicker-panel" id="filter-datepicker" style="left:89px;">
+                <div class="sq-datepicker-header">
+                  <button class="sq-datepicker-nav sq-datepicker-nav--prev" id="filter-dp-prev">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <span class="sq-datepicker-month-label" id="filter-dp-month-label"></span>
+                  <button class="sq-datepicker-nav sq-datepicker-nav--next" id="filter-dp-next">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="sq-datepicker-grid" id="filter-dp-grid"></div>
+              </div>
+
+              <!-- Menú: Estado -->
+              <div class="sq-popover-menu" id="filter-menu-estado">
+                <div class="sq-popover-menu-inner">
+                  <div class="sq-popover-menu-list">
+                    <div class="sq-popover-menu-item">Disponible</div>
+                    <div class="sq-popover-menu-item">Renta</div>
+                    <div class="sq-popover-menu-item">Recolección</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Menú: Chapilla -->
+              <div class="sq-popover-menu" id="filter-menu-chapilla">
+                <div class="sq-popover-menu-inner">
+                  <div class="sq-popover-menu-search">
+                    <span style="color:var(--sq-text-subtlest); display:flex; flex-shrink:0;">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="7" cy="7" r="4" stroke="currentColor" stroke-width="1.25"/>
+                        <path d="M10.5 10.5L13 13" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                    <input class="sq-popover-menu-search-input" placeholder="Buscar" />
+                  </div>
+                  <div class="sq-popover-menu-list">
+                    <div class="sq-popover-menu-item">33</div>
+                    <div class="sq-popover-menu-item">45</div>
+                    <div class="sq-popover-menu-item">67</div>
+                    <div class="sq-popover-menu-item">89</div>
+                    <div class="sq-popover-menu-item">101</div>
+                  </div>
+                </div>
+                <div class="sq-popover-menu-scrollbar"><div class="sq-popover-menu-scrollbar-thumb"></div></div>
+              </div>
+
+              <!-- Menú: Cliente -->
+              <div class="sq-popover-menu" id="filter-menu-cliente">
+                <div class="sq-popover-menu-inner">
+                  <div class="sq-popover-menu-search">
+                    <span style="color:var(--sq-text-subtlest); display:flex; flex-shrink:0;">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="7" cy="7" r="4" stroke="currentColor" stroke-width="1.25"/>
+                        <path d="M10.5 10.5L13 13" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                    <input class="sq-popover-menu-search-input" placeholder="Buscar" />
+                  </div>
+                  <div class="sq-popover-menu-list">
+                    <div class="sq-popover-menu-item">ACME Corp</div>
+                    <div class="sq-popover-menu-item">Grupo Norte</div>
+                    <div class="sq-popover-menu-item">Distribuidora Sur</div>
+                    <div class="sq-popover-menu-item">Logística Express</div>
+                    <div class="sq-popover-menu-item">Trans Rápido</div>
+                  </div>
+                </div>
+                <div class="sq-popover-menu-scrollbar"><div class="sq-popover-menu-scrollbar-thumb"></div></div>
+              </div>
+
+              <!-- Menú: Ruta -->
+              <div class="sq-popover-menu" id="filter-menu-ruta">
+                <div class="sq-popover-menu-inner">
+                  <div class="sq-popover-menu-search">
+                    <span style="color:var(--sq-text-subtlest); display:flex; flex-shrink:0;">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="7" cy="7" r="4" stroke="currentColor" stroke-width="1.25"/>
+                        <path d="M10.5 10.5L13 13" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                    <input class="sq-popover-menu-search-input" placeholder="Buscar" />
+                  </div>
+                  <div class="sq-popover-menu-list">
+                    <div class="sq-popover-menu-item">Ruta 01 — Norte</div>
+                    <div class="sq-popover-menu-item">Ruta 02 — Sur</div>
+                    <div class="sq-popover-menu-item">Ruta 03 — Centro</div>
+                    <div class="sq-popover-menu-item">Ruta 04 — Este</div>
+                    <div class="sq-popover-menu-item">Ruta 05 — Oeste</div>
+                  </div>
+                </div>
+                <div class="sq-popover-menu-scrollbar"><div class="sq-popover-menu-scrollbar-thumb"></div></div>
+              </div>
+
+                  </div><!-- /filterPopover -->
+                </div><!-- /filterWrap -->
+
+                <!-- Contador de resultados (siempre visible) -->
+                <div class="sq-filter-results" id="filterResults">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
+                    <path d="M3 4h10M3 8h7M3 12h4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+                  </svg>
+                  <span id="filterResultsCount">25 resultados</span>
+                </div>
+
+              </div><!-- /left group -->
+
+              <!-- GRUPO DERECHO: Exportar -->
+              <div style="position:relative; flex-shrink:0;" id="exportWrap">
+                <button class="btn btn-secondary btn-sm d-flex align-items-center gap-2" id="exportBtn">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path d="M2.5 13.5h11M8 2.5v8M4.5 7l3.5 3.5L11.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Exportar
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" id="exportChevron" style="transition:transform .15s ease;">
+                    <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+
+                <!-- Menú exportar (sq-popover-menu) -->
+                <div class="sq-popover-menu" id="exportMenu" style="display:none; right:0; left:auto; top:calc(100% + 4px); width:max-content; white-space:nowrap;">
+                  <a class="sq-popover-menu-item" href="#">
+                    <img src="../assets/icons/grid_on.svg" width="16" height="16" alt="" style="display:block; flex-shrink:0;">
+                    Exportar a Excel
+                  </a>
+                  <a class="sq-popover-menu-item" href="#">
+                    <img src="../assets/icons/article.svg" width="16" height="16" alt="" style="display:block; flex-shrink:0;">
+                    PDFs para imprimir
+                  </a>
+                  <div class="sq-popover-menu-divider"></div>
+                  <a class="sq-popover-menu-item" href="#">
+                    <img src="../assets/icons/settings.svg" width="16" height="16" alt="" style="display:block; flex-shrink:0;">
+                    Configurar
+                  </a>
+                </div>
+              </div><!-- /exportWrap -->
+
+            </div><!-- /sq-page-toolbar -->
+
+          </div><!-- /sq-lv-card-body -->
+
+          <!-- ── Tabla (borde a borde) ── -->
+          <div class="sq-table-wrap">
+            <table class="sq-table w-100" id="inventoryTable">
+            <thead>
+              <tr>
+                <th class="sq-table-cb">
+                  <input class="form-check-input" type="checkbox" id="selectAll" />
+                </th>
+                <th>CHAPILLA</th>
+                <th>CLAVE DE EQUIPO</th>
+                <th>LATITUD</th>
+                <th>LONGITUD</th>
+                <th>ESTADO</th>
+                <th>RUTA</th>
+                <th class="sq-table-actions">ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <!-- ─── FILA 1: Disponible ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-success">Disponible</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar">
+                    <img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;">
+                  </button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver">
+                    <img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;">
+                  </button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;">
+                <td colspan="8">
+                  <div class="sq-table-detail">
+                    <div class="sq-table-detail-section">
+                      <p class="sq-table-detail-title">Datos del equipo</p>
+                      <div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div>
+                      <div class="sq-table-detail-item"><span class="sq-table-detail-label">Clave de equipo:</span><span class="sq-table-detail-value">0078</span></div>
+                      <div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Disponible</span></div>
+                      <div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div>
+                    </div>
+                    <div class="sq-table-detail-divider"></div>
+                    <div class="sq-table-detail-section">
+                      <p class="sq-table-detail-title">Ubicación</p>
+                      <div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div>
+                      <div class="sq-table-detail-item"><span class="sq-table-detail-label">Longitud:</span><span class="sq-table-detail-value">-100.955862</span></div>
+                      <div class="sq-table-detail-map">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- ─── FILA 2: Renta ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-secondary">Renta</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;">
+                <td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Clave de equipo:</span><span class="sq-table-detail-value">0078</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Renta</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Longitud:</span><span class="sq-table-detail-value">-100.955862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td>
+              </tr>
+
+              <!-- ─── FILA 3: Disponible ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-success">Disponible</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;"><td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Disponible</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Longitud:</span><span class="sq-table-detail-value">-100.955862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td></tr>
+
+              <!-- ─── FILA 4: Renta ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-secondary">Renta</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;"><td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Renta</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Longitud:</span><span class="sq-table-detail-value">-100.955862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td></tr>
+
+              <!-- ─── FILA 5: Disponible ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-success">Disponible</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;"><td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Disponible</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td></tr>
+
+              <!-- ─── FILA 6: Disponible ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-success">Disponible</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;"><td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Disponible</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td></tr>
+
+              <!-- ─── FILA 7: Renta ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-secondary">Renta</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;"><td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Renta</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td></tr>
+
+              <!-- ─── FILA 8: Renta ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-secondary">Renta</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;"><td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Renta</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td></tr>
+
+              <!-- ─── FILA 9: Recolección ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-warning">Recolección</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;"><td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Recolección</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td></tr>
+
+              <!-- ─── FILA 10: Renta ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-secondary">Renta</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;"><td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Renta</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td></tr>
+
+              <!-- ─── FILA 11: Disponible ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-success">Disponible</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;"><td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Disponible</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td></tr>
+
+              <!-- ─── FILA 12: Recolección ─── -->
+              <tr>
+                <td class="sq-table-cb"><input class="form-check-input row-cb" type="checkbox" /></td>
+                <td>33</td><td>0078</td><td>25.4995862</td><td>-100.955862</td>
+                <td class="sq-table-badge-cell"><span class="badge bg-warning">Recolección</span></td>
+                <td>Centro</td>
+                <td class="sq-table-actions">
+                  <button class="sq-icon-btn sq-icon-btn-outline" title="Editar"><img src="../assets/icons/edit-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                  <button class="sq-icon-btn sq-icon-btn-brand view-btn" title="Ver"><img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;"></button>
+                </td>
+              </tr>
+              <tr class="sq-table-detail-row" style="display:none;"><td colspan="8"><div class="sq-table-detail"><div class="sq-table-detail-section"><p class="sq-table-detail-title">Datos del equipo</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Chapilla:</span><span class="sq-table-detail-value">33</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Estado:</span><span class="sq-table-detail-value">Recolección</span></div><div class="sq-table-detail-item"><span class="sq-table-detail-label">Ruta asignada:</span><span class="sq-table-detail-value">Centro</span></div></div><div class="sq-table-detail-divider"></div><div class="sq-table-detail-section"><p class="sq-table-detail-title">Ubicación</p><div class="sq-table-detail-item"><span class="sq-table-detail-label">Latitud:</span><span class="sq-table-detail-value">25.4995862</span></div><div class="sq-table-detail-map"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div></div></div></td></tr>
+
+            </tbody>
+          </table>
+
+          <!-- Pie de tabla -->
+          <div class="sq-table-footer">
+            <span class="sq-table-footer-info" id="selectionInfo">0 of 68 row(s) selected.</span>
+            <div class="sq-pagination">
+              <div class="sq-pagination-group">
+                <span class="sq-pagination-label">Row per page</span>
+                <div class="sq-pagination-rows">
+                  <select>
+                    <option value="10" selected>10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                  </select>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="sq-pagination-group">
+                <span class="sq-pagination-info">Page 1 of 7</span>
+                <div class="sq-pagination-nav">
+                  <button class="sq-icon-btn" title="Anterior" disabled>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button class="sq-icon-btn" title="Siguiente">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          </div><!-- /sq-table-wrap -->
+
+        </div><!-- /sq-lv-card -->
+
+      </div><!-- /sq-page -->
+    </div><!-- /sq-app-content -->
+
+  </div><!-- /sq-app-panel -->
+</div><!-- /sq-app -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ════════════════════════════════════════════════════════════════════
+   SIDEBAR TOGGLE
+   ════════════════════════════════════════════════════════════════════ */
+var sidebar = document.getElementById('appSidebar');
+document.getElementById('topbarToggleBtn').addEventListener('click', function () { sidebar.classList.toggle('sq-sidebar--collapsed'); });
+
+/* ── Sidebar groups ─────────────────────────────────────────────── */
+document.querySelectorAll('.sq-sidebar-group-trigger').forEach(function (trigger) {
+  trigger.addEventListener('click', function () { trigger.closest('.sq-sidebar-group').classList.toggle('is-open'); });
+});
+
+/* ════════════════════════════════════════════════════════════════════
+   USER DROPDOWN
+   ════════════════════════════════════════════════════════════════════ */
+var topbarUser = document.getElementById('topbarUser');
+var userMenu   = document.getElementById('userMenu');
+topbarUser.addEventListener('click', function () {
+  var open = userMenu.style.display === 'block';
+  userMenu.style.display = open ? 'none' : 'block';
+  topbarUser.classList.toggle('sq-topbar-user--active', !open);
+  var chevron = topbarUser.querySelector('.sq-topbar-user-chevron');
+  if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
+});
+document.addEventListener('click', function (e) {
+  if (!document.getElementById('topbarUserWrap').contains(e.target)) {
+    userMenu.style.display = 'none';
+    topbarUser.classList.remove('sq-topbar-user--active');
+    var chevron = topbarUser.querySelector('.sq-topbar-user-chevron');
+    if (chevron) chevron.style.transform = '';
+  }
+});
+
+/* ════════════════════════════════════════════════════════════════════
+   TABLE — CHECKBOXES + ROW SELECTION
+   ════════════════════════════════════════════════════════════════════ */
+var selectAll = document.getElementById('selectAll');
+var rowCbs    = document.querySelectorAll('.row-cb');
+var selInfo   = document.getElementById('selectionInfo');
+
+function updateSelInfo() {
+  var n = document.querySelectorAll('.row-cb:checked').length;
+  selInfo.textContent = n + ' of 68 row(s) selected.';
+}
+selectAll.addEventListener('change', function () {
+  rowCbs.forEach(function (cb) {
+    cb.checked = selectAll.checked;
+    cb.closest('tr').classList.toggle('sq-selected', selectAll.checked);
+  });
+  updateSelInfo();
+});
+rowCbs.forEach(function (cb) {
+  cb.addEventListener('change', function () {
+    cb.closest('tr').classList.toggle('sq-selected', cb.checked);
+    var all = Array.from(rowCbs).every(function (c) { return c.checked; });
+    var any = Array.from(rowCbs).some(function (c) { return c.checked; });
+    selectAll.checked = all;
+    selectAll.indeterminate = any && !all;
+    updateSelInfo();
+  });
+});
+
+/* ════════════════════════════════════════════════════════════════════
+   TABLE — EXPANDED ROW (view / close toggle)
+   ════════════════════════════════════════════════════════════════════ */
+var iconEye   = '<img src="../assets/icons/visibility-outline.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;">';
+var iconClose = '<img src="../assets/icons/close.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;">';
+
+document.getElementById('inventoryTable').querySelectorAll('tbody tr:not(.sq-table-detail-row)').forEach(function (row) {
+  var viewBtn   = row.querySelector('.view-btn');
+  var detailRow = row.nextElementSibling;
+  if (!viewBtn || !detailRow || !detailRow.classList.contains('sq-table-detail-row')) return;
+
+  viewBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var isOpen = row.classList.contains('sq-expanded');
+
+    if (!isOpen) {
+      row.classList.add('sq-expanded');
+      detailRow.style.display = '';
+      viewBtn.classList.replace('sq-icon-btn-brand', 'sq-icon-btn-brand-active');
+      viewBtn.innerHTML = iconClose;
+      viewBtn.title = 'Cerrar';
+    } else {
+      row.classList.remove('sq-expanded');
+      detailRow.style.display = 'none';
+      viewBtn.classList.replace('sq-icon-btn-brand-active', 'sq-icon-btn-brand');
+      viewBtn.innerHTML = iconEye;
+      viewBtn.title = 'Ver';
+    }
+  });
+});
+
+/* ════════════════════════════════════════════════════════════════════
+   FILTER BAR + POPOVER AVANZADO
+   ════════════════════════════════════════════════════════════════════ */
+(function () {
+  var wrap      = document.getElementById('filterWrap');
+  var popover   = document.getElementById('filterPopover');
+  var trigger   = document.getElementById('filterTrigger');
+  var bar       = document.getElementById('filterBar');
+  var results   = document.getElementById('filterResults');
+  var applyBtn  = document.getElementById('filterApply');
+  if (!wrap || !popover || !trigger) return;
+
+  /* ── Datepicker state ───────────────────────────────────── */
+  var now = new Date();
+  var dpYear = now.getFullYear(), dpMonth = now.getMonth(), dpSelected = null;
+  var MONTHS  = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  var DAYS    = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+  function isSameDay(a, b) {
+    return b && a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
+  }
+  function fmtDate(d) { return d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
+
+  function renderCalendar() {
+    var grid  = document.getElementById('filter-dp-grid');
+    var label = document.getElementById('filter-dp-month-label');
+    if (!grid || !label) return;
+    label.textContent = MONTHS[dpMonth] + ' ' + dpYear;
+    var first   = new Date(dpYear, dpMonth, 1);
+    var last    = new Date(dpYear, dpMonth + 1, 0);
+    var startDow = first.getDay();
+    var today    = new Date();
+    var html     = '';
+    DAYS.forEach(function (d) { html += '<div class="sq-datepicker-cell sq-datepicker-cell--header">' + d + '</div>'; });
+    var prevLast = new Date(dpYear, dpMonth, 0).getDate();
+    for (var i = startDow - 1; i >= 0; i--) html += '<div class="sq-datepicker-cell sq-datepicker-cell--other">' + (prevLast - i) + '</div>';
+    for (var day = 1; day <= last.getDate(); day++) {
+      var d = new Date(dpYear, dpMonth, day);
+      var cls = 'sq-datepicker-cell';
+      if (isSameDay(d, dpSelected)) cls += ' sq-datepicker-cell--selected';
+      else if (isSameDay(d, today)) cls += ' sq-datepicker-cell--today';
+      html += '<div class="' + cls + '" data-day="' + day + '" data-month="' + dpMonth + '" data-year="' + dpYear + '">' + day + '</div>';
+    }
+    var rem = (startDow + last.getDate()) % 7;
+    if (rem) for (var k = 1; k <= 7 - rem; k++) html += '<div class="sq-datepicker-cell sq-datepicker-cell--other">' + k + '</div>';
+    grid.innerHTML = html;
+    grid.querySelectorAll('.sq-datepicker-cell[data-day]').forEach(function (cell) {
+      cell.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dpSelected = new Date(+cell.dataset.year, +cell.dataset.month, +cell.dataset.day);
+        var ft = document.getElementById('filter-fecha-text');
+        if (ft) { ft.textContent = fmtDate(dpSelected); ft.classList.add('has-value'); }
+        closeMenus();
+        renderCalendar();
+      });
+    });
+  }
+
+  /* ── Abrir / cerrar popover ─────────────────────────────── */
+  function openPopover() {
+    popover.style.display = 'flex';
+    trigger.classList.add('is-active');
+    renderCalendar();
+  }
+  function closePopover() {
+    popover.style.display = 'none';
+    trigger.classList.remove('is-active');
+    closeMenus();
+  }
+  trigger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    popover.style.display === 'none' ? openPopover() : closePopover();
+  });
+
+  /* ── Cerrar menús internos ──────────────────────────────── */
+  function closeMenus() {
+    popover.querySelectorAll('.sq-popover-menu.is-open').forEach(function (m) { m.classList.remove('is-open'); });
+    popover.querySelectorAll('.sq-popover-ctrl--select').forEach(function (c) { c.style.borderColor = ''; });
+    var dp = document.getElementById('filter-datepicker');
+    if (dp) dp.classList.remove('is-open');
+    var cf = document.getElementById('filter-ctrl-fecha');
+    if (cf) cf.style.borderColor = '';
+  }
+
+  /* ── Datepicker ─────────────────────────────────────────── */
+  var dpPanel   = document.getElementById('filter-datepicker');
+  var ctrlFecha = document.getElementById('filter-ctrl-fecha');
+  function openDatepicker() {
+    closeMenus();
+    if (!dpPanel) return;
+    var popRect = popover.getBoundingClientRect();
+    var rowRect = document.getElementById('filter-row-fecha').getBoundingClientRect();
+    dpPanel.style.top = (rowRect.bottom - popRect.top + 4) + 'px';
+    renderCalendar();
+    dpPanel.classList.add('is-open');
+    if (ctrlFecha) ctrlFecha.style.borderColor = 'var(--sq-brand-active)';
+  }
+  if (ctrlFecha) {
+    ctrlFecha.addEventListener('click', function (e) {
+      e.stopPropagation();
+      dpPanel && dpPanel.classList.contains('is-open') ? closeMenus() : openDatepicker();
+    });
+  }
+  document.getElementById('filter-dp-prev').addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (--dpMonth < 0) { dpMonth = 11; dpYear--; }
+    renderCalendar();
+  });
+  document.getElementById('filter-dp-next').addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (++dpMonth > 11) { dpMonth = 0; dpYear++; }
+    renderCalendar();
+  });
+
+  /* ── Select menus ───────────────────────────────────────── */
+  popover.querySelectorAll('.sq-popover-ctrl--select').forEach(function (ctrl) {
+    ctrl.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var menu   = ctrl.dataset.menu ? document.getElementById(ctrl.dataset.menu) : null;
+      if (!menu) return;
+      var isOpen = menu.classList.contains('is-open');
+      closeMenus();
+      if (!isOpen) {
+        var popRect  = popover.getBoundingClientRect();
+        var ctrlRect = ctrl.getBoundingClientRect();
+        menu.style.top = (ctrlRect.top - popRect.top - 1) + 'px';
+        menu.classList.add('is-open');
+        ctrl.style.borderColor = 'var(--sq-brand-active)';
+        var si = menu.querySelector('.sq-popover-menu-search-input');
+        if (si) setTimeout(function () { si.focus(); }, 40);
+      }
+    });
+  });
+
+  /* Item selected inside menu */
+  popover.addEventListener('click', function (e) {
+    var item = e.target.closest('.sq-popover-menu-item');
+    if (!item) return;
+    var menu = item.closest('.sq-popover-menu');
+    if (!menu) return;
+    menu.querySelectorAll('.sq-popover-menu-item').forEach(function (i) { i.classList.remove('active'); });
+    item.classList.add('active');
+    var ctrl = popover.querySelector('[data-menu="' + menu.id + '"]');
+    if (ctrl) {
+      var t = ctrl.querySelector('.sq-popover-ctrl-text');
+      if (t) { t.textContent = item.textContent.trim(); t.classList.add('has-value'); }
+    }
+    closeMenus();
+  });
+
+  /* Search in menus */
+  popover.querySelectorAll('.sq-popover-menu-search-input').forEach(function (input) {
+    input.addEventListener('input', function () {
+      var q    = input.value.toLowerCase();
+      var list = input.closest('.sq-popover-menu-inner').querySelector('.sq-popover-menu-list');
+      if (list) list.querySelectorAll('.sq-popover-menu-item').forEach(function (item) {
+        item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+    input.addEventListener('click', function (e) { e.stopPropagation(); });
+  });
+
+  /* ── Aplicar → crear chips ─────────────────────────────── */
+  applyBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var filters = [];
+    var ft = document.getElementById('filter-fecha-text');
+    if (ft && ft.classList.contains('has-value')) filters.push({ key: 'fecha', value: ft.textContent.trim() });
+    popover.querySelectorAll('.sq-popover-filter-row[data-filter-key]').forEach(function (row) {
+      var key = row.dataset.filterKey;
+      if (key === 'fecha') return;
+      var ct  = row.querySelector('.sq-popover-ctrl-text.has-value');
+      if (ct)  { filters.push({ key: key, value: ct.textContent.trim() }); return; }
+      var inp = row.querySelector('.sq-popover-ctrl-input');
+      if (inp && inp.value.trim()) filters.push({ key: key, value: inp.value.trim() });
+    });
+    if (filters.length === 0) { closePopover(); return; }
+    filters.forEach(function (f) {
+      var ex = bar.querySelector('.sq-filter-chip[data-key="' + f.key + '"]');
+      if (ex) ex.remove();
+    });
+    filters.forEach(function (f) {
+      var chip = document.createElement('div');
+      chip.className = 'sq-filter-chip';
+      chip.dataset.key = f.key;
+      chip.innerHTML = '<span>' + f.value + '</span><button class="sq-filter-chip-close" title="Eliminar filtro"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>';
+      bar.insertBefore(chip, results);
+    });
+    closePopover();
+  });
+
+  /* ── × en chip → eliminar filtro ───────────────────────── */
+  bar.addEventListener('click', function (e) {
+    var closeBtn = e.target.closest('.sq-filter-chip-close');
+    if (!closeBtn) return;
+    var chip = closeBtn.closest('.sq-filter-chip');
+    if (!chip) return;
+    var key = chip.dataset.key;
+    chip.remove();
+
+    /* Reset popover field */
+    if (key === 'fecha') {
+      var ft = document.getElementById('filter-fecha-text');
+      if (ft) { ft.textContent = 'YYYY-M-D'; ft.classList.remove('has-value'); }
+      dpSelected = null;
+    } else {
+      var row = popover.querySelector('.sq-popover-filter-row[data-filter-key="' + key + '"]');
+      if (row) {
+        var ct  = row.querySelector('.sq-popover-ctrl-text');
+        if (ct)  { ct.textContent = 'Seleccionar'; ct.classList.remove('has-value'); }
+        var inp = row.querySelector('.sq-popover-ctrl-input');
+        if (inp) inp.value = '';
+        var menuId = row.querySelector('[data-menu]') ? row.querySelector('[data-menu]').dataset.menu : null;
+        if (menuId) {
+          var menu = document.getElementById(menuId);
+          if (menu) menu.querySelectorAll('.sq-popover-menu-item').forEach(function (i) { i.classList.remove('active'); });
+        }
+      }
+    }
+  });
+
+  /* ── Click fuera cierra el popover ─────────────────────── */
+  document.addEventListener('click', function (e) {
+    if (!wrap.contains(e.target)) closePopover();
+  });
+  popover.addEventListener('click', function (e) { e.stopPropagation(); });
+
+})();
+
+/* ════════════════════════════════════════════════════════════════════
+   EXPORT MENU TOGGLE
+   ════════════════════════════════════════════════════════════════════ */
+(function () {
+  var exportBtn     = document.getElementById('exportBtn');
+  var exportMenu    = document.getElementById('exportMenu');
+  var exportChevron = document.getElementById('exportChevron');
+  var exportWrap    = document.getElementById('exportWrap');
+  if (!exportBtn || !exportMenu) return;
+
+  function openExport() {
+    exportMenu.style.display = 'block';
+    if (exportChevron) exportChevron.style.transform = 'rotate(180deg)';
+  }
+  function closeExport() {
+    exportMenu.style.display = 'none';
+    if (exportChevron) exportChevron.style.transform = '';
+  }
+
+  exportBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    exportMenu.style.display === 'none' ? openExport() : closeExport();
+  });
+  document.addEventListener('click', function (e) {
+    if (!exportWrap.contains(e.target)) closeExport();
+  });
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo instalar — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="src/squadness.css" />
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Getting Started</p>
+      <h1 class="docs-title">Cómo instalar</h1>
+      <p class="docs-desc">Integra el Design System en tu proyecto PHP, Laravel, Django o cualquier stack que genere HTML en 3 pasos.</p>
+
+      <hr class="docs-divider" />
+
+      <!-- Paso 1 -->
+      <h2 class="docs-section-title" id="paso-1">Paso 1 — Copiar los archivos CSS</h2>
+      <p class="docs-section-desc">Copia la carpeta <code>src/</code> a la carpeta de assets de tu proyecto. Por ejemplo, en Laravel sería <code>public/assets/squadness/</code>.</p>
+      <div class="docs-preview-box">
+        <div class="docs-code-content" style="display:block;">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+            <pre>tu-proyecto/
+└── public/
+    └── assets/
+        └── squadness/
+            ├── tokens.css
+            └── squadness.css</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 2 -->
+      <h2 class="docs-section-title" id="paso-2">Paso 2 — Incluir en el &lt;head&gt;</h2>
+      <p class="docs-section-desc">El orden de los imports es crítico. Bootstrap debe cargarse <strong>después</strong> de tokens.css para que las sobreescrituras funcionen.</p>
+      <div class="docs-preview-box">
+        <div class="docs-code-content" style="display:block;">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+            <pre>&lt;!-- Google Fonts (Inter + Roboto Mono) --&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet" /&gt;
+
+&lt;!-- 1. Squadness Tokens (--sq-* y override --bs-*) --&gt;
+&lt;link rel="stylesheet" href="/assets/squadness/tokens.css" /&gt;
+
+&lt;!-- 2. Bootstrap 5 CDN --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" /&gt;
+
+&lt;!-- 3. Squadness Components skin --&gt;
+&lt;link rel="stylesheet" href="/assets/squadness/squadness.css" /&gt;</pre>
+          </div>
+        </div>
+      </div>
+      <div class="docs-callout info">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px;"><circle cx="8" cy="8" r="7" stroke="var(--sq-brand)" stroke-width="1.4" fill="none"/><path d="M8 5v4M8 11v.5" stroke="var(--sq-brand)" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span>Bootstrap 5 puede cargarse también vía npm (<code>npm install bootstrap</code>). El sistema de tokens funciona igual independientemente del método de carga.</span>
+      </div>
+
+      <!-- Paso 3 -->
+      <h2 class="docs-section-title" id="paso-3">Paso 3 — Usar componentes Bootstrap</h2>
+      <p class="docs-section-desc">Usa las clases Bootstrap de siempre. El Design System se aplica automáticamente via las variables CSS.</p>
+      <div class="docs-preview-box">
+        <div class="docs-code-content" style="display:block;">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+            <pre>&lt;!-- Los botones Bootstrap adoptan la paleta Squadness automáticamente --&gt;
+&lt;button class="btn btn-primary"&gt;Guardar cambios&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Cancelar&lt;/button&gt;
+
+&lt;!-- Las cards usan el radio y sombra del DS --&gt;
+&lt;div class="card"&gt;
+  &lt;div class="card-body"&gt;Contenido&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Las tablas tienen el estilo de thead del DS --&gt;
+&lt;table class="table table-hover"&gt;...&lt;/table&gt;</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHP template -->
+      <h2 class="docs-section-title" id="php">Template base PHP</h2>
+      <p class="docs-section-desc">Template mínimo para una aplicación PHP con el DS integrado.</p>
+      <div class="docs-preview-box">
+        <div class="docs-code-content" style="display:block;">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+            <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;&lt;?= htmlspecialchars($pageTitle ?? 'Mi App') ?&gt;&lt;/title&gt;
+
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" /&gt;
+
+  &lt;link rel="stylesheet" href="/assets/squadness/tokens.css" /&gt;
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" /&gt;
+  &lt;link rel="stylesheet" href="/assets/squadness/squadness.css" /&gt;
+  &lt;link rel="stylesheet" href="/assets/css/app.css" /&gt; &lt;!-- tu CSS personalizado --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;?php include 'partials/navbar.php'; ?&gt;
+
+  &lt;div class="container-fluid"&gt;
+    &lt;div class="row"&gt;
+      &lt;?php include 'partials/sidebar.php'; ?&gt;
+
+      &lt;main class="col"&gt;
+        &lt;div class="py-4 px-3"&gt;
+          &lt;?= $content ?&gt;
+        &lt;/div&gt;
+      &lt;/main&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+  &lt;script src="/assets/js/app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Laravel -->
+      <h2 class="docs-section-title" id="laravel">Integración con Laravel + Blade</h2>
+      <div class="docs-preview-box">
+        <div class="docs-code-content" style="display:block;">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+            <pre>{{-- resources/views/layouts/app.blade.php --}}
+&lt;!DOCTYPE html&gt;
+&lt;html lang="{{ str_replace('_', '-', app()->getLocale()) }}"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+  &lt;title&gt;@yield('title', config('app.name'))&lt;/title&gt;
+
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" /&gt;
+
+  &lt;link rel="stylesheet" href="{{ asset('css/tokens.css') }}" /&gt;
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" /&gt;
+  &lt;link rel="stylesheet" href="{{ asset('css/squadness.css') }}" /&gt;
+  @stack('styles')
+&lt;/head&gt;
+&lt;body&gt;
+  @include('partials.navbar')
+
+  &lt;div class="container py-4"&gt;
+    @yield('content')
+  &lt;/div&gt;
+
+  &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+  @stack('scripts')
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <span></span>
+          <a href="foundations/colors.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Foundations
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <div class="docs-toc-title">En esta página</div>
+      <a class="docs-toc-link" href="#paso-1">Paso 1 — Copiar archivos</a>
+      <a class="docs-toc-link" href="#paso-2">Paso 2 — Incluir en &lt;head&gt;</a>
+      <a class="docs-toc-l

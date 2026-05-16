@@ -1,0 +1,3509 @@
+/**
+ * Squadness Design System — Bootstrap 5 Skin
+ * --------------------------------------------
+ * Este archivo complementa el mapeo de variables de tokens.css.
+ * Solo incluye lo que Bootstrap NO puede resolver solo con --bs-* vars:
+ *   - Reset/base global
+ *   - Ajustes visuales finos de componentes (estado activo de nav, etc.)
+ *   - Clases de utilidad propias (.sq-*)
+ *   - Correcciones de especificidad donde Bootstrap tiene !important
+ *
+ * Orden de imports:
+ *   <link rel="stylesheet" href="tokens.css" />
+ *   <link rel="stylesheet" href="bootstrap.min.css" />
+ *   <link rel="stylesheet" href="squadness.css" />  ← este archivo
+ *
+ * @version 2.0.0
+ */
+
+/* ── Reset / base ─────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--sq-font-body);
+  background-color: var(--sq-surface-default);
+  color: var(--sq-text-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sq-font-heading);
+  font-weight: 600;
+}
+
+code, pre, kbd, samp {
+  font-family: var(--sq-font-mono);
+}
+
+a {
+  color: var(--sq-brand);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--sq-brand-hover);
+  text-decoration: underline;
+}
+
+/* ── Botones ──────────────────────────────────────────────────────── */
+/*
+ * Figma specs (1:1):
+ *   Large (default .btn): h=36px · pad=8/16px · font=14px/600 · lh=20px
+ *   Medium (.btn-sm):     h=32px · pad=8/12px · font=12px/600 · lh=16px
+ *   border-radius: 8px · disabled-opacity: 0.45
+ */
+
+/* Override Bootstrap's .btn-sm (BS sets its own CSS vars, wins over :root) */
+.btn-sm {
+  --bs-btn-padding-y:        8px;
+  --bs-btn-padding-x:        12px;
+  --bs-btn-font-size:        var(--sq-font-size-xs);
+  --bs-btn-line-height:      1.33;
+  --bs-btn-border-radius:    var(--sq-radius-sm);
+}
+
+/* Focus rings — también suprime outline nativo en <a> usados como btn */
+.btn,
+.btn:hover,
+.btn:focus {
+  outline: none;
+}
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sq-glow-brand);
+}
+.btn-danger:focus-visible {
+  box-shadow: 0 0 0 3px var(--sq-glow-error);
+}
+
+/* Disabled opacity — Figma: 0.45 (Bootstrap default: 0.65) */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.45;
+}
+
+/* Primary — bg #005fdb · text #f8ffff · hover/active #0047a3 */
+.btn-primary {
+  --bs-btn-color:               var(--sq-text-inverse);
+  --bs-btn-hover-color:         var(--sq-text-inverse);
+  --bs-btn-active-color:        var(--sq-text-inverse);
+  --bs-btn-disabled-color:      var(--sq-text-inverse);
+  --bs-btn-hover-bg:            var(--sq-brand-hover);
+  --bs-btn-hover-border-color:  var(--sq-brand-hover);
+  --bs-btn-active-bg:           var(--sq-brand-hover);
+  --bs-btn-active-border-color: var(--sq-brand-hover);
+}
+
+/* Secondary — bg #e2e8f0 · text #0f172b · hover #cad5e2 · active #90a1b9 */
+.btn-secondary {
+  --bs-btn-color:                var(--sq-text-default);
+  --bs-btn-bg:                   var(--sq-surface-neutral-subtler);
+  --bs-btn-border-color:         var(--sq-surface-neutral-subtler);
+  --bs-btn-hover-color:          var(--sq-text-default);
+  --bs-btn-hover-bg:             #cad5e2;
+  --bs-btn-hover-border-color:   #cad5e2;
+  --bs-btn-active-color:         var(--sq-text-default);
+  --bs-btn-active-bg:            #90a1b9;
+  --bs-btn-active-border-color:  #90a1b9;
+  --bs-btn-disabled-color:       var(--sq-text-default);
+  --bs-btn-disabled-bg:          var(--sq-surface-neutral-subtler);
+  --bs-btn-disabled-border-color:var(--sq-surface-neutral-subtler);
+}
+
+/* Outline — bg #f8fafc · border rgba(5,21,36,.12) · text #314158
+   hover var(--sq-surface-neutral-subtlest) · active var(--sq-surface-neutral-subtler)
+   Uso: class="btn btn-outline-secondary" */
+.btn-outline-secondary {
+  --bs-btn-color:                var(--sq-text-subtle);
+  --bs-btn-bg:                   var(--sq-surface-default);
+  --bs-btn-border-color:         rgba(5, 21, 36, 0.12);
+  --bs-btn-hover-color:          var(--sq-text-subtle);
+  --bs-btn-hover-bg:             var(--sq-surface-neutral-subtlest);
+  --bs-btn-hover-border-color:   rgba(5, 21, 36, 0.12);
+  --bs-btn-active-color:         var(--sq-text-subtle);
+  --bs-btn-active-bg:            var(--sq-surface-neutral-subtler);
+  --bs-btn-active-border-color:  rgba(5, 21, 36, 0.12);
+  --bs-btn-disabled-color:       var(--sq-text-subtle);
+  --bs-btn-disabled-bg:          var(--sq-surface-default);
+  --bs-btn-disabled-border-color:rgba(5, 21, 36, 0.12);
+}
+
+/* Ghost — transparent · text #0f172b · hover #f8fafc · active #f1f5f9
+   Uso: class="btn btn-ghost" */
+.btn-ghost {
+  --bs-btn-color:                var(--sq-text-default);
+  --bs-btn-bg:                   transparent;
+  --bs-btn-border-color:         transparent;
+  --bs-btn-hover-color:          var(--sq-text-default);
+  --bs-btn-hover-bg:             var(--sq-surface-default);
+  --bs-btn-hover-border-color:   transparent;
+  --bs-btn-active-color:         var(--sq-text-default);
+  --bs-btn-active-bg:            var(--sq-surface-neutral-subtlest);
+  --bs-btn-active-border-color:  transparent;
+  --bs-btn-disabled-color:       var(--sq-text-default);
+  --bs-btn-disabled-bg:          transparent;
+  --bs-btn-disabled-border-color:transparent;
+  /* Bootstrap no conoce esta clase — aplicar base de .btn manualmente */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sq-space-075);
+  padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+  font-family: var(--bs-btn-font-family, var(--sq-font-body));
+  font-size: var(--bs-btn-font-size, var(--sq-font-size-sm));
+  font-weight: var(--bs-btn-font-weight, 600);
+  line-height: var(--bs-btn-line-height, 1.43);
+  color: var(--sq-text-default);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--bs-btn-border-radius, var(--sq-radius-sm));
+  cursor: pointer;
+  text-decoration: none;
+  transition: color .15s ease, background-color .15s ease;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.btn-ghost:hover                    { background-color: var(--sq-surface-default); color: var(--sq-text-default); }
+.btn-ghost:active, .btn-ghost.active{ background-color: var(--sq-surface-neutral-subtlest); color: var(--sq-text-default); }
+.btn-ghost:disabled, .btn-ghost.disabled { opacity: 0.45; pointer-events: none; }
+.btn-ghost:focus-visible            { outline: none; box-shadow: 0 0 0 3px var(--sq-glow-brand); }
+.btn-ghost.btn-sm                   { padding: 8px 12px; font-size: var(--sq-font-size-xs); line-height: 1.33; }
+
+/* Danger — bg #9e0b15 · text #feeded · hover #6f040c · active #430204 */
+.btn-danger {
+  --bs-btn-color:               #feeded;
+  --bs-btn-hover-color:         #feeded;
+  --bs-btn-active-color:        #feeded;
+  --bs-btn-disabled-color:      #feeded;
+  --bs-btn-bg:                  #9e0b15;
+  --bs-btn-border-color:        #9e0b15;
+  --bs-btn-hover-bg:            #6f040c;
+  --bs-btn-hover-border-color:  #6f040c;
+  --bs-btn-active-bg:           #430204;
+  --bs-btn-active-border-color: #430204;
+  --bs-btn-disabled-bg:         #9e0b15;
+  --bs-btn-disabled-border-color:#9e0b15;
+}
+
+/* ── Switch — tamaño y colores exactos del Figma ─────────────────── */
+/*
+ * Figma specs (1:1):
+ *   track: 36×20px · border-radius: 10px · sin borde visible
+ *   thumb: 14×14px · margen: 3px · color: blanco opaco
+ *   off-track:  #e2e8f0   hover-off: #cad5e2
+ *   on-track:   #005fdb
+ *   disabled:   opacity 0.45
+ *
+ * NOTA: Bootstrap 5.3 define --bs-form-switch-bg como variable de componente
+ * (en .form-switch .form-check-input), NO en :root. Por eso se sobreescribe
+ * aquí directamente con r='4' para que el círculo llene el background-size.
+ * Con r='3' (Bootstrap default) el círculo ocupa 6/8 = 75% → ~10.5px visible.
+ * Con r='4' el círculo ocupa 8/8 = 100% → exactamente 14px visible.
+ */
+
+/* SVG thumb con r=4 — blanco opaco, llena los 14×14px de background-size */
+/* stylelint-disable */
+.form-switch .form-check-input {
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='4' fill='%23ffffff'/%3e%3c/svg%3e");
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  border: none;
+  background-size: 14px 14px;
+  background-position: 3px center;   /* Figma: thumb 3px desde borde izq */
+  background-color: var(--sq-surface-neutral-subtler);
+  cursor: pointer;
+  transition: background-color .2s ease, background-position .2s ease;
+}
+.form-switch .form-check-input:hover {
+  background-color: #cad5e2;
+}
+.form-switch .form-check-input:checked {
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='4' fill='%23ffffff'/%3e%3c/svg%3e");
+  background-position: calc(100% - 3px) center;  /* Figma: thumb 3px desde borde der */
+  background-color: var(--sq-brand);
+  border-color: var(--sq-brand);
+}
+.form-switch .form-check-input:checked:hover {
+  background-color: var(--sq-brand-hover);
+}
+.form-switch .form-check-input:focus {
+  box-shadow: 0 0 0 3px var(--sq-glow-brand);
+  border-color: transparent;
+}
+.form-switch .form-check-input:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+/* stylelint-enable */
+
+/* ── Formularios — form-control (Input / Textarea) ───────────────── */
+/*
+ * Figma specs (1:1):
+ *   height: 40px · padding: 0 12px · border-radius: 6px · font: 14px/500
+ *   bg: #f8fafc (surface-default)
+ *   border-default: rgba(5,21,36,0.06)
+ *   border-focus:   #45556c  + shadow 0 0 0 3px rgba(11,18,14,0.14)
+ *   border-valid:   #497d00
+ *   border-invalid: #cf121f
+ *   disabled:       border #e5e7ea · opacity 0.45
+ */
+
+.form-control,
+.form-control:not(:disabled):not([readonly]) {
+  height: 40px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--sq-font-body);
+  line-height: 20px;
+  border-radius: 6px;
+  background-color: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  color: var(--sq-text-default);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+textarea.form-control,
+textarea.form-control:not(:disabled):not([readonly]) {
+  height: auto;
+  min-height: 96px;
+  padding: 10px 12px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.form-control::placeholder {
+  color: #90a1b9;
+  font-weight: 500;
+}
+
+.form-control:focus {
+  background-color: var(--sq-surface-default);
+  border-color: #45556c;
+  box-shadow: 0 0 0 3px rgba(11, 18, 14, 0.14);
+  outline: none;
+}
+
+.form-control:disabled {
+  background-color: transparent;
+  border-color: #e5e7ea;
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.form-control[readonly] {
+  background-color: var(--sq-surface-default);
+  border-color: rgba(11, 18, 14, 0.14);
+  color: var(--sq-text-subtle);
+}
+
+/* Validation states */
+.form-control.is-valid,
+.was-validated .form-control:valid {
+  border-color: #497d00 !important;
+  background-image: none;
+  box-shadow: none;
+}
+.form-control.is-valid:focus,
+.was-validated .form-control:valid:focus {
+  border-color: #497d00;
+  box-shadow: 0 0 0 3px rgba(94, 165, 0, 0.18);
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  border-color: #cf121f !important;
+  background-image: none;
+  box-shadow: none;
+}
+.form-control.is-invalid:focus,
+.was-validated .form-control:invalid:focus {
+  border-color: #cf121f;
+  box-shadow: 0 0 0 3px rgba(207, 18, 31, 0.18);
+}
+
+/* Feedback text — sobreescribe los colores por defecto de Bootstrap */
+.valid-feedback {
+  color: var(--sq-text-success) !important;
+}
+.invalid-feedback {
+  color: var(--sq-text-error) !important;
+}
+
+/* Form label */
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sq-text-default);
+  margin-bottom: 4px;
+}
+
+/* Helper text */
+.form-text {
+  font-size: 12px;
+  color: var(--sq-text-subtlest);
+  margin-top: 4px;
+}
+
+/* ── Badges — outlined pill (Figma spec) ─────────────────────────── */
+/*
+ * Figma: border 1px solid <semantic-color>, fondo sutil, pill (radius 9999px),
+ * padding 3px 8px, font 12px/500.
+ * API: .badge.bg-{variant}
+ * Variantes: primary (brand), success, warning, danger, info, secondary (neutral), indigo
+ */
+
+/* Base override: pill shape */
+.badge[class*="bg-"] {
+  border-radius: var(--sq-radius-full) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 3px 8px !important;
+  line-height: 16px !important;
+}
+
+/* Brand */
+.badge.bg-primary {
+  background-color: var(--sq-surface-brand-subtler) !important;
+  border: 1px solid var(--sq-brand) !important;
+  color: var(--sq-brand-hover) !important;
+}
+/* Activo / Success */
+.badge.bg-success {
+  background-color: var(--sq-surface-success-subtlest) !important; /* #ecfcca */
+  border: 1px solid var(--sq-border-success) !important;           /* #5ea500 */
+  color: var(--sq-text-success) !important;                        /* #3c6300 */
+}
+/* Pendiente / Warning */
+.badge.bg-warning {
+  background-color: var(--sq-surface-warning-subtlest) !important; /* #ffedd4 */
+  border: 1px solid var(--sq-border-warning) !important;           /* #f54a00 */
+  color: var(--sq-text-warning) !important;                        /* #9f2d00 */
+}
+/* Error / Danger */
+.badge.bg-danger {
+  background-color: #fedede !important;
+  border: 1px solid var(--sq-border-error) !important;             /* #cf121f */
+  color: var(--sq-text-error) !important;                          /* #6f040c */
+}
+/* Info */
+.badge.bg-info {
+  background-color: var(--sq-surface-info-subtlest) !important;    /* #ccf1ff */
+  border: 1px solid #0095cc !important;
+  color: var(--sq-text-info) !important;                           /* #004a66 */
+}
+/* Neutral */
+.badge.bg-secondary {
+  background-color: var(--sq-surface-neutral-subtler) !important;
+  border: 1px solid rgba(11, 18, 14, 0.14) !important;
+  color: var(--sq-text-default) !important;
+}
+/* Indigo (nueva variante) */
+.badge.bg-indigo {
+  background-color: #e0e7ff !important;
+  border: 1px solid #4f39f6 !important;
+  color: #372aac !important;
+}
+
+/* ── Icon Button ──────────────────────────────────────────────────── */
+/*
+ * Figma specs (1:1):
+ *   size: 32×32px · border-radius: 12px · padding: 8px · icon: 16px
+ *   Variantes: Primary, Secondary, Tertiary, Outline, Ghost, Danger
+ *   Disabled: opacity 0.45 (todas las variantes)
+ *   Uso: <button class="btn-icon btn-icon-primary"> + SVG 16×16 </button>
+ */
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color .15s ease, opacity .15s ease;
+  flex-shrink: 0;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+}
+.btn-icon:disabled,
+.btn-icon.disabled { opacity: 0.45; pointer-events: none; }
+.btn-icon:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--sq-glow-brand); }
+.btn-icon svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* Primary */
+.btn-icon-primary { background-color: var(--sq-brand); color: var(--sq-text-inverse); }
+.btn-icon-primary:hover  { background-color: var(--sq-brand-hover); color: var(--sq-text-inverse); }
+.btn-icon-primary:active { background-color: var(--sq-brand-hover); color: var(--sq-text-inverse); }
+
+/* Secondary */
+.btn-icon-secondary { background-color: var(--sq-surface-neutral-subtler); color: var(--sq-text-default); }
+.btn-icon-secondary:hover  { background-color: #cad5e2; color: var(--sq-text-default); }
+.btn-icon-secondary:active { background-color: #cad5e2; color: var(--sq-text-default); }
+
+/* Tertiary (nueva) */
+.btn-icon-tertiary { background-color: var(--sq-surface-brand-subtler); color: var(--sq-brand-hover); }
+.btn-icon-tertiary:hover  { background-color: var(--sq-surface-brand-subtlest); color: var(--sq-brand-hover); }
+.btn-icon-tertiary:active { background-color: var(--sq-surface-brand-subtlest); color: var(--sq-brand-hover); }
+
+/* Outline */
+.btn-icon-outline {
+  background-color: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  color: var(--sq-text-subtle);
+}
+.btn-icon-outline:hover  { background-color: var(--sq-surface-neutral-subtlest); color: var(--sq-text-subtle); }
+.btn-icon-outline:active { background-color: var(--sq-surface-neutral-subtler); color: var(--sq-text-subtle); }
+
+/* Ghost */
+.btn-icon-ghost { background-color: transparent; color: var(--sq-text-default); }
+.btn-icon-ghost:hover  { background-color: var(--sq-surface-default); color: var(--sq-text-default); }
+.btn-icon-ghost:active { background-color: var(--sq-surface-neutral-subtlest); color: var(--sq-text-default); }
+
+/* Danger */
+.btn-icon-danger { background-color: #9e0b15; color: #feeded; }
+.btn-icon-danger:hover  { background-color: #6f040c; color: #feeded; }
+.btn-icon-danger:active { background-color: #430204; color: #feeded; }
+.btn-icon-danger:focus-visible { box-shadow: 0 0 0 3px var(--sq-glow-error); }
+
+/* ── Custom Select (.sq-select) ──────────────────────────────────── */
+/*
+ * El <select> nativo no permite estilizar el panel desplegable porque
+ * es renderizado por el sistema operativo. .sq-select reemplaza el
+ * nativo con un botón + Bootstrap dropdown para control visual total.
+ *
+ * Uso:
+ *   <div class="sq-select dropdown">
+ *     <button class="sq-select-toggle" data-bs-toggle="dropdown">
+ *       <span class="sq-select-label">Seleccionar...</span>
+ *       <svg class="sq-select-caret">...</svg>
+ *     </button>
+ *     <ul class="dropdown-menu w-100">
+ *       <li><button class="dropdown-item" data-value="x">Opción</button></li>
+ *     </ul>
+ *   </div>
+ */
+
+.sq-select {
+  position: relative;
+}
+
+.sq-select-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--sq-font-body);
+  color: var(--sq-text-default);
+  background-color: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  gap: 8px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sq-select-toggle:hover {
+  background-color: var(--sq-surface-neutral-subtlest);
+}
+
+.sq-select-toggle:focus,
+.sq-select-toggle[aria-expanded="true"] {
+  border-color: #45556c;
+  box-shadow: 0 0 0 3px rgba(11, 18, 14, 0.14);
+  outline: none;
+  background-color: var(--sq-surface-default);
+}
+
+.sq-select-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sq-select-label.sq-select-placeholder {
+  color: #90a1b9;
+}
+
+.sq-select-caret {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--sq-text-subtlest);
+  transition: transform .2s ease;
+}
+
+.sq-select-toggle[aria-expanded="true"] .sq-select-caret {
+  transform: rotate(180deg);
+}
+
+/* Size sm */
+.sq-select-sm .sq-select-toggle {
+  height: 32px;
+  font-size: 12px;
+  padding: 0 10px;
+}
+
+/* Disabled */
+.sq-select-toggle:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Invalid */
+.sq-select-toggle.is-invalid {
+  border-color: #cf121f;
+}
+.sq-select-toggle.is-invalid:focus,
+.sq-select-toggle.is-invalid[aria-expanded="true"] {
+  border-color: #cf121f;
+  box-shadow: 0 0 0 3px rgba(207, 18, 31, 0.18);
+}
+
+/* ── Dropdown Menu ────────────────────────────────────────────────── */
+/*
+ * Figma specs (node 292:948):
+ *   container:  bg #f8fafc · border rgba(5,21,36,0.06) · radius 8px · shadow 0 4px 6px rgba(0,0,0,0.08) · padding 4px
+ *   option:     padding 4px 6px · radius 4px · font 12px/500 · color #020618
+ *   active opt: bg #cce2ff (brand-subtlest) · color #020618 · checkmark 16px
+ *   hover opt:  bg #f1f5f9
+ */
+
+.dropdown-menu {
+  background-color: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.08);
+  padding: 4px;
+  min-width: 160px;
+}
+
+.dropdown-item {
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #020618;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--sq-surface-neutral-subtlest);
+  color: #020618;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--sq-surface-brand-subtler);
+  color: #020618;
+}
+
+.dropdown-divider {
+  border-color: var(--sq-border-default);
+  margin: 4px 0;
+}
+
+.dropdown-header {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sq-text-subtlest);
+  padding: 4px 6px 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── sq-table — Figma 275-17996 (row) · 293-10285 (header) ─────── */
+/*
+ * Tabla con fila seleccionable y cabecera Squadness.
+ * Estados de fila: Default · Hover · Active (.sq-selected)
+ * Estructura:
+ *   table.sq-table
+ *     thead > tr > th          ← cabecera uppercase semibold
+ *     tbody > tr               ← fila (hover / .sq-selected)
+ *       td.sq-table-cb         ← celda checkbox (48px ancho)
+ *       td                     ← celda de datos
+ *       td.sq-table-badge-cell ← celda con badge
+ *       td.sq-table-actions    ← celda de acciones (115px ancho)
+ */
+
+.sq-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* ── Cabecera ──────────────────────────────────────────────────── */
+.sq-table > thead > tr > th {
+  background-color: var(--sq-surface-neutral-subtlest);
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sq-text-default);
+  padding: 12px 16px;
+  height: 46px;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--sq-border-subtle);
+}
+
+/* Checkbox en cabecera: borde más oscuro */
+.sq-table > thead .form-check-input {
+  border-color: var(--sq-text-subtlest);
+}
+
+/* ── Filas de cuerpo ───────────────────────────────────────────── */
+.sq-table > tbody > tr {
+  background-color: var(--sq-surface-raised);
+  transition: background-color 0.1s ease;
+  cursor: pointer;
+}
+
+.sq-table > tbody > tr > td {
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--sq-text-subtle);
+  padding: 8px 16px;
+  height: 44px;
+  vertical-align: middle;
+  border-bottom: none;
+  white-space: nowrap;
+}
+
+/* Hover */
+.sq-table > tbody > tr:hover {
+  background-color: var(--sq-surface-brand-subtlest);
+}
+
+/* Active / Selected */
+.sq-table > tbody > tr.sq-selected {
+  background-color: var(--sq-surface-brand-subtlest);
+}
+
+.sq-table > tbody > tr.sq-selected > td {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  box-shadow: inset 0 -1px 0 var(--sq-brand-active);
+}
+
+/* Checkbox checked en fila activa */
+.sq-table > tbody > tr.sq-selected .form-check-input:checked {
+  background-color: var(--sq-brand-active);
+  border-color: var(--sq-brand-active);
+}
+
+/* Expanded + Selected → fondo azul, mismo patrón de borde que expanded */
+.sq-table > tbody > tr.sq-expanded.sq-selected {
+  background-color: var(--sq-surface-brand-subtlest);
+}
+
+.sq-table > tbody > tr.sq-expanded.sq-selected > td {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none; /* border solo en el panel de detalle, no en la fila */
+}
+
+/* Panel de detalle cuando la fila padre está expanded + selected */
+.sq-table > tbody > tr.sq-expanded.sq-selected + .sq-table-detail-row > td {
+  background-color: var(--sq-surface-brand-subtlest);
+  box-shadow: inset 0 -1px 0 var(--sq-brand);
+}
+
+/* Celda checkbox — ancho fijo */
+.sq-table td.sq-table-cb,
+.sq-table th.sq-table-cb {
+  width: 48px;
+  padding-right: 0;
+}
+
+/* Celda acciones — ancho fijo 115px */
+.sq-table td.sq-table-actions,
+.sq-table th.sq-table-actions {
+  width: 115px;
+  white-space: nowrap;
+}
+
+/* Badge neutral en tabla */
+.sq-table-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  background-color: var(--sq-surface-neutral-subtler);
+  border: 1px solid var(--sq-border-default);
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sq-text-default);
+  white-space: nowrap;
+  line-height: 16px;
+}
+
+/* Botones de ícono en acciones */
+.sq-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+  background: none;
+}
+
+.sq-icon-btn:hover { opacity: 0.8; }
+
+.sq-icon-btn:disabled,
+.sq-icon-btn[disabled] {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.sq-icon-btn-outline {
+  background-color: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  color: var(--sq-text-subtle);
+}
+
+.sq-icon-btn-brand {
+  background-color: var(--sq-surface-brand-subtler);
+  color: var(--sq-brand);
+}
+
+.sq-icon-btn-brand-active {
+  background-color: var(--sq-surface-brand-subtlest);
+}
+
+/* ── sq-table: estado View / Expanded (.sq-expanded) ────────────── */
+/*
+ * Solo bottom border, implementado con box-shadow inset para no
+ * alterar el layout de la tabla:
+ *   - tr.sq-expanded > td        → box-shadow inset bottom brand
+ *   - tr.sq-table-detail-row > td → box-shadow inset bottom brand
+ * Al colapsar (.sq-expanded se elimina) el box-shadow desaparece limpiamente.
+ */
+
+.sq-table > tbody > tr.sq-expanded {
+  background-color: var(--sq-surface-neutral-subtlest);
+}
+
+.sq-table > tbody > tr.sq-expanded > td {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.sq-table > tbody > tr.sq-expanded:hover {
+  background-color: var(--sq-surface-neutral-subtlest);
+}
+
+.sq-table > tbody > tr.sq-expanded.sq-selected:hover {
+  background-color: var(--sq-surface-brand-subtlest);
+}
+
+/* Panel de detalle — fila colapsable */
+.sq-table > tbody > tr.sq-table-detail-row {
+  cursor: default;
+}
+
+.sq-table > tbody > tr.sq-table-detail-row > td {
+  padding: 0;
+  height: auto;
+  border-top: none;
+  border-bottom: none;
+  box-shadow: none;
+  background-color: var(--sq-surface-neutral-subtlest);
+  overflow: hidden;
+  transition: none;
+}
+
+.sq-table > tbody > tr.sq-table-detail-row:hover {
+  background-color: var(--sq-surface-neutral-subtlest);
+}
+
+/* Contenedor interno del panel */
+.sq-table-detail {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  align-items: flex-start;
+}
+
+.sq-table-detail-divider {
+  width: 1px;
+  align-self: stretch;
+  background-color: var(--sq-border-default);
+  flex-shrink: 0;
+}
+
+/* Sección izquierda / derecha */
+.sq-table-detail-section {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sq-table-detail-title {
+  font-family: var(--sq-font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sq-text-default);
+  white-space: nowrap;
+}
+
+/* Filas de dato dentro del panel */
+.sq-table-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--sq-border-default);
+  gap: 16px;
+}
+
+.sq-table-detail-label {
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sq-text-subtle);
+  flex-shrink: 0;
+}
+
+.sq-table-detail-value {
+  font-family: var(--sq-font-mono);
+  font-size: 16px;
+  color: var(--sq-text-default);
+  text-align: right;
+}
+
+/* Imagen de mapa / placeholder en sección de ubicación */
+.sq-table-detail-map {
+  width: 100%;
+  height: 160px;
+  border-radius: var(--sq-radius-sm);
+  border: 1px solid var(--sq-border-default);
+  background-color: var(--sq-surface-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sq-table-detail-map img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Navbar — altura fija y borde inferior ───────────────────────── */
+
+.navbar {
+  min-height: 56px;
+  border-bottom: 1px solid var(--sq-border-subtle);
+  background-color: var(--sq-surface-raised) !important;
+}
+
+/* ── Nav links — estado activo con color de marca ────────────────── */
+
+.nav-link.active,
+.nav-link[aria-current] {
+  color: var(--sq-brand) !important;
+  background-color: var(--sq-surface-brand-subtlest);
+  border-radius: var(--sq-radius-sm);
+}
+
+/* ── Card footer — sin fondo ─────────────────────────────────────── */
+
+.card-footer {
+  background-color: transparent;
+}
+
+/* ── Card imagen (.sq-card-image) — Figma 275-706 ───────────────── */
+/*
+ * Variante seleccionable con imagen, filas de datos y checkbox.
+ * Estados: Default · Hover · Active (.active)
+ * Estructura:
+ *   .sq-card-image.card
+ *     .sq-card-img           ← área de imagen
+ *     .sq-card-info          ← filas de datos
+ *       .sq-card-info-row    ← fila (label + valor)
+ *     .sq-card-checkbox      ← checkbox absoluto top-right
+ */
+
+.sq-card-image {
+  --bs-card-border-radius:       4px;
+  --bs-card-inner-border-radius: 3px;
+  --bs-card-bg:                  var(--sq-surface-neutral-subtlest);
+  --bs-card-border-color:        var(--sq-border-default);
+  --bs-card-box-shadow:          none;
+  --bs-card-spacer-x:            4px;
+  --bs-card-spacer-y:            4px;
+  position: relative;
+  cursor: pointer;
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 4px 4px 8px;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+
+.sq-card-image:hover {
+  background-color: var(--sq-surface-neutral-subtler);
+}
+
+.sq-card-image.active {
+  background-color: var(--sq-surface-brand-subtlest);
+  border-color: var(--sq-brand-active);
+}
+
+/* Área de imagen */
+.sq-card-img {
+  width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--sq-surface-neutral-subtler);
+  flex-shrink: 0;
+}
+
+.sq-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  border-radius: 2px;
+}
+
+/* Placeholder de imagen (cuando no hay img real) */
+.sq-card-img-placeholder {
+  width: 100%; height: 160px;
+  background: var(--sq-surface-neutral-subtler);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Contenedor de filas de datos */
+.sq-card-info {
+  width: 100%;
+  padding: 0 4px;
+}
+
+.sq-card-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--sq-border-default);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.sq-card-info-row:last-child {
+  border-bottom: none;
+}
+
+.sq-card-info-label {
+  flex: 1 0 0;
+  color: var(--sq-text-subtle);
+  font-family: var(--sq-font-body);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.sq-card-info-value {
+  font-family: var(--sq-font-mono);
+  color: var(--sq-text-default);
+  font-size: 12px;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Checkbox en esquina superior derecha */
+.sq-card-checkbox {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 8px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sq-card-checkbox .form-check-input {
+  margin: 0;
+  cursor: pointer;
+  border-color: var(--sq-border-subtle);
+}
+
+/* ── sq-tooltip — Figma 295-38746 / 275-10467 ───────────────────── */
+/*
+ * Tooltip Squadness. Dos variantes:
+ *   .sq-tooltip-map   → con sombra + caret inferior (mapa / punto de interés)
+ *   .sq-tooltip-card  → sin sombra, sin caret (hover en sq-card-image)
+ *
+ * Estructura:
+ *   .sq-tooltip.sq-tooltip-map (o .sq-tooltip-card)
+ *     .sq-tooltip-row               ← columna: label encima del valor
+ *       span.sq-tooltip-label       ← 12px / #314158
+ *       span.sq-tooltip-value       ← 14px / #020618 / medium
+ *     .sq-tooltip-inline            ← fila: label + valor en línea
+ *       span.sq-tooltip-inline-label  ← 12px / #62748e
+ *       span.sq-tooltip-inline-value  ← 12px / #314158 / trunca
+ */
+
+.sq-tooltip {
+  background: var(--sq-surface-neutral-subtlest);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 4px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 245px;
+  max-width: 100%;
+  font-family: var(--sq-font-body);
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+/* Variante Map: sombra + caret triangular inferior centrado */
+.sq-tooltip-map {
+  position: relative;
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Caret borde (color del border) */
+.sq-tooltip-map::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 9px solid var(--sq-border-default);
+}
+
+/* Caret relleno (color del fondo, tapa el borde) */
+.sq-tooltip-map::after {
+  content: '';
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8.5px solid var(--sq-surface-neutral-subtlest);
+}
+
+/* Variante Card: sin sombra, sin caret */
+.sq-tooltip-card {
+  /* sin modificaciones adicionales */
+}
+
+/* Fila vertical: label sobre valor */
+.sq-tooltip-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sq-tooltip-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-subtle);
+  line-height: 1.4;
+}
+
+.sq-tooltip-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #020618;
+  line-height: 1.4;
+}
+
+/* Fila horizontal: label + valor en línea */
+.sq-tooltip-inline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sq-tooltip-inline-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-subtlest);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sq-tooltip-inline-value {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-subtle);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Integración en sq-card-image: tooltip superpuesto sobre la imagen */
+.sq-card-image .sq-tooltip {
+  position: absolute;
+  top: 118px;
+  left: 30px;
+  display: none;
+  z-index: 20;
+}
+
+.sq-card-image:hover .sq-tooltip {
+  display: flex;
+}
+
+/* ── sq-map-pin-tooltip — Figma 294-38476 ───────────────────────── */
+/*
+ * Tooltip tipo tarjeta que aparece al presionar un pin en un mapa.
+ * Muestra una o dos imágenes de previsualización con una flecha hacia abajo.
+ *
+ * Estructura:
+ *   .sq-map-pin-tooltip                       ← contenedor principal (column)
+ *     .sq-map-pin-tooltip__close              ← botón cerrar (abs, top-right)
+ *     .sq-map-pin-tooltip__images             ← wrapper de imagen(es) en fila
+ *       .sq-map-pin-tooltip__img              ← contenedor imagen única (170×210px)
+ *         img                                 ← imagen con object-fit:cover
+ *
+ * Modificadores:
+ *   .sq-map-pin-tooltip--double               → dos imágenes en fila
+ */
+
+.sq-map-pin-tooltip {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  gap: 4px;
+  background: var(--sq-surface-neutral-subtlest);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 4px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Arrow pointing down at bottom center */
+.sq-map-pin-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7.5px solid transparent;
+  border-right: 7.5px solid transparent;
+  border-top: 8.5px solid var(--sq-surface-neutral-subtlest);
+  filter: drop-shadow(0 2px 1px rgba(0,0,0,0.06));
+}
+
+/* Close button */
+.sq-map-pin-tooltip__close {
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sq-surface-default);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
+  color: var(--sq-text-default, #020618);
+  transition: background 0.15s;
+}
+
+.sq-map-pin-tooltip__close:hover {
+  background: var(--sq-surface-neutral-subtle, var(--sq-surface-neutral-subtler));
+}
+
+/* Images wrapper */
+.sq-map-pin-tooltip__images {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+/* Single image container */
+.sq-map-pin-tooltip__img {
+  position: relative;
+  width: 170px;
+  height: 210px;
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sq-map-pin-tooltip__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Dark overlay on image */
+.sq-map-pin-tooltip__img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 18, 14, 0.14);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* ── sq-popover-filter — Figma 275-9454 ─────────────────────────── */
+/*
+ * Popover de filtros avanzados.
+ * Estructura:
+ *   .sq-popover-filter                   ← contenedor (256px, position:relative)
+ *     span.sq-popover-filter-title       ← "Filtrar por" (12px/500/#314158)
+ *     .sq-popover-filter-rows            ← lista de filas
+ *       .sq-popover-filter-row           ← fila: label + control
+ *         span.sq-popover-filter-label   ← etiqueta izquierda (flex-1)
+ *         .sq-popover-ctrl               ← control derecho (159×32px, bg white)
+ *           .sq-popover-ctrl--date       → variante fecha (con ícono calendario)
+ *           .sq-popover-ctrl--select     → variante select (con chevron, abre menú)
+ *           .sq-popover-ctrl--text       → variante texto (input nativo)
+ *           span.sq-popover-ctrl-text    ← placeholder / valor seleccionado
+ *           .sq-popover-ctrl-icon        ← ícono derecho (16×16)
+ *     button.btn.btn-primary.w-100       ← botón Aplicar
+ *     .sq-popover-menu                   ← menú desplegable absoluto
+ *       .sq-popover-menu-inner           ← columna principal
+ *         .sq-popover-menu-search        ← fila de búsqueda
+ *           input.sq-popover-menu-search-input
+ *         .sq-popover-menu-list          ← lista de ítems
+ *           .sq-popover-menu-item        ← ítem normal
+ *           .sq-popover-menu-item.active ← ítem seleccionado
+ *       .sq-popover-menu-scrollbar       ← indicador de scroll
+ */
+
+.sq-popover-filter {
+  background: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 256px;
+  position: relative;
+  font-family: var(--sq-font-body);
+}
+
+.sq-popover-filter-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sq-text-subtle);
+  line-height: 16px;
+}
+
+.sq-popover-filter-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sq-popover-filter-row {
+  display: flex;
+  align-items: center;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--sq-border-default);
+}
+
+.sq-popover-filter-label {
+  flex: 1 0 0;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-subtle);
+  line-height: 16px;
+}
+
+/* Control derecho — base compartida */
+.sq-popover-ctrl {
+  width: 159px;
+  height: 32px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.sq-popover-ctrl--select,
+.sq-popover-ctrl--date {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sq-popover-ctrl--select:hover,
+.sq-popover-ctrl--date:hover {
+  border-color: var(--sq-border-subtle);
+}
+
+.sq-popover-ctrl-text {
+  flex: 1 0 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-subtlest);
+  line-height: 16px;
+}
+
+.sq-popover-ctrl-text.has-value {
+  color: var(--sq-text-default);
+}
+
+.sq-popover-ctrl-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--sq-text-subtlest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Variante texto — input nativo */
+.sq-popover-ctrl--text {
+  cursor: text;
+}
+
+.sq-popover-ctrl-input {
+  flex: 1 0 0;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-default);
+  font-family: var(--sq-font-body);
+  line-height: 16px;
+}
+
+.sq-popover-ctrl-input::placeholder {
+  color: var(--sq-text-subtlest);
+}
+
+/* Menú desplegable */
+.sq-popover-menu {
+  position: absolute;
+  left: 89px;
+  background: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  padding: 4px;
+  width: 159px;
+  display: none;
+  gap: 4px;
+  z-index: 100;
+}
+
+.sq-popover-menu.is-open {
+  display: flex;
+}
+
+.sq-popover-menu-inner {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sq-popover-menu-search {
+  height: 32px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sq-popover-menu-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  color: var(--sq-text-default);
+}
+
+.sq-popover-menu-search-input::placeholder {
+  color: var(--sq-text-subtlest);
+}
+
+.sq-popover-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sq-popover-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-subtle);
+  line-height: 16px;
+  transition: background-color .1s;
+}
+
+.sq-popover-menu-item:hover {
+  background: var(--sq-surface-neutral-subtler);
+}
+
+.sq-popover-menu-item.active {
+  background: var(--sq-brand-active);
+  color: var(--sq-text-inverse);
+  font-weight: 500;
+}
+
+/* Indicador de scroll */
+.sq-popover-menu-scrollbar {
+  width: 4px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  background: rgba(11, 18, 14, 0.14);
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  padding: 2px 1px;
+  align-self: stretch;
+}
+
+.sq-popover-menu-scrollbar-thumb {
+  width: 2px;
+  height: 19px;
+  background: rgba(8, 15, 33, 0.29);
+  border-radius: 19px;
+}
+
+/* ── sq-datepicker — Figma 275-8155 ─────────────────────────────── */
+/*
+ * Panel de calendario para el filtro de fecha.
+ * Estructura:
+ *   .sq-datepicker-panel               ← contenedor absoluto (276px)
+ *     .sq-datepicker-header            ← fila: ← "Mes Año" →
+ *       .sq-datepicker-nav             ← botón prev/next (28×28px)
+ *       span.sq-datepicker-month-label ← "Junio 2026"
+ *     .sq-datepicker-grid              ← grilla 7 cols × n filas
+ *       .sq-datepicker-cell            ← celda 36×36px
+ *       .sq-datepicker-cell--header    ← cabecera (Su Mo Tu…)
+ *       .sq-datepicker-cell--other     ← día de otro mes (#62748e)
+ *       .sq-datepicker-cell--selected  ← día seleccionado (bg brand)
+ *       .sq-datepicker-cell--today     ← hoy (texto brand)
+ */
+
+.sq-datepicker-panel {
+  background: #fff;
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  padding: 12px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  width: 276px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: absolute;
+  z-index: 110;
+  font-family: var(--sq-font-body);
+}
+
+.sq-datepicker-panel.is-open {
+  display: flex;
+}
+
+.sq-datepicker-header {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.sq-datepicker-nav {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--sq-text-default);
+  position: absolute;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.sq-datepicker-nav--prev { left: 0; }
+.sq-datepicker-nav--next { right: 0; }
+
+.sq-datepicker-nav:hover {
+  background: var(--sq-surface-neutral-subtler);
+}
+
+.sq-datepicker-month-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sq-text-default);
+  line-height: 20px;
+}
+
+.sq-datepicker-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 36px);
+}
+
+.sq-datepicker-cell {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--sq-text-default);
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
+  transition: background-color .1s;
+}
+
+.sq-datepicker-cell--header {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--sq-text-subtlest);
+  cursor: default;
+}
+
+.sq-datepicker-cell--other {
+  color: var(--sq-text-subtlest);
+}
+
+.sq-datepicker-cell--today {
+  color: var(--sq-brand-active);
+  font-weight: 500;
+}
+
+.sq-datepicker-cell--selected {
+  background: var(--sq-brand-active);
+  color: var(--sq-text-inverse);
+  font-weight: 500;
+}
+
+.sq-datepicker-cell:not(.sq-datepicker-cell--header):not(.sq-datepicker-cell--selected):hover {
+  background: var(--sq-surface-neutral-subtler);
+}
+
+/* Variante inline: siempre visible, fluye en el documento */
+.sq-datepicker-panel--inline {
+  position: relative;
+  display: flex;
+}
+
+/* Estados de rango para Date Range Picker */
+.sq-datepicker-cell--range-start,
+.sq-datepicker-cell--range-end {
+  background: var(--sq-brand-active, var(--sq-brand));
+  color: var(--sq-text-inverse, #fff);
+  font-weight: 500;
+}
+
+.sq-datepicker-cell--in-range {
+  background: var(--sq-surface-brand-subtlest);
+  color: var(--sq-text-default, #020618);
+  border-radius: 0;
+}
+
+.sq-datepicker-cell--range-start { border-radius: 8px 0 0 8px; }
+.sq-datepicker-cell--range-end   { border-radius: 0 8px 8px 0; }
+
+/* ── sq-radio-date — Figma 275-7831 ─────────────────────────────── */
+/*
+ * Lista de opciones rápidas de período para filtros de fecha.
+ * Estructura:
+ *   .sq-radio-date                    ← contenedor (240px, flex-col, gap 4px)
+ *     .sq-radio-date-option           ← fila: radio + label (8px gap, 6/4px padding, 8px radius)
+ *       input[type="radio"].form-check-input
+ *       span.sq-radio-date-label      ← 12px / #314158
+ *     .sq-radio-date-inputs           ← fila con dos date inputs (solo en opción "Custom")
+ *       .sq-date-input                ← campo fecha (32px, border #ddd, 8px radius)
+ */
+
+.sq-radio-date {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 240px;
+}
+
+.sq-radio-date-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.sq-radio-date-option:hover {
+  background: var(--sq-surface-neutral-subtler);
+}
+
+.sq-radio-date-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--sq-text-subtle, var(--sq-text-subtle));
+}
+
+/* Reset Bootstrap margin que desalinea el radio en contexto flex */
+.sq-radio-date-option .form-check-input {
+  margin-top: 0;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.sq-radio-date-inputs {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.sq-date-input {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  background: #fff;
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sq-date-input span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--sq-text-subtlest, var(--sq-text-subtlest));
+}
+
+.sq-date-input svg {
+  flex-shrink: 0;
+  color: var(--sq-text-subtlest, var(--sq-text-subtlest));
+}
+
+/* ── sq-date-range-picker — Figma 275-7877 ──────────────────────── */
+/*
+ * Panel de selección de rango de fechas. Combina sq-radio-date
+ * con el calendario sq-datepicker-panel y un botón Aplicar.
+ * Estructura:
+ *   .sq-date-range-picker             ← 292px, flex-col, gap 12px, padding 8px
+ *     .sq-radio-date                  ← lista de opciones rápidas
+ *     .sq-date-range-picker__calendar ← wrapper del calendario (display cuando es Custom)
+ *       .sq-datepicker-panel--inline  ← reutiliza el panel existente
+ *     button.btn.btn-primary.w-100    ← botón Aplicar (36px)
+ */
+
+.sq-date-range-picker {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px;
+  background: var(--sq-surface-default, var(--sq-surface-default));
+  border: 1px solid var(--sq-border-default, var(--sq-border-default));
+  border-radius: 8px;
+  width: 292px;
+  position: relative;
+}
+
+.sq-date-range-picker .sq-radio-date {
+  width: 100%;
+}
+
+/* El calendario flota sobre el layout, anclado a la derecha del picker */
+.sq-date-range-picker__calendar {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 8px);
+  z-index: 200;
+}
+
+.sq-date-range-picker__calendar.is-open {
+  display: block;
+}
+
+.sq-date-range-picker .btn-primary {
+  height: 36px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ── sq-filter-bar — Figma 462-33824 ────────────────────────────── */
+/*
+ * Barra horizontal de filtros activos.
+ * Estructura:
+ *   .sq-filter-bar                  ← fila flex, gap 4px, position relative
+ *     .sq-filter-trigger            ← "Agregar filtro" (140×32px, borde, rounded-8)
+ *       span.sq-filter-trigger-label ← texto (flex:1)
+ *     .sq-filter-chip               ← chip por cada filtro activo (×32px)
+ *       span                        ← valor del filtro
+ *       button.sq-filter-chip-close ← botón × para remover
+ *     .sq-filter-results            ← "N resultados" (ícono + texto, padding-left 8px)
+ */
+
+.sq-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.sq-filter-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  width: 140px;
+  padding: 0 8px;
+  background: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sq-text-subtle);
+  flex-shrink: 0;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.sq-filter-trigger:hover {
+  border-color: var(--sq-border-subtle);
+}
+
+.sq-filter-trigger.is-active {
+  border-color: var(--sq-brand-active);
+}
+
+.sq-filter-trigger-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sq-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  background: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sq-text-subtle);
+  flex-shrink: 0;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.sq-filter-chip-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--sq-text-subtlest);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.sq-filter-chip-close:hover {
+  color: var(--sq-text-default);
+}
+
+.sq-filter-results {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 8px;
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-subtlest);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── sq-topbar — Figma 273-8718 ─────────────────────────────────── */
+/*
+ * Barra de navegación superior (Top Bar).
+ * Estructura:
+ *   .sq-topbar                         ← contenedor 56px alto, ancho completo
+ *     .sq-topbar-left                  ← lado izquierdo
+ *       button.sq-topbar-icon-btn      ← botón ícono base (32×32, radius-12)
+ *     .sq-topbar-right                 ← lado derecho (flex, gap-16)
+ *       .sq-topbar-theme               ← "Light · switch · Dark"
+ *       button.sq-topbar-icon-btn.sq-topbar-icon-btn--outline ← con borde
+ *       .sq-topbar-divider             ← línea vertical (1px, 20px)
+ *       .sq-topbar-user                ← info usuario (187px)
+ *         .sq-topbar-user--hover       ← estado hover (fondo sutil)
+ *         .sq-topbar-user--active      ← estado activo (chevron invertido)
+ *           .sq-topbar-user-avatar     ← círculo 32px (foto o iniciales)
+ *           .sq-topbar-user-info       ← columna nombre + rol
+ *             .sq-topbar-user-name     ← 14px/500
+ *             .sq-topbar-user-role     ← 12px/400, color subtlest
+ */
+
+.sq-topbar {
+  background: var(--sq-surface-default);
+  border-bottom: 1px solid var(--sq-border-default);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.sq-topbar-left,
+.sq-topbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.sq-topbar-right {
+  gap: 16px;
+}
+
+/* ── Icon buttons ── */
+.sq-topbar-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--sq-text-subtle);
+  transition: background 0.15s ease;
+}
+
+.sq-topbar-icon-btn:hover {
+  background: var(--sq-surface-neutral-subtler);
+}
+
+.sq-topbar-icon-btn--outline {
+  background: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+}
+
+.sq-topbar-icon-btn--outline:hover {
+  border-color: var(--sq-border-subtle);
+  background: var(--sq-surface-neutral-subtlest);
+}
+
+/* ── Theme toggle ── */
+.sq-topbar-theme {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--sq-text-subtle);
+  flex-shrink: 0;
+}
+
+.sq-topbar-theme .form-check-input {
+  margin: 0;
+  cursor: pointer;
+}
+
+/* ── Vertical divider ── */
+.sq-topbar-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--sq-border-default);
+  flex-shrink: 0;
+}
+
+/* ── User Info — Figma 273-8633 ── */
+.sq-topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px 4px 4px;
+  border-radius: 8px;
+  width: 187px;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: background 0.15s ease;
+}
+
+.sq-topbar-user:hover,
+.sq-topbar-user--hover {
+  background: var(--sq-surface-neutral-subtlest);
+}
+
+.sq-topbar-user--active {
+  background: var(--sq-surface-neutral-subtlest);
+}
+
+.sq-topbar-user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--sq-brand) 0%, var(--sq-brand-active) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sq-font-body);
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.sq-topbar-user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sq-topbar-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.sq-topbar-user-name {
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sq-text-default);
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sq-topbar-user-role {
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-subtlest);
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── sq-sidebar — Figma 273-8605 ────────────────────────────────── */
+/*
+ * Sidebar de navegación lateral Squadness.
+ * Estructura:
+ *   .sq-sidebar                        ← contenedor 240px (collapsed: 56px)
+ *     .sq-sidebar-header               ← logo + wordmark, 56px alto
+ *       .sq-sidebar-logo               ← ícono 32px
+ *       .sq-sidebar-wordmark           ← texto "Squadness" (oculto en collapsed)
+ *     .sq-sidebar-menu                 ← lista de ítems, gap 4px, padding 24px 12px
+ *       .sq-sidebar-item               ← ítem simple (icon + label)
+ *       .sq-sidebar-group              ← ítem con submenú (accordion)
+ *         .sq-sidebar-group-trigger    ← cabecera del grupo (icon + label + chevron)
+ *         .sq-sidebar-group-sub        ← submenú (divider vertical + lista)
+ *           .sq-sidebar-sub-item       ← ítem de submenú
+ *           .sq-sidebar-sub-item.active ← ítem activo (azul)
+ *   .sq-sidebar--collapsed             ← variante estrecha (56px, solo iconos)
+ */
+
+.sq-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  min-height: 100%;
+  background: var(--sq-surface-default);
+  border-right: 1px solid var(--sq-border-default);
+  transition: width 0.2s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sq-sidebar--collapsed {
+  width: 56px;
+}
+
+/* Header */
+.sq-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 56px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--sq-border-default);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.sq-sidebar-logo {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sq-sidebar-wordmark {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sq-text-default);
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+/* Logo como imagen (expanded + collapsed) */
+.sq-sidebar-logo-expanded {
+  height: 28px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+}
+
+.sq-sidebar-logo-collapsed {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: none;
+}
+
+/* ─── ESTADO COLAPSADO (56 px) ──────────────────────────────────── */
+
+/* Header: logo centrado, wordmark y toggle ocultos */
+.sq-sidebar--collapsed .sq-sidebar-header {
+  justify-content: center;
+  gap: 0;
+  padding: 8px;
+}
+.sq-sidebar--collapsed .sq-sidebar-wordmark,
+.sq-sidebar--collapsed .sq-sidebar-toggle,
+.sq-sidebar--collapsed .sq-sidebar-logo-expanded {
+  display: none;
+}
+
+.sq-sidebar--collapsed .sq-sidebar-logo-collapsed {
+  display: block;
+}
+
+/* Menu */
+.sq-sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 12px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Menu collapsed: ítems centrados */
+.sq-sidebar--collapsed .sq-sidebar-menu {
+  align-items: center;
+  padding: 24px 0;
+}
+
+/* Simple item */
+.sq-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 8px;
+  color: var(--sq-text-subtle, var(--sq-text-subtle));
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  cursor: pointer;
+  text-decoration: none !important;
+  white-space: nowrap;
+  width: 100%;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sq-sidebar-item:hover {
+  background: var(--sq-surface-neutral-subtlest, #f1f5f9);
+  color: var(--sq-text-subtle, var(--sq-text-subtle));
+  text-decoration: none !important;
+}
+
+.sq-sidebar-item.active {
+  background: var(--sq-brand-active, var(--sq-brand));
+  color: #fff !important;
+  font-weight: 500;
+}
+
+.sq-sidebar-item svg,
+.sq-sidebar-item .sq-sidebar-icon,
+.sq-sidebar-group-trigger svg:first-child,
+.sq-sidebar-group-trigger .sq-sidebar-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+/* Icono SVG inline del ítem — hereda fill="currentColor" del padre */
+.sq-sidebar-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.sq-sidebar-item-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Collapsed: label y elementos de texto ── */
+.sq-sidebar--collapsed .sq-sidebar-item-label,
+.sq-sidebar--collapsed .sq-sidebar-group-label {
+  display: none;
+}
+
+/* ── Collapsed: ítem centrado con ícono real ── */
+.sq-sidebar--collapsed .sq-sidebar-item,
+.sq-sidebar--collapsed .sq-sidebar-group-trigger {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* ── Collapsed: ícono siempre visible (hereda currentColor del padre) ── */
+.sq-sidebar--collapsed .sq-sidebar-item > svg,
+.sq-sidebar--collapsed .sq-sidebar-item > .sq-sidebar-icon,
+.sq-sidebar--collapsed .sq-sidebar-group-trigger > svg:first-child,
+.sq-sidebar--collapsed .sq-sidebar-group-trigger > .sq-sidebar-icon {
+  display: block;
+}
+
+/* ── Collapsed activo: fondo azul, ícono blanco ── */
+.sq-sidebar--collapsed .sq-sidebar-item.active {
+  background: var(--sq-brand-active, var(--sq-brand));
+}
+
+/* ── Collapsed: SIEMPRE ocultar submenús y chevrons ── */
+.sq-sidebar--collapsed .sq-sidebar-group-sub {
+  display: none !important;
+}
+.sq-sidebar--collapsed .sq-sidebar-group-chevron {
+  display: none;
+}
+
+/* Group (accordion) */
+.sq-sidebar-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.sq-sidebar-group-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 8px;
+  color: var(--sq-text-subtle, var(--sq-text-subtle));
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  width: 100%;
+  transition: background 0.15s ease;
+  user-select: none;
+}
+
+.sq-sidebar-group-trigger:hover {
+  background: var(--sq-surface-neutral-subtlest, #f1f5f9);
+}
+
+.sq-sidebar-group-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.15s ease;
+}
+
+.sq-sidebar-group-chevron {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+  color: var(--sq-text-subtlest, var(--sq-text-subtlest));
+}
+
+.sq-sidebar-group.is-open .sq-sidebar-group-chevron {
+  transform: rotate(180deg);
+}
+
+/* Submenu */
+.sq-sidebar-group-sub {
+  display: none;
+  flex-direction: row;
+  gap: 0;
+}
+
+.sq-sidebar-group.is-open .sq-sidebar-group-sub {
+  display: flex;
+}
+
+.sq-sidebar-sub-divider {
+  width: 20px;
+  flex-shrink: 0;
+  align-self: stretch;
+  position: relative;
+}
+
+.sq-sidebar-sub-divider::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--sq-border-default);
+  transform: translateX(-50%);
+}
+
+.sq-sidebar-sub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  padding: 4px 0;
+  min-width: 0;
+}
+
+.sq-sidebar-sub-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 6px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--sq-text-subtle, var(--sq-text-subtle));
+  cursor: pointer;
+  white-space: normal;
+  text-decoration: none !important;
+  width: 100%;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sq-sidebar-sub-item:hover {
+  background: var(--sq-surface-neutral-subtlest, #f1f5f9);
+  color: var(--sq-text-subtle, var(--sq-text-subtle));
+  text-decoration: none !important;
+}
+
+.sq-sidebar-sub-item.active {
+  background: var(--sq-brand-active, var(--sq-brand));
+  color: #fff !important;
+  font-weight: 500;
+}
+
+/* Collapse toggle button */
+.sq-sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid var(--sq-border-default);
+  background: var(--sq-surface-default);
+  color: var(--sq-text-subtlest);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.sq-sidebar-toggle:hover {
+  background: var(--sq-surface-neutral-subtlest);
+  color: var(--sq-text-default);
+}
+
+/* ── sq-pagination — Figma 275-738 ──────────────────────────────── */
+/*
+ * Componente de paginación Squadness.
+ * Estructura:
+ *   .sq-pagination
+ *     .sq-pagination-group          ← grupo "rows per page"
+ *       span.sq-pagination-label    ← "Row per page"
+ *       select.sq-pagination-rows   ← selector 10 / 25 / 50
+ *     .sq-pagination-group          ← grupo "pages"
+ *       span.sq-pagination-info     ← "Page 1 of 7"
+ *       .sq-pagination-nav          ← botones prev / next (.sq-icon-btn)
+ */
+
+.sq-pagination {
+  display: inline-flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.sq-pagination-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sq-pagination-label,
+.sq-pagination-info {
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-subtle);
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+/* Selector rows per page */
+.sq-pagination-rows {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--sq-surface-raised);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 5px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  color: var(--sq-text-subtle);
+  line-height: 16px;
+  position: relative;
+}
+
+.sq-pagination-rows select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  color: var(--sq-text-subtle);
+  cursor: pointer;
+  padding: 0;
+  width: 28px;
+}
+
+.sq-pagination-rows svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+/* Nav botones prev / next */
+.sq-pagination-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.page-item:not(:first-child) .page-link {
+  margin-left: 0;
+}
+
+/* ── Accordion — sin borde en el botón al colapsar ───────────────── */
+
+.accordion-button:not(.collapsed) {
+  box-shadow: none;
+  border-bottom: 1px solid var(--sq-border-subtle);
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 3px var(--sq-glow-brand);
+}
+
+/* ── Spinner — color de marca ────────────────────────────────────── */
+
+.spinner-border,
+.spinner-grow {
+  color: var(--sq-brand);
+}
+
+/* ── Código inline ───────────────────────────────────────────────── */
+
+code:not([class]) {
+  font-family: var(--sq-font-mono);
+  font-size: 0.85em;
+  color: var(--sq-brand);
+  background-color: rgba(0, 95, 219, 0.07);
+  padding: 2px 6px;
+  border-radius: var(--sq-radius-xs);
+}
+
+pre {
+  background-color: var(--sq-surface-neutral-subtlest);
+  border: 1px solid var(--sq-border-subtle);
+  border-radius: var(--sq-radius-md);
+  padding: 16px 20px;
+  font-family: var(--sq-font-mono);
+  font-size: 13px;
+  overflow-x: auto;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   UTILIDADES SQUADNESS  .sq-*
+   Clases propias que complementan las de Bootstrap
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Texto */
+.sq-text-brand      { color: var(--sq-text-brand) !important; }
+.sq-text-subtle     { color: var(--sq-text-subtle) !important; }
+.sq-text-subtlest   { color: var(--sq-text-subtlest) !important; }
+.sq-text-success    { color: var(--sq-text-success) !important; }
+.sq-text-warning    { color: var(--sq-text-warning) !important; }
+.sq-text-error      { color: var(--sq-text-error) !important; }
+.sq-text-info       { color: var(--sq-text-info) !important; }
+.sq-text-inverse    { color: var(--sq-text-inverse) !important; }
+.sq-text-mono       { font-family: var(--sq-font-mono) !important; }
+
+/* Superficies */
+.sq-surface-raised      { background-color: var(--sq-surface-raised) !important; }
+.sq-surface-default     { background-color: var(--sq-surface-default) !important; }
+.sq-surface-neutral     { background-color: var(--sq-surface-neutral-subtlest) !important; }
+.sq-surface-brand       { background-color: var(--sq-surface-brand-subtlest) !important; }
+.sq-surface-success     { background-color: var(--sq-surface-success-subtlest) !important; }
+.sq-surface-warning     { background-color: var(--sq-surface-warning-subtlest) !important; }
+.sq-surface-error       { background-color: var(--sq-surface-error-subtlest) !important; }
+.sq-surface-info        { background-color: var(--sq-surface-info-subtlest) !important; }
+
+/* Bordes */
+.sq-border              { border: 1px solid var(--sq-border-subtle) !important; }
+.sq-border-subtle       { border: 1px solid var(--sq-border-subtle) !important; }
+.sq-border-default      { border: 1px solid var(--sq-border-default) !important; }
+.sq-border-bold         { border: 1px solid var(--sq-border-bold) !important; }
+.sq-border-brand        { border: 1px solid var(--sq-border-brand) !important; }
+.sq-border-success      { border: 1px solid var(--sq-border-success) !important; }
+.sq-border-warning      { border: 1px solid var(--sq-border-warning) !important; }
+.sq-border-error        { border: 1px solid var(--sq-border-error) !important; }
+
+/* Sombras */
+.sq-shadow-sm   { box-shadow: var(--sq-shadow-sm) !important; }
+.sq-shadow-md   { box-shadow: var(--sq-shadow-md) !important; }
+.sq-shadow-lg   { box-shadow: var(--sq-shadow-lg) !important; }
+.sq-shadow-none { box-shadow: none !important; }
+
+/* Radios */
+.sq-radius-xs   { border-radius: var(--sq-radius-xs) !important; }
+.sq-radius-sm   { border-radius: var(--sq-radius-sm) !important; }
+.sq-radius-md   { border-radius: var(--sq-radius-md) !important; }
+.sq-radius-lg   { border-radius: var(--sq-radius-lg) !important; }
+.sq-radius-full { border-radius: var(--sq-radius-full) !important; }
+
+/* Espaciado extra (complementa gap-* de Bootstrap) */
+.sq-gap-025  { gap: var(--sq-space-025) !important; }
+.sq-gap-050  { gap: var(--sq-space-050) !important; }
+.sq-gap-075  { gap: var(--sq-space-075) !important; }
+.sq-gap-100  { gap: var(--sq-space-100) !important; }
+.sq-gap-150  { gap: var(--sq-space-150) !important; }
+.sq-gap-200  { gap: var(--sq-space-200) !important; }
+.sq-gap-300  { gap: var(--sq-space-300) !important; }
+
+/* Divider */
+.sq-divider {
+  border: none;
+  border-top: 1px solid var(--sq-border-subtle);
+  margin: 24px 0;
+}
+
+/* ── sq-drag-item — Figma 303-25634 ─────────────────────────────── */
+/*
+ * Ítem arrastrable con ícono grip y etiqueta de texto.
+ * Estructura:
+ *   .sq-drag-item                  ← fila flex, gap 4px, padding 4px, radius 4px
+ *     .sq-drag-item__handle        ← ícono grip 12×12px (SVG 6 puntos)
+ *     .sq-drag-item__label         ← texto (14px / 600 / sq-text-subtle)
+ *
+ * Estados:
+ *   default                        ← bg neutral-subtlest, border default
+ *   :hover                         ← bg neutral-subtler
+ *   .is-dragging                   ← bg brand-subtlest, border brand, opacity 0.6
+ */
+
+.sq-drag-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid var(--sq-border-default);
+  background: var(--sq-surface-neutral-subtlest);
+  cursor: grab;
+  user-select: none;
+  width: 100%;
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--sq-text-subtle);
+  box-sizing: border-box;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.sq-drag-item:hover {
+  background: var(--sq-surface-neutral-subtler);
+}
+
+.sq-drag-item.is-dragging {
+  background: var(--sq-surface-brand-subtlest);
+  border-color: var(--sq-border-brand);
+  opacity: 0.6;
+  cursor: grabbing;
+}
+
+.sq-drag-item__handle {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  color: var(--sq-text-subtlest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sq-drag-item__label {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── sq-items-container — Figma 304-26692 ───────────────────────── */
+/*
+ * Contenedor de lista de ítems arrastrables.
+ * Estructura:
+ *   .sq-items-container                    ← columna flex, gap 5px, width 100%
+ *     .sq-items-container__title           ← etiqueta (14px / 600 / text-default)
+ *     .sq-items-container__body            ← zona de drop (bg default, border subtle)
+ *       .sq-drag-item  (×n)                ← ítems arrastrables
+ *       .sq-items-container__empty         ← estado vacío (solo cuando no hay ítems)
+ *         .sq-items-container__empty-text  ← texto centrado (14px / 500 / subtlest)
+ *
+ * Modificadores:
+ *   .sq-items-container__body.drag-over    ← highlight azul mientras arrastra sobre zona
+ */
+
+.sq-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.sq-items-container__title {
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--sq-text-default);
+  margin: 0;
+}
+
+.sq-items-container__body {
+  background: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-subtle);
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 120px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 320px;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.sq-items-container__body.drag-over {
+  border-color: var(--sq-border-brand);
+  background: var(--sq-surface-brand-subtlest);
+}
+
+.sq-items-container__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 99px;
+  padding: 8px;
+}
+
+.sq-items-container__empty-text {
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--sq-text-subtlest);
+  text-align: center;
+  max-width: 180px;
+}
+
+/* Focus ring visible en elementos interactivos personalizados */
+.sq-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sq-glow-brand);
+}
+
+/* ── sq-modal — Figma 436-33455 (Eliminar) · 436-33843 (Adicionar) ── */
+/*
+ * Modal Squadness. No usa Bootstrap .modal — es un componente propio.
+ * Estructura:
+ *   .sq-modal
+ *     .sq-modal-header
+ *       h2.sq-modal-title
+ *       button.sq-icon-btn.sq-icon-btn-outline   ← botón cerrar
+ *     p.sq-modal-body                            ← descripción
+ *     .sq-modal-form  (opcional — modal de formulario)
+ *       .sq-modal-field × N
+ *         label.sq-modal-label
+ *         input.sq-modal-input  |  .sq-modal-dropdown
+ *     .sq-modal-footer
+ *       button.sq-btn-cancel
+ *       button.sq-btn-danger | .sq-btn-primary-action
+ *
+ * Overlay de preview (solo docs): .sq-modal-overlay-preview
+ */
+
+.sq-modal {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 448px;
+  max-width: 100%;
+  box-shadow: 0 8px 32px rgba(5, 21, 36, 0.12);
+}
+
+/* Variante para formulario — mayor separación entre bloques */
+.sq-modal--form {
+  gap: 32px;
+}
+
+.sq-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sq-modal-title {
+  font-family: var(--sq-font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: #020618;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.sq-modal-body {
+  font-family: var(--sq-font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--sq-text-subtle);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.sq-modal-footer {
+  display: flex;
+  gap: 16px;
+}
+
+/* Botón Cancelar */
+.sq-btn-cancel {
+  flex: 1;
+  height: 36px;
+  background-color: var(--sq-surface-neutral-subtler);
+  color: var(--sq-text-default);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.sq-btn-cancel:hover { background-color: var(--sq-neutral-300); }
+
+/* Botón acción destructiva */
+.sq-btn-danger {
+  flex: 1;
+  height: 36px;
+  background-color: #9e0b15;
+  color: #feeded;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.sq-btn-danger:hover { background-color: #8a0a13; }
+
+/* Botón acción primaria */
+.sq-btn-primary-action {
+  flex: 1;
+  height: 36px;
+  background-color: var(--sq-brand);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.sq-btn-primary-action:hover { background-color: var(--sq-brand-pressed); }
+
+/* ── Formulario dentro del modal ─────────────────────────────────── */
+
+.sq-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sq-modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.sq-modal-label {
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sq-text-default);
+  line-height: 20px;
+}
+
+.sq-modal-input {
+  height: 40px;
+  background-color: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 6px;
+  padding: 0 12px;
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  color: var(--sq-text-default);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sq-modal-input::placeholder { color: #90a1b9; }
+
+.sq-modal-input:focus {
+  border-color: var(--sq-brand);
+  box-shadow: 0 0 0 3px rgba(0, 95, 219, 0.15);
+}
+
+/* Dropdown trigger */
+.sq-modal-dropdown {
+  height: 36px;
+  background-color: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 12px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  color: var(--sq-text-default);
+  user-select: none;
+  position: relative;
+}
+
+.sq-modal-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  padding: 4px;
+  z-index: 100;
+  display: none;
+}
+
+.sq-modal-dropdown.open .sq-modal-dropdown-menu {
+  display: block;
+}
+
+.sq-modal-dropdown-item {
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #020618;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sq-modal-dropdown-item:hover { background-color: var(--sq-surface-neutral-subtlest); }
+
+.sq-modal-dropdown-item.active { background-color: var(--sq-surface-brand-subtler); }
+
+/* Overlay de preview (solo para la documentación) */
+.sq-modal-overlay-preview {
+  background-color: rgba(5, 12, 31, 0.66);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  border-radius: 8px;
+  min-height: 280px;
+  width: 100%;
+}
+
+/* ── sq-toast — Figma 305-32121 ─────────────────────────────────── */
+/*
+ * Notificación compacta. Combina .toast de Bootstrap (JS show/hide)
+ * con estilos visuales propios.
+ *
+ * Variantes: Default · Success · Warning · Info · Error
+ *
+ * Estructura:
+ *   .sq-toast[.sq-toast--{variant}]   ← también lleva .toast para BS JS
+ *     svg.sq-toast-icon               ← solo en variantes semánticas
+ *     span.sq-toast-text
+ */
+
+.sq-toast {
+  /* Reset Bootstrap toast CSS vars */
+  --bs-toast-max-width:    317px;
+  --bs-toast-padding-x:    0;
+  --bs-toast-padding-y:    0;
+  --bs-toast-border-radius: 8px;
+  --bs-toast-border-color: var(--sq-border-default);
+  --bs-toast-bg:           var(--sq-surface-default);
+  --bs-toast-box-shadow:   0 4px 2px rgba(0, 0, 0, 0.18);
+  --bs-toast-color:        var(--sq-text-default);
+
+  /* Layout propio */
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--sq-border-default);
+  background-color: var(--sq-surface-default);
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.18);
+  width: 317px;
+  max-width: 100%;
+  font-family: var(--sq-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--sq-text-default);
+}
+
+/* Ícono — alineación con la primera línea del texto */
+.sq-toast-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.sq-toast-text {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+/* ── Variantes semánticas ──────────────────────────────────────── */
+
+.sq-toast--success {
+  gap: 8px;
+  background-color: var(--sq-surface-success-subtlest);
+  border-color: var(--sq-border-success);
+  --bs-toast-bg:           var(--sq-surface-success-subtlest);
+  --bs-toast-border-color: var(--sq-border-success);
+}
+.sq-toast--success .sq-toast-text { color: var(--sq-text-success); }
+.sq-toast--success .sq-toast-icon { color: var(--sq-text-success); }
+
+.sq-toast--warning {
+  gap: 8px;
+  background-color: var(--sq-surface-warning-subtlest);
+  border-color: var(--sq-border-warning);
+  --bs-toast-bg:           var(--sq-surface-warning-subtlest);
+  --bs-toast-border-color: var(--sq-border-warning);
+}
+.sq-toast--warning .sq-toast-text { color: var(--sq-text-warning); }
+.sq-toast--warning .sq-toast-icon { color: var(--sq-text-warning); }
+
+.sq-toast--info {
+  gap: 8px;
+  /* border/semantic/info → --sq-info (#0095cc). No existe --sq-border-info en tokens */
+  background-color: var(--sq-surface-info-subtlest);
+  border-color: var(--sq-info);
+  --bs-toast-bg:           var(--sq-surface-info-subtlest);
+  --bs-toast-border-color: var(--sq-info);
+}
+.sq-toast--info .sq-toast-text { color: var(--sq-text-info); }
+.sq-toast--info .sq-toast-icon { color: var(--sq-text-info); }
+
+.sq-toast--error {
+  gap: 8px;
+  /* surface/semantic/error/subtlest en Figma = #fedede → --sq-surface-error-subtler
+     (--sq-surface-error-subtlest en tokens = #feeded, tono diferente) */
+  background-color: var(--sq-surface-error-subtler);
+  border-color: var(--sq-border-error);
+  --bs-toast-bg:           var(--sq-surface-error-subtler);
+  --bs-toast-border-color: var(--sq-border-error);
+}
+.sq-toast--error .sq-toast-text { color: var(--sq-text-error); }
+.sq-toast--error .sq-toast-icon { color: var(--sq-text-error); }
+
+/* ── sq-delete-dialog — Figma 275-10688 ─────────────────────────── */
+/*
+ * Barra de acción contextual al seleccionar filas en una tabla.
+ * Estructura:
+ *   .sq-delete-dialog
+ *     .sq-delete-dialog-info
+ *       span.sq-delete-dialog-count
+ *       button.sq-delete-dialog-select-all
+ *     button.sq-delete-dialog-btn-danger
+ */
+
+.sq-delete-dialog {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sq-space-300, 24px);
+  padding: var(--sq-space-100, 8px);
+  background: var(--sq-surface-default, #f8fafc);
+  border: 1px solid var(--sq-border-default, rgba(5, 21, 36, 0.06));
+  border-radius: var(--sq-radius-sm, 8px);
+  box-shadow: 0 4px 11.2px rgba(0, 0, 0, 0.08);
+}
+
+.sq-delete-dialog-info {
+  display: flex;
+  align-items: center;
+  gap: var(--sq-space-300, 24px);
+  padding-left: var(--sq-space-100, 8px);
+}
+
+.sq-delete-dialog-count {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--sq-text-default, #020618);
+  white-space: nowrap;
+}
+
+.sq-delete-dialog-select-all {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sq-space-075, 6px);
+  height: 32px;
+  padding: 0 var(--sq-space-150, 12px);
+  background: var(--sq-surface-default, #f8fafc);
+  border: 1px solid var(--sq-border-default, rgba(5, 21, 36, 0.06));
+  border-radius: var(--sq-radius-sm, 8px);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--sq-text-subtle, #314158);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.sq-delete-dialog-select-all:hover {
+  background: var(--sq-surface-neutral-subtlest, #f8f9fb);
+}
+
+.sq-delete-dialog-btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sq-space-075, 6px);
+  height: 32px;
+  padding: 0 var(--sq-space-150, 12px);
+  background: #9e0b15;
+  border: none;
+  border-radius: var(--sq-radius-sm, 8px);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #feeded;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.sq-delete-dialog-btn-danger:hover {
+  background: #7d0910;
+}
+
+/* ── sq-images-container — Figma 440-35766 ──────────────────────── */
+/*
+ * Grid de miniaturas que actúa como trigger del lightbox.
+ * Al hacer click en cualquier thumbnail abre el lightbox en ese índice.
+ *
+ * Estructura:
+ *   .sq-images-container
+ *     .sq-image-thumb × N   ← cada miniatura clickeable
+ *       img
+ */
+
+.sq-images-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sq-space-100, 8px);
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.sq-image-thumb {
+  width: 124px;
+  height: 167px;
+  background-color: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 4px;
+  padding: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  overflow: hidden;
+  transition: opacity 0.15s ease;
+}
+
+.sq-image-thumb:hover { opacity: 0.82; }
+
+.sq-image-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+}
+
+/* ── sq-lightbox — Figma 436-33910 ──────────────────────────────── */
+/*
+ * Modal de imagen ampliada con carrusel.
+ * Usa Bootstrap .modal para JS / accesibilidad (Escape, focus trap, ARIA).
+ * El .modal-content se convierte en el overlay oscuro y el layout flex.
+ *
+ * Estructura:
+ *   .modal.sq-lightbox  [data-bs-backdrop="false"]
+ *     .modal-dialog.modal-fullscreen
+ *       .modal-content.sq-lightbox-content
+ *         button.sq-icon-btn.sq-icon-btn-outline.sq-lightbox-close
+ *         .sq-lightbox-carousel
+ *           button.sq-lightbox-nav#sqLbPrev
+ *           .sq-lightbox-frame
+ *             img.sq-lightbox-img
+ *           button.sq-lightbox-nav#sqLbNext
+ *
+ * API JS: openLightbox(images[], startIndex)
+ */
+
+/* Anular dimensiones de Bootstrap para el dialog */
+.sq-lightbox .modal-dialog {
+  margin: 0;
+  max-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* El modal-content ES el overlay — full viewport */
+.sq-lightbox .modal-content {
+  background: rgba(5, 12, 31, 0.66);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Layout interior: [prev] [imagen] [next] */
+.sq-lightbox-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 53px;
+  padding: 16px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Botones de navegación prev / next — 56×56px, sin fondo ni borde */
+.sq-lightbox-nav {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.90);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.15s ease;
+  padding: 0;
+}
+
+.sq-lightbox-nav:hover {
+  color: #ffffff;
+}
+
+.sq-lightbox-nav svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Marco blanco que contiene la imagen — aspect-ratio 72/97 (Figma 436-33912) */
+/* 56px*2 nav + 53px*2 gap + 32px padding = 250px reserved; 32px extra safety → 282px */
+.sq-lightbox-frame {
+  background: var(--sq-surface-default, #f8fafc);
+  border: 1px solid var(--sq-border-default, rgba(5, 21, 36, 0.06));
+  border-radius: 4px;
+  padding: 4px;
+  flex-shrink: 1;
+  display: flex;
+  align-items: stretch;
+  aspect-ratio: 72 / 97;
+  height: calc(100vh - 32px);
+  max-height: calc(100vh - 32px);
+  max-width: calc(100vw - 282px);
+  overflow: hidden;
+}
+
+/* Imagen dentro del frame */
+.sq-lightbox-img {
+  display: block;
+  border-radius: 2px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Botón cerrar — esquina superior derecha, 32×32px, fondo blanco estándar (sq-icon-btn-outline) */
+.sq-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  /* Hereda sq-icon-btn-outline: bg blanco + borde sutil */
+}
+
+/* Contador "1 / 3" centrado abajo */
+.sq-lightbox-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  font-family: var(--sq-font-mono);
+  color: rgba(255, 255, 255, 0.60);
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   sq-app-layout — Shell de aplicación (Figma 499-34050)
+   ─────────────────────────────────────────────────────────────────
+   Estructura:
+     .sq-app                   ← flex-row 100vh, overflow hidden
+       .sq-sidebar             ← (ya definido arriba)
+       .sq-app-panel           ← flex-col, flex:1, overflow hidden
+         .sq-topbar            ← (ya definido arriba)
+         .sq-app-content       ← flex:1, overflow-y auto
+           .sq-page            ← padding del área de contenido
+             .sq-page-header   ← fila título + acción primaria
+             .sq-page-toolbar  ← fila filtros + exportar
+   ─────────────────────────────────────────────────────────────────
+*/
+
+/* Shell raíz */
+.sq-app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--sq-surface-default);
+}
+
+/* Columna derecha (topbar + contenido) */
+.sq-app-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Zona de scroll del contenido */
+.sq-app-content {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--sq-surface-neutral-subtlest);
+}
+
+/* Wrapper de padding interior de cada página */
+.sq-page {
+  padding: 32px;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* Cabecera de página: título + botón primario */
+.sq-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+/* Título principal de página */
+.sq-page-title {
+  font-family: var(--sq-font-body);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--sq-text-default);
+  margin: 0;
+}
+
+/* Barra de filtros + exportar */
+.sq-page-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.sq-page-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+/* Pie de tabla: texto de selección + paginación */
+.sq-table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--sq-surface-default);
+  border-top: 1px solid var(--sq-border-default);
+  border-radius: 0 0 8px 8px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sq-table-footer-info {
+  font-family: var(--sq-font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sq-text-subtlest);
+  white-space: nowrap;
+}
+
+/* Wrapper tabla con borde y sombra */
+.sq-table-wrap {
+  background: var(--sq-surface-default);
+  border: 1px solid var(--sq-border-default);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ── List-view card (contenedor blanco sobre fondo gris) ─────────── */
+.sq-lv-card {
+  background: var(--sq-surface-raised);
+  border-radius: 12px;
+  border: 1px solid var(--sq-border-default);
+  overflow: hidden;
+}
+
+.sq-lv-card-body {
+  padding: 20px 24px 24px;
+}
+
+.sq-lv-card-body .sq-page-header {
+  margin-bottom: 16px;
+}
+
+.sq-lv-card-body .sq-page-toolbar {
+  margin-bottom: 0;
+}
+
+/* La tabla va de borde a borde dentro de la card */
+.sq-lv-card > .sq-table-wrap {
+  border: none;
+  border-radius: 0;
+  border-top: 1px solid var(--sq-border-default);
+  margin-top: 0;
+}
+
+.sq-lv-card > .sq-table-wrap .sq-table-footer {
+  border-radius: 0;
+  background: var(--sq-surface-raised);
+}
+
+/* Ajusta el sq-page para que sea el fondo gris con padding */
+.sq-page {
+  padding: 24px;
+  min-height: 100%;
+  box-sizing: border-box;
+}

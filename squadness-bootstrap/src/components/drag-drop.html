@@ -1,0 +1,188 @@
+<!--
+  SQUADNESS DS — Drag & Drop
+  ───────────────────────────────────────────────────────────────
+  Implementación con HTML5 Drag & Drop API nativo.
+  No requiere Bootstrap JS adicional.
+  Los estilos usan tokens --sq-* directamente.
+
+  Dos variantes:
+    A) Zona de carga de archivos (file upload dropzone)
+    B) Lista de items reordenables
+-->
+
+<!-- ════════════════════════════════════════════════════════════
+     A) DROPZONE — Zona de carga de archivos
+     ════════════════════════════════════════════════════════════ -->
+
+<div id="dropzone"
+     style="border:2px dashed var(--sq-border-subtle);
+            border-radius:var(--sq-radius-lg);
+            padding:40px 24px;
+            text-align:center;
+            cursor:pointer;
+            background:var(--sq-surface-raised);
+            transition:border-color .15s ease, background .15s ease;"
+     ondragover="event.preventDefault();this.style.borderColor='var(--sq-brand)';this.style.background='var(--sq-surface-brand-subtlest)'"
+     ondragleave="this.style.borderColor='var(--sq-border-subtle)';this.style.background='var(--sq-surface-raised)'"
+     ondrop="handleDrop(event,this)"
+     onclick="document.getElementById('file-input').click()">
+
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin:0 auto 12px;display:block;">
+    <rect x="2" y="2" width="28" height="28" rx="6"
+          fill="var(--sq-surface-brand-subtlest)" stroke="var(--sq-border-brand)" stroke-width="1.5"/>
+    <path d="M16 20V12M16 12l-3 3M16 12l3 3" stroke="var(--sq-brand)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10 22h12" stroke="var(--sq-brand)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+
+  <p style="font-size:14px;font-weight:500;color:var(--sq-text-default);margin:0 0 4px;">
+    Arrastra archivos aquí o <span style="color:var(--sq-brand);">selecciona desde tu equipo</span>
+  </p>
+  <p style="font-size:12px;color:var(--sq-text-subtlest);margin:0;">
+    PNG, JPG, PDF hasta 10 MB
+  </p>
+  <input type="file" id="file-input" class="visually-hidden" multiple
+         accept=".png,.jpg,.jpeg,.pdf" onchange="handleFiles(this.files)" />
+</div>
+
+<!-- Lista de archivos cargados -->
+<div id="file-list" class="d-flex flex-column gap-2 mt-3" style="max-width:480px;"></div>
+
+<script>
+function handleDrop(event, zone) {
+  event.preventDefault();
+  zone.style.borderColor = 'var(--sq-border-subtle)';
+  zone.style.background = 'var(--sq-surface-raised)';
+  handleFiles(event.dataTransfer.files);
+}
+
+function handleFiles(files) {
+  const list = document.getElementById('file-list');
+  Array.from(files).forEach(function(file) {
+    const item = document.createElement('div');
+    item.style.cssText = 'display:flex;align-items:center;gap:12px;padding:10px 14px;' +
+      'border:1px solid var(--sq-border-subtle);border-radius:var(--sq-radius-md);' +
+      'background:var(--sq-surface-raised);';
+    item.innerHTML =
+      '<svg width="20" height="20" viewBox="0 0 20 20" fill="none">' +
+        '<rect x="3" y="1" width="11" height="18" rx="2" fill="var(--sq-surface-brand-subtlest)" stroke="var(--sq-border-brand)" stroke-width="1.2"/>' +
+        '<path d="M8 1v5h6" stroke="var(--sq-border-brand)" stroke-width="1.2"/>' +
+      '</svg>' +
+      '<div style="flex:1;min-width:0;">' +
+        '<div style="font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + file.name + '</div>' +
+        '<div style="font-size:11px;color:var(--sq-text-subtlest);">' + (file.size / 1024).toFixed(1) + ' KB</div>' +
+      '</div>' +
+      '<button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;color:var(--sq-text-subtlest);font-size:16px;padding:0;line-height:1;">×</button>';
+    list.appendChild(item);
+  });
+}
+</script>
+
+<!-- ════════════════════════════════════════════════════════════
+     B) LISTA REORDENABLE — Drag & drop entre items
+     ════════════════════════════════════════════════════════════ -->
+
+<ul id="sortable-list"
+    style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;max-width:400px;"
+    ondragover="event.preventDefault()">
+  <li draggable="true" class="sortable-item"
+      style="display:flex;align-items:center;gap:12px;padding:12px 14px;
+             border:1px solid var(--sq-border-subtle);border-radius:var(--sq-radius-md);
+             background:var(--sq-surface-raised);cursor:grab;user-select:none;"
+      ondragstart="dragStart(event)"
+      ondrop="dragDrop(event)"
+      ondragover="event.preventDefault();this.style.borderColor='var(--sq-brand)'"
+      ondragleave="this.style.borderColor='var(--sq-border-subtle)'">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--sq-text-subtlest);">
+      <circle cx="5" cy="4" r="1.2" fill="currentColor"/>
+      <circle cx="5" cy="8" r="1.2" fill="currentColor"/>
+      <circle cx="5" cy="12" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="4" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="8" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="12" r="1.2" fill="currentColor"/>
+    </svg>
+    <span style="font-size:14px;font-weight:500;">Dashboard</span>
+    <span class="badge bg-primary ms-auto">Inicio</span>
+  </li>
+  <li draggable="true" class="sortable-item"
+      style="display:flex;align-items:center;gap:12px;padding:12px 14px;
+             border:1px solid var(--sq-border-subtle);border-radius:var(--sq-radius-md);
+             background:var(--sq-surface-raised);cursor:grab;user-select:none;"
+      ondragstart="dragStart(event)"
+      ondrop="dragDrop(event)"
+      ondragover="event.preventDefault();this.style.borderColor='var(--sq-brand)'"
+      ondragleave="this.style.borderColor='var(--sq-border-subtle)'">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--sq-text-subtlest);">
+      <circle cx="5" cy="4" r="1.2" fill="currentColor"/>
+      <circle cx="5" cy="8" r="1.2" fill="currentColor"/>
+      <circle cx="5" cy="12" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="4" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="8" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="12" r="1.2" fill="currentColor"/>
+    </svg>
+    <span style="font-size:14px;font-weight:500;">Usuarios</span>
+  </li>
+  <li draggable="true" class="sortable-item"
+      style="display:flex;align-items:center;gap:12px;padding:12px 14px;
+             border:1px solid var(--sq-border-subtle);border-radius:var(--sq-radius-md);
+             background:var(--sq-surface-raised);cursor:grab;user-select:none;"
+      ondragstart="dragStart(event)"
+      ondrop="dragDrop(event)"
+      ondragover="event.preventDefault();this.style.borderColor='var(--sq-brand)'"
+      ondragleave="this.style.borderColor='var(--sq-border-subtle)'">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--sq-text-subtlest);">
+      <circle cx="5" cy="4" r="1.2" fill="currentColor"/>
+      <circle cx="5" cy="8" r="1.2" fill="currentColor"/>
+      <circle cx="5" cy="12" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="4" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="8" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="12" r="1.2" fill="currentColor"/>
+    </svg>
+    <span style="font-size:14px;font-weight:500;">Reportes</span>
+  </li>
+  <li draggable="true" class="sortable-item"
+      style="display:flex;align-items:center;gap:12px;padding:12px 14px;
+             border:1px solid var(--sq-border-subtle);border-radius:var(--sq-radius-md);
+             background:var(--sq-surface-raised);cursor:grab;user-select:none;"
+      ondragstart="dragStart(event)"
+      ondrop="dragDrop(event)"
+      ondragover="event.preventDefault();this.style.borderColor='var(--sq-brand)'"
+      ondragleave="this.style.borderColor='var(--sq-border-subtle)'">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--sq-text-subtlest);">
+      <circle cx="5" cy="4" r="1.2" fill="currentColor"/>
+      <circle cx="5" cy="8" r="1.2" fill="currentColor"/>
+      <circle cx="5" cy="12" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="4" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="8" r="1.2" fill="currentColor"/>
+      <circle cx="11" cy="12" r="1.2" fill="currentColor"/>
+    </svg>
+    <span style="font-size:14px;font-weight:500;">Configuración</span>
+  </li>
+</ul>
+
+<script>
+var draggedItem = null;
+function dragStart(event) {
+  draggedItem = event.currentTarget;
+  event.currentTarget.style.opacity = '0.5';
+}
+function dragDrop(event) {
+  event.preventDefault();
+  if (draggedItem && draggedItem !== event.currentTarget) {
+    var list = document.getElementById('sortable-list');
+    var items = Array.from(list.querySelectorAll('.sortable-item'));
+    var fromIndex = items.indexOf(draggedItem);
+    var toIndex = items.indexOf(event.currentTarget);
+    if (fromIndex < toIndex) {
+      list.insertBefore(draggedItem, event.currentTarget.nextSibling);
+    } else {
+      list.insertBefore(draggedItem, event.currentTarget);
+    }
+  }
+  if (draggedItem) draggedItem.style.opacity = '1';
+  event.currentTarget.style.borderColor = 'var(--sq-border-subtle)';
+  draggedItem = null;
+}
+document.querySelectorAll('.sortable-item').forEach(function(item) {
+  item.addEventListener('dragend', function() { this.style.opacity = '1'; });
+});
+</script>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tooltip — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">Tooltip</h1>
+      <p class="docs-desc">Información contextual de apoyo que aparece al interactuar con un elemento. Disponible en dos variantes: <strong>Tooltip Map</strong> para puntos de interés en mapa y <strong>Tooltip Card</strong> para el hover en cards de imagen.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ TOOLTIP MAP ════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="tooltip-map">Tooltip Map</h2>
+      <p class="docs-section-desc">Variante con sombra y caret inferior centrado. Se usa sobre puntos de interés en vistas de mapa. Clase: <code>.sq-tooltip.sq-tooltip-map</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="padding-top: 24px; padding-bottom: 48px; align-items: flex-end; gap: 64px; flex-wrap: wrap;">
+
+          <!-- Ejemplo 1 -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+            <div class="sq-tooltip sq-tooltip-map">
+              <div class="sq-tooltip-row">
+                <span class="sq-tooltip-label">Nombre del punto</span>
+                <span class="sq-tooltip-value">Baño Sector Norte</span>
+              </div>
+            </div>
+            <!-- punto ancla simulado -->
+            <div style="width:10px;height:10px;background:var(--sq-brand-active);border-radius:50%;margin-top:8.5px;"></div>
+          </div>
+
+          <!-- Ejemplo 2 -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+            <div class="sq-tooltip sq-tooltip-map">
+              <div class="sq-tooltip-row">
+                <span class="sq-tooltip-label">Coordenadas</span>
+                <span class="sq-tooltip-value">25.2286° N, 101.1713° O</span>
+              </div>
+            </div>
+            <div style="width:10px;height:10px;background:var(--sq-brand-active);border-radius:50%;margin-top:8.5px;"></div>
+          </div>
+
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip sq-tooltip-map"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-row"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-label"</span><span class="tag">&gt;</span>Nombre del punto<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-value"</span><span class="tag">&gt;</span>Baño Sector Norte<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ TOOLTIP DE CARD ════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="tooltip-card">Tooltip de Card</h2>
+      <p class="docs-section-desc">Variante sin sombra ni caret, diseñada para el estado hover de <code>.sq-card-image</code>. Incluye una fila vertical con label y valor, y una fila horizontal con información de firma. Clase: <code>.sq-tooltip.sq-tooltip-card</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="align-items: flex-start; gap: 48px; flex-wrap: wrap;">
+
+          <!-- Standalone (sin card, tooltip solo) -->
+          <div style="display:flex; flex-direction:column; align-items:flex-start; gap:8px;">
+            <span style="font-size:11px;font-weight:500;color:var(--sq-text-subtlest);text-transform:uppercase;letter-spacing:.04em;">Componente aislado</span>
+            <div class="sq-tooltip sq-tooltip-card">
+              <div class="sq-tooltip-row">
+                <span class="sq-tooltip-label">Sello</span>
+                <span class="sq-tooltip-value">01d9-42e7-9451-a07b</span>
+              </div>
+              <div class="sq-tooltip-inline">
+                <span class="sq-tooltip-inline-label">Firmado por.</span>
+                <span class="sq-tooltip-inline-value">Marianne Licea</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- En contexto de card (hover forzado) -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+            <span style="font-size:11px;font-weight:500;color:var(--sq-text-subtlest);text-transform:uppercase;letter-spacing:.04em;">En card (hover)</span>
+            <div class="card sq-card-image" style="width:200px; background-color: var(--sq-surface-neutral-subtler);">
+              <div class="sq-tooltip sq-tooltip-card" style="display:flex;">
+                <div class="sq-tooltip-row">
+                  <span class="sq-tooltip-label">Marianne Licea</span>
+                  <span class="sq-tooltip-value">Junio 12, 2026 — 10:07am</span>
+                </div>
+                <div class="sq-tooltip-inline">
+                  <span class="sq-tooltip-inline-label">Firmado por.</span>
+                  <span class="sq-tooltip-inline-value">Marianne Licea</span>
+                </div>
+              </div>
+              <div class="sq-card-checkbox">
+                <input class="form-check-input" type="checkbox" />
+              </div>
+              <div class="sq-card-img">
+                <div class="sq-card-img-placeholder">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--sq-text-subtlest)" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="sq-card-info">
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Latitud:</span>
+                  <span class="sq-card-info-value">25.22863630</span>
+                </div>
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Longitud:</span>
+                  <span class="sq-card-info-value">-101.17133600</span>
+                </div>
+                <div class="sq-card-info-row">
+                  <span class="sq-card-info-label">Sello:</span>
+                  <span class="sq-card-info-value">01d9-42e7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cmt">&lt;!-- Tooltip de card (standalone) --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip sq-tooltip-card"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-row"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-label"</span><span class="tag">&gt;</span>Marianne Licea<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-value"</span><span class="tag">&gt;</span>Junio 12, 2026 — 10:07am<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline-label"</span><span class="tag">&gt;</span>Firmado por.<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline-value"</span><span class="tag">&gt;</span>Marianne Licea<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- Dentro de sq-card-image (se activa en :hover automáticamente) --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"card sq-card-image"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip sq-tooltip-card"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-row"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-label"</span><span class="tag">&gt;</span>Sello<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-value"</span><span class="tag">&gt;</span>01d9-42e7-9451-a07b<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline-label"</span><span class="tag">&gt;</span>Firmado por.<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-tooltip-inline-value"</span><span class="tag">&gt;</span>Marianne Licea<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="cmt">&lt;!-- ...resto de la card --&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ TOOLTIP DE MAPA (PIN) ════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="tooltip-pin">Tooltip de Mapa (Pin)</h2>
+      <p class="docs-section-desc">Tarjeta de previsualización que aparece al presionar un pin en un mapa. Muestra una o dos imágenes con una flecha inferior centrada que apunta al pin. Clase: <code>.sq-map-pin-tooltip</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="padding: 40px 32px 48px; gap: 48px; align-items: flex-end; flex-wrap: wrap; background: #e2e8f0;">
+
+          <!-- Variante 1 imagen -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+            <span style="font-size:11px;font-weight:500;color:var(--sq-text-subtlest);text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px;">1 imagen (Default)</span>
+            <div class="sq-map-pin-tooltip">
+              <button class="sq-map-pin-tooltip__close" aria-label="Cerrar">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <div class="sq-map-pin-tooltip__images">
+                <div class="sq-map-pin-tooltip__img">
+                  <img src="../assets/Image Example 1.png" alt="Previsualización del pin" />
+                </div>
+              </div>
+            </div>
+            <!-- pin anchor -->
+            <div style="width:10px;height:10px;background:var(--sq-brand-active);border-radius:50%;margin-top:1px;"></div>
+          </div>
+
+          <!-- Variante 2 imágenes -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+            <span style="font-size:11px;font-weight:500;color:var(--sq-text-subtlest);text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px;">2 imágenes (Double)</span>
+            <div class="sq-map-pin-tooltip">
+              <button class="sq-map-pin-tooltip__close" aria-label="Cerrar">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <div class="sq-map-pin-tooltip__images">
+                <div class="sq-map-pin-tooltip__img">
+                  <img src="../assets/Image Example 2.png" alt="Imagen 1" />
+                </div>
+                <div class="sq-map-pin-tooltip__img">
+                  <img src="../assets/Image Example 3.png" alt="Imagen 2" />
+                </div>
+              </div>
+            </div>
+            <!-- pin anchor -->
+            <div style="width:10px;height:10px;background:var(--sq-brand-active);border-radius:50%;margin-top:1px;"></div>
+          </div>
+
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cmt">&lt;!-- Variante con 1 imagen --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-map-pin-tooltip"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-map-pin-tooltip__close"</span> <span class="at">aria-label</span>=<span class="str">"Cerrar"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;svg</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M4 4l8 8M12 4l-8 8"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.6"</span> <span class="at">stroke-linecap</span>=<span class="str">"round"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/svg&gt;</span>
+  <span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-map-pin-tooltip__images"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-map-pin-tooltip__img"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;img</span> <span class="at">src</span>=<span class="str">"imagen.jpg"</span> <span class="at">alt</span>=<span class="str">"Previsualización del pin"</span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- Variante con 2 imágenes --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-map-pin-tooltip"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-map-pin-tooltip__close"</span> <span class="at">aria-label</span>=<span class="str">"Cerrar"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;svg</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M4 4l8 8M12 4l-8 8"</span> <span class="at">stroke</span>=<span class="str">"currentColor"</span> <span class="at">stroke-width</span>=<span class="str">"1.6"</span> <span class="at">stroke-linecap</span>=<span class="str">"round"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/svg&gt;</span>
+  <span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-map-pin-tooltip__images"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-map-pin-tooltip__img"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;img</span> <span class="at">src</span>=<span class="str">"imagen-1.jpg"</span> <span class="at">alt</span>=<span class="str">"Imagen 1"</span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-map-pin-tooltip__img"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;img</span> <span class="at">src</span>=<span class="str">"imagen-2.jpg"</span> <span class="at">alt</span>=<span class="str">"Imagen 2"</span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- API Table -->
+      <h3 class="docs-subsection-title" id="tooltip-pin-api">Clases disponibles</h3>
+      <table class="docs-table">
+        <thead>
+          <tr><th>Clase</th><th>Descripción</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.sq-map-pin-tooltip</code></td>
+            <td>Contenedor principal. Fondo <code>#f1f5f9</code>, borde sutil, radio 4px, flecha inferior centrada.</td>
+          </tr>
+          <tr>
+            <td><code>.sq-map-pin-tooltip__close</code></td>
+            <td>Botón de cierre posicionado en la esquina superior derecha (32×32px, radio 12px).</td>
+          </tr>
+          <tr>
+            <td><code>.sq-map-pin-tooltip__images</code></td>
+            <td>Wrapper flex en fila que agrupa uno o dos contenedores de imagen.</td>
+          </tr>
+          <tr>
+            <td><code>.sq-map-pin-tooltip__img</code></td>
+            <td>Contenedor individual de imagen (170×210px, radio 2px). Incluye overlay oscuro <code>rgba(11,18,14,0.14)</code> vía <code>::after</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="toast.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Toast
+          </a>
+          <a href="popover.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Popover
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link" href="#tooltip-map">Tooltip Map</a>
+        <a class="docs-toc-link" href="#tooltip-card">Tooltip de Card</a>
+        <a class="docs-toc-link" href="#tooltip-pin">Tooltip de Mapa (Pin)</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>
+                                                                                                                                                            

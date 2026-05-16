@@ -1,0 +1,100 @@
+<!--
+  SQUADNESS DS — Tooltip
+  ───────────────────────────────────────────────────────────────
+  Requiere: Bootstrap JS
+  Activar tooltips con JS:
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el =>
+      new bootstrap.Tooltip(el)
+    )
+  Los estilos (bg, color, radius) vienen de tokens.css via --bs-tooltip-*.
+-->
+
+<!-- ── Script de inicialización (incluir al final del body) ──── -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (el) {
+      new bootstrap.Tooltip(el);
+    });
+  });
+</script>
+
+<!-- ── Posiciones ────────────────────────────────────────────── -->
+<div class="d-flex gap-3 flex-wrap align-items-center">
+  <button class="btn btn-secondary btn-sm"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Tooltip superior">
+    Arriba
+  </button>
+
+  <button class="btn btn-secondary btn-sm"
+          data-bs-toggle="tooltip"
+          data-bs-placement="bottom"
+          title="Tooltip inferior">
+    Abajo
+  </button>
+
+  <button class="btn btn-secondary btn-sm"
+          data-bs-toggle="tooltip"
+          data-bs-placement="left"
+          title="Tooltip izquierdo">
+    Izquierda
+  </button>
+
+  <button class="btn btn-secondary btn-sm"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="Tooltip derecho">
+    Derecha
+  </button>
+</div>
+
+<!-- ── En íconos / botones de acción ────────────────────────── -->
+<div class="d-flex gap-2">
+  <button class="btn btn-secondary btn-sm"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Editar registro"
+          aria-label="Editar">
+    ✎
+  </button>
+
+  <button class="btn btn-secondary btn-sm"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Duplicar registro"
+          aria-label="Duplicar">
+    ⧉
+  </button>
+
+  <button class="btn btn-secondary btn-sm"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Eliminar registro"
+          style="color:var(--sq-text-error);"
+          aria-label="Eliminar">
+    ✕
+  </button>
+</div>
+
+<!-- ── En etiquetas con información adicional ────────────────── -->
+<span>
+  Disponibilidad
+  <span tabindex="0"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Porcentaje de tiempo activo en los últimos 90 días"
+        style="cursor:help;color:var(--sq-text-subtlest);font-size:12px;
+               border-bottom:1px dotted var(--sq-border-bold);">
+    ¿Qué es esto?
+  </span>
+</span>
+
+<!-- ── En badges con explicación ─────────────────────────────── -->
+<span class="badge bg-warning"
+      data-bs-toggle="tooltip"
+      data-bs-placement="right"
+      title="El usuario aún no ha verificado su correo electrónico"
+      style="cursor:default;">
+  Pendiente
+</span>

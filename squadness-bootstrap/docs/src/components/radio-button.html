@@ -1,0 +1,71 @@
+<!--
+  SQUADNESS DS — Radio Button
+  ───────────────────────────────────────────────────────────────
+  Clases clave: .form-check  .form-check-input[type="radio"]
+  Todos los radios de un grupo deben compartir el mismo name="".
+-->
+
+<!-- ── Grupo básico ──────────────────────────────────────────── -->
+<fieldset>
+  <legend class="form-label">Tipo de cuenta</legend>
+  <div class="d-flex flex-column gap-2">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="account-type" id="radio-admin" value="admin" checked />
+      <label class="form-check-label" for="radio-admin">Administrador</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="account-type" id="radio-editor" value="editor" />
+      <label class="form-check-label" for="radio-editor">Editor</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="account-type" id="radio-viewer" value="viewer" />
+      <label class="form-check-label" for="radio-viewer">Solo lectura</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="account-type" id="radio-disabled" value="disabled" disabled />
+      <label class="form-check-label" for="radio-disabled" style="color:var(--sq-text-subtlest);">
+        Acceso restringido (no disponible)
+      </label>
+    </div>
+  </div>
+</fieldset>
+
+<!-- ── Inline ────────────────────────────────────────────────── -->
+<fieldset>
+  <legend class="form-label">Frecuencia de reporte</legend>
+  <div class="d-flex gap-4">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="frequency" id="freq-daily" checked />
+      <label class="form-check-label" for="freq-daily">Diario</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="frequency" id="freq-weekly" />
+      <label class="form-check-label" for="freq-weekly">Semanal</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="frequency" id="freq-monthly" />
+      <label class="form-check-label" for="freq-monthly">Mensual</label>
+    </div>
+  </div>
+</fieldset>
+
+<!-- ── En formulario con descripción ────────────────────────── -->
+<fieldset>
+  <legend class="form-label">Plan de suscripción</legend>
+  <div class="d-flex flex-column gap-3">
+    <div class="form-check" style="padding:12px 16px 12px 44px;border:1px solid var(--sq-border-subtle);border-radius:var(--sq-radius-md);">
+      <input class="form-check-input" type="radio" name="plan" id="plan-free" checked />
+      <label class="form-check-label" for="plan-free">
+        <span style="font-weight:600;">Gratis</span>
+        <span class="d-block" style="font-size:12px;color:var(--sq-text-subtlest);">Hasta 3 usuarios, 1 GB</span>
+      </label>
+    </div>
+    <div class="form-check" style="padding:12px 16px 12px 44px;border:1px solid var(--sq-border-brand);border-radius:var(--sq-radius-md);background:var(--sq-surface-brand-subtlest);">
+      <input class="form-check-input" type="radio" name="plan" id="plan-pro" />
+      <label class="form-check-label" for="plan-pro">
+        <span style="font-weight:600;color:var(--sq-text-brand);">Pro</span>
+        <span class="d-block" style="font-size:12px;color:var(--sq-text-subtlest);">Usuarios ilimitados, 100 GB</span>
+      </label>
+    </div>
+  </div>
+</fieldset>

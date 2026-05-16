@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radio Button — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">Radio Button</h1>
+      <p class="docs-desc">Control de selección única dentro de un grupo. Todos los radios de un grupo deben compartir el mismo atributo name.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ GRUPO BÁSICO ══════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="grupo-basico">Grupo básico</h2>
+      <p class="docs-section-desc">Clases clave: <code>.form-check</code> <code>.form-check-input[type="radio"]</code>. Todos los radios de un grupo deben compartir el mismo <code>name=""</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example column">
+          <fieldset>
+            <legend class="form-label">Tipo de cuenta</legend>
+            <div class="d-flex flex-column gap-2">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="account-type" id="radio-admin" value="admin" checked />
+                <label class="form-check-label" for="radio-admin">Administrador</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="account-type" id="radio-editor" value="editor" />
+                <label class="form-check-label" for="radio-editor">Editor</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="account-type" id="radio-viewer" value="viewer" />
+                <label class="form-check-label" for="radio-viewer">Solo lectura</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="account-type" id="radio-disabled" value="disabled" disabled />
+                <label class="form-check-label" for="radio-disabled" style="color:var(--sq-text-subtlest);">
+                  Acceso restringido (no disponible)
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;fieldset&gt;</span>
+  <span class="tag">&lt;legend</span> <span class="at">class</span>=<span class="str">"form-label"</span><span class="tag">&gt;</span>Tipo de cuenta<span class="tag">&lt;/legend&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"d-flex flex-column gap-2"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"account-type"</span> <span class="at">id</span>=<span class="str">"radio-admin"</span> <span class="at">value</span>=<span class="str">"admin"</span> <span class="at">checked</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"radio-admin"</span><span class="tag">&gt;</span>Administrador<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"account-type"</span> <span class="at">id</span>=<span class="str">"radio-editor"</span> <span class="at">value</span>=<span class="str">"editor"</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"radio-editor"</span><span class="tag">&gt;</span>Editor<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"account-type"</span> <span class="at">id</span>=<span class="str">"radio-viewer"</span> <span class="at">value</span>=<span class="str">"viewer"</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"radio-viewer"</span><span class="tag">&gt;</span>Solo lectura<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"account-type"</span> <span class="at">id</span>=<span class="str">"radio-disabled"</span> <span class="at">value</span>=<span class="str">"disabled"</span> <span class="at">disabled</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"radio-disabled"</span> <span class="at">style</span>=<span class="str">"color:var(--sq-text-subtlest);"</span><span class="tag">&gt;</span>
+        Acceso restringido (no disponible)
+      <span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/fieldset&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ INLINE ════════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="inline">Inline</h2>
+      <p class="docs-section-desc">Radios en línea horizontal usando flexbox.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example column">
+          <fieldset>
+            <legend class="form-label">Frecuencia de reporte</legend>
+            <div class="d-flex gap-4">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="frequency" id="freq-daily" checked />
+                <label class="form-check-label" for="freq-daily">Diario</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="frequency" id="freq-weekly" />
+                <label class="form-check-label" for="freq-weekly">Semanal</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="frequency" id="freq-monthly" />
+                <label class="form-check-label" for="freq-monthly">Mensual</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;fieldset&gt;</span>
+  <span class="tag">&lt;legend</span> <span class="at">class</span>=<span class="str">"form-label"</span><span class="tag">&gt;</span>Frecuencia de reporte<span class="tag">&lt;/legend&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"d-flex gap-4"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"frequency"</span> <span class="at">id</span>=<span class="str">"freq-daily"</span> <span class="at">checked</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"freq-daily"</span><span class="tag">&gt;</span>Diario<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"frequency"</span> <span class="at">id</span>=<span class="str">"freq-weekly"</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"freq-weekly"</span><span class="tag">&gt;</span>Semanal<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"frequency"</span> <span class="at">id</span>=<span class="str">"freq-monthly"</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"freq-monthly"</span><span class="tag">&gt;</span>Mensual<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/fieldset&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ CON DESCRIPCIÓN ═══════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="con-descripcion">En formulario con descripción</h2>
+      <p class="docs-section-desc">Radio cards: cada opción incluye título y texto descriptivo, con borde de estado activo.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example column">
+          <fieldset>
+            <legend class="form-label">Plan de suscripción</legend>
+            <div class="d-flex flex-column gap-3">
+              <div class="form-check" style="padding:12px 16px 12px 44px;border:1px solid var(--sq-border-subtle);border-radius:var(--sq-radius-md);">
+                <input class="form-check-input" type="radio" name="plan" id="plan-free" checked />
+                <label class="form-check-label" for="plan-free">
+                  <span style="font-weight:600;">Gratis</span>
+                  <span class="d-block" style="font-size:12px;color:var(--sq-text-subtlest);">Hasta 3 usuarios, 1 GB</span>
+                </label>
+              </div>
+              <div class="form-check" style="padding:12px 16px 12px 44px;border:1px solid var(--sq-border-brand);border-radius:var(--sq-radius-md);background:var(--sq-surface-brand-subtlest);">
+                <input class="form-check-input" type="radio" name="plan" id="plan-pro" />
+                <label class="form-check-label" for="plan-pro">
+                  <span style="font-weight:600;color:var(--sq-text-brand);">Pro</span>
+                  <span class="d-block" style="font-size:12px;color:var(--sq-text-subtlest);">Usuarios ilimitados, 100 GB</span>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;fieldset&gt;</span>
+  <span class="tag">&lt;legend</span> <span class="at">class</span>=<span class="str">"form-label"</span><span class="tag">&gt;</span>Plan de suscripción<span class="tag">&lt;/legend&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"d-flex flex-column gap-3"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check"</span> <span class="at">style</span>=<span class="str">"padding:12px 16px 12px 44px;border:1px solid var(--sq-border-subtle);border-radius:var(--sq-radius-md);"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"plan"</span> <span class="at">id</span>=<span class="str">"plan-free"</span> <span class="at">checked</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"plan-free"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;span</span> <span class="at">style</span>=<span class="str">"font-weight:600;"</span><span class="tag">&gt;</span>Gratis<span class="tag">&lt;/span&gt;</span>
+        <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"d-block"</span> <span class="at">style</span>=<span class="str">"font-size:12px;color:var(--sq-text-subtlest);"</span><span class="tag">&gt;</span>Hasta 3 usuarios, 1 GB<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"form-check"</span> <span class="at">style</span>=<span class="str">"padding:12px 16px 12px 44px;border:1px solid var(--sq-border-brand);border-radius:var(--sq-radius-md);background:var(--sq-surface-brand-subtlest);"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"plan"</span> <span class="at">id</span>=<span class="str">"plan-pro"</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"form-check-label"</span> <span class="at">for</span>=<span class="str">"plan-pro"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;span</span> <span class="at">style</span>=<span class="str">"font-weight:600;color:var(--sq-text-brand);"</span><span class="tag">&gt;</span>Pro<span class="tag">&lt;/span&gt;</span>
+        <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"d-block"</span> <span class="at">style</span>=<span class="str">"font-size:12px;color:var(--sq-text-subtlest);"</span><span class="tag">&gt;</span>Usuarios ilimitados, 100 GB<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/fieldset&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ RADIO BUTTON DATE ═════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="radio-date">Radio Button Date</h2>
+      <p class="docs-section-desc">Variante especializada para filtros de período temporal. Ofrece opciones rápidas predefinidas y una opción "Fechas personalizadas" que expande dos campos de fecha. Clase base: <code>.sq-radio-date</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+
+          <!-- Variante: opciones rápidas -->
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-size:11px;font-weight:500;color:var(--sq-text-subtlest);text-transform:uppercase;letter-spacing:.04em;">Opciones rápidas</span>
+            <div class="sq-radio-date">
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="period-a" checked />
+                <span class="sq-radio-date-label">Últimas 24 horas</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="period-a" />
+                <span class="sq-radio-date-label">Últimos 7 días</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="period-a" />
+                <span class="sq-radio-date-label">Últimos 15 días</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="period-a" />
+                <span class="sq-radio-date-label">Últimos 30 días</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="period-a" />
+                <span class="sq-radio-date-label">Últimos 3 meses</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="period-a" />
+                <span class="sq-radio-date-label">Últimos 6 meses</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="period-a" />
+                <span class="sq-radio-date-label">Últimos 12 meses</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Variante: con fechas personalizadas -->
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-size:11px;font-weight:500;color:var(--sq-text-subtlest);text-transform:uppercase;letter-spacing:.04em;">Con fechas personalizadas</span>
+            <div class="sq-radio-date" style="width:260px;">
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="period-b" />
+                <span class="sq-radio-date-label">Últimas 24 horas</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="period-b" />
+                <span class="sq-radio-date-label">Últimos 7 días</span>
+              </label>
+              <label class="sq-radio-date-option">
+                <input class="form-check-input" type="radio" name="period-b" />
+                <span class="sq-radio-date-label">Últimos 30 días</span>
+              </label>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                <label class="sq-radio-date-option" style="width:100%;">
+                  <input class="form-check-input" type="radio" name="period-b" checked />
+                  <span class="sq-radio-date-label">Fechas personalizadas</span>
+                </label>
+                <div class="sq-radio-date-inputs">
+                  <div class="sq-date-input">
+                    <span>YYYY-M-D</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M2.33325 14.343V3.00965H4.46142V1.59949H5.48709V3.00965H10.5384V1.59949H11.5384V3.00965H13.6666V14.343H2.33325ZM3.33325 13.343H12.6666V6.88149H3.33325V13.343Z" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <div class="sq-date-input">
+                    <span>YYYY-M-D</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M2.33325 14.343V3.00965H4.46142V1.59949H5.48709V3.00965H10.5384V1.59949H11.5384V3.00965H13.6666V14.343H2.33325ZM3.33325 13.343H12.6666V6.88149H3.33325V13.343Z" fill="currentColor"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cmt">&lt;!-- Opciones rápidas de período --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-radio-date"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"sq-radio-date-option"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"period"</span> <span class="at">checked</span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-radio-date-label"</span><span class="tag">&gt;</span>Últimas 24 horas<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"sq-radio-date-option"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"period"</span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-radio-date-label"</span><span class="tag">&gt;</span>Últimos 7 días<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/label&gt;</span>
+  <span class="cmt">&lt;!-- más opciones... --&gt;</span>
+
+  <span class="cmt">&lt;!-- Opción "Fechas personalizadas" con inputs --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">style</span>=<span class="str">"display:flex;flex-direction:column;gap:4px;"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"sq-radio-date-option"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"form-check-input"</span> <span class="at">type</span>=<span class="str">"radio"</span> <span class="at">name</span>=<span class="str">"period"</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-radio-date-label"</span><span class="tag">&gt;</span>Fechas personalizadas<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-radio-date-inputs"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-date-input"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;span&gt;</span>YYYY-M-D<span class="tag">&lt;/span&gt;</span>
+        <span class="cmt">&lt;!-- icono calendario --&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-date-input"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;span&gt;</span>YYYY-M-D<span class="tag">&lt;/span&gt;</span>
+        <span class="cmt">&lt;!-- icono calendario --&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="checkbox.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Checkbox
+          </a>
+          <a href="switch.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Switch
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link active" href="#grupo-basico">Grupo básico</a>
+        <a class="docs-toc-link" href="#inline">Inline</a>
+        <a class="docs-toc-link" href="#con-descripcion">Con descripción</a>
+        <a class="docs-toc-link" href="#radio-date">Radio Button Date</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!--
+  SQUADNESS DS — Table
+  ───────────────────────────────────────────────────────────────
+  Clases clave: .table  .table-hover  .table-striped  .table-responsive
+  Los estilos de thead (uppercase, subtlest) vienen de squadness.css.
+  Siempre envolver en .table-responsive para scroll horizontal en móvil.
+-->
+
+<!-- ── Tabla básica ──────────────────────────────────────────── -->
+<div class="card">
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:500;">Ana Martínez</td>
+            <td style="color:var(--sq-text-subtlest);">ana@empresa.com</td>
+            <td>Admin</td>
+            <td><span class="badge bg-success">Activo</span></td>
+            <td style="color:var(--sq-text-subtlest);">15 ene 2024</td>
+            <td>
+              <div class="d-flex gap-1">
+                <button class="btn btn-secondary btn-sm">Editar</button>
+                <button class="btn btn-secondary btn-sm" style="color:var(--sq-text-error);">Eliminar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:500;">Carlos López</td>
+            <td style="color:var(--sq-text-subtlest);">carlos@empresa.com</td>
+            <td>Editor</td>
+            <td><span class="badge bg-warning">Pendiente</span></td>
+            <td style="color:var(--sq-text-subtlest);">18 ene 2024</td>
+            <td>
+              <div class="d-flex gap-1">
+                <button class="btn btn-secondary btn-sm">Editar</button>
+                <button class="btn btn-secondary btn-sm" style="color:var(--sq-text-error);">Eliminar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:500;">María Rodríguez</td>
+            <td style="color:var(--sq-text-subtlest);">maria@empresa.com</td>
+            <td>Viewer</td>
+            <td><span class="badge bg-secondary">Inactivo</span></td>
+            <td style="color:var(--sq-text-subtlest);">22 ene 2024</td>
+            <td>
+              <div class="d-flex gap-1">
+                <button class="btn btn-secondary btn-sm">Editar</button>
+                <button class="btn btn-secondary btn-sm" style="color:var(--sq-text-error);">Eliminar</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ── Con barra de acciones (toolbar + tabla + paginación) ──── -->
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span>Usuarios <span class="badge bg-secondary ms-1">24</span></span>
+    <div class="d-flex gap-2">
+      <div class="input-group input-group-sm" style="max-width:220px;">
+        <input type="text" class="form-control" placeholder="Buscar..." />
+      </div>
+      <select class="form-select form-select-sm" style="max-width:100px;">
+        <option>Todos</option>
+        <option>Activos</option>
+        <option>Inactivos</option>
+      </select>
+      <button class="btn btn-primary btn-sm">+ Nuevo</button>
+    </div>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th style="width:32px;">
+              <input type="checkbox" class="form-check-input" />
+            </th>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Último acceso</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" class="form-check-input" /></td>
+            <td>
+              <div style="font-weight:500;">Ana Martínez</div>
+              <div style="font-size:12px;color:var(--sq-text-subtlest);">ana@empresa.com</div>
+            </td>
+            <td><span class="badge bg-primary">Admin</span></td>
+            <td><span class="badge bg-success">Activo</span></td>
+            <td style="color:var(--sq-text-subtlest);font-size:13px;">Hace 2 horas</td>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                  Acciones
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#">Ver perfil</a></li>
+                  <li><a class="dropdown-item" href="#">Editar</a></li>
+                  <li><a class="dropdown-item" href="#">Restablecer contraseña</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#" style="color:var(--sq-text-error);">Desactivar</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer d-flex justify-content-between align-items-center">
+    <span style="font-size:13px;color:var(--sq-text-subtlest);">1–10 de 24 registros</span>
+    <nav>
+      <ul class="pagination pagination-sm mb-0">
+        <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>

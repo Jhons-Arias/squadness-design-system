@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Tokens — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+  <style>
+    /* ── Search & filter ──────────────────────────────── */
+    .token-filter-wrap { margin-bottom: 32px; }
+    .token-search-box  { position: relative; width: 100%; margin-bottom: 12px; }
+    .token-search-icon {
+      position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+      color: var(--sq-text-subtlest); pointer-events: none;
+    }
+    .token-search-input {
+      width: 100%; height: 40px; padding: 0 14px 0 38px;
+      font-size: 14px; font-weight: 500; font-family: var(--sq-font-body);
+      background: var(--sq-surface-raised);
+      border: 1px solid rgba(5,21,36,0.06); border-radius: 6px;
+      color: var(--sq-text-default); outline: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .token-search-input:focus {
+      border-color: #45556c;
+      box-shadow: 0 0 0 3px rgba(11,18,14,0.14);
+    }
+    .token-search-input::placeholder { color: #90a1b9; font-weight: 500; }
+
+    /* ── Section headers ──────────────────────────────── */
+    .token-cat-h2 {
+      font-size: 20px; font-weight: 700; color: var(--sq-text-default);
+      margin: 44px 0 0; letter-spacing: -0.02em; padding-bottom: 10px;
+      border-bottom: 2px solid var(--sq-border-subtle);
+    }
+    .token-sub-h3 {
+      font-size: 15px; font-weight: 600; color: var(--sq-text-default);
+      margin: 28px 0 0;
+    }
+
+    /* ── Column header row ────────────────────────────── */
+    .token-col-header {
+      display: grid; grid-template-columns: 1fr 196px;
+      gap: 20px; padding: 8px 0 8px;
+      border-bottom: 1px solid var(--sq-border-subtle);
+      margin-top: 12px;
+    }
+    .token-col-header span {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--sq-text-subtlest);
+    }
+
+    /* ── Token row ────────────────────────────────────── */
+    .token-row {
+      display: grid; grid-template-columns: 1fr 196px;
+      gap: 20px; padding: 16px 0;
+      border-bottom: 1px solid var(--sq-border-subtle);
+      align-items: start;
+    }
+    .token-row:last-child { border-bottom: none; }
+    .token-row.hidden { display: none; }
+
+    .token-chip {
+      display: inline-block; font-family: var(--sq-font-mono);
+      font-size: 12px; font-weight: 500;
+      padding: 4px 6px; margin-bottom: 8px;
+      background: #e5f1ff;
+      border: 1px solid #005fdb;
+      border-radius: 6px; color: #0047a3;
+    }
+    .token-desc {
+      font-size: 13px; line-height: 1.6; color: var(--sq-text-subtle);
+      margin: 0 0 6px;
+    }
+    .token-intro { font-size: 11px; color: var(--sq-text-subtlest); }
+
+    /* ── Value display — color swatch ─────────────────── */
+    .token-swatch-block {
+      width: 100%; height: 52px; border-radius: 6px;
+      border: 1px solid rgba(5,21,36,0.08); margin-bottom: 6px;
+    }
+    .token-swatch-block.transparent-bg {
+      background-image: linear-gradient(45deg,#ccc 25%,transparent 25%),
+                        linear-gradient(-45deg,#ccc 25%,transparent 25%),
+                        linear-gradient(45deg,transparent 75%,#ccc 75%),
+                        linear-gradient(-45deg,transparent 75%,#ccc 75%);
+      background-size: 8px 8px;
+      background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+    }
+    .token-swatch-inner {
+      width: 100%; height: 100%; border-radius: 5px;
+    }
+    .token-val-label {
+      font-family: var(--sq-font-mono); font-size: 11px;
+      color: var(--sq-text-subtlest);
+    }
+    .token-family-val {
+      font-family: var(--sq-font-mono); font-size: 14px;
+      color: var(--sq-text-subtle);
+    }
+
+    /* ── Value display — non-color ────────────────────── */
+    .token-val-box {
+      background: var(--sq-surface-neutral-subtlest);
+      border: 1px solid var(--sq-border-subtle);
+      border-radius: 6px; padding: 10px 12px;
+      font-family: var(--sq-font-mono); font-size: 12px;
+      color: var(--sq-text-subtle); word-break: break-all;
+      line-height: 1.5;
+    }
+
+    /* ── Spacing preview bar ──────────────────────────── */
+    .token-space-bar {
+      display: block; height: 6px; border-radius: 3px;
+      background: #005fdb; margin-bottom: 8px; min-width: 3px;
+    }
+    .token-space-val {
+      font-family: var(--sq-font-mono); font-size: 14px;
+      color: var(--sq-text-subtle);
+    }
+
+    /* ── Font size value ──────────────────────────────── */
+    .token-size-val {
+      font-family: var(--sq-font-mono); font-size: 14px;
+      color: var(--sq-text-subtle);
+    }
+
+    /* ── Radius preview ───────────────────────────────── */
+    .token-radius-preview {
+      width: 64px; height: 40px;
+      background: transparent;
+      border: 1.5px solid #94a3b8;
+      margin-bottom: 6px;
+    }
+
+    /* ── Heading preview ──────────────────────────────── */
+    .token-row.heading-row { grid-template-columns: 3fr 2fr; align-items: center; }
+    .token-row.heading-row > div:last-child { padding-left: 40px; }
+    .token-heading-preview {
+      font-family: 'Pangram', sans-serif; font-weight: 700;
+      color: var(--sq-text-default); line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Shadow preview ───────────────────────────────── */
+    .token-shadow-preview {
+      width: 100%; height: 40px; border-radius: 6px;
+      background: #fff; margin-bottom: 6px;
+    }
+
+    /* ── Section block ────────────────────────────────── */
+    .token-section-block { display: block; }
+    .token-section-block.hidden { display: none; }
+
+    /* ── No results ───────────────────────────────────── */
+    .token-no-results {
+      display: none; padding: 24px 0; text-align: center;
+      color: var(--sq-text-subtlest); font-size: 14px;
+    }
+    .token-no-results.visible { display: block; }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Foundations</p>
+      <h1 class="docs-title">Design Tokens</h1>
+      <p class="docs-desc">Referencia completa de todos los CSS custom properties <code>--sq-*</code> del sistema. Los tokens son la fuente de verdad visual: colores, tipografía, espaciado y efectos que mantienen la coherencia entre componentes.</p>
+      <hr class="docs-divider" />
+
+      <!-- ── Filter ── -->
+      <div class="token-filter-wrap">
+        <div class="token-search-box">
+          <svg class="token-search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10 10l2.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <input id="tokenSearch" class="token-search-input" type="search" placeholder="Buscar tokens… ej: brand, space, radius" autocomplete="off" />
+        </div>
+        <div class="sq-select dropdown" style="max-width:260px;">
+          <button class="sq-select-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="catSelectToggle">
+            <span class="sq-select-label" id="catSelectLabel">Todos los tokens</span>
+            <svg class="sq-select-caret" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ul class="dropdown-menu">
+            <li><button class="dropdown-item active cat-option" type="button" data-cat="all">Todos los tokens</button></li>
+            <li><button class="dropdown-item cat-option" type="button" data-cat="color">Color</button></li>
+            <li><button class="dropdown-item cat-option" type="button" data-cat="typography">Tipografía</button></li>
+            <li><button class="dropdown-item cat-option" type="button" data-cat="spacing">Espaciado</button></li>
+            <li><button class="dropdown-item cat-option" type="button" data-cat="effect">Efectos</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="token-no-results" id="noResults">No se encontraron tokens que coincidan con la búsqueda.</div>
+
+      <!-- ══════════════════════════════════════════════
+           COLOR
+      ══════════════════════════════════════════════ -->
+      <div class="token-section-block" data-cat="color" id="cat-color">
+        <h2 class="token-cat-h2" id="sec-color">Color</h2>
+
+        <!-- Marca -->
+        <h3 class="token-sub-h3" id="sec-marca">Marca</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-brand color primario marca brand azul botones links foco">
+          <div><code class="token-chip">--sq-brand</code><p class="token-desc">Color primario del sistema. Se usa en botones, links, estados de foco y todos los elementos interactivos principales.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#005fdb;"></div><div class="token-val-label">#005fdb</div></div>
+        </div>
+        <div class="token-row" data-search="sq-brand-hover hover marca brand azul oscuro">
+          <div><code class="token-chip">--sq-brand-hover</code><p class="token-desc">Color de marca en estado hover. Aplicado cuando el cursor pasa sobre botones primarios o links.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#0047a3;"></div><div class="token-val-label">#0047a3</div></div>
+        </div>
+        <div class="token-row" data-search="sq-brand-active active focus ring marca brand">
+          <div><code class="token-chip">--sq-brand-active</code><p class="token-desc">Color de marca en estado active. Se usa también como color del focus ring visible en interacciones de teclado.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#0a74ff;"></div><div class="token-val-label">#0a74ff</div></div>
+        </div>
+        <div class="token-row" data-search="sq-brand-pressed pressed mousedown click marca brand">
+          <div><code class="token-chip">--sq-brand-pressed</code><p class="token-desc">Color de marca durante el estado pressed (mousedown). Proporciona retroalimentación visual inmediata al clic.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#004ec4;"></div><div class="token-val-label">#004ec4</div></div>
+        </div>
+        <div class="token-row" data-search="sq-brand-bold bold bolder marca brand azul fuerte">
+          <div><code class="token-chip">--sq-brand-bold</code><p class="token-desc">Variante de marca con mayor contraste. Usada en texto sobre fondos brand sutiles para cumplir ratios de accesibilidad.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#003fa0;"></div><div class="token-val-label">#003fa0</div></div>
+        </div>
+
+        <!-- Superficies -->
+        <h3 class="token-sub-h3" id="sec-surfaces">Superficies</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-surface-raised raised blanco surface fondo card modal">
+          <div><code class="token-chip">--sq-surface-raised</code><p class="token-desc">Fondo de elementos elevados como cards, modales y dropdowns. Blanco puro para máxima legibilidad sobre el fondo de página.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#ffffff;"></div><div class="token-val-label">#ffffff</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-default default fondo pagina background gris claro">
+          <div><code class="token-chip">--sq-surface-default</code><p class="token-desc">Fondo por defecto de la aplicación. Gris muy claro que crea contraste con los elementos elevados (cards, panels).</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#f8fafc;"></div><div class="token-val-label">#f8fafc</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-neutral-subtlest neutral hover filas inputs">
+          <div><code class="token-chip">--sq-surface-neutral-subtlest</code><p class="token-desc">Fondo neutro muy sutil. Usado en hover de filas de tabla, fondo de inputs deshabilitados y tooltips.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#f1f5f9;"></div><div class="token-val-label">#f1f5f9</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-neutral-subtler neutral dividers separadores">
+          <div><code class="token-chip">--sq-surface-neutral-subtler</code><p class="token-desc">Fondo neutro para dividers visuales y separadores de sección. También como fondo de tags y chips de estado.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#e2e8f0;"></div><div class="token-val-label">#e2e8f0</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-brand-subtlest brand subtlest badge nav activo">
+          <div><code class="token-chip">--sq-surface-brand-subtlest</code><p class="token-desc">Fondo brand muy sutil. Aplicado en el nav-link activo de la barra lateral, badges de categoría y selección activa.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#e5f1ff;"></div><div class="token-val-label">#e5f1ff</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-brand-subtler brand subtler hover dropdown activo">
+          <div><code class="token-chip">--sq-surface-brand-subtler</code><p class="token-desc">Fondo brand sutil. Se usa como fondo del ítem seleccionado en menús desplegables y como color del thumb del switch activado.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#cce2ff;"></div><div class="token-val-label">#cce2ff</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-brand-subtle brand seleccion activa">
+          <div><code class="token-chip">--sq-surface-brand-subtle</code><p class="token-desc">Fondo brand de contraste medio. Usado en backgrounds de selección activa y elementos destacados con menor énfasis que el brand principal.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#b3d4ff;"></div><div class="token-val-label">#b3d4ff</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-brand-subtle-alt brand alt seleccion alternativa">
+          <div><code class="token-chip">--sq-surface-brand-subtle-alt</code><p class="token-desc">Variante alternativa del fondo brand sutil. Permite diferenciar elementos activos en contextos donde dos fondos brand podrían confundirse.</p><span class="token-intro">Introducido v1.1.0</span></div>
+          <div><div class="token-swatch-block" style="background:#b8d6ff;"></div><div class="token-val-label">#b8d6ff</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-success-subtlest success verde badge alert">
+          <div><code class="token-chip">--sq-surface-success-subtlest</code><p class="token-desc">Fondo para estados de éxito. Usado en alerts, badges success y confirmaciones de acciones completadas correctamente.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#ecfcca;"></div><div class="token-val-label">#ecfcca</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-warning-subtlest warning naranja badge alert">
+          <div><code class="token-chip">--sq-surface-warning-subtlest</code><p class="token-desc">Fondo para estados de advertencia. Usado en alerts warning, badges de pendiente y notificaciones que requieren atención.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#ffedd4;"></div><div class="token-val-label">#ffedd4</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-error-subtlest error rojo badge alert">
+          <div><code class="token-chip">--sq-surface-error-subtlest</code><p class="token-desc">Fondo para estados de error. Usado en alerts de error, validaciones fallidas y mensajes críticos.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#feeded;"></div><div class="token-val-label">#feeded</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-error-subtler error rojo hover">
+          <div><code class="token-chip">--sq-surface-error-subtler</code><p class="token-desc">Variante de fondo de error con mayor saturación. Aplicada en hover de elementos con contexto de error.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#fedede;"></div><div class="token-val-label">#fedede</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-info-subtlest info celeste badge alert">
+          <div><code class="token-chip">--sq-surface-info-subtlest</code><p class="token-desc">Fondo para estados informativos. Usado en badges info, tooltips y mensajes que comunican información sin urgencia.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#ccf1ff;"></div><div class="token-val-label">#ccf1ff</div></div>
+        </div>
+        <div class="token-row" data-search="sq-surface-info-raised info card notificacion">
+          <div><code class="token-chip">--sq-surface-info-raised</code><p class="token-desc">Fondo elevado para cards de notificación informativa. Más sutil que el fondo info estándar, ideal para banners no intrusivos.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#f8ffff;"></div><div class="token-val-label">#f8ffff</div></div>
+        </div>
+
+        <!-- Texto -->
+        <h3 class="token-sub-h3" id="sec-text">Texto</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-text-default texto principal headings labels negro">
+          <div><code class="token-chip">--sq-text-default</code><p class="token-desc">Color de texto principal. Usado en headings, labels de formulario, body copy y todos los textos de alta legibilidad.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#020618;"></div><div class="token-val-label">#020618</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-subtle sutil secundario descripcion gris">
+          <div><code class="token-chip">--sq-text-subtle</code><p class="token-desc">Texto secundario para descripciones, subtítulos y contenido de apoyo. Menor énfasis visual que el texto por defecto.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#314158;"></div><div class="token-val-label">#314158</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-subtlest placeholder helper metadata gris claro">
+          <div><code class="token-chip">--sq-text-subtlest</code><p class="token-desc">Texto de menor jerarquía. Usado en placeholders, helper text, metadata, timestamps y etiquetas de menor importancia.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#62748e;"></div><div class="token-val-label">#62748e</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-inverse blanco sobre fondos oscuros brand">
+          <div><code class="token-chip">--sq-text-inverse</code><p class="token-desc">Texto para usar sobre fondos oscuros o de color brand. Garantiza contraste adecuado en botones primarios y badges con fondo sólido.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#ffffff; border-color:#e2e8f0;"></div><div class="token-val-label">#ffffff</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-neutral neutro alternativo oscuro">
+          <div><code class="token-chip">--sq-text-neutral</code><p class="token-desc">Texto neutro alternativo. Se usa cuando se necesita mayor contraste que subtle pero sin llegar al negro completo del texto por defecto.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#1d293d;"></div><div class="token-val-label">#1d293d</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-brand brand azul links codigo tokens">
+          <div><code class="token-chip">--sq-text-brand</code><p class="token-desc">Texto de color brand. Aplicado en links activos, código inline, valores de token en la documentación y elementos de acción secundaria.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#005fdb;"></div><div class="token-val-label">#005fdb</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-success exito verde success badge alert">
+          <div><code class="token-chip">--sq-text-success</code><p class="token-desc">Texto en contexto de éxito. Usado como color tipográfico dentro de alertas success, badges activos y mensajes de confirmación.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#3c6300;"></div><div class="token-val-label">#3c6300</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-warning advertencia naranja warning badge alert">
+          <div><code class="token-chip">--sq-text-warning</code><p class="token-desc">Texto en contexto de advertencia. Aplicado en alerts warning, badges de pendiente y mensajes que requieren atención del usuario.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#9f2d00;"></div><div class="token-val-label">#9f2d00</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-error error rojo badge alert validacion">
+          <div><code class="token-chip">--sq-text-error</code><p class="token-desc">Texto en contexto de error. Usado en mensajes de validación fallida, alertas críticas y feedback negativo al usuario.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#6f040c;"></div><div class="token-val-label">#6f040c</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-error-bold error rojo bold bolder">
+          <div><code class="token-chip">--sq-text-error-bold</code><p class="token-desc">Variante bold del texto de error. Mayor contraste para títulos o encabezados dentro de contextos críticos.</p><span class="token-intro">Introducido v1.1.0</span></div>
+          <div><div class="token-swatch-block" style="background:#7f0910;"></div><div class="token-val-label">#7f0910</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-error-bolder error rojo bolder icono">
+          <div><code class="token-chip">--sq-text-error-bolder</code><p class="token-desc">Variante de máximo contraste para iconos y elementos decorativos en contextos de error. Asegura visibilidad en tamaños pequeños.</p><span class="token-intro">Introducido v1.1.0</span></div>
+          <div><div class="token-swatch-block" style="background:#9e0b15;"></div><div class="token-val-label">#9e0b15</div></div>
+        </div>
+        <div class="token-row" data-search="sq-text-info info celeste badge alert informativo">
+          <div><code class="token-chip">--sq-text-info</code><p class="token-desc">Texto en contexto informativo. Aplicado en badges info, alertas de notificación y mensajes que comunican datos relevantes sin urgencia.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#004a66;"></div><div class="token-val-label">#004a66</div></div>
+        </div>
+
+        <!-- Bordes -->
+        <h3 class="token-sub-h3" id="sec-borders">Bordes</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-border-subtle sutil separadores lista sidebar rgba">
+          <div><code class="token-chip">--sq-border-subtle</code><p class="token-desc">Borde muy sutil para separadores de lista, divisores de sección y contornos de elementos sobre fondo blanco.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div>
+            <div class="token-swatch-block transparent-bg"><div class="token-swatch-inner" style="background:rgba(11,18,14,0.14);"></div></div>
+            <div class="token-val-label">rgba(11,18,14, 0.14)</div>
+          </div>
+        </div>
+        <div class="token-row" data-search="sq-border-default default input card borde por defecto rgba">
+          <div><code class="token-chip">--sq-border-default</code><p class="token-desc">Borde por defecto de inputs, cards y contenedores. Muy ligero para no competir visualmente con el contenido.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div>
+            <div class="token-swatch-block transparent-bg"><div class="token-swatch-inner" style="background:rgba(5,21,36,0.06);"></div></div>
+            <div class="token-val-label">rgba(5,21,36, 0.06)</div>
+          </div>
+        </div>
+        <div class="token-row" data-search="sq-border-bold bold divider contraste rgba">
+          <div><code class="token-chip">--sq-border-bold</code><p class="token-desc">Borde con mayor contraste. Usado en dividers horizontales y separadores que necesitan ser claramente perceptibles.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div>
+            <div class="token-swatch-block transparent-bg"><div class="token-swatch-inner" style="background:rgba(5,21,36,0.12);"></div></div>
+            <div class="token-val-label">rgba(5,21,36, 0.12)</div>
+          </div>
+        </div>
+        <div class="token-row" data-search="sq-border-brand brand focus azul activo">
+          <div><code class="token-chip">--sq-border-brand</code><p class="token-desc">Borde de color brand. Usado en el focus ring de elementos activos, bordes de selección y badges de categoría activa.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#0a74ff;"></div><div class="token-val-label">#0a74ff</div></div>
+        </div>
+        <div class="token-row" data-search="sq-border-success success verde input alert valido">
+          <div><code class="token-chip">--sq-border-success</code><p class="token-desc">Borde de estado éxito. Aplicado en inputs con validación correcta (.is-valid) y alerts de confirmación.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#5ea500;"></div><div class="token-val-label">#5ea500</div></div>
+        </div>
+        <div class="token-row" data-search="sq-border-warning warning naranja input alert advertencia">
+          <div><code class="token-chip">--sq-border-warning</code><p class="token-desc">Borde de estado advertencia. Usado en inputs y alerts que comunican una situación que requiere revisión del usuario.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#f54a00;"></div><div class="token-val-label">#f54a00</div></div>
+        </div>
+        <div class="token-row" data-search="sq-border-error error rojo input invalido validacion">
+          <div><code class="token-chip">--sq-border-error</code><p class="token-desc">Borde de estado error. Aplicado en inputs con validación fallida (.is-invalid) y alerts de error crítico.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#cf121f;"></div><div class="token-val-label">#cf121f</div></div>
+        </div>
+
+        <!-- Neutros -->
+        <h3 class="token-sub-h3" id="sec-neutrals">Neutros</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-neutral-100 neutro gris claro scrollbar separador">
+          <div><code class="token-chip">--sq-neutral-100</code><p class="token-desc">Neutro escala 100. Usado en thumbs de scrollbar y bordes de separadores ligeros.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#dde6ef;"></div><div class="token-val-label">#dde6ef</div></div>
+        </div>
+        <div class="token-row" data-search="sq-neutral-200 neutro gris scrollbar">
+          <div><code class="token-chip">--sq-neutral-200</code><p class="token-desc">Neutro escala 200. Separadores de mayor peso y thumbs de scroll en fondos más claros.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#cbd5e1;"></div><div class="token-val-label">#cbd5e1</div></div>
+        </div>
+        <div class="token-row" data-search="sq-neutral-300 neutro gris scrollbar sidebar">
+          <div><code class="token-chip">--sq-neutral-300</code><p class="token-desc">Neutro escala 300. Usado en thumbs de scrollbar de la barra lateral y elementos UI de baja jerarquía visual.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#c8d4e0;"></div><div class="token-val-label">#c8d4e0</div></div>
+        </div>
+        <div class="token-row" data-search="sq-neutral-400 neutro gris medio">
+          <div><code class="token-chip">--sq-neutral-400</code><p class="token-desc">Neutro escala 400. Para iconos decorativos, estados deshabilitados con mayor visibilidad y bordes de entrada.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#b0bec5;"></div><div class="token-val-label">#b0bec5</div></div>
+        </div>
+        <div class="token-row" data-search="sq-neutral-500 neutro gris medio">
+          <div><code class="token-chip">--sq-neutral-500</code><p class="token-desc">Neutro escala 500. Tono medio para separadores horizontales y fondos de elementos con contraste reducido intencional.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#dddddd;"></div><div class="token-val-label">#dddddd</div></div>
+        </div>
+
+        <!-- Estado info / Overlays / Focus -->
+        <h3 class="token-sub-h3" id="sec-state">Estado, overlays y foco</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-info informativo celeste teal">
+          <div><code class="token-chip">--sq-info</code><p class="token-desc">Color base del estado informativo. Usado en iconos de info, indicadores de estado y elementos que comunican datos neutros.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-swatch-block" style="background:#0095cc;"></div><div class="token-val-label">#0095cc</div></div>
+        </div>
+        <div class="token-row" data-search="sq-overlay-subtle overlay sutil modal backdrop rgba">
+          <div><code class="token-chip">--sq-overlay-subtle</code><p class="token-desc">Overlay sutil para capas de oscurecimiento ligero. Usado en hover de botones sobre imágenes y capas de interacción poco intrusivas.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div>
+            <div class="token-swatch-block transparent-bg"><div class="token-swatch-inner" style="background:rgba(2,6,24,0.10);"></div></div>
+            <div class="token-val-label">rgba(2,6,24, 0.10)</div>
+          </div>
+        </div>
+        <div class="token-row" data-search="sq-overlay-dark overlay oscuro modal backdrop rgba">
+          <div><code class="token-chip">--sq-overlay-dark</code><p class="token-desc">Overlay oscuro para backdrops de modal, offcanvas y toasts. Proporciona el efecto de enfoque sobre el contenido principal.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div>
+            <div class="token-swatch-block transparent-bg"><div class="token-swatch-inner" style="background:rgba(5,12,31,0.66);"></div></div>
+            <div class="token-val-label">rgba(5,12,31, 0.66)</div>
+          </div>
+        </div>
+        <div class="token-row" data-search="sq-glow-brand glow brand focus ring sombra azul">
+          <div><code class="token-chip">--sq-glow-brand</code><p class="token-desc">Sombra de focus ring de color brand. Aplicada como box-shadow exterior en inputs, botones y cualquier elemento interactivo al recibir foco.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div>
+            <div class="token-swatch-block transparent-bg"><div class="token-swatch-inner" style="background:rgba(0,95,219,0.2);"></div></div>
+            <div class="token-val-label">rgba(0,95,219, 0.20)</div>
+          </div>
+        </div>
+        <div class="token-row" data-search="sq-glow-error glow error focus ring sombra rojo">
+          <div><code class="token-chip">--sq-glow-error</code><p class="token-desc">Sombra de focus ring en contexto de error. Usada en inputs inválidos cuando reciben foco, reforzando visualmente el estado de error.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div>
+            <div class="token-swatch-block transparent-bg"><div class="token-swatch-inner" style="background:rgba(207,18,31,0.2);"></div></div>
+            <div class="token-val-label">rgba(207,18,31, 0.20)</div>
+          </div>
+        </div>
+      </div><!-- /cat-color -->
+
+      <!-- ══════════════════════════════════════════════
+           TIPOGRAFÍA
+      ══════════════════════════════════════════════ -->
+      <div class="token-section-block" data-cat="typography" id="cat-typography">
+        <h2 class="token-cat-h2" id="sec-typography">Tipografía</h2>
+
+        <!-- Familias -->
+        <h3 class="token-sub-h3" id="sec-fonts">Familias tipográficas</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-font-heading pangram heading titulo encabezado display">
+          <div><code class="token-chip">--sq-font-heading</code><p class="token-desc">Fuente para headings y títulos. Usa Pangram, la tipografía display del sistema, que aporta personalidad de marca en títulos y encabezados de alto impacto.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><span class="token-family-val">'Pangram', sans-serif</span></div>
+        </div>
+        <div class="token-row" data-search="sq-font-body inter sans-serif fuente cuerpo ui">
+          <div><code class="token-chip">--sq-font-body</code><p class="token-desc">Fuente principal del sistema. Se aplica en todo el texto de interfaz: botones, inputs, párrafos, labels y componentes de UI general.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><span class="token-family-val">'Inter', sans-serif</span></div>
+        </div>
+        <div class="token-row" data-search="sq-font-mono roboto mono monospace codigo token valor">
+          <div><code class="token-chip">--sq-font-mono</code><p class="token-desc">Fuente monoespaciada. Usada en bloques de código, valores de token en la documentación y cualquier dato técnico de longitud fija.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><span class="token-family-val">'Roboto Mono', monospace</span></div>
+        </div>
+
+        <!-- Tamaños -->
+        <h3 class="token-sub-h3" id="sec-sizes">Escala de tamaños</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-font-size-xs xs 12px pequeño badge helper label">
+          <div><code class="token-chip">--sq-font-size-xs</code><p class="token-desc">Tamaño extra pequeño (12px). Usado en labels de badges, helper text, metadata, timestampsóptimo para información secundaria que no compite con el contenido principal.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><span class="token-size-val">0.75rem · 12px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-font-size-sm sm 14px ui botones inputs nav">
+          <div><code class="token-chip">--sq-font-size-sm</code><p class="token-desc">Tamaño de UI por defecto (14px). Aplicado en botones, inputs, nav items y la mayoría de los componentes interactivos del sistema.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><span class="token-size-val">0.875rem · 14px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-font-size-md md 16px base body cuerpo">
+          <div><code class="token-chip">--sq-font-size-md</code><p class="token-desc">Tamaño base del documento (16px). Corresponde al font-size raíz de la página. Usado en párrafos de contenido extenso y texto editorial.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><span class="token-size-val">1rem · 16px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-font-size-lg lg 18px lead intro grande">
+          <div><code class="token-chip">--sq-font-size-lg</code><p class="token-desc">Tamaño grande (18px). Usado en textos de introducción, leads y párrafos destacados que encabezan secciones de contenido.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><span class="token-size-val">1.125rem · 18px</span></div>
+        </div>
+
+        <!-- Headings -->
+        <h3 class="token-sub-h3" id="sec-headings">Headings</h3>
+        <div class="token-col-header" style="grid-template-columns:3fr 2fr;"><span>Token y descripción</span><span style="padding-left:40px;">Vista previa</span></div>
+
+        <div class="token-row heading-row" data-search="sq-heading-xl 40px display hero landing grande">
+          <div><code class="token-chip">--sq-heading-xl</code><p class="token-desc">Título de display (40px). Para heroes, landings y encabezados de alto impacto que necesitan la máxima presencia visual.</p><span class="token-intro">Introducido v1.1.0</span></div>
+          <div><span class="token-heading-preview" style="font-size:2.5rem;">Heading XL</span></div>
+        </div>
+        <div class="token-row heading-row" data-search="sq-heading-lg 32px h1 titulo pagina seccion">
+          <div><code class="token-chip">--sq-heading-lg</code><p class="token-desc">Título de página (32px). Usado como H1 en páginas internas, dashboards y vistas de detalle.</p><span class="token-intro">Introducido v1.1.0</span></div>
+          <div><span class="token-heading-preview" style="font-size:2rem;">Heading LG</span></div>
+        </div>
+        <div class="token-row heading-row" data-search="sq-heading-md 24px h2 seccion titulo card">
+          <div><code class="token-chip">--sq-heading-md</code><p class="token-desc">Título de sección (24px). H2 principal para separar bloques de contenido dentro de una página.</p><span class="token-intro">Introducido v1.1.0</span></div>
+          <div><span class="token-heading-preview" style="font-size:1.5rem;">Heading MD</span></div>
+        </div>
+        <div class="token-row heading-row" data-search="sq-heading-sm 20px h3 subseccion modal titulo">
+          <div><code class="token-chip">--sq-heading-sm</code><p class="token-desc">Título de subsección (20px). H3 y títulos de modal o panel lateral. Mantiene jerarquía sin restar protagonismo al H2.</p><span class="token-intro">Introducido v1.1.0</span></div>
+          <div><span class="token-heading-preview" style="font-size:1.25rem;">Heading SM</span></div>
+        </div>
+        <div class="token-row heading-row" data-search="sq-heading-xs 16px h4 h5 h6 etiqueta label formulario">
+          <div><code class="token-chip">--sq-heading-xs</code><p class="token-desc">Heading compacto (16px). Para H4-H6, etiquetas de sección en formularios y agrupadores de contenido secundario.</p><span class="token-intro">Introducido v1.1.0</span></div>
+          <div><span class="token-heading-preview" style="font-size:1rem;">Heading XS</span></div>
+        </div>
+      </div><!-- /cat-typography -->
+
+      <!-- ══════════════════════════════════════════════
+           ESPACIADO
+      ══════════════════════════════════════════════ -->
+      <div class="token-section-block" data-cat="spacing" id="cat-spacing">
+        <h2 class="token-cat-h2" id="sec-spacing">Espaciado</h2>
+
+        <!-- Escala de espacio -->
+        <h3 class="token-sub-h3" id="sec-space-scale">Escala de espacio</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-space-0 0px reset margin padding espacio cero">
+          <div><code class="token-chip">--sq-space-0</code><p class="token-desc">Espacio nulo. Usado para resetear margin o padding en elementos donde el espaciado estándar no debe aplicarse.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:3px;"></div><span class="token-space-val">0px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-025 2px minimo separacion inline">
+          <div><code class="token-chip">--sq-space-025</code><p class="token-desc">Espacio mínimo (2px). Para separaciones inline de muy poco peso: entre un icono de estado y un punto de presencia visual.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:4px;"></div><span class="token-space-val">2px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-050 4px gap icono label boton badge">
+          <div><code class="token-chip">--sq-space-050</code><p class="token-desc">Gap entre icono y label (4px). Distancia estándar entre un ícono SVG y el texto que lo acompaña dentro de un botón o nav item.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:8px;"></div><span class="token-space-val">4px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-075 6px padding badge horizontal pequeño">
+          <div><code class="token-chip">--sq-space-075</code><p class="token-desc">Padding horizontal de badges y chips pequeños (6px). Proporciona área de click cómoda sin que el elemento se vea sobredimensionado.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:12px;"></div><span class="token-space-val">6px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-100 8px step base padding boton sm">
+          <div><code class="token-chip">--sq-space-100</code><p class="token-desc">Step base del sistema de espaciado (8px). Padding vertical de botones pequeños, gap entre elementos en filas compactas y unidad de referencia del grid de 8px.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:16px;"></div><span class="token-space-val">8px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-150 12px padding vertical input form">
+          <div><code class="token-chip">--sq-space-150</code><p class="token-desc">Padding estándar de inputs y selectores (12px). Se usa como padding vertical en campos de formulario y como padding horizontal de ítems de nav.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:24px;"></div><span class="token-space-val">12px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-200 16px padding card separacion form fields">
+          <div><code class="token-chip">--sq-space-200</code><p class="token-desc">Padding interno de cards y separación entre campos de formulario (16px). Asegura que el contenido respire sin crear huecos excesivos.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:32px;"></div><span class="token-space-val">16px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-250 20px gap columnas grid">
+          <div><code class="token-chip">--sq-space-250</code><p class="token-desc">Gap de columnas de grid (20px). Distancia entre columnas en layouts de dos o tres columnas para mantener la separación sin exceder el contenedor.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:40px;"></div><span class="token-space-val">20px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-300 24px padding card body section">
+          <div><code class="token-chip">--sq-space-300</code><p class="token-desc">Padding de card body y secciones de contenido (24px). Tamaño confortable que da sensación de amplitud sin desperdiciar espacio en pantallas medianas.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:48px;"></div><span class="token-space-val">24px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-400 32px margen secciones separacion grupos">
+          <div><code class="token-chip">--sq-space-400</code><p class="token-desc">Margen entre secciones de contenido (32px). Distancia entre grupos de formulario, bloques temáticos y secciones dentro de un mismo panel.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:64px;"></div><span class="token-space-val">32px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-500 40px padding seccion pagina">
+          <div><code class="token-chip">--sq-space-500</code><p class="token-desc">Padding de secciones de página (40px). Separación vertical entre bloques principales del layout y espacio superior de panels.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:80px;"></div><span class="token-space-val">40px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-600 48px separacion grande bloques layout">
+          <div><code class="token-chip">--sq-space-600</code><p class="token-desc">Separación grande entre bloques de layout (48px). Crea respiración visual entre secciones de alto nivel como hero, features y call-to-action.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:96px;"></div><span class="token-space-val">48px</span></div>
+        </div>
+        <div class="token-row" data-search="sq-space-800 64px section break alto nivel pagina">
+          <div><code class="token-chip">--sq-space-800</code><p class="token-desc">Section break de alto nivel (64px). Espaciado máximo para separar grandes regiones de página como encabezados y áreas de contenido principal.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-space-bar" style="width:128px;"></div><span class="token-space-val">64px</span></div>
+        </div>
+
+        <!-- Radios -->
+        <h3 class="token-sub-h3" id="sec-radius">Radios de borde</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-radius-xs 4px radio borde badge checkbox tooltip">
+          <div><code class="token-chip">--sq-radius-xs</code><p class="token-desc">Radio extra pequeño (4px). Usado en badges, checkboxes, tooltips y elementos pequeños que no deben tener esquinas muy redondeadas.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-radius-preview" style="border-radius:4px;"></div><div class="token-val-label">4px</div></div>
+        </div>
+        <div class="token-row" data-search="sq-radius-sm 8px radio boton input nav item">
+          <div><code class="token-chip">--sq-radius-sm</code><p class="token-desc">Radio pequeño (8px). Tamaño estándar para botones, inputs, nav items y la mayoría de componentes interactivos. Esquinas cómodas sin ser excesivamente redondeadas.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-radius-preview" style="border-radius:8px;"></div><div class="token-val-label">8px</div></div>
+        </div>
+        <div class="token-row" data-search="sq-radius-md 12px radio dropdown popover modal">
+          <div><code class="token-chip">--sq-radius-md</code><p class="token-desc">Radio medio (12px). Para dropdowns, popovers y menus contextuales. También en icon buttons para un look más amigable y moderno.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-radius-preview" style="border-radius:12px;"></div><div class="token-val-label">12px</div></div>
+        </div>
+        <div class="token-row" data-search="sq-radius-lg 16px radio card modal offcanvas panel">
+          <div><code class="token-chip">--sq-radius-lg</code><p class="token-desc">Radio grande (16px). Reservado para cards, modales, panels y offcanvas. Produce un estilo visual suave y contemporáneo en los contenedores principales.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-radius-preview" style="border-radius:16px;"></div><div class="token-val-label">16px</div></div>
+        </div>
+        <div class="token-row" data-search="sq-radius-full 9999px pill badge avatar switch">
+          <div><code class="token-chip">--sq-radius-full</code><p class="token-desc">Radio completo (9999px). Crea formas de píldora perfecta. Usado en badges, avatares, switches y cualquier elemento que deba ser completamente redondeado.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div><div class="token-radius-preview" style="border-radius:9999px; width:80px; height:32px;"></div><div class="token-val-label">9999px</div></div>
+        </div>
+      </div><!-- /cat-spacing -->
+
+      <!-- ══════════════════════════════════════════════
+           EFECTOS
+      ══════════════════════════════════════════════ -->
+      <div class="token-section-block" data-cat="effect" id="cat-effect">
+        <h2 class="token-cat-h2" id="sec-effects">Efectos</h2>
+
+        <h3 class="token-sub-h3" id="sec-shadows">Sombras</h3>
+        <div class="token-col-header"><span>Token y descripción</span><span>Valor</span></div>
+
+        <div class="token-row" data-search="sq-shadow-sm sombra pequeña card input reposo">
+          <div><code class="token-chip">--sq-shadow-sm</code><p class="token-desc">Sombra sutil de reposo (1px). Usada en cards en estado por defecto e inputs. Aporta elevación visual sin crear contraste excesivo.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div>
+            <div class="token-shadow-preview" style="box-shadow: 0 1px 3px rgba(0,0,0,.08);"></div>
+            <div class="token-val-box">0 1px 3px rgba(0,0,0, 0.08)</div>
+          </div>
+        </div>
+        <div class="token-row" data-search="sq-shadow-md sombra media dropdown popover abierto">
+          <div><code class="token-chip">--sq-shadow-md</code><p class="token-desc">Sombra media para elementos flotantes (4px). Aplicada en dropdowns abiertos, popovers y tooltips. Indica que el elemento flota sobre el contenido de la página.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div>
+            <div class="token-shadow-preview" style="box-shadow: 0 4px 12px rgba(0,0,0,.12);"></div>
+            <div class="token-val-box">0 4px 12px rgba(0,0,0, 0.12)</div>
+          </div>
+        </div>
+        <div class="token-row" data-search="sq-shadow-lg sombra grande modal offcanvas toast">
+          <div><code class="token-chip">--sq-shadow-lg</code><p class="token-desc">Sombra grande para capas superpuestas (8px). Reservada para modales, offcanvas y toasts. Comunica que el elemento está en el nivel más alto de elevación de la UI.</p><span class="token-intro">Introducido v1.0.0</span></div>
+          <div>
+            <div class="token-shadow-preview" style="box-shadow: 0 8px 24px rgba(0,0,0,.15);"></div>
+            <div class="token-val-box">0 8px 24px rgba(0,0,0, 0.15)</div>
+          </div>
+        </div>
+      </div><!-- /cat-effect -->
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="spacing.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Espaciado
+          </a>
+          <a href="../components/button.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Button
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- TOC -->
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link" href="#sec-color">Color</a>
+        <a class="docs-toc-link level-2" href="#sec-marca">Marca</a>
+        <a class="docs-toc-link level-2" href="#sec-surfaces">Superficies</a>
+        <a class="docs-toc-link level-2" href="#sec-text">Texto</a>
+        <a class="docs-toc-link level-2" href="#sec-borders">Bordes</a>
+        <a class="docs-toc-link level-2" href="#sec-neutrals">Neutros</a>
+        <a class="docs-toc-link level-2" href="#sec-state">Estado y foco</a>
+        <a class="docs-toc-link" href="#sec-typography">Tipografía</a>
+        <a class="docs-toc-link level-2" href="#sec-fonts">Familias</a>
+        <a class="docs-toc-link level-2" href="#sec-sizes">Tamaños</a>
+        <a class="docs-toc-link level-2" href="#sec-headings">Headings</a>
+        <a class="docs-toc-link" href="#sec-spacing">Espaciado</a>
+        <a class="docs-toc-link level-2" href="#sec-space-scale">Escala de espacio</a>
+        <a class="docs-toc-link level-2" href="#sec-radius">Radios de borde</a>
+        <a class="docs-toc-link" href="#sec-effects">Efectos</a>
+        <a class="docs-toc-link level-2" href="#sec-shadows">Sombras</a>
+      </nav>
+    </aside>
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+<script>
+(function () {
+  var searchInput = document.getElementById('tokenSearch');
+  var catLabel    = document.getElementById('catSelectLabel');
+  var catItems    = document.querySelectorAll('.cat-option');
+  var sections    = document.querySelectorAll('.token-section-block');
+  var noResults   = document.getElementById('noResults');
+  var activecat   = 'all';
+
+  function applyFilters() {
+    var q = searchInput.value.trim().toLowerCase();
+    var anyVisible = false;
+
+    sections.forEach(function (sec) {
+      var cat = sec.dataset.cat;
+      var catMatch = activecat === 'all' || cat === activecat;
+
+      if (!catMatch) {
+        sec.classList.add('hidden');
+        return;
+      }
+
+      if (!q) {
+        sec.classList.remove('hidden');
+        sec.querySelectorAll('.token-row').forEach(function (r) { r.classList.remove('hidden'); });
+        anyVisible = true;
+        return;
+      }
+
+      var rows = sec.querySelectorAll('.token-row');
+      var secVisible = false;
+      rows.forEach(function (row) {
+        var text = (row.dataset.search || '') + ' ' + row.textContent.toLowerCase();
+        var match = text.includes(q);
+        row.classList.toggle('hidden', !match);
+        if (match) secVisible = true;
+      });
+
+      sec.classList.toggle('hidden', !secVisible);
+      if (secVisible) anyVisible = true;
+    });
+
+    noResults.classList.toggle('visible', !anyVisible);
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+
+  catItems.forEach(function (item) {
+    item.addEventListener('click', function () {
+      catItems.forEach(function (i) { i.classList.remove('active'); });
+      item.classList.add('active');
+      activecat = item.dataset.cat;
+      catLabel.textContent = item.textContent;
+      applyFilters();
+    });
+  });
+})();
+</script>
+</body>
+</html>

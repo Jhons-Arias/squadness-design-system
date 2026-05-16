@@ -1,0 +1,56 @@
+<!--
+  SQUADNESS DS — Button
+  ───────────────────────────────────────────────────────────────
+  Requiere: tokens.css + bootstrap.min.css + squadness.css
+  Clases clave: .btn  .btn-{variant}  .btn-{size}
+  Variantes:  primary | outline-primary | secondary | danger | success | link
+  Tamaños:    btn-sm  | (default) | btn-lg
+  Estados:    active  | disabled  | (con spinner)
+-->
+
+<!-- ── Variantes ─────────────────────────────────────────────── -->
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-outline-primary">Outline</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-danger">Danger</button>
+<button class="btn btn-success">Success</button>
+<a href="#" class="btn btn-link" style="color:var(--sq-brand);">Link</a>
+
+<!-- ── Tamaños ───────────────────────────────────────────────── -->
+<button class="btn btn-primary btn-lg">Large</button>
+<button class="btn btn-primary">Default</button>
+<button class="btn btn-primary btn-sm">Small</button>
+
+<!-- ── Estado disabled ───────────────────────────────────────── -->
+<button class="btn btn-primary" disabled>Disabled</button>
+<button class="btn btn-secondary" disabled>Disabled</button>
+
+<!-- ── Estado loading (con spinner) ─────────────────────────── -->
+<button class="btn btn-primary d-inline-flex align-items-center gap-2" disabled>
+  <span class="spinner-border spinner-border-sm"
+        style="width:14px;height:14px;border-width:2px;" role="status" aria-hidden="true"></span>
+  Guardando...
+</button>
+
+<!-- ── Bloque ancho completo ─────────────────────────────────── -->
+<button class="btn btn-primary w-100">Guardar cambios</button>
+
+<!-- ── Con icono (Bootstrap Icons) ──────────────────────────── -->
+<!-- Requiere: bootstrap-icons.css -->
+<button class="btn btn-primary d-inline-flex align-items-center gap-2">
+  <i class="bi bi-plus-lg"></i>
+  Nuevo registro
+</button>
+<button class="btn btn-secondary d-inline-flex align-items-center gap-2">
+  <i class="bi bi-download"></i>
+  Exportar
+</button>
+
+<!-- ── Grupo de botones ───────────────────────────────────────── -->
+<div class="btn-group" role="group">
+  <button class="btn btn-secondary">Anterior</button>
+  <button class="btn btn-secondary">1</button>
+  <button class="btn btn-primary">2</button>
+  <button class="btn btn-secondary">3</button>
+  <button class="btn btn-secondary">Siguiente</button>
+</div>

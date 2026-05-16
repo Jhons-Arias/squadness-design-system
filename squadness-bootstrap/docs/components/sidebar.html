@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sidebar — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">Sidebar</h1>
+      <p class="docs-desc">Panel de navegación lateral. Contiene logo, lista de ítems y grupos de submenú. Soporta dos variantes: expandido (240 px) y colapsado (56 px, solo íconos). Clase principal: <code>.sq-sidebar</code>.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ SIDEBAR ═══════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="sidebar">Sidebar</h2>
+      <p class="docs-section-desc">
+        Sidebar expandido con su contenido real de ejemplo. Usa el botón de la cabecera para alternar la variante colapsada. El grupo <strong>Baños Portátiles</strong> está expandido por defecto mostrando el subítem activo.
+      </p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="padding:0; display:block; min-height:560px;">
+          <div style="display:flex; height:560px; border-radius:8px; overflow:hidden;">
+
+            <!-- SIDEBAR -->
+            <div class="sq-sidebar" id="mainSidebar">
+
+              <!-- Header -->
+              <div class="sq-sidebar-header">
+                <img class="sq-sidebar-logo-expanded" src="../assets/logo/Logo Sideber.png" alt="Squadness">
+                <img class="sq-sidebar-logo-collapsed" src="../assets/logo/Logo Sideber Collapsed.png" alt="Squadness">
+                <button class="sq-sidebar-toggle ms-auto" id="sidebarToggle" title="Colapsar sidebar">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11 2H4C2.9 2 2 2.9 2 4v16c0 1.1.9 2 2 2h7V2zm2 20h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2h-7v20zm5-11l-3 3 3 3v-6z"/>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Menu -->
+              <nav class="sq-sidebar-menu">
+
+                <a class="sq-sidebar-item" href="#">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 13.6579V6.15785L8 2.39502L13 6.15785V13.6579H9.26917V9.19635H6.73083V13.6579H3Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Inicio</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M7.39752 7.11048V2.84131H14.3334V7.11048H7.39752ZM1.66669 12.8413V8.57214H7.93585V12.8413H1.66669ZM1.66669 7.11048V2.84131H5.93585V7.11048H1.66669ZM11.2435 14.1105L11.1077 13.3156C10.9359 13.2644 10.7746 13.1997 10.6237 13.1215C10.4729 13.0433 10.33 12.9405 10.1949 12.8131L9.43335 13.0746L8.92052 12.2361L9.53335 11.7105C9.48547 11.5234 9.46152 11.3362 9.46152 11.149C9.46152 10.9618 9.48547 10.7746 9.53335 10.5875L8.92052 10.0618L9.43335 9.22331L10.1949 9.48498C10.3256 9.35753 10.4675 9.25475 10.6205 9.17664C10.7735 9.09842 10.9359 9.03364 11.1077 8.98231L11.2435 8.18748H12.2435L12.3795 8.98231C12.5513 9.03364 12.7137 9.09842 12.8667 9.17664C13.0197 9.25475 13.1616 9.35753 13.2924 9.48498L14.0539 9.22331L14.5667 10.0618L13.9539 10.5875C14.0017 10.7746 14.0257 10.9618 14.0257 11.149C14.0257 11.3362 14.0017 11.5234 13.9539 11.7105L14.5667 12.2361L14.0539 13.0746L13.2924 12.8131C13.1572 12.9405 13.0143 13.0433 12.8635 13.1215C12.7126 13.1997 12.5513 13.2644 12.3795 13.3156L12.2435 14.1105H11.2435ZM12.7237 12.1291C12.9934 11.8595 13.1282 11.5328 13.1282 11.149C13.1282 10.7652 12.9934 10.4385 12.7237 10.1688C12.454 9.89914 12.1273 9.76431 11.7435 9.76431C11.3599 9.76431 11.0332 9.89914 10.7635 10.1688C10.4939 10.4385 10.359 10.7652 10.359 11.149C10.359 11.5328 10.4939 11.8595 10.7635 12.1291C11.0332 12.3988 11.3599 12.5336 11.7435 12.5336C12.1273 12.5336 12.454 12.3988 12.7237 12.1291Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Administración</span>
+                </a>
+
+                <!-- Baños Portátiles — grupo expandido -->
+                <div class="sq-sidebar-group is-open">
+                  <div class="sq-sidebar-group-trigger">
+                    <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1.66669 13.6666V12.6666H3.00002V2.33325H13V12.6666H14.3334V13.6666H1.66669ZM7.25002 12.6666H8.75002V3.33325H7.25002V12.6666Z" fill="currentColor"/>
+                    </svg>
+                    <span class="sq-sidebar-group-label">Baños Portátiles</span>
+                    <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                  </div>
+                  <div class="sq-sidebar-group-sub">
+                    <div class="sq-sidebar-sub-divider"></div>
+                    <div class="sq-sidebar-sub-list">
+                      <a class="sq-sidebar-sub-item active" href="#">Estado de inventario</a>
+                      <a class="sq-sidebar-sub-item" href="#">Servicios en almacén</a>
+                      <a class="sq-sidebar-sub-item" href="#">Servicios de entrega</a>
+                      <a class="sq-sidebar-sub-item" href="#">Servicios de recolección</a>
+                      <a class="sq-sidebar-sub-item" href="#">Servicios realizados en campo</a>
+                      <a class="sq-sidebar-sub-item" href="#">Servicios no realizados en campo</a>
+                    </div>
+                  </div>
+                </div>
+
+                <a class="sq-sidebar-item" href="#">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8.85185 7.55623C9.08741 7.32078 9.20518 7.03684 9.20518 6.70439C9.20518 6.37195 9.08741 6.08795 8.85185 5.85239C8.61641 5.61695 8.33246 5.49923 8.00002 5.49923C7.66757 5.49923 7.38363 5.61695 7.14818 5.85239C6.91263 6.08795 6.79485 6.37195 6.79485 6.70439C6.79485 7.03684 6.91263 7.32078 7.14818 7.55623C7.38363 7.79167 7.66757 7.90939 8.00002 7.90939C8.33246 7.90939 8.61641 7.79167 8.85185 7.55623ZM8.00002 14.3389C6.32224 12.8851 5.06413 11.5322 4.22568 10.2801C3.38724 9.02784 2.96802 7.87823 2.96802 6.83123C2.96802 5.29278 3.46563 4.04728 4.46085 3.09473C5.45618 2.14217 6.63591 1.66589 8.00002 1.66589C9.36413 1.66589 10.5439 2.14217 11.5392 3.09473C12.5344 4.04728 13.032 5.29278 13.032 6.83123C13.032 7.87823 12.6128 9.02784 11.7744 10.2801C10.9359 11.5322 9.6778 12.8851 8.00002 14.3389Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Rutas de Trabajo</span>
+                </a>
+
+                <!-- Mapa Rutas — grupo colapsado -->
+                <div class="sq-sidebar-group">
+                  <div class="sq-sidebar-group-trigger">
+                    <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M9.99998 13.641L5.99998 12.241L2.33331 13.6628V3.61033L5.99998 2.35899L9.99998 3.75899L13.6666 2.33716V12.409L9.99998 13.641ZM9.49998 12.418V4.61799L6.49998 3.56916V11.3692L9.49998 12.418Z" fill="currentColor"/>
+                    </svg>
+                    <span class="sq-sidebar-group-label">Mapa Rutas</span>
+                    <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                  </div>
+                  <div class="sq-sidebar-group-sub">
+                    <div class="sq-sidebar-sub-divider"></div>
+                    <div class="sq-sidebar-sub-list">
+                      <a class="sq-sidebar-sub-item" href="#">Vista general</a>
+                      <a class="sq-sidebar-sub-item" href="#">Optimización</a>
+                    </div>
+                  </div>
+                </div>
+
+                <a class="sq-sidebar-item" href="#">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3.4615 14.1539C3.29506 14.1539 3.14639 14.087 3.0155 13.9532C2.88472 13.8194 2.81934 13.6701 2.81934 13.5052V11.889C2.81934 10.9655 3.1065 10.1497 3.68084 9.44169C4.25517 8.73369 4.99361 8.28219 5.89617 8.08719C5.48428 8.37608 5.16506 8.73975 4.9385 9.17819C4.71195 9.61664 4.59867 10.0865 4.59867 10.5879V13.5039C4.59867 13.6164 4.61534 13.7289 4.64867 13.8414C4.682 13.9539 4.73334 14.0581 4.80267 14.1539H3.4615ZM5.72284 14.1539C5.5485 14.1539 5.39728 14.0895 5.26917 13.9607C5.14106 13.832 5.077 13.6802 5.077 13.5052V10.5885C5.077 9.8663 5.32956 9.2543 5.83467 8.75252C6.33978 8.25086 6.95345 8.00002 7.67567 8.00002H10.587C11.3059 8.00002 11.9162 8.25086 12.418 8.75252C12.9197 9.2543 13.1705 9.8663 13.1705 10.5885V11.5654C13.1705 12.2876 12.9197 12.8995 12.418 13.4012C11.9162 13.903 11.3042 14.1539 10.582 14.1539H5.72284ZM8 6.70253C7.32378 6.70253 6.75006 6.4673 6.27884 5.99686C5.8075 5.5263 5.57184 4.95214 5.57184 4.27436C5.57184 3.59658 5.8075 3.02247 6.27884 2.55202C6.75006 2.08147 7.32378 1.84619 8 1.84619C8.67622 1.84619 9.24995 2.08147 9.72117 2.55202C10.1925 3.02247 10.4282 3.59658 10.4282 4.27436C10.4282 4.95214 10.1925 5.5263 9.72117 5.99686C9.24995 6.4673 8.67622 6.70253 8 6.70253Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Clientes</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M5.4615 8.43579H10.5385V7.43579H5.4615V8.43579ZM5.4615 10.359H10.5385V9.35896H5.4615V10.359ZM5.4615 12.282H8.5385V11.282H5.4615V12.282ZM3 14.3333V1.66663H9.5L13 5.16663V14.3333H3ZM9 5.66663H12L9 2.66663V5.66663Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Contratos</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M1.66669 13V3H14.3334V13H1.66669ZM7.56985 7.8275C7.45497 7.71261 7.39752 7.56928 7.39752 7.3975C7.39752 7.22572 7.45497 7.08233 7.56985 6.96733C7.68485 6.85233 7.82824 6.79483 8.00002 6.79483C8.1718 6.79483 8.31519 6.85233 8.43019 6.96733C8.54508 7.08233 8.60252 7.22572 8.60252 7.3975C8.60252 7.56928 8.54508 7.71261 8.43019 7.8275C8.31519 7.9425 8.1718 8 8.00002 8C7.82824 8 7.68485 7.9425 7.56985 7.8275ZM8.00002 11.0128C8.81024 10.3231 9.41452 9.68311 9.81285 9.093C10.2111 8.50278 10.4102 7.95767 10.4102 7.45767C10.4102 6.70133 10.1675 6.1005 9.68202 5.65517C9.19658 5.20983 8.63591 4.98717 8.00002 4.98717C7.36413 4.98717 6.80346 5.20983 6.31802 5.65517C5.83258 6.1005 5.58985 6.70133 5.58985 7.45767C5.58985 7.95767 5.78897 8.50278 6.18719 9.093C6.58552 9.68311 7.1898 10.3231 8.00002 11.0128Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Localización Inventario</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M5.33333 12.3333C4.12622 12.3333 3.10222 11.913 2.26133 11.0723C1.42044 10.2317 1 9.20802 1 8.00113C1 6.79435 1.42044 5.77024 2.26133 4.92879C3.10222 4.08735 4.12622 3.66663 5.33333 3.66663H10.6667C11.8738 3.66663 12.8978 4.08696 13.7387 4.92763C14.5796 5.76818 15 6.7919 15 7.99879C15 9.20557 14.5796 10.2297 13.7387 11.0711C12.8978 11.9126 11.8738 12.3333 10.6667 12.3333H5.33333ZM6 7.49996C6 8.13496 6.21067 8.69352 6.632 9.17563C7.05345 9.65763 7.50944 10.1033 8 10.5128C8.49056 10.1033 8.94656 9.65763 9.368 9.17563C9.78933 8.69352 10 8.13496 10 7.49996C10 6.94607 9.80522 6.47429 9.41567 6.08463C9.02611 5.69485 8.5545 5.49996 8.00083 5.49996C7.44728 5.49996 6.97544 5.69485 6.58533 6.08463C6.19511 6.47429 6 6.94607 6 7.49996ZM7.525 7.80829C7.39722 7.68052 7.33333 7.52218 7.33333 7.33329C7.33333 7.1444 7.39722 6.98607 7.525 6.85829C7.65278 6.73051 7.81111 6.66663 8 6.66663C8.18889 6.66663 8.34722 6.73051 8.475 6.85829C8.60278 6.98607 8.66667 7.1444 8.66667 7.33329C8.66667 7.52218 8.60278 7.68052 8.475 7.80829C8.34722 7.93607 8.18889 7.99996 8 7.99996C7.81111 7.99996 7.65278 7.93607 7.525 7.80829Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Secuencias para rutas</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M4.07702 11.2564H5.25635V10.077H4.07702V11.2564ZM4.16669 8.92321H5.16669V4.83337H4.16669V8.92321ZM7.50002 11.1667H11.8334V10.1667H7.50002V11.1667ZM7.50002 8.50004H11.8334V7.50004H7.50002V8.50004ZM7.50002 5.83337H11.8334V4.83337H7.50002V5.83337ZM1.66669 13.6667V2.33337H14.3334V13.6667H1.66669Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Bitácora de Incidentes</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M9.92636 9.67487C10.4541 9.1461 10.718 8.50399 10.718 7.74854C10.718 6.9931 10.4536 6.35149 9.92486 5.82371C9.39609 5.29593 8.75397 5.03204 7.99853 5.03204C7.24309 5.03204 6.60147 5.29643 6.0737 5.82521C5.54592 6.35399 5.28203 6.9961 5.28203 7.75154C5.28203 8.50699 5.54642 9.1486 6.0752 9.67637C6.60397 10.2042 7.24609 10.468 8.00153 10.468C8.75697 10.468 9.39859 10.2037 9.92636 9.67487ZM6.72503 9.02504C6.37503 8.67504 6.20003 8.25004 6.20003 7.75004C6.20003 7.25004 6.37503 6.82504 6.72503 6.47504C7.07503 6.12504 7.50003 5.95004 8.00003 5.95004C8.50003 5.95004 8.92503 6.12504 9.27503 6.47504C9.62503 6.82504 9.80003 7.25004 9.80003 7.75004C9.80003 8.25004 9.62503 8.67504 9.27503 9.02504C8.92503 9.37504 8.50003 9.55004 8.00003 9.55004C7.50003 9.55004 7.07503 9.37504 6.72503 9.02504ZM3.81036 11.148C2.5497 10.3024 1.62147 9.16971 1.0257 7.75004C1.62147 6.33037 2.54936 5.19771 3.80936 4.35204C5.06947 3.50626 6.46609 3.08337 7.9992 3.08337C9.5322 3.08337 10.929 3.50626 12.1897 4.35204C13.4504 5.19771 14.3786 6.33037 14.9744 7.75004C14.3786 9.16971 13.4507 10.3024 12.1907 11.148C10.9306 11.9938 9.53397 12.4167 8.00086 12.4167C6.46786 12.4167 5.07103 11.9938 3.81036 11.148Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Evidencias Servicios</span>
+                </a>
+
+                <!-- SFD — grupo colapsado -->
+                <div class="sq-sidebar-group">
+                  <div class="sq-sidebar-group-trigger">
+                    <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M2.57052 12.4887C2.2073 12.1255 2.02569 11.6832 2.02569 11.1619H0.897522V2.99524H11.1795V5.53374H12.9487L15.1025 8.41841V11.1619H13.8975C13.8975 11.6832 13.7159 12.1255 13.3525 12.4887C12.9893 12.8521 12.547 13.0337 12.0257 13.0337C11.5044 13.0337 11.062 12.8521 10.6987 12.4887C10.3355 12.1255 10.1539 11.6832 10.1539 11.1619H5.76919C5.76919 11.6832 5.58758 12.1255 5.22436 12.4887C4.86113 12.8521 4.41886 13.0337 3.89752 13.0337C3.37608 13.0337 2.93374 12.8521 2.57052 12.4887ZM4.51669 11.7811C4.68502 11.6127 4.76919 11.4064 4.76919 11.1619C4.76919 10.9175 4.68502 10.711 4.51669 10.5426C4.34836 10.3742 4.14197 10.2901 3.89752 10.2901C3.65308 10.2901 3.44663 10.3742 3.27819 10.5426C3.10986 10.711 3.02569 10.9175 3.02569 11.1619C3.02569 11.4064 3.10986 11.6127 3.27819 11.7811C3.44663 11.9495 3.65308 12.0337 3.89752 12.0337C4.14197 12.0337 4.34836 11.9495 4.51669 11.7811ZM12.6449 11.7811C12.8133 11.6127 12.8975 11.4064 12.8975 11.1619C12.8975 10.9175 12.8133 10.711 12.6449 10.5426C12.4765 10.3742 12.2701 10.2901 12.0257 10.2901C11.7812 10.2901 11.5748 10.3742 11.4064 10.5426C11.238 10.711 11.1539 10.9175 11.1539 11.1619C11.1539 11.4064 11.238 11.6127 11.4064 11.7811C11.5748 11.9495 11.7812 12.0337 12.0257 12.0337C12.2701 12.0337 12.4765 11.9495 12.6449 11.7811ZM11.1795 8.82857H14.1667L12.4359 6.53374H11.1795V8.82857Z" fill="currentColor"/>
+                    </svg>
+                    <span class="sq-sidebar-group-label">SFD</span>
+                    <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                  </div>
+                  <div class="sq-sidebar-group-sub">
+                    <div class="sq-sidebar-sub-divider"></div>
+                    <div class="sq-sidebar-sub-list">
+                      <a class="sq-sidebar-sub-item" href="#">Gestión</a>
+                      <a class="sq-sidebar-sub-item" href="#">Reportes</a>
+                    </div>
+                  </div>
+                </div>
+
+              </nav>
+            </div><!-- /sq-sidebar -->
+
+            <!-- Fake content area -->
+            <div style="flex:1; background:var(--sq-surface-subtle); display:flex; align-items:center; justify-content:center; color:var(--sq-text-subtlest); font-size:13px;">
+              Área de contenido
+            </div>
+          </div>
+        </div>
+
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar"</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- Cabecera --&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-header"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="at">class</span>=<span class="str">"sq-sidebar-logo-expanded"</span> <span class="at">src</span>=<span class="str">"assets/logo/Logo Sideber.png"</span> <span class="at">alt</span>=<span class="str">"Squadness"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="at">class</span>=<span class="str">"sq-sidebar-logo-collapsed"</span> <span class="at">src</span>=<span class="str">"assets/logo/Logo Sideber Collapsed.png"</span> <span class="at">alt</span>=<span class="str">"Squadness"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-sidebar-toggle ms-auto"</span><span class="tag">&gt;</span>...svg...<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+  <span class="cm">&lt;!-- Menú --&gt;</span>
+  <span class="tag">&lt;nav</span> <span class="at">class</span>=<span class="str">"sq-sidebar-menu"</span><span class="tag">&gt;</span>
+
+    <span class="cm">&lt;!-- Ítem simple --&gt;</span>
+    <span class="tag">&lt;a</span> <span class="at">class</span>=<span class="str">"sq-sidebar-item"</span> <span class="at">href</span>=<span class="str">"#"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-sidebar-icon"</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M3 13.6579V6.15785L8 2.39502..."</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/svg&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-sidebar-item-label"</span><span class="tag">&gt;</span>Inicio<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/a&gt;</span>
+
+    <span class="cm">&lt;!-- Grupo con submenú (.is-open para expandir) --&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group is-open"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-trigger"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-sidebar-icon"</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M1.66669 13.6666V12.6666H3..."</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/svg&gt;</span>
+        <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-label"</span><span class="tag">&gt;</span>Baños Portátiles<span class="tag">&lt;/span&gt;</span>
+        <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-chevron"</span> <span class="at">viewBox</span>=<span class="str">"0 0 24 24"</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"</span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/svg&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-sub"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-sub-divider"</span><span class="tag">&gt;&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-sub-list"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;a</span> <span class="at">class</span>=<span class="str">"sq-sidebar-sub-item active"</span> <span class="at">href</span>=<span class="str">"#"</span><span class="tag">&gt;</span>Estado de inventario<span class="tag">&lt;/a&gt;</span>
+          <span class="tag">&lt;a</span> <span class="at">class</span>=<span class="str">"sq-sidebar-sub-item"</span> <span class="at">href</span>=<span class="str">"#"</span><span class="tag">&gt;</span>Servicios en almacén<span class="tag">&lt;/a&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+
+  <span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div><!-- /docs-example-wrap -->
+
+
+      <!-- ══ MENU SIDE BAR ══════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="menu-side-bar">Menu Side Bar</h2>
+      <p class="docs-section-desc">
+        Subcomponente de ítem con submenú. <code>.sq-sidebar-group</code> sin modificador = colapsado. Agrega <code>.is-open</code> para expandirlo. El chevron rota 180° y el submenú aparece con una línea vertical de acento.
+      </p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap;">
+
+          <!-- Colapsado -->
+          <div>
+            <p style="font-size:11px; color:var(--sq-text-subtlest); margin-bottom:8px; font-weight:500; letter-spacing:.04em; text-transform:uppercase;">Colapsado</p>
+            <div style="width:216px; background:var(--sq-surface-default); border:1px solid var(--sq-border-default); border-radius:8px; padding:8px;">
+              <div class="sq-sidebar-group">
+                <div class="sq-sidebar-group-trigger">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M1.66669 13.6666V12.6666H3.00002V2.33325H13V12.6666H14.3334V13.6666H1.66669ZM7.25002 12.6666H8.75002V3.33325H7.25002V12.6666Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-group-label">Baños Portátiles</span>
+                  <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expandido -->
+          <div>
+            <p style="font-size:11px; color:var(--sq-text-subtlest); margin-bottom:8px; font-weight:500; letter-spacing:.04em; text-transform:uppercase;">Expandido</p>
+            <div style="width:216px; background:var(--sq-surface-default); border:1px solid var(--sq-border-default); border-radius:8px; padding:8px;">
+              <div class="sq-sidebar-group is-open">
+                <div class="sq-sidebar-group-trigger">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M1.66669 13.6666V12.6666H3.00002V2.33325H13V12.6666H14.3334V13.6666H1.66669ZM7.25002 12.6666H8.75002V3.33325H7.25002V12.6666Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-group-label">Baños Portátiles</span>
+                  <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                  </svg>
+                </div>
+                <div class="sq-sidebar-group-sub">
+                  <div class="sq-sidebar-sub-divider"></div>
+                  <div class="sq-sidebar-sub-list">
+                    <a class="sq-sidebar-sub-item active" href="#">Estado de inventario</a>
+                    <a class="sq-sidebar-sub-item" href="#">Servicios en almacén</a>
+                    <a class="sq-sidebar-sub-item" href="#">Servicios de entrega</a>
+                    <a class="sq-sidebar-sub-item" href="#">Servicios de recolección</a>
+                    <a class="sq-sidebar-sub-item" href="#">Servicios realizados en campo</a>
+                    <a class="sq-sidebar-sub-item" href="#">Servicios no realizados en campo</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cm">&lt;!-- Cerrado --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-trigger"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-sidebar-icon"</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M1.66669 13.6666V12.6666H3..."</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/svg&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-label"</span><span class="tag">&gt;</span>Baños Portátiles<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-chevron"</span> <span class="at">viewBox</span>=<span class="str">"0 0 24 24"</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/svg&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cm">&lt;!-- Expandido — agregar .is-open --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group is-open"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-trigger"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-sidebar-icon"</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M1.66669 13.6666V12.6666H3..."</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/svg&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-label"</span><span class="tag">&gt;</span>Baños Portátiles<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-chevron"</span> <span class="at">viewBox</span>=<span class="str">"0 0 24 24"</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/svg&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-group-sub"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-sub-divider"</span><span class="tag">&gt;&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-sub-list"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;a</span> <span class="at">class</span>=<span class="str">"sq-sidebar-sub-item active"</span> <span class="at">href</span>=<span class="str">"#"</span><span class="tag">&gt;</span>Estado de inventario<span class="tag">&lt;/a&gt;</span>
+      <span class="tag">&lt;a</span> <span class="at">class</span>=<span class="str">"sq-sidebar-sub-item"</span> <span class="at">href</span>=<span class="str">"#"</span><span class="tag">&gt;</span>Servicios en almacén<span class="tag">&lt;/a&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div><!-- /docs-example-wrap -->
+
+
+      <!-- ══ COLAPSADO ══════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="collapsed">Colapsado</h2>
+      <p class="docs-section-desc">
+        La clase modificadora <code>.sq-sidebar--collapsed</code> estrecha el sidebar a 56 px y oculta las etiquetas de texto. Los íconos se mantienen visibles y centrados. Usa <code>title</code> en los ítems para tooltips nativos al hacer hover.
+      </p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example" style="padding:0; display:block;">
+          <div style="display:flex; border-radius:8px; overflow:hidden;">
+
+            <div class="sq-sidebar sq-sidebar--collapsed">
+              <div class="sq-sidebar-header">
+                <img class="sq-sidebar-logo-expanded" src="../assets/logo/Logo Sideber.png" alt="Squadness">
+                <img class="sq-sidebar-logo-collapsed" src="../assets/logo/Logo Sideber Collapsed.png" alt="Squadness">
+              </div>
+              <nav class="sq-sidebar-menu">
+
+                <a class="sq-sidebar-item active" href="#" title="Inicio">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 13.6579V6.15785L8 2.39502L13 6.15785V13.6579H9.26917V9.19635H6.73083V13.6579H3Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Inicio</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#" title="Administración">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M7.39752 7.11048V2.84131H14.3334V7.11048H7.39752ZM1.66669 12.8413V8.57214H7.93585V12.8413H1.66669ZM1.66669 7.11048V2.84131H5.93585V7.11048H1.66669ZM11.2435 14.1105L11.1077 13.3156C10.9359 13.2644 10.7746 13.1997 10.6237 13.1215C10.4729 13.0433 10.33 12.9405 10.1949 12.8131L9.43335 13.0746L8.92052 12.2361L9.53335 11.7105C9.48547 11.5234 9.46152 11.3362 9.46152 11.149C9.46152 10.9618 9.48547 10.7746 9.53335 10.5875L8.92052 10.0618L9.43335 9.22331L10.1949 9.48498C10.3256 9.35753 10.4675 9.25475 10.6205 9.17664C10.7735 9.09842 10.9359 9.03364 11.1077 8.98231L11.2435 8.18748H12.2435L12.3795 8.98231C12.5513 9.03364 12.7137 9.09842 12.8667 9.17664C13.0197 9.25475 13.1616 9.35753 13.2924 9.48498L14.0539 9.22331L14.5667 10.0618L13.9539 10.5875C14.0017 10.7746 14.0257 10.9618 14.0257 11.149C14.0257 11.3362 14.0017 11.5234 13.9539 11.7105L14.5667 12.2361L14.0539 13.0746L13.2924 12.8131C13.1572 12.9405 13.0143 13.0433 12.8635 13.1215C12.7126 13.1997 12.5513 13.2644 12.3795 13.3156L12.2435 14.1105H11.2435ZM12.7237 12.1291C12.9934 11.8595 13.1282 11.5328 13.1282 11.149C13.1282 10.7652 12.9934 10.4385 12.7237 10.1688C12.454 9.89914 12.1273 9.76431 11.7435 9.76431C11.3599 9.76431 11.0332 9.89914 10.7635 10.1688C10.4939 10.4385 10.359 10.7652 10.359 11.149C10.359 11.5328 10.4939 11.8595 10.7635 12.1291C11.0332 12.3988 11.3599 12.5336 11.7435 12.5336C12.1273 12.5336 12.454 12.3988 12.7237 12.1291Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Administración</span>
+                </a>
+
+                <div class="sq-sidebar-group">
+                  <div class="sq-sidebar-group-trigger" title="Baños Portátiles">
+                    <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1.66669 13.6666V12.6666H3.00002V2.33325H13V12.6666H14.3334V13.6666H1.66669ZM7.25002 12.6666H8.75002V3.33325H7.25002V12.6666Z" fill="currentColor"/>
+                    </svg>
+                    <span class="sq-sidebar-group-label">Baños Portátiles</span>
+                    <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <a class="sq-sidebar-item" href="#" title="Rutas de Trabajo">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8.85185 7.55623C9.08741 7.32078 9.20518 7.03684 9.20518 6.70439C9.20518 6.37195 9.08741 6.08795 8.85185 5.85239C8.61641 5.61695 8.33246 5.49923 8.00002 5.49923C7.66757 5.49923 7.38363 5.61695 7.14818 5.85239C6.91263 6.08795 6.79485 6.37195 6.79485 6.70439C6.79485 7.03684 6.91263 7.32078 7.14818 7.55623C7.38363 7.79167 7.66757 7.90939 8.00002 7.90939C8.33246 7.90939 8.61641 7.79167 8.85185 7.55623ZM8.00002 14.3389C6.32224 12.8851 5.06413 11.5322 4.22568 10.2801C3.38724 9.02784 2.96802 7.87823 2.96802 6.83123C2.96802 5.29278 3.46563 4.04728 4.46085 3.09473C5.45618 2.14217 6.63591 1.66589 8.00002 1.66589C9.36413 1.66589 10.5439 2.14217 11.5392 3.09473C12.5344 4.04728 13.032 5.29278 13.032 6.83123C13.032 7.87823 12.6128 9.02784 11.7744 10.2801C10.9359 11.5322 9.6778 12.8851 8.00002 14.3389Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Rutas de Trabajo</span>
+                </a>
+
+                <div class="sq-sidebar-group">
+                  <div class="sq-sidebar-group-trigger" title="Mapa Rutas">
+                    <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M9.99998 13.641L5.99998 12.241L2.33331 13.6628V3.61033L5.99998 2.35899L9.99998 3.75899L13.6666 2.33716V12.409L9.99998 13.641ZM9.49998 12.418V4.61799L6.49998 3.56916V11.3692L9.49998 12.418Z" fill="currentColor"/>
+                    </svg>
+                    <span class="sq-sidebar-group-label">Mapa Rutas</span>
+                    <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <a class="sq-sidebar-item" href="#" title="Clientes">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3.4615 14.1539C3.29506 14.1539 3.14639 14.087 3.0155 13.9532C2.88472 13.8194 2.81934 13.6701 2.81934 13.5052V11.889C2.81934 10.9655 3.1065 10.1497 3.68084 9.44169C4.25517 8.73369 4.99361 8.28219 5.89617 8.08719C5.48428 8.37608 5.16506 8.73975 4.9385 9.17819C4.71195 9.61664 4.59867 10.0865 4.59867 10.5879V13.5039C4.59867 13.6164 4.61534 13.7289 4.64867 13.8414C4.682 13.9539 4.73334 14.0581 4.80267 14.1539H3.4615ZM5.72284 14.1539C5.5485 14.1539 5.39728 14.0895 5.26917 13.9607C5.14106 13.832 5.077 13.6802 5.077 13.5052V10.5885C5.077 9.8663 5.32956 9.2543 5.83467 8.75252C6.33978 8.25086 6.95345 8.00002 7.67567 8.00002H10.587C11.3059 8.00002 11.9162 8.25086 12.418 8.75252C12.9197 9.2543 13.1705 9.8663 13.1705 10.5885V11.5654C13.1705 12.2876 12.9197 12.8995 12.418 13.4012C11.9162 13.903 11.3042 14.1539 10.582 14.1539H5.72284ZM8 6.70253C7.32378 6.70253 6.75006 6.4673 6.27884 5.99686C5.8075 5.5263 5.57184 4.95214 5.57184 4.27436C5.57184 3.59658 5.8075 3.02247 6.27884 2.55202C6.75006 2.08147 7.32378 1.84619 8 1.84619C8.67622 1.84619 9.24995 2.08147 9.72117 2.55202C10.1925 3.02247 10.4282 3.59658 10.4282 4.27436C10.4282 4.95214 10.1925 5.5263 9.72117 5.99686C9.24995 6.4673 8.67622 6.70253 8 6.70253Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Clientes</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#" title="Contratos">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M5.4615 8.43579H10.5385V7.43579H5.4615V8.43579ZM5.4615 10.359H10.5385V9.35896H5.4615V10.359ZM5.4615 12.282H8.5385V11.282H5.4615V12.282ZM3 14.3333V1.66663H9.5L13 5.16663V14.3333H3ZM9 5.66663H12L9 2.66663V5.66663Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Contratos</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#" title="Localización Inventario">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M1.66669 13V3H14.3334V13H1.66669ZM7.56985 7.8275C7.45497 7.71261 7.39752 7.56928 7.39752 7.3975C7.39752 7.22572 7.45497 7.08233 7.56985 6.96733C7.68485 6.85233 7.82824 6.79483 8.00002 6.79483C8.1718 6.79483 8.31519 6.85233 8.43019 6.96733C8.54508 7.08233 8.60252 7.22572 8.60252 7.3975C8.60252 7.56928 8.54508 7.71261 8.43019 7.8275C8.31519 7.9425 8.1718 8 8.00002 8C7.82824 8 7.68485 7.9425 7.56985 7.8275ZM8.00002 11.0128C8.81024 10.3231 9.41452 9.68311 9.81285 9.093C10.2111 8.50278 10.4102 7.95767 10.4102 7.45767C10.4102 6.70133 10.1675 6.1005 9.68202 5.65517C9.19658 5.20983 8.63591 4.98717 8.00002 4.98717C7.36413 4.98717 6.80346 5.20983 6.31802 5.65517C5.83258 6.1005 5.58985 6.70133 5.58985 7.45767C5.58985 7.95767 5.78897 8.50278 6.18719 9.093C6.58552 9.68311 7.1898 10.3231 8.00002 11.0128Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Localización Inventario</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#" title="Secuencias para rutas">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M5.33333 12.3333C4.12622 12.3333 3.10222 11.913 2.26133 11.0723C1.42044 10.2317 1 9.20802 1 8.00113C1 6.79435 1.42044 5.77024 2.26133 4.92879C3.10222 4.08735 4.12622 3.66663 5.33333 3.66663H10.6667C11.8738 3.66663 12.8978 4.08696 13.7387 4.92763C14.5796 5.76818 15 6.7919 15 7.99879C15 9.20557 14.5796 10.2297 13.7387 11.0711C12.8978 11.9126 11.8738 12.3333 10.6667 12.3333H5.33333ZM6 7.49996C6 8.13496 6.21067 8.69352 6.632 9.17563C7.05345 9.65763 7.50944 10.1033 8 10.5128C8.49056 10.1033 8.94656 9.65763 9.368 9.17563C9.78933 8.69352 10 8.13496 10 7.49996C10 6.94607 9.80522 6.47429 9.41567 6.08463C9.02611 5.69485 8.5545 5.49996 8.00083 5.49996C7.44728 5.49996 6.97544 5.69485 6.58533 6.08463C6.19511 6.47429 6 6.94607 6 7.49996ZM7.525 7.80829C7.39722 7.68052 7.33333 7.52218 7.33333 7.33329C7.33333 7.1444 7.39722 6.98607 7.525 6.85829C7.65278 6.73051 7.81111 6.66663 8 6.66663C8.18889 6.66663 8.34722 6.73051 8.475 6.85829C8.60278 6.98607 8.66667 7.1444 8.66667 7.33329C8.66667 7.52218 8.60278 7.68052 8.475 7.80829C8.34722 7.93607 8.18889 7.99996 8 7.99996C7.81111 7.99996 7.65278 7.93607 7.525 7.80829Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Secuencias para rutas</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#" title="Bitácora de Incidentes">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M4.07702 11.2564H5.25635V10.077H4.07702V11.2564ZM4.16669 8.92321H5.16669V4.83337H4.16669V8.92321ZM7.50002 11.1667H11.8334V10.1667H7.50002V11.1667ZM7.50002 8.50004H11.8334V7.50004H7.50002V8.50004ZM7.50002 5.83337H11.8334V4.83337H7.50002V5.83337ZM1.66669 13.6667V2.33337H14.3334V13.6667H1.66669Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Bitácora de Incidentes</span>
+                </a>
+
+                <a class="sq-sidebar-item" href="#" title="Evidencias Servicios">
+                  <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M9.92636 9.67487C10.4541 9.1461 10.718 8.50399 10.718 7.74854C10.718 6.9931 10.4536 6.35149 9.92486 5.82371C9.39609 5.29593 8.75397 5.03204 7.99853 5.03204C7.24309 5.03204 6.60147 5.29643 6.0737 5.82521C5.54592 6.35399 5.28203 6.9961 5.28203 7.75154C5.28203 8.50699 5.54642 9.1486 6.0752 9.67637C6.60397 10.2042 7.24609 10.468 8.00153 10.468C8.75697 10.468 9.39859 10.2037 9.92636 9.67487ZM6.72503 9.02504C6.37503 8.67504 6.20003 8.25004 6.20003 7.75004C6.20003 7.25004 6.37503 6.82504 6.72503 6.47504C7.07503 6.12504 7.50003 5.95004 8.00003 5.95004C8.50003 5.95004 8.92503 6.12504 9.27503 6.47504C9.62503 6.82504 9.80003 7.25004 9.80003 7.75004C9.80003 8.25004 9.62503 8.67504 9.27503 9.02504C8.92503 9.37504 8.50003 9.55004 8.00003 9.55004C7.50003 9.55004 7.07503 9.37504 6.72503 9.02504ZM3.81036 11.148C2.5497 10.3024 1.62147 9.16971 1.0257 7.75004C1.62147 6.33037 2.54936 5.19771 3.80936 4.35204C5.06947 3.50626 6.46609 3.08337 7.9992 3.08337C9.5322 3.08337 10.929 3.50626 12.1897 4.35204C13.4504 5.19771 14.3786 6.33037 14.9744 7.75004C14.3786 9.16971 13.4507 10.3024 12.1907 11.148C10.9306 11.9938 9.53397 12.4167 8.00086 12.4167C6.46786 12.4167 5.07103 11.9938 3.81036 11.148Z" fill="currentColor"/>
+                  </svg>
+                  <span class="sq-sidebar-item-label">Evidencias Servicios</span>
+                </a>
+
+                <div class="sq-sidebar-group">
+                  <div class="sq-sidebar-group-trigger" title="SFD">
+                    <svg class="sq-sidebar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M2.57052 12.4887C2.2073 12.1255 2.02569 11.6832 2.02569 11.1619H0.897522V2.99524H11.1795V5.53374H12.9487L15.1025 8.41841V11.1619H13.8975C13.8975 11.6832 13.7159 12.1255 13.3525 12.4887C12.9893 12.8521 12.547 13.0337 12.0257 13.0337C11.5044 13.0337 11.062 12.8521 10.6987 12.4887C10.3355 12.1255 10.1539 11.6832 10.1539 11.1619H5.76919C5.76919 11.6832 5.58758 12.1255 5.22436 12.4887C4.86113 12.8521 4.41886 13.0337 3.89752 13.0337C3.37608 13.0337 2.93374 12.8521 2.57052 12.4887ZM4.51669 11.7811C4.68502 11.6127 4.76919 11.4064 4.76919 11.1619C4.76919 10.9175 4.68502 10.711 4.51669 10.5426C4.34836 10.3742 4.14197 10.2901 3.89752 10.2901C3.65308 10.2901 3.44663 10.3742 3.27819 10.5426C3.10986 10.711 3.02569 10.9175 3.02569 11.1619C3.02569 11.4064 3.10986 11.6127 3.27819 11.7811C3.44663 11.9495 3.65308 12.0337 3.89752 12.0337C4.14197 12.0337 4.34836 11.9495 4.51669 11.7811ZM12.6449 11.7811C12.8133 11.6127 12.8975 11.4064 12.8975 11.1619C12.8975 10.9175 12.8133 10.711 12.6449 10.5426C12.4765 10.3742 12.2701 10.2901 12.0257 10.2901C11.7812 10.2901 11.5748 10.3742 11.4064 10.5426C11.238 10.711 11.1539 10.9175 11.1539 11.1619C11.1539 11.4064 11.238 11.6127 11.4064 11.7811C11.5748 11.9495 11.7812 12.0337 12.0257 12.0337C12.2701 12.0337 12.4765 11.9495 12.6449 11.7811ZM11.1795 8.82857H14.1667L12.4359 6.53374H11.1795V8.82857Z" fill="currentColor"/>
+                    </svg>
+                    <span class="sq-sidebar-group-label">SFD</span>
+                    <svg class="sq-sidebar-group-chevron" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                  </div>
+                </div>
+
+              </nav>
+            </div>
+
+            <div style="flex:1; background:var(--sq-surface-subtle); display:flex; align-items:center; justify-content:center; color:var(--sq-text-subtlest); font-size:13px;">
+              Área de contenido
+            </div>
+          </div>
+        </div>
+
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cm">&lt;!-- Agregar .sq-sidebar--collapsed para variante de 56px --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar sq-sidebar--collapsed"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-sidebar-header"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="at">class</span>=<span class="str">"sq-sidebar-logo-expanded"</span> <span class="at">src</span>=<span class="str">"assets/logo/Logo Sideber.png"</span> <span class="at">alt</span>=<span class="str">"Squadness"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="at">class</span>=<span class="str">"sq-sidebar-logo-collapsed"</span> <span class="at">src</span>=<span class="str">"assets/logo/Logo Sideber Collapsed.png"</span> <span class="at">alt</span>=<span class="str">"Squadness"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;nav</span> <span class="at">class</span>=<span class="str">"sq-sidebar-menu"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;a</span> <span class="at">class</span>=<span class="str">"sq-sidebar-item active"</span> <span class="at">href</span>=<span class="str">"#"</span> <span class="at">title</span>=<span class="str">"Inicio"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;svg</span> <span class="at">class</span>=<span class="str">"sq-sidebar-icon"</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 16 16"</span> <span class="at">fill</span>=<span class="str">"none"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M3 13.6579V6.15785L8 2.39502..."</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/svg&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-sidebar-item-label"</span><span class="tag">&gt;</span>Inicio<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/a&gt;</span>
+    ...
+  <span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div><!-- /docs-example-wrap -->
+
+
+      <!-- ══ API ════════════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="api">API de clases</h2>
+
+      <table class="docs-table">
+        <thead>
+          <tr><th>Clase</th><th>Descripción</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>.sq-sidebar</code></td><td>Contenedor principal — 240 px, borde derecho, fondo surface-default</td></tr>
+          <tr><td><code>.sq-sidebar--collapsed</code></td><td>Variante colapsada — 56 px, etiquetas ocultas, íconos centrados visibles</td></tr>
+          <tr><td><code>.sq-sidebar-header</code></td><td>Cabecera 56 px con borde inferior; contiene logo y wordmark</td></tr>
+          <tr><td><code>.sq-sidebar-logo</code></td><td>Ícono del logo (32 px); siempre visible</td></tr>
+          <tr><td><code>.sq-sidebar-wordmark</code></td><td>Nombre de la marca; se oculta con <code>--collapsed</code></td></tr>
+          <tr><td><code>.sq-sidebar-toggle</code></td><td>Botón de colapso/expansión (24 px, borde, ghost)</td></tr>
+          <tr><td><code>.sq-sidebar-menu</code></td><td>Lista de ítems — flex-col, gap 4 px, padding 24 px 12 px</td></tr>
+          <tr><td><code>.sq-sidebar-item</code></td><td>Ítem simple (ícono + etiqueta); modificador <code>.active</code></td></tr>
+          <tr><td><code>.sq-sidebar-icon</code></td><td>SVG inline del ícono (16×16 px); hereda el color del padre con <code>fill="currentColor"</code></td></tr>
+          <tr><td><code>.sq-sidebar-item-label</code></td><td>Texto del ítem; se oculta con <code>--collapsed</code></td></tr>
+          <tr><td><code>.sq-sidebar-group</code></td><td>Grupo acordeón; <code>.is-open</code> para expandir</td></tr>
+          <tr><td><code>.sq-sidebar-group-trigger</code></td><td>Cabecera clickeable del grupo (ícono + label + chevron)</td></tr>
+          <tr><td><code>.sq-sidebar-group-label</code></td><td>Texto del grupo; se oculta con <code>--collapsed</code></td></tr>
+          <tr><td><code>.sq-sidebar-group-chevron</code></td><td>SVG chevron — rota 180° cuando el grupo tiene <code>.is-open</code></td></tr>
+          <tr><td><code>.sq-sidebar-group-sub</code></td><td>Submenú oculto; se muestra con <code>.is-open</code> en el grupo</td></tr>
+          <tr><td><code>.sq-sidebar-sub-divider</code></td><td>Línea vertical (1 px) como acento visual del submenú</td></tr>
+          <tr><td><code>.sq-sidebar-sub-list</code></td><td>Lista de subítems</td></tr>
+          <tr><td><code>.sq-sidebar-sub-item</code></td><td>Subítem; modificador <code>.active</code> (fondo brand azul, texto blanco)</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="navbar.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Navbar
+          </a>
+          <a href="spinner.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Spinner
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- TOC — debe ser hermano de docs-article, no hijo -->
+    <nav class="docs-toc">
+      <span class="docs-toc-title">En esta página</span>
+      <a class="docs-toc-link" href="#sidebar">Sidebar</a>
+      <a class="docs-toc-link" href="#menu-side-bar">Menu Side Bar</a>
+      <a class="docs-toc-link" href="#collapsed">Colapsado</a>
+      <a class="docs-toc-link" href="#api">API de clases</a>
+    </nav>
+
+  </main>
+</div><!-- /docs-shell -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Sidebar c

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modal — Squadness Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/tokens/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../src/squadness.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+
+  <style>
+    /* Neutralizar los estilos visuales de Bootstrap en el wrapper del modal */
+    .sq-modal-dialog .modal-content {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+  <main class="docs-main">
+    <article class="docs-article">
+
+      <p class="docs-breadcrumb">Componentes</p>
+      <h1 class="docs-title">Modal</h1>
+      <p class="docs-desc">Diálogos de confirmación, formulario y visualización de imágenes. Usa <code>.sq-modal</code> como contenedor visual y Bootstrap <code>.modal</code> para la capa de overlay y accesibilidad.</p>
+      <hr class="docs-divider" />
+
+      <!-- ══ ELIMINAR FILAS ════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="eliminar">Eliminar filas</h2>
+      <p class="docs-section-desc">Modal de confirmación destructiva. Muestra título, descripción y dos acciones: <em>Cancelar</em> con <code>.sq-btn-cancel</code> y <em>Eliminar filas</em> con <code>.sq-btn-danger</code> (fondo <code>#9e0b15</code>, texto <code>#feeded</code>).</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <button class="btn btn-danger"
+                  data-bs-toggle="modal" data-bs-target="#modalEliminar">
+            Eliminar filas
+          </button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cmt">&lt;!-- Trigger --&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">data-bs-toggle</span>=<span class="str">"modal"</span> <span class="at">data-bs-target</span>=<span class="str">"#modalEliminar"</span><span class="tag">&gt;</span>
+  Eliminar filas
+<span class="tag">&lt;/button&gt;</span>
+
+<span class="cmt">&lt;!-- Modal --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"modal fade"</span> <span class="at">id</span>=<span class="str">"modalEliminar"</span> <span class="at">tabindex</span>=<span class="str">"-1"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"modal-dialog modal-dialog-centered sq-modal-dialog"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"modal-content"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal"</span><span class="tag">&gt;</span>
+
+        <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-header"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;h2</span> <span class="at">class</span>=<span class="str">"sq-modal-title"</span><span class="tag">&gt;</span>Eliminar filas<span class="tag">&lt;/h2&gt;</span>
+          <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-icon-btn sq-icon-btn-outline"</span>
+                  <span class="at">data-bs-dismiss</span>=<span class="str">"modal"</span> <span class="at">aria-label</span>=<span class="str">"Cerrar"</span><span class="tag">&gt;</span>
+            <span class="cmt">&lt;!-- close SVG 16px --&gt;</span>
+          <span class="tag">&lt;/button&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+
+        <span class="tag">&lt;p</span> <span class="at">class</span>=<span class="str">"sq-modal-body"</span><span class="tag">&gt;</span>
+          ¿Estás seguro que deseas eliminar las filas seleccionadas?
+          Esta acción no se puede deshacer.
+        <span class="tag">&lt;/p&gt;</span>
+
+        <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-footer"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-btn-cancel"</span> <span class="at">data-bs-dismiss</span>=<span class="str">"modal"</span><span class="tag">&gt;</span>Cancelar<span class="tag">&lt;/button&gt;</span>
+          <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-btn-danger"</span><span class="tag">&gt;</span>Eliminar filas<span class="tag">&lt;/button&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ADICIONAR A LOS BAÑOS ═════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="adicionar">Adicionar a los baños</h2>
+      <p class="docs-section-desc">Modal con formulario. Agrega <code>.sq-modal--form</code> para aumentar el gap entre bloques a 32 px. Los campos usan <code>.sq-modal-input</code> (h 40 px, radius 6 px) y el selector usa <code>.sq-modal-dropdown</code> (h 36 px, radius 12 px). La acción principal usa <code>.sq-btn-primary-action</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <button class="btn btn-primary"
+                  data-bs-toggle="modal" data-bs-target="#modalAdicionar">
+            Adicionar a los baños
+          </button>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cmt">&lt;!-- Trigger --&gt;</span>
+<span class="tag">&lt;button</span> <span class="at">data-bs-toggle</span>=<span class="str">"modal"</span> <span class="at">data-bs-target</span>=<span class="str">"#modalAdicionar"</span><span class="tag">&gt;</span>
+  Adicionar a los baños
+<span class="tag">&lt;/button&gt;</span>
+
+<span class="cmt">&lt;!-- Modal --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"modal fade"</span> <span class="at">id</span>=<span class="str">"modalAdicionar"</span> <span class="at">tabindex</span>=<span class="str">"-1"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"modal-dialog modal-dialog-centered sq-modal-dialog"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"modal-content"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal sq-modal--form"</span><span class="tag">&gt;</span>
+
+        <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-header"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;h2</span> <span class="at">class</span>=<span class="str">"sq-modal-title"</span><span class="tag">&gt;</span>Adicionar a los baños<span class="tag">&lt;/h2&gt;</span>
+          <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-icon-btn sq-icon-btn-outline"</span>
+                  <span class="at">data-bs-dismiss</span>=<span class="str">"modal"</span> <span class="at">aria-label</span>=<span class="str">"Cerrar"</span><span class="tag">&gt;</span>
+            <span class="cmt">&lt;!-- close SVG 16px --&gt;</span>
+          <span class="tag">&lt;/button&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+
+        <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-form"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-field"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"sq-modal-label"</span><span class="tag">&gt;</span>Sanitario<span class="tag">&lt;/label&gt;</span>
+            <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"sq-modal-input"</span> <span class="at">type</span>=<span class="str">"text"</span> <span class="at">placeholder</span>=<span class="str">"Ej. Sanitario 1"</span> <span class="tag">/&gt;</span>
+          <span class="tag">&lt;/div&gt;</span>
+          <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-field"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"sq-modal-label"</span><span class="tag">&gt;</span>Sección<span class="tag">&lt;/label&gt;</span>
+            <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"sq-modal-input"</span> <span class="at">type</span>=<span class="str">"text"</span> <span class="at">placeholder</span>=<span class="str">"Ej. Sección A"</span> <span class="tag">/&gt;</span>
+          <span class="tag">&lt;/div&gt;</span>
+          <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-field"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"sq-modal-label"</span><span class="tag">&gt;</span>Cantidad de baños<span class="tag">&lt;/label&gt;</span>
+            <span class="tag">&lt;input</span> <span class="at">class</span>=<span class="str">"sq-modal-input"</span> <span class="at">type</span>=<span class="str">"number"</span> <span class="at">placeholder</span>=<span class="str">"0"</span> <span class="tag">/&gt;</span>
+          <span class="tag">&lt;/div&gt;</span>
+          <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-field"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;label</span> <span class="at">class</span>=<span class="str">"sq-modal-label"</span><span class="tag">&gt;</span>Zona<span class="tag">&lt;/label&gt;</span>
+            <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-dropdown"</span><span class="tag">&gt;</span>
+              <span class="tag">&lt;span&gt;</span>Seleccionar zona<span class="tag">&lt;/span&gt;</span>
+              <span class="cmt">&lt;!-- chevron-down SVG 16px --&gt;</span>
+              <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-dropdown-menu"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-dropdown-item"</span><span class="tag">&gt;</span>Zona Norte<span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-dropdown-item"</span><span class="tag">&gt;</span>Zona Sur<span class="tag">&lt;/div&gt;</span>
+              <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+          <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+
+        <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-modal-footer"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-btn-cancel"</span> <span class="at">data-bs-dismiss</span>=<span class="str">"modal"</span><span class="tag">&gt;</span>Cancelar<span class="tag">&lt;/button&gt;</span>
+          <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-btn-primary-action"</span><span class="tag">&gt;</span>Agregar<span class="tag">&lt;/button&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ LIGHTBOX ════════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="lightbox">Lightbox de imagen</h2>
+      <p class="docs-section-desc">Modal de visualización ampliada con carrusel. El trigger es un <code>.sq-images-container</code> con thumbnails <code>.sq-image-thumb</code> (124×167 px). Al hacer click en cualquier imagen se abre el lightbox posicionado en ese índice. Usa Bootstrap <code>.modal</code> con <code>data-bs-backdrop="false"</code> para que el propio <code>.modal-content</code> actúe como overlay oscuro.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <div class="sq-images-container" id="lbGallery">
+            <div class="sq-image-thumb">
+              <img src="../assets/Image Example 1.png" alt="Imagen 1" />
+            </div>
+            <div class="sq-image-thumb">
+              <img src="../assets/Image Example 2.png" alt="Imagen 2" />
+            </div>
+            <div class="sq-image-thumb">
+              <img src="../assets/Image Example 3.png" alt="Imagen 3" />
+            </div>
+            <div class="sq-image-thumb">
+              <img src="../assets/Image Example 4.png" alt="Imagen 4" />
+            </div>
+            <div class="sq-image-thumb">
+              <img src="../assets/Image Example 5.png" alt="Imagen 5" />
+            </div>
+            <div class="sq-image-thumb">
+              <img src="../assets/Image Example 1.png" alt="Imagen 6" />
+            </div>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="cmt">&lt;!-- Grid de thumbnails — cada uno abre el lightbox en su índice --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-images-container"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-image-thumb"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="at">src</span>=<span class="str">"thumb1.jpg"</span> <span class="at">data-full-src</span>=<span class="str">"full1.jpg"</span> <span class="at">alt</span>=<span class="str">"Foto 1"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-image-thumb"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="at">src</span>=<span class="str">"thumb2.jpg"</span> <span class="at">data-full-src</span>=<span class="str">"full2.jpg"</span> <span class="at">alt</span>=<span class="str">"Foto 2"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="cmt">&lt;!-- más thumbnails... --&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- Modal lightbox (una instancia global en el documento) --&gt;</span>
+<span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"modal fade sq-lightbox"</span> <span class="at">id</span>=<span class="str">"sqLightbox"</span>
+     <span class="at">tabindex</span>=<span class="str">"-1"</span> <span class="at">data-bs-backdrop</span>=<span class="str">"false"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"modal-dialog modal-fullscreen"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"modal-content"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-icon-btn sq-icon-btn-outline sq-lightbox-close"</span>
+              <span class="at">data-bs-dismiss</span>=<span class="str">"modal"</span> <span class="at">aria-label</span>=<span class="str">"Cerrar"</span><span class="tag">&gt;</span>
+        <span class="cmt">&lt;!-- close SVG 16px --&gt;</span>
+      <span class="tag">&lt;/button&gt;</span>
+      <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-lightbox-carousel"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-lightbox-nav"</span> <span class="at">id</span>=<span class="str">"sqLbPrev"</span><span class="tag">&gt;</span>
+          <span class="cmt">&lt;!-- chevron-left SVG 24px stroke white --&gt;</span>
+        <span class="tag">&lt;/button&gt;</span>
+        <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-lightbox-frame"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;img</span> <span class="at">id</span>=<span class="str">"sqLbImg"</span> <span class="at">class</span>=<span class="str">"sq-lightbox-img"</span> <span class="at">src</span>=<span class="str">""</span> <span class="at">alt</span>=<span class="str">""</span> <span class="tag">/&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-lightbox-nav"</span> <span class="at">id</span>=<span class="str">"sqLbNext"</span><span class="tag">&gt;</span>
+          <span class="cmt">&lt;!-- chevron-right SVG 24px stroke white --&gt;</span>
+        <span class="tag">&lt;/button&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-lightbox-counter"</span> <span class="at">id</span>=<span class="str">"sqLbCounter"</span><span class="tag">&gt;&lt;/span&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ DELETE DIALOG ════════════════════════════════════════════ -->
+      <h2 class="docs-section-title" id="delete-dialog">Delete Dialog</h2>
+      <p class="docs-section-desc">Barra de acción contextual que aparece al seleccionar filas en una tabla. Muestra el conteo de selección, una acción secundaria outline para seleccionar todo y un botón destructivo con icono de papelera. Clase principal: <code>.sq-delete-dialog</code>.</p>
+
+      <div class="docs-example-wrap">
+        <div class="docs-example">
+          <div class="sq-delete-dialog">
+            <div class="sq-delete-dialog-info">
+              <span class="sq-delete-dialog-count">Se seleccionaron 1 fila</span>
+              <button class="sq-delete-dialog-select-all">Seleccionar las 32 baños</button>
+            </div>
+            <button class="sq-delete-dialog-btn-danger">
+              Delete
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21H7Zm2-4h2V8H9v9Zm4 0h2V8h-2v9Z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="docs-code-content">
+          <div class="docs-code-wrapper">
+            <button class="docs-code-copy">Copiar</button>
+<pre><span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-delete-dialog"</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;div</span> <span class="at">class</span>=<span class="str">"sq-delete-dialog-info"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="at">class</span>=<span class="str">"sq-delete-dialog-count"</span><span class="tag">&gt;</span>Se seleccionaron 1 fila<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-delete-dialog-select-all"</span><span class="tag">&gt;</span>
+      Seleccionar las 32 baños
+    <span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+  <span class="tag">&lt;button</span> <span class="at">class</span>=<span class="str">"sq-delete-dialog-btn-danger"</span><span class="tag">&gt;</span>
+    Delete
+    <span class="tag">&lt;svg</span> <span class="at">width</span>=<span class="str">"16"</span> <span class="at">height</span>=<span class="str">"16"</span> <span class="at">viewBox</span>=<span class="str">"0 0 24 24"</span> <span class="at">fill</span>=<span class="str">"currentColor"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;path</span> <span class="at">d</span>=<span class="str">"M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21H7Zm2-4h2V8H9v9Zm4 0h2V8h-2v9Z"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/svg&gt;</span>
+  <span class="tag">&lt;/button&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- API -->
+      <table class="docs-table">
+        <thead><tr><th>Clase</th><th>Descripción</th></tr></thead>
+        <tbody>
+          <tr><td><code>.sq-delete-dialog</code></td><td>Contenedor principal — flex, fondo surface-default, sombra suave, radio 8 px</td></tr>
+          <tr><td><code>.sq-delete-dialog-info</code></td><td>Agrupa el conteo y el botón outline, con padding-left 8 px y gap 24 px</td></tr>
+          <tr><td><code>.sq-delete-dialog-count</code></td><td>Texto del conteo de filas seleccionadas — 12 px medium, color text-default</td></tr>
+          <tr><td><code>.sq-delete-dialog-select-all</code></td><td>Botón outline secundario — 32 px alto, radio 8 px, texto 12 px semibold</td></tr>
+          <tr><td><code>.sq-delete-dialog-btn-danger</code></td><td>Botón destructivo — fondo <code>#9e0b15</code>, texto <code>#feeded</code>, admite ícono inline</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ── Navegación entre páginas ── -->
+      <div class="docs-page-nav">
+        <hr class="docs-page-nav-divider" />
+        <div class="docs-page-nav-links">
+          <a href="pagination.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anterior: Pagination
+          </a>
+          <a href="toast.html" class="btn btn-secondary btn-sm d-flex align-items-center gap-2">
+            Siguiente: Toast
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <aside class="docs-toc">
+      <p class="docs-toc-title">En esta página</p>
+      <nav>
+        <a class="docs-toc-link active" href="#eliminar">Eliminar filas</a>
+        <a class="docs-toc-link" href="#adicionar">Adicionar a los baños</a>
+        <a class="docs-toc-link" href="#lightbox">Lightbox de imagen</a>
+        <a class="docs-toc-link" href="#delete-dialog">Delete Dialog</a>
+      </nav>
+    </aside>
+  </main>
+</div>
+
+<!-- ══ MODAL: Eliminar filas ════════════════════════════════════════ -->
+<div class="modal fade" id="modalEliminar" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered sq-modal-dialog">
+    <div class="modal-content">
+      <div class="sq-modal">
+        <div class="sq-modal-header">
+          <h2 class="sq-modal-title">Eliminar filas</h2>
+          <button class="sq-icon-btn sq-icon-btn-outline" data-bs-dismiss="modal" aria-label="Cerrar">
+            <img src="../assets/icons/close.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;" />
+          </button>
+        </div>
+        <p class="sq-modal-body">¿Estás seguro que deseas eliminar las filas seleccionadas? Esta acción no se puede deshacer.</p>
+        <div class="sq-modal-footer">
+          <button class="sq-btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+          <button class="sq-btn-danger">Eliminar filas</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL: Adicionar a los baños ═════════════════════════════════ -->
+<div class="modal fade" id="modalAdicionar" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered sq-modal-dialog">
+    <div class="modal-content">
+      <div class="sq-modal sq-modal--form">
+        <div class="sq-modal-header">
+          <h2 class="sq-modal-title">Adicionar a los baños</h2>
+          <button class="sq-icon-btn sq-icon-btn-outline" data-bs-dismiss="modal" aria-label="Cerrar">
+            <img src="../assets/icons/close.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;" />
+          </button>
+        </div>
+        <div class="sq-modal-form">
+          <div class="sq-modal-field">
+            <label class="sq-modal-label">Sanitario</label>
+            <input class="sq-modal-input" type="text" placeholder="Ej. Sanitario 1" />
+          </div>
+          <div class="sq-modal-field">
+            <label class="sq-modal-label">Sección</label>
+            <input class="sq-modal-input" type="text" placeholder="Ej. Sección A" />
+          </div>
+          <div class="sq-modal-field">
+            <label class="sq-modal-label">Cantidad de baños</label>
+            <input class="sq-modal-input" type="number" placeholder="0" />
+          </div>
+          <div class="sq-modal-field">
+            <label class="sq-modal-label">Zona</label>
+            <div class="sq-modal-dropdown" id="dropdownAdicionar">
+              <span class="sq-modal-dropdown-value">Seleccionar zona</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="sq-modal-dropdown-menu">
+                <div class="sq-modal-dropdown-item">Zona Norte</div>
+                <div class="sq-modal-dropdown-item">Zona Sur</div>
+                <div class="sq-modal-dropdown-item">Zona Este</div>
+                <div class="sq-modal-dropdown-item">Zona Oeste</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sq-modal-footer">
+          <button class="sq-btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+          <button class="sq-btn-primary-action">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LIGHTBOX (instancia global) ══════════════════════════════════ -->
+<div class="modal fade sq-lightbox"
+     id="sqLightbox"
+     tabindex="-1"
+     data-bs-backdrop="false"
+     aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+
+      <button class="sq-icon-btn sq-icon-btn-outline sq-lightbox-close"
+              data-bs-dismiss="modal" aria-label="Cerrar">
+        <img src="../assets/icons/close.svg" width="16" height="16" alt="" style="display:block;flex-shrink:0;" />
+      </button>
+
+      <div class="sq-lightbox-carousel">
+        <button class="sq-lightbox-nav" id="sqLbPrev" aria-label="Imagen anterior">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="sq-lightbox-frame">
+          <img id="sqLbImg" class="sq-lightbox-img" src="" alt="Imagen ampliada" />
+        </div>
+        <button class="sq-lightbox-nav" id="sqLbNext" aria-label="Imagen siguiente">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <span class="sq-lightbox-counter" id="sqLbCounter"></span>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/nav.js"></script>
+<script>
+  // ── Dropdown en modal Adicionar ──────────────────────────────────
+  const dropdownAdicionar = document.getElementById('dropdownAdicionar');
+  if (dropdownAdicionar) {
+    dropdownAdicionar.addEventListener('click', function (e) {
+      this.classList.toggle('open');
+      e.stopPropagation();
+    });
+    dropdownAdicionar.querySelectorAll('.sq-modal-dropdown-item').forEach(item => {
+      item.addEventListener('click', function (e) {
+        const valueEl = dropdownAdicionar.querySelector('.sq-modal-dropdown-value');
+        if (valueEl) valueEl.textContent = this.textContent.trim();
+        dropdownAdicionar.querySelectorAll('.sq-modal-dropdown-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        dropdownAdicionar.classList.remove('open');
+        e.stopPropagation();
+      });
+    });
+  }
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.sq-modal-dropdown.open').forEach(d => d.classList.remove('open'));
+  });
+
+  // ── Lightbox ─────────────────────────────────────────────────────
+  (function () {
+    const lbEl      = document.getElementById('sqLightbox');
+    const lbImg     = document.getElementById('sqLbImg');
+    const lbPrev    = document.getElementById('sqLbPrev');
+    const lbNext    = document.getElementById('sqLbNext');
+    const lbCounter = document.getElementById('sqLbCounter');
+
+    if (!lbEl) return;
+
+    let images = [];
+    let index  = 0;
+
+    function update() {
+      lbImg.style.opacity = '0';
+      setTimeout(() => {
+        lbImg.src           = images[index];
+        lbImg.style.opacity = '1';
+      }, 120);
+      lbPrev.disabled       = index === 0;
+      lbNext.disabled       = index === images.length - 1;
+      lbCounter.textContent = images.length > 1 ? `${index + 1} / ${images.length}` : '';
+    }
+
+    lbPrev.addEventListener('click', () => { if (index > 0) { index--; update(); } });
+    lbNext.addEventListener('click', () => { if (index < images.length - 1) { index++; update(); } });
+
+    lbEl.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  lbPrev.click();
+      if (e.key === 'ArrowRight') lbNext.click();
+    });
+
+    lbEl.addEventListener('click', function (e) {
+      const isOverlay = e.target === this
+        || e.target.classList.contains('modal-dialog')
+        || e.target.classList.contains('modal-content')
+        || e.target.classList.contains('sq-lightbox-carousel');
+      if (isOverlay) bootstrap.Modal.getOrCreateInstance(lbEl)?.hide();
+    });
+
+    window.openLightbox = function (imgs, start = 0) {
+      images = imgs;
+      index  = start;
+      update();
+      bootstrap.Modal.getOrCreateInstance(lbEl).show();
+    };
+
+    // Inicializar todos los .sq-images-container de la página
+    document.querySelectorAll('.sq-images-container').forEach(container => {
+      const thumbs = Array.from(container.querySelectorAll('.sq-image-thumb'));
+      const urls   = thumbs.map(t => {
+        const img = t.querySelector('img');
+        return img ? (img.dataset.fullSrc || img.src) : '';
+      }).filter(Boolean);
+
+      thumbs.forEach((thumb, i) => {
+        thumb.addEventListener('click', () => openLightbox(urls, i));
+      });
+    });
+  })();
+</script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          

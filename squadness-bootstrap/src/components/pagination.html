@@ -1,0 +1,76 @@
+<!--
+  SQUADNESS DS — Pagination
+  ───────────────────────────────────────────────────────────────
+  Clases clave: .pagination  .page-item  .page-link
+  Estados:  .active  |  .disabled
+  El gap entre items viene de squadness.css.
+-->
+
+<!-- ── Básica ───────────────────────────────────────────────── -->
+<nav aria-label="Navegación de páginas">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" aria-label="Anterior">Anterior</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Siguiente">Siguiente</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ── Con puntos suspensivos ───────────────────────────────── -->
+<nav aria-label="Navegación de páginas">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item disabled"><span class="page-link">…</span></li>
+    <li class="page-item"><a class="page-link" href="#">8</a></li>
+    <li class="page-item active"><a class="page-link" href="#">9</a></li>
+    <li class="page-item"><a class="page-link" href="#">10</a></li>
+    <li class="page-item disabled"><span class="page-link">…</span></li>
+    <li class="page-item"><a class="page-link" href="#">24</a></li>
+    <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+  </ul>
+</nav>
+
+<!-- ── Tamaño pequeño ────────────────────────────────────────── -->
+<nav aria-label="Navegación">
+  <ul class="pagination pagination-sm">
+    <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">»</a></li>
+  </ul>
+</nav>
+
+<!-- ── Con info de registros (patrón completo de tabla) ──────── -->
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+  <span style="font-size:13px;color:var(--sq-text-subtlest);">
+    Mostrando 1–10 de 142 registros
+  </span>
+  <nav aria-label="Paginación">
+    <ul class="pagination pagination-sm mb-0">
+      <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item disabled"><span class="page-link">…</span></li>
+      <li class="page-item"><a class="page-link" href="#">15</a></li>
+      <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+    </ul>
+  </nav>
+  <div class="d-flex align-items-center gap-2">
+    <label style="font-size:13px;color:var(--sq-text-subtlest);">Por página:</label>
+    <select class="form-select form-select-sm" style="width:70px;">
+      <option selected>10</option>
+      <option>25</option>
+      <option>50</option>
+    </select>
+  </div>
+</div>

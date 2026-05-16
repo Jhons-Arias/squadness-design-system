@@ -1,0 +1,103 @@
+<!--
+  SQUADNESS DS — Accordion
+  ───────────────────────────────────────────────────────────────
+  Requiere: Bootstrap JS
+  Clases clave: .accordion  .accordion-item  .accordion-button  .accordion-collapse
+  Para que solo un panel esté abierto a la vez, todos deben tener data-bs-parent.
+  Los estilos vienen de tokens.css via --bs-accordion-*.
+-->
+
+<!-- ── Básico ───────────────────────────────────────────────── -->
+<div class="accordion" id="accordion-basic">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button"
+              data-bs-toggle="collapse" data-bs-target="#acc-1"
+              aria-expanded="true" aria-controls="acc-1">
+        ¿Qué incluye el plan Pro?
+      </button>
+    </h2>
+    <div id="acc-1" class="accordion-collapse collapse show" data-bs-parent="#accordion-basic">
+      <div class="accordion-body">
+        El plan Pro incluye acceso ilimitado a todos los módulos, soporte prioritario 24/7,
+        100 GB de almacenamiento y reportes avanzados exportables en PDF y Excel.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#acc-2"
+              aria-expanded="false" aria-controls="acc-2">
+        ¿Puedo cancelar en cualquier momento?
+      </button>
+    </h2>
+    <div id="acc-2" class="accordion-collapse collapse" data-bs-parent="#accordion-basic">
+      <div class="accordion-body">
+        Sí. Puedes cancelar tu suscripción desde <strong>Configuración → Facturación</strong>
+        en cualquier momento. El acceso se mantiene hasta el fin del período facturado.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#acc-3"
+              aria-expanded="false" aria-controls="acc-3">
+        ¿Cómo migro mis datos desde otro sistema?
+      </button>
+    </h2>
+    <div id="acc-3" class="accordion-collapse collapse" data-bs-parent="#accordion-basic">
+      <div class="accordion-body">
+        Ofrecemos una herramienta de importación CSV y asistencia de onboarding gratuita
+        para cuentas Pro y Enterprise. Contáctanos en <a href="#">soporte@squadness.com</a>.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Sin colapsar (todos independientes) ───────────────────── -->
+<!-- Remover data-bs-parent para que funcionen de forma independiente -->
+<div class="accordion" id="accordion-independent">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button"
+              data-bs-toggle="collapse" data-bs-target="#ind-1"
+              aria-expanded="true">
+        Datos personales
+      </button>
+    </h2>
+    <div id="ind-1" class="accordion-collapse collapse show">
+      <div class="accordion-body">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" value="Ana" />
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label">Apellido</label>
+            <input type="text" class="form-control" value="Martínez" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#ind-2"
+              aria-expanded="false">
+        Seguridad
+      </button>
+    </h2>
+    <div id="ind-2" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        <label class="form-label">Nueva contraseña</label>
+        <input type="password" class="form-control" placeholder="••••••••" />
+      </div>
+    </div>
+  </div>
+</div>

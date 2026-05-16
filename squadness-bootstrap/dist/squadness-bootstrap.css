@@ -1,0 +1,1000 @@
+/*!
+ * Squadness Bootstrap v2.0.0
+ * Design System tokens + component styles for Bootstrap 5
+ * https://github.com/squadness/squadness-bootstrap
+ * (c) 2026 Squadness — MIT License
+ */
+
+/* === tokens.css === */
+/**
+ * Squadness Design System — Design Tokens
+ * ----------------------------------------
+ * CSS custom properties que definen la identidad visual del sistema.
+ *
+ * Estructura:
+ *  1. Tokens Squadness (--sq-*)     — fuente de verdad del DS
+ *  2. Bootstrap global vars         — colores semánticos, tipografía, bordes
+ *  3. Bootstrap semantic variants   — text-emphasis, bg-subtle, border-subtle
+ *  4. Bootstrap body & typography   — body, headings, links, code
+ *  5. Bootstrap component vars      — card, modal, form, dropdown, table,
+ *                                     pagination, badge, alert, nav/navbar,
+ *                                     tooltip, progress, list-group, offcanvas
+ *
+ * Orden de imports recomendado:
+ *   <link rel="stylesheet" href="tokens.css" />
+ *   <link rel="stylesheet" href="bootstrap.min.css" />
+ *   <link rel="stylesheet" href="squadness.css" />
+ *
+ * @version 2.0.0
+ */
+
+/* ══════════════════════════════════════════════════════════════════
+   1. TOKENS SQUADNESS  --sq-*
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+
+  /* ── Tipografía ─────────────────────────────────────────────────── */
+  --sq-font-body:    'Inter', sans-serif;
+  --sq-font-mono:    'Roboto Mono', monospace;
+  --sq-font-heading: 'Inter', sans-serif;
+
+  --sq-font-size-xs: 0.75rem;   /* 12px */
+  --sq-font-size-sm: 0.875rem;  /* 14px */
+  --sq-font-size-md: 1rem;      /* 16px */
+  --sq-font-size-lg: 1.125rem;  /* 18px */
+
+  /* ── Colores de marca ───────────────────────────────────────────── */
+  --sq-brand:         #005fdb;
+  --sq-brand-hover:   #0047a3;
+  --sq-brand-active:  #0a74ff;
+  --sq-brand-pressed: #004ec4;
+  --sq-brand-bold:    #003fa0;
+
+  /* ── Superficies ────────────────────────────────────────────────── */
+  --sq-surface-raised:              #ffffff;
+  --sq-surface-default:             #f8fafc;
+  --sq-surface-neutral-subtlest:    #f1f5f9;
+  --sq-surface-neutral-subtler:     #e2e8f0;
+  --sq-surface-brand-subtlest:      #e5f1ff;
+  --sq-surface-brand-subtler:       #cce2ff;
+  --sq-surface-brand-subtle:        #b3d4ff;
+  --sq-surface-brand-subtle-alt:    #b8d6ff;
+  --sq-surface-success-subtlest:    #ecfcca;
+  --sq-surface-warning-subtlest:    #ffedd4;
+  --sq-surface-error-subtlest:      #feeded;
+  --sq-surface-error-subtler:       #fedede;
+  --sq-surface-info-subtlest:       #ccf1ff;
+  --sq-surface-info-raised:         #f8ffff;
+
+  /* ── Texto ──────────────────────────────────────────────────────── */
+  --sq-text-default:      #020618;
+  --sq-text-subtle:       #314158;
+  --sq-text-subtlest:     #62748e;
+  --sq-text-inverse:      #ffffff;
+  --sq-text-neutral:      #1d293d;
+  --sq-text-brand:        #005fdb;
+  --sq-text-success:      #3c6300;
+  --sq-text-warning:      #9f2d00;
+  --sq-text-error:        #6f040c;
+  --sq-text-error-bold:   #7f0910;
+  --sq-text-error-bolder: #9e0b15;
+  --sq-text-info:         #004a66;
+
+  /* ── Bordes ─────────────────────────────────────────────────────── */
+  --sq-border-subtle:  rgba(11, 18, 14, 0.14);
+  --sq-border-default: rgba(5, 21, 36, 0.06);
+  --sq-border-bold:    rgba(5, 21, 36, 0.12);
+  --sq-border-brand:   #0a74ff;
+  --sq-border-success: #5ea500;
+  --sq-border-warning: #f54a00;
+  --sq-border-error:   #cf121f;
+
+  /* ── Estado info ────────────────────────────────────────────────── */
+  --sq-info: #0095cc;
+
+  /* ── Neutros ────────────────────────────────────────────────────── */
+  --sq-neutral-100: #dde6ef;
+  --sq-neutral-200: #cbd5e1;
+  --sq-neutral-300: #c8d4e0;
+  --sq-neutral-400: #b0bec5;
+  --sq-neutral-500: #dddddd;
+
+  /* ── Radios ─────────────────────────────────────────────────────── */
+  --sq-radius-xs:   4px;
+  --sq-radius-sm:   8px;
+  --sq-radius-md:   12px;
+  --sq-radius-lg:   16px;
+  --sq-radius-full: 9999px;
+
+  /* ── Espaciado ──────────────────────────────────────────────────── */
+  --sq-space-0:    0px;
+  --sq-space-025:  2px;
+  --sq-space-050:  4px;
+  --sq-space-075:  6px;
+  --sq-space-100:  8px;
+  --sq-space-150:  12px;
+  --sq-space-200:  16px;
+  --sq-space-250:  20px;
+  --sq-space-300:  24px;
+  --sq-space-400:  32px;
+  --sq-space-500:  40px;
+  --sq-space-600:  48px;
+  --sq-space-800:  64px;
+
+  /* ── Sombras ────────────────────────────────────────────────────── */
+  --sq-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --sq-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --sq-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+  /* ── Overlays ───────────────────────────────────────────────────── */
+  --sq-overlay-subtle: rgba(2, 6, 24, 0.10);
+  --sq-overlay-dark:   rgba(5, 12, 31, 0.66);
+
+  /* ── Focus rings ────────────────────────────────────────────────── */
+  --sq-glow-brand: rgba(0, 95, 219, 0.2);
+  --sq-glow-error: rgba(207, 18, 31, 0.2);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   2. BOOTSTRAP — COLORES SEMÁNTICOS GLOBALES
+   Redefinen los colores --bs-* que Bootstrap usa en todo su sistema.
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+  --bs-blue:    #005fdb;
+  --bs-indigo:  #6610f2;
+  --bs-purple:  #6f42c1;
+  --bs-pink:    #d63384;
+  --bs-red:     #cf121f;
+  --bs-orange:  #f54a00;
+  --bs-yellow:  #f59e0b;
+  --bs-green:   #5ea500;
+  --bs-teal:    #0095cc;
+  --bs-cyan:    #0dcaf0;
+  --bs-white:   #ffffff;
+  --bs-black:   #020618;
+
+  /* Colores semánticos principales */
+  --bs-primary:       var(--sq-brand);
+  --bs-primary-rgb:   0, 95, 219;
+
+  --bs-secondary:     var(--sq-text-subtlest);
+  --bs-secondary-rgb: 98, 116, 142;
+
+  --bs-success:       #5ea500;
+  --bs-success-rgb:   94, 165, 0;
+
+  --bs-info:          var(--sq-info);
+  --bs-info-rgb:      0, 149, 204;
+
+  --bs-warning:       #f54a00;
+  --bs-warning-rgb:   245, 74, 0;
+
+  --bs-danger:        #cf121f;
+  --bs-danger-rgb:    207, 18, 31;
+
+  --bs-light:         var(--sq-surface-neutral-subtlest);
+  --bs-light-rgb:     241, 245, 249;
+
+  --bs-dark:          var(--sq-text-default);
+  --bs-dark-rgb:      2, 6, 24;
+
+  /* Colores de énfasis (usados por text-bg-*, alert-*, badge en BS 5.3) */
+  --bs-primary-text-emphasis:   var(--sq-brand-bold);
+  --bs-secondary-text-emphasis: var(--sq-text-subtle);
+  --bs-success-text-emphasis:   var(--sq-text-success);
+  --bs-info-text-emphasis:      var(--sq-text-info);
+  --bs-warning-text-emphasis:   var(--sq-text-warning);
+  --bs-danger-text-emphasis:    var(--sq-text-error);
+  --bs-light-text-emphasis:     var(--sq-text-subtle);
+  --bs-dark-text-emphasis:      var(--sq-text-default);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   3. BOOTSTRAP — VARIANTES SEMÁNTICAS (bg-subtle, border-subtle)
+   Usadas por alert-*, badge text-bg-* y utilidades de BS 5.3+
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Fondos sutiles por estado */
+  --bs-primary-bg-subtle:   var(--sq-surface-brand-subtlest);
+  --bs-secondary-bg-subtle: var(--sq-surface-neutral-subtlest);
+  --bs-success-bg-subtle:   var(--sq-surface-success-subtlest);
+  --bs-info-bg-subtle:      var(--sq-surface-info-subtlest);
+  --bs-warning-bg-subtle:   var(--sq-surface-warning-subtlest);
+  --bs-danger-bg-subtle:    var(--sq-surface-error-subtlest);
+  --bs-light-bg-subtle:     var(--sq-surface-neutral-subtlest);
+  --bs-dark-bg-subtle:      var(--sq-surface-neutral-subtler);
+
+  /* Bordes sutiles por estado */
+  --bs-primary-border-subtle:   var(--sq-border-brand);
+  --bs-secondary-border-subtle: var(--sq-border-default);
+  --bs-success-border-subtle:   var(--sq-border-success);
+  --bs-info-border-subtle:      #0095cc;
+  --bs-warning-border-subtle:   var(--sq-border-warning);
+  --bs-danger-border-subtle:    var(--sq-border-error);
+  --bs-light-border-subtle:     var(--sq-border-subtle);
+  --bs-dark-border-subtle:      var(--sq-border-bold);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   4. BOOTSTRAP — BODY, TIPOGRAFÍA Y LINKS
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Body */
+  --bs-body-font-family:    var(--sq-font-body);
+  --bs-body-font-size:      var(--sq-font-size-md);
+  --bs-body-font-weight:    400;
+  --bs-body-line-height:    1.6;
+  --bs-body-color:          var(--sq-text-default);
+  --bs-body-color-rgb:      2, 6, 24;
+  --bs-body-bg:             var(--sq-surface-default);
+  --bs-body-bg-rgb:         248, 250, 252;
+
+  /* Capas de texto (usadas por utilidades text-* y componentes) */
+  --bs-emphasis-color:        var(--sq-text-default);
+  --bs-emphasis-color-rgb:    2, 6, 24;
+  --bs-secondary-color:       var(--sq-text-subtle);
+  --bs-secondary-color-rgb:   49, 65, 88;
+  --bs-secondary-bg:          var(--sq-surface-neutral-subtlest);
+  --bs-secondary-bg-rgb:      241, 245, 249;
+  --bs-tertiary-color:        var(--sq-text-subtlest);
+  --bs-tertiary-color-rgb:    98, 116, 142;
+  --bs-tertiary-bg:           var(--sq-surface-neutral-subtler);
+  --bs-tertiary-bg-rgb:       226, 232, 240;
+
+  /* Headings */
+  --bs-heading-color:         var(--sq-text-default);
+  --bs-heading-font-family:   var(--sq-font-heading);
+  --bs-heading-font-weight:   600;
+  --bs-heading-line-height:   1.3;
+
+  /* Links */
+  --bs-link-color:            var(--sq-brand);
+  --bs-link-color-rgb:        0, 95, 219;
+  --bs-link-hover-color:      var(--sq-brand-hover);
+  --bs-link-hover-color-rgb:  0, 71, 163;
+  --bs-link-decoration:       none;
+
+  /* Código */
+  --bs-font-monospace: var(--sq-font-mono);
+  --bs-code-color:     var(--sq-brand);
+
+  /* Bordes */
+  --bs-border-width:              1px;
+  --bs-border-style:              solid;
+  --bs-border-color:              var(--sq-border-subtle);
+  --bs-border-color-translucent:  rgba(11, 18, 14, 0.14);
+  --bs-border-radius:             var(--sq-radius-sm);
+  --bs-border-radius-sm:          var(--sq-radius-xs);
+  --bs-border-radius-lg:          var(--sq-radius-md);
+  --bs-border-radius-xl:          var(--sq-radius-lg);
+  --bs-border-radius-xxl:         24px;
+  --bs-border-radius-pill:        var(--sq-radius-full);
+
+  /* Sombras */
+  --bs-box-shadow:        var(--sq-shadow-md);
+  --bs-box-shadow-sm:     var(--sq-shadow-sm);
+  --bs-box-shadow-lg:     var(--sq-shadow-lg);
+  --bs-box-shadow-inset:  inset 0 1px 2px rgba(0, 0, 0, 0.075);
+
+  /* Focus */
+  --bs-focus-ring-width:  3px;
+  --bs-focus-ring-opacity: 1;
+  --bs-focus-ring-color:  var(--sq-glow-brand);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   5. BOOTSTRAP — VARIABLES DE COMPONENTES
+   Cada componente Bootstrap expone sus propias --bs-*. Al redefinirlas
+   aqui en :root, el componente las hereda sin necesidad de overrides.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── 5a. Botones ─────────────────────────────────────────────────── */
+:root {
+  --bs-btn-padding-x:        16px;
+  --bs-btn-padding-y:        7px;
+  --bs-btn-font-family:      var(--sq-font-body);
+  --bs-btn-font-size:        var(--sq-font-size-sm);
+  --bs-btn-font-weight:      500;
+  --bs-btn-line-height:      1.5;
+  --bs-btn-border-radius:    var(--sq-radius-sm);
+  --bs-btn-transition:       background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+
+  --bs-btn-sm-padding-x:     12px;
+  --bs-btn-sm-padding-y:     4px;
+  --bs-btn-sm-font-size:     var(--sq-font-size-xs);
+  --bs-btn-sm-border-radius: var(--sq-radius-xs);
+
+  --bs-btn-lg-padding-x:     24px;
+  --bs-btn-lg-padding-y:     10px;
+  --bs-btn-lg-font-size:     var(--sq-font-size-md);
+  --bs-btn-lg-border-radius: var(--sq-radius-md);
+}
+
+/* ── 5b. Forms / Inputs ──────────────────────────────────────────── */
+:root {
+  --bs-input-padding-x:        12px;
+  --bs-input-padding-y:        8px;
+  --bs-input-font-family:      var(--sq-font-body);
+  --bs-input-font-size:        var(--sq-font-size-sm);
+  --bs-input-font-weight:      400;
+  --bs-input-line-height:      1.5;
+  --bs-input-color:            var(--sq-text-default);
+  --bs-input-bg:               var(--sq-surface-raised);
+  --bs-input-border-color:     var(--sq-border-subtle);
+  --bs-input-border-width:     1px;
+  --bs-input-border-radius:    var(--sq-radius-sm);
+  --bs-input-focus-bg:         var(--sq-surface-raised);
+  --bs-input-focus-border-color: var(--sq-brand);
+  --bs-input-focus-color:      var(--sq-text-default);
+  --bs-input-focus-width:      3px;
+  --bs-input-focus-box-shadow: 0 0 0 3px var(--sq-glow-brand);
+  --bs-input-placeholder-color: var(--sq-text-subtlest);
+  --bs-input-plaintext-color:  var(--sq-text-default);
+  --bs-input-disabled-bg:      var(--sq-surface-neutral-subtlest);
+  --bs-input-disabled-border-color: var(--sq-border-default);
+  --bs-input-disabled-color:   var(--sq-text-subtlest);
+  --bs-input-transition:       border-color .15s ease, box-shadow .15s ease;
+
+  /* Select */
+  --bs-form-select-bg:           var(--sq-surface-raised);
+  --bs-form-select-border-color: var(--sq-border-subtle);
+  --bs-form-select-color:        var(--sq-text-default);
+  --bs-form-select-focus-border-color: var(--sq-brand);
+  --bs-form-select-focus-box-shadow:   0 0 0 3px var(--sq-glow-brand);
+
+  /* Check / Radio / Switch */
+  --bs-form-check-input-width:           1.1em;
+  --bs-form-check-input-border:          1px solid var(--sq-border-subtle);
+  --bs-form-check-input-border-radius:   var(--sq-radius-xs);
+  --bs-form-check-input-checked-bg-color: var(--sq-brand);
+  --bs-form-check-input-checked-border-color: var(--sq-brand);
+  --bs-form-check-input-focus-border:    var(--sq-brand);
+  --bs-form-check-input-focus-box-shadow: 0 0 0 3px var(--sq-glow-brand);
+
+  --bs-form-switch-width:                2.5em;
+  --bs-form-switch-bg-image:             url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28255%2c255%2c255%2c0.85%29'/%3e%3c/svg%3e");
+  --bs-form-switch-border-radius:        var(--sq-radius-full);
+  --bs-form-switch-checked-bg-color:     var(--sq-brand);
+  --bs-form-switch-checked-border-color: var(--sq-brand);
+
+  /* Feedback text */
+  --bs-form-feedback-margin-top:   4px;
+  --bs-form-feedback-font-size:    var(--sq-font-size-xs);
+  --bs-form-feedback-valid-color:  var(--sq-text-success);
+  --bs-form-feedback-invalid-color: var(--sq-text-error);
+  --bs-form-invalid-border-color:  var(--bs-danger);
+  --bs-form-valid-border-color:    var(--bs-success);
+
+  /* Form label */
+  --bs-form-label-margin-bottom: 6px;
+  --bs-form-label-font-size:     var(--sq-font-size-sm);
+  --bs-form-label-font-weight:   500;
+  --bs-form-label-color:         var(--sq-text-default);
+  --bs-form-text-margin-top:     4px;
+  --bs-form-text-font-size:      var(--sq-font-size-xs);
+  --bs-form-text-color:          var(--sq-text-subtlest);
+}
+
+/* ── 5c. Card ────────────────────────────────────────────────────── */
+:root {
+  --bs-card-spacer-y:         20px;
+  --bs-card-spacer-x:         20px;
+  --bs-card-title-spacer-y:   8px;
+  --bs-card-title-color:      var(--sq-text-default);
+  --bs-card-subtitle-color:   var(--sq-text-subtlest);
+  --bs-card-border-width:     1px;
+  --bs-card-border-color:     var(--sq-border-subtle);
+  --bs-card-border-radius:    var(--sq-radius-lg);
+  --bs-card-box-shadow:       var(--sq-shadow-sm);
+  --bs-card-inner-border-radius: calc(var(--sq-radius-lg) - 1px);
+  --bs-card-cap-padding-y:    16px;
+  --bs-card-cap-padding-x:    20px;
+  --bs-card-cap-bg:           transparent;
+  --bs-card-cap-color:        var(--sq-text-default);
+  --bs-card-color:            var(--sq-text-subtle);
+  --bs-card-bg:               var(--sq-surface-raised);
+}
+
+/* ── 5d. Modal ───────────────────────────────────────────────────── */
+:root {
+  --bs-modal-zindex:            1055;
+  --bs-modal-width:             500px;
+  --bs-modal-padding:           24px;
+  --bs-modal-margin:            16px;
+  --bs-modal-color:             var(--sq-text-default);
+  --bs-modal-bg:                var(--sq-surface-raised);
+  --bs-modal-border-color:      var(--sq-border-subtle);
+  --bs-modal-border-width:      1px;
+  --bs-modal-border-radius:     var(--sq-radius-lg);
+  --bs-modal-box-shadow:        var(--sq-shadow-lg);
+  --bs-modal-inner-border-radius: calc(var(--sq-radius-lg) - 1px);
+  --bs-modal-header-padding-x:  24px;
+  --bs-modal-header-padding-y:  20px;
+  --bs-modal-header-border-color: var(--sq-border-subtle);
+  --bs-modal-header-border-width: 1px;
+  --bs-modal-title-line-height: 1.4;
+  --bs-modal-footer-bg:         transparent;
+  --bs-modal-footer-border-color: var(--sq-border-subtle);
+  --bs-modal-footer-border-width: 1px;
+  --bs-modal-backdrop-bg:       rgb(5, 12, 31);
+  --bs-modal-backdrop-opacity:  0.66;
+}
+
+/* ── 5e. Dropdown ────────────────────────────────────────────────── */
+:root {
+  --bs-dropdown-zindex:           1000;
+  --bs-dropdown-min-width:        180px;
+  --bs-dropdown-padding-x:        4px;
+  --bs-dropdown-padding-y:        4px;
+  --bs-dropdown-spacer:           4px;
+  --bs-dropdown-font-size:        var(--sq-font-size-sm);
+  --bs-dropdown-color:            var(--sq-text-default);
+  --bs-dropdown-bg:               var(--sq-surface-raised);
+  --bs-dropdown-border-color:     var(--sq-border-subtle);
+  --bs-dropdown-border-radius:    var(--sq-radius-md);
+  --bs-dropdown-border-width:     1px;
+  --bs-dropdown-inner-border-radius: calc(var(--sq-radius-md) - 1px);
+  --bs-dropdown-divider-bg:       var(--sq-border-subtle);
+  --bs-dropdown-divider-margin-y: 4px;
+  --bs-dropdown-box-shadow:       var(--sq-shadow-md);
+  --bs-dropdown-link-color:       var(--sq-text-default);
+  --bs-dropdown-link-hover-color: var(--sq-text-default);
+  --bs-dropdown-link-hover-bg:    var(--sq-surface-neutral-subtlest);
+  --bs-dropdown-link-active-color: var(--sq-text-brand);
+  --bs-dropdown-link-active-bg:   var(--sq-surface-brand-subtlest);
+  --bs-dropdown-link-disabled-color: var(--sq-text-subtlest);
+  --bs-dropdown-item-padding-x:   12px;
+  --bs-dropdown-item-padding-y:   7px;
+  --bs-dropdown-header-color:     var(--sq-text-subtlest);
+  --bs-dropdown-header-padding-x: 12px;
+  --bs-dropdown-header-padding-y: 4px;
+}
+
+/* ── 5f. Tabla ───────────────────────────────────────────────────── */
+:root {
+  --bs-table-color:             var(--sq-text-default);
+  --bs-table-bg:                transparent;
+  --bs-table-accent-bg:         transparent;
+  --bs-table-striped-color:     var(--sq-text-default);
+  --bs-table-striped-bg-factor: 1;
+  --bs-table-striped-bg:        var(--sq-surface-neutral-subtlest);
+  --bs-table-active-color:      var(--sq-text-default);
+  --bs-table-active-bg-factor:  1;
+  --bs-table-active-bg:         var(--sq-surface-neutral-subtler);
+  --bs-table-hover-color:       var(--sq-text-default);
+  --bs-table-hover-bg-factor:   1;
+  --bs-table-hover-bg:          var(--sq-surface-neutral-subtlest);
+  --bs-table-border-factor:     1;
+  --bs-table-border-color:      var(--sq-border-default);
+  --bs-table-group-separator-color: var(--sq-border-subtle);
+  --bs-table-caption-color:     var(--sq-text-subtlest);
+}
+
+/* ── 5g. Paginación ──────────────────────────────────────────────── */
+:root {
+  --bs-pagination-padding-x:            12px;
+  --bs-pagination-padding-y:            6px;
+  --bs-pagination-font-size:            var(--sq-font-size-sm);
+  --bs-pagination-color:                var(--sq-text-subtle);
+  --bs-pagination-bg:                   var(--sq-surface-raised);
+  --bs-pagination-border-width:         1px;
+  --bs-pagination-border-color:         var(--sq-border-subtle);
+  --bs-pagination-border-radius:        var(--sq-radius-sm);
+  --bs-pagination-hover-color:          var(--sq-brand);
+  --bs-pagination-hover-bg:             var(--sq-surface-neutral-subtlest);
+  --bs-pagination-hover-border-color:   var(--sq-border-subtle);
+  --bs-pagination-focus-color:          var(--sq-brand);
+  --bs-pagination-focus-bg:             var(--sq-surface-neutral-subtlest);
+  --bs-pagination-focus-box-shadow:     0 0 0 3px var(--sq-glow-brand);
+  --bs-pagination-active-color:         var(--sq-text-inverse);
+  --bs-pagination-active-bg:            var(--sq-brand);
+  --bs-pagination-active-border-color:  var(--sq-brand);
+  --bs-pagination-disabled-color:       var(--sq-text-subtlest);
+  --bs-pagination-disabled-bg:          transparent;
+  --bs-pagination-disabled-border-color: var(--sq-border-default);
+}
+
+/* ── 5h. Badge ───────────────────────────────────────────────────── */
+:root {
+  --bs-badge-padding-x:     8px;
+  --bs-badge-padding-y:     3px;
+  --bs-badge-font-size:     var(--sq-font-size-xs);
+  --bs-badge-font-weight:   500;
+  --bs-badge-color:         var(--sq-text-inverse);
+  --bs-badge-border-radius: var(--sq-radius-full);
+}
+
+/* ── 5i. Alerta ──────────────────────────────────────────────────── */
+:root {
+  --bs-alert-padding-x:           16px;
+  --bs-alert-padding-y:           12px;
+  --bs-alert-margin-bottom:       16px;
+  --bs-alert-border-radius:       var(--sq-radius-md);
+  --bs-alert-link-font-weight:    600;
+  --bs-alert-border-width:        1px;
+  --bs-alert-dismissible-padding-r: 48px;
+}
+
+/* ── 5j. Navbar ──────────────────────────────────────────────────── */
+:root {
+  --bs-navbar-padding-x:          24px;
+  --bs-navbar-padding-y:          0px;
+  --bs-navbar-color:              var(--sq-text-subtle);
+  --bs-navbar-hover-color:        var(--sq-text-default);
+  --bs-navbar-disabled-color:     var(--sq-text-subtlest);
+  --bs-navbar-active-color:       var(--sq-brand);
+  --bs-navbar-brand-padding-y:    0px;
+  --bs-navbar-brand-margin-end:   16px;
+  --bs-navbar-brand-font-size:    1rem;
+  --bs-navbar-brand-color:        var(--sq-text-default);
+  --bs-navbar-brand-hover-color:  var(--sq-text-default);
+  --bs-navbar-nav-link-padding-x: 12px;
+  --bs-navbar-toggler-padding-x:  10px;
+  --bs-navbar-toggler-padding-y:  4px;
+  --bs-navbar-toggler-font-size:  1rem;
+  --bs-navbar-toggler-border-color: var(--sq-border-subtle);
+  --bs-navbar-toggler-border-radius: var(--sq-radius-sm);
+  --bs-navbar-toggler-focus-width: 3px;
+}
+
+/* ── 5k. Nav (tabs, pills) ───────────────────────────────────────── */
+:root {
+  --bs-nav-link-padding-x:        12px;
+  --bs-nav-link-padding-y:        8px;
+  --bs-nav-link-font-size:        var(--sq-font-size-sm);
+  --bs-nav-link-font-weight:      500;
+  --bs-nav-link-color:            var(--sq-text-subtle);
+  --bs-nav-link-hover-color:      var(--sq-text-default);
+  --bs-nav-link-disabled-color:   var(--sq-text-subtlest);
+
+  /* Tabs */
+  --bs-nav-tabs-border-color:              var(--sq-border-subtle);
+  --bs-nav-tabs-border-width:              1px;
+  --bs-nav-tabs-border-radius:             var(--sq-radius-sm);
+  --bs-nav-tabs-link-hover-border-color:   var(--sq-border-subtle);
+  --bs-nav-tabs-link-active-color:         var(--sq-brand);
+  --bs-nav-tabs-link-active-bg:            var(--sq-surface-raised);
+  --bs-nav-tabs-link-active-border-color:  var(--sq-border-subtle) var(--sq-border-subtle) var(--sq-surface-raised);
+
+  /* Pills */
+  --bs-nav-pills-border-radius:       var(--sq-radius-sm);
+  --bs-nav-pills-link-active-color:   var(--sq-text-inverse);
+  --bs-nav-pills-link-active-bg:      var(--sq-brand);
+}
+
+/* ── 5l. Tooltip ─────────────────────────────────────────────────── */
+:root {
+  --bs-tooltip-zindex:       1080;
+  --bs-tooltip-max-width:    240px;
+  --bs-tooltip-padding-x:    10px;
+  --bs-tooltip-padding-y:    5px;
+  --bs-tooltip-font-size:    var(--sq-font-size-xs);
+  --bs-tooltip-color:        var(--sq-text-inverse);
+  --bs-tooltip-bg:           var(--sq-text-default);
+  --bs-tooltip-border-radius: var(--sq-radius-xs);
+  --bs-tooltip-opacity:      1;
+  --bs-tooltip-arrow-width:  8px;
+  --bs-tooltip-arrow-height: 4px;
+}
+
+/* ── 5m. Popover ─────────────────────────────────────────────────── */
+:root {
+  --bs-popover-zindex:            1070;
+  --bs-popover-max-width:         300px;
+  --bs-popover-font-size:         var(--sq-font-size-sm);
+  --bs-popover-bg:                var(--sq-surface-raised);
+  --bs-popover-border-width:      1px;
+  --bs-popover-border-color:      var(--sq-border-subtle);
+  --bs-popover-border-radius:     var(--sq-radius-md);
+  --bs-popover-inner-border-radius: calc(var(--sq-radius-md) - 1px);
+  --bs-popover-box-shadow:        var(--sq-shadow-md);
+  --bs-popover-header-padding-x:  16px;
+  --bs-popover-header-padding-y:  12px;
+  --bs-popover-header-font-size:  var(--sq-font-size-sm);
+  --bs-popover-header-bg:         var(--sq-surface-neutral-subtlest);
+  --bs-popover-header-color:      var(--sq-text-default);
+  --bs-popover-header-border-width: 1px;
+  --bs-popover-header-border-color: var(--sq-border-subtle);
+  --bs-popover-body-padding-x:    16px;
+  --bs-popover-body-padding-y:    12px;
+  --bs-popover-body-color:        var(--sq-text-subtle);
+  --bs-popover-arrow-width:       16px;
+  --bs-popover-arrow-height:      8px;
+  --bs-popover-arrow-border:      var(--sq-border-subtle);
+}
+
+/* ── 5n. Toast ───────────────────────────────────────────────────── */
+:root {
+  --bs-toast-zindex:              1090;
+  --bs-toast-padding-x:          16px;
+  --bs-toast-padding-y:          12px;
+  --bs-toast-spacing:            16px;
+  --bs-toast-max-width:          360px;
+  --bs-toast-font-size:          var(--sq-font-size-sm);
+  --bs-toast-color:              var(--sq-text-default);
+  --bs-toast-background-color:   var(--sq-surface-raised);
+  --bs-toast-border-width:       1px;
+  --bs-toast-border-color:       var(--sq-border-subtle);
+  --bs-toast-border-radius:      var(--sq-radius-md);
+  --bs-toast-box-shadow:         var(--sq-shadow-md);
+  --bs-toast-header-color:       var(--sq-text-subtlest);
+  --bs-toast-header-background-color: var(--sq-surface-neutral-subtlest);
+  --bs-toast-header-border-color: var(--sq-border-subtle);
+}
+
+/* ── 5o. Progress ────────────────────────────────────────────────── */
+:root {
+  --bs-progress-height:      6px;
+  --bs-progress-font-size:   var(--sq-font-size-xs);
+  --bs-progress-bg:          var(--sq-surface-neutral-subtler);
+  --bs-progress-border-radius: var(--sq-radius-full);
+  --bs-progress-box-shadow:  none;
+  --bs-progress-bar-color:   var(--sq-text-inverse);
+  --bs-progress-bar-bg:      var(--sq-brand);
+  --bs-progress-bar-animation-timing: 1s linear infinite;
+  --bs-progress-bar-transition: width 0.4s ease;
+}
+
+/* ── 5p. List Group ──────────────────────────────────────────────── */
+:root {
+  --bs-list-group-color:                  var(--sq-text-default);
+  --bs-list-group-bg:                     var(--sq-surface-raised);
+  --bs-list-group-border-color:           var(--sq-border-subtle);
+  --bs-list-group-border-width:           1px;
+  --bs-list-group-border-radius:          var(--sq-radius-md);
+  --bs-list-group-item-padding-x:         16px;
+  --bs-list-group-item-padding-y:         10px;
+  --bs-list-group-action-color:           var(--sq-text-subtle);
+  --bs-list-group-action-hover-color:     var(--sq-text-default);
+  --bs-list-group-action-hover-bg:        var(--sq-surface-neutral-subtlest);
+  --bs-list-group-action-active-color:    var(--sq-text-default);
+  --bs-list-group-action-active-bg:       var(--sq-surface-neutral-subtler);
+  --bs-list-group-disabled-color:         var(--sq-text-subtlest);
+  --bs-list-group-disabled-bg:            var(--sq-surface-raised);
+  --bs-list-group-active-color:           var(--sq-text-inverse);
+  --bs-list-group-active-bg:              var(--sq-brand);
+  --bs-list-group-active-border-color:    var(--sq-brand);
+}
+
+/* ── 5q. Breadcrumb ──────────────────────────────────────────────── */
+:root {
+  --bs-breadcrumb-padding-x:        0px;
+  --bs-breadcrumb-padding-y:        0px;
+  --bs-breadcrumb-margin-bottom:    16px;
+  --bs-breadcrumb-font-size:        var(--sq-font-size-sm);
+  --bs-breadcrumb-divider-color:    var(--sq-text-subtlest);
+  --bs-breadcrumb-item-padding-x:   6px;
+  --bs-breadcrumb-active-color:     var(--sq-text-subtlest);
+}
+
+/* ── 5r. Offcanvas / Sidebar ─────────────────────────────────────── */
+:root {
+  --bs-offcanvas-zindex:          1045;
+  --bs-offcanvas-width:           300px;
+  --bs-offcanvas-height:          30vh;
+  --bs-offcanvas-padding-x:       20px;
+  --bs-offcanvas-padding-y:       20px;
+  --bs-offcanvas-color:           var(--sq-text-default);
+  --bs-offcanvas-bg:              var(--sq-surface-raised);
+  --bs-offcanvas-border-width:    1px;
+  --bs-offcanvas-border-color:    var(--sq-border-subtle);
+  --bs-offcanvas-box-shadow:      var(--sq-shadow-lg);
+  --bs-offcanvas-title-line-height: 1.5;
+  --bs-offcanvas-backdrop-bg:     rgb(5, 12, 31);
+  --bs-offcanvas-backdrop-opacity: 0.66;
+}
+
+/* ── 5s. Spinner ─────────────────────────────────────────────────── */
+:root {
+  --bs-spinner-width:          2rem;
+  --bs-spinner-height:         2rem;
+  --bs-spinner-vertical-align: -0.125em;
+  --bs-spinner-border-width:   0.2em;
+  --bs-spinner-animation-speed: 0.75s;
+  --bs-spinner-color:          var(--sq-brand);
+
+  --bs-spinner-width-sm:       1rem;
+  --bs-spinner-height-sm:      1rem;
+  --bs-spinner-border-width-sm: 0.15em;
+}
+
+/* ── 5t. Accordion ───────────────────────────────────────────────── */
+:root {
+  --bs-accordion-color:                   var(--sq-text-default);
+  --bs-accordion-bg:                      var(--sq-surface-raised);
+  --bs-accordion-transition:              color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  --bs-accordion-border-color:            var(--sq-border-subtle);
+  --bs-accordion-border-width:            1px;
+  --bs-accordion-border-radius:           var(--sq-radius-md);
+  --bs-accordion-inner-border-radius:     calc(var(--sq-radius-md) - 1px);
+  --bs-accordion-btn-padding-x:           20px;
+  --bs-accordion-btn-padding-y:           14px;
+  --bs-accordion-btn-color:               var(--sq-text-default);
+  --bs-accordion-btn-bg:                  var(--sq-surface-raised);
+  --bs-accordion-btn-icon-color:          var(--sq-brand);
+  --bs-accordion-btn-focus-border-color:  var(--sq-brand);
+  --bs-accordion-btn-focus-box-shadow:    0 0 0 3px var(--sq-glow-brand);
+  --bs-accordion-body-padding-x:          20px;
+  --bs-accordion-body-padding-y:          16px;
+  --bs-accordion-active-color:            var(--sq-brand);
+  --bs-accordion-active-bg:              var(--sq-surface-brand-subtlest);
+}
+
+
+/* === squadness.css === */
+/**
+ * Squadness Design System — Bootstrap 5 Skin
+ * --------------------------------------------
+ * Este archivo complementa el mapeo de variables de tokens.css.
+ * Solo incluye lo que Bootstrap NO puede resolver solo con --bs-* vars:
+ *   - Reset/base global
+ *   - Ajustes visuales finos de componentes (estado activo de nav, etc.)
+ *   - Clases de utilidad propias (.sq-*)
+ *   - Correcciones de especificidad donde Bootstrap tiene !important
+ *
+ * Orden de imports:
+ *   <link rel="stylesheet" href="tokens.css" />
+ *   <link rel="stylesheet" href="bootstrap.min.css" />
+ *   <link rel="stylesheet" href="squadness.css" />  ← este archivo
+ *
+ * @version 2.0.0
+ */
+
+/* ── Reset / base ─────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--sq-font-body);
+  background-color: var(--sq-surface-default);
+  color: var(--sq-text-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sq-font-heading);
+  font-weight: 600;
+}
+
+code, pre, kbd, samp {
+  font-family: var(--sq-font-mono);
+}
+
+a {
+  color: var(--sq-brand);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--sq-brand-hover);
+  text-decoration: underline;
+}
+
+/* ── Botones — ajustes de focus y transición ─────────────────────── */
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sq-glow-brand);
+}
+
+.btn-danger:focus-visible {
+  box-shadow: 0 0 0 3px var(--sq-glow-error);
+}
+
+/* Los colores de btn-primary, btn-outline-primary, etc. se resuelven
+   automáticamente vía --bs-primary desde tokens.css.
+   Solo ajustamos lo que Bootstrap no expone como variable: */
+
+.btn-secondary {
+  --bs-btn-color:         var(--sq-text-default);
+  --bs-btn-bg:            var(--sq-surface-neutral-subtlest);
+  --bs-btn-border-color:  var(--sq-border-subtle);
+  --bs-btn-hover-color:   var(--sq-text-default);
+  --bs-btn-hover-bg:      var(--sq-surface-neutral-subtler);
+  --bs-btn-hover-border-color: var(--sq-border-bold);
+  --bs-btn-active-color:  var(--sq-text-default);
+  --bs-btn-active-bg:     var(--sq-neutral-200);
+  --bs-btn-disabled-color: var(--sq-text-subtlest);
+  --bs-btn-disabled-bg:   var(--sq-surface-neutral-subtlest);
+}
+
+/* ── Formularios — ajustes de textarea ───────────────────────────── */
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 96px;
+}
+
+/* ── Badges — variante de color sutil (no llena) ─────────────────── */
+/*
+ * Bootstrap usa text-bg-* para badges con fondo sutil.
+ * Aquí mantenemos la API .badge.bg-* para compatibilidad
+ * con el patrón de uso del DS original.
+ */
+.badge.bg-primary {
+  background-color: var(--sq-surface-brand-subtlest) !important;
+  color: var(--sq-text-brand) !important;
+}
+.badge.bg-success {
+  background-color: var(--sq-surface-success-subtlest) !important;
+  color: var(--sq-text-success) !important;
+}
+.badge.bg-warning {
+  background-color: var(--sq-surface-warning-subtlest) !important;
+  color: var(--sq-text-warning) !important;
+}
+.badge.bg-danger {
+  background-color: var(--sq-surface-error-subtlest) !important;
+  color: var(--sq-text-error) !important;
+}
+.badge.bg-info {
+  background-color: var(--sq-surface-info-subtlest) !important;
+  color: var(--sq-text-info) !important;
+}
+.badge.bg-secondary {
+  background-color: var(--sq-surface-neutral-subtlest) !important;
+  color: var(--sq-text-subtlest) !important;
+}
+
+/* ── Tabla — th estilo Squadness ─────────────────────────────────── */
+/*
+ * Bootstrap no tiene variable para el estilo de <th> en thead.
+ * Aplicamos el tratamiento del DS: tamaño pequeño, uppercase, subtlest.
+ */
+.table > thead > tr > th {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sq-text-subtlest);
+}
+
+/* ── Navbar — altura fija y borde inferior ───────────────────────── */
+
+.navbar {
+  min-height: 56px;
+  border-bottom: 1px solid var(--sq-border-subtle);
+  background-color: var(--sq-surface-raised) !important;
+}
+
+/* ── Nav links — estado activo con color de marca ────────────────── */
+
+.nav-link.active,
+.nav-link[aria-current] {
+  color: var(--sq-brand) !important;
+  background-color: var(--sq-surface-brand-subtlest);
+  border-radius: var(--sq-radius-sm);
+}
+
+/* ── Card footer — sin fondo ─────────────────────────────────────── */
+
+.card-footer {
+  background-color: transparent;
+}
+
+/* ── Paginación — gap entre items ────────────────────────────────── */
+
+.pagination {
+  gap: 2px;
+}
+
+.page-item:not(:first-child) .page-link {
+  margin-left: 0;
+}
+
+/* ── Accordion — sin borde en el botón al colapsar ───────────────── */
+
+.accordion-button:not(.collapsed) {
+  box-shadow: none;
+  border-bottom: 1px solid var(--sq-border-subtle);
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 3px var(--sq-glow-brand);
+}
+
+/* ── Spinner — color de marca ────────────────────────────────────── */
+
+.spinner-border,
+.spinner-grow {
+  color: var(--sq-brand);
+}
+
+/* ── Código inline ───────────────────────────────────────────────── */
+
+code:not([class]) {
+  font-family: var(--sq-font-mono);
+  font-size: 0.85em;
+  color: var(--sq-brand);
+  background-color: rgba(0, 95, 219, 0.07);
+  padding: 2px 6px;
+  border-radius: var(--sq-radius-xs);
+}
+
+pre {
+  background-color: var(--sq-surface-neutral-subtlest);
+  border: 1px solid var(--sq-border-subtle);
+  border-radius: var(--sq-radius-md);
+  padding: 16px 20px;
+  font-family: var(--sq-font-mono);
+  font-size: 13px;
+  overflow-x: auto;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   UTILIDADES SQUADNESS  .sq-*
+   Clases propias que complementan las de Bootstrap
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Texto */
+.sq-text-brand      { color: var(--sq-text-brand) !important; }
+.sq-text-subtle     { color: var(--sq-text-subtle) !important; }
+.sq-text-subtlest   { color: var(--sq-text-subtlest) !important; }
+.sq-text-success    { color: var(--sq-text-success) !important; }
+.sq-text-warning    { color: var(--sq-text-warning) !important; }
+.sq-text-error      { color: var(--sq-text-error) !important; }
+.sq-text-info       { color: var(--sq-text-info) !important; }
+.sq-text-inverse    { color: var(--sq-text-inverse) !important; }
+.sq-text-mono       { font-family: var(--sq-font-mono) !important; }
+
+/* Superficies */
+.sq-surface-raised      { background-color: var(--sq-surface-raised) !important; }
+.sq-surface-default     { background-color: var(--sq-surface-default) !important; }
+.sq-surface-neutral     { background-color: var(--sq-surface-neutral-subtlest) !important; }
+.sq-surface-brand       { background-color: var(--sq-surface-brand-subtlest) !important; }
+.sq-surface-success     { background-color: var(--sq-surface-success-subtlest) !important; }
+.sq-surface-warning     { background-color: var(--sq-surface-warning-subtlest) !important; }
+.sq-surface-error       { background-color: var(--sq-surface-error-subtlest) !important; }
+.sq-surface-info        { background-color: var(--sq-surface-info-subtlest) !important; }
+
+/* Bordes */
+.sq-border              { border: 1px solid var(--sq-border-subtle) !important; }
+.sq-border-subtle       { border: 1px solid var(--sq-border-subtle) !important; }
+.sq-border-default      { border: 1px solid var(--sq-border-default) !important; }
+.sq-border-bold         { border: 1px solid var(--sq-border-bold) !important; }
+.sq-border-brand        { border: 1px solid var(--sq-border-brand) !important; }
+.sq-border-success      { border: 1px solid var(--sq-border-success) !important; }
+.sq-border-warning      { border: 1px solid var(--sq-border-warning) !important; }
+.sq-border-error        { border: 1px solid var(--sq-border-error) !important; }
+
+/* Sombras */
+.sq-shadow-sm   { box-shadow: var(--sq-shadow-sm) !important; }
+.sq-shadow-md   { box-shadow: var(--sq-shadow-md) !important; }
+.sq-shadow-lg   { box-shadow: var(--sq-shadow-lg) !important; }
+.sq-shadow-none { box-shadow: none !important; }
+
+/* Radios */
+.sq-radius-xs   { border-radius: var(--sq-radius-xs) !important; }
+.sq-radius-sm   { border-radius: var(--sq-radius-sm) !important; }
+.sq-radius-md   { border-radius: var(--sq-radius-md) !important; }
+.sq-radius-lg   { border-radius: var(--sq-radius-lg) !important; }
+.sq-radius-full { border-radius: var(--sq-radius-full) !important; }
+
+/* Espaciado extra (complementa gap-* de Bootstrap) */
+.sq-gap-025  { gap: var(--sq-space-025) !important; }
+.sq-gap-050  { gap: var(--sq-space-050) !important; }
+.sq-gap-075  { gap: var(--sq-space-075) !important; }
+.sq-gap-100  { gap: var(--sq-space-100) !important; }
+.sq-gap-150  { gap: var(--sq-space-150) !important; }
+.sq-gap-200  { gap: var(--sq-space-200) !important; }
+.sq-gap-300  { gap: var(--sq-space-300) !important; }
+
+/* Divider */
+.sq-divider {
+  border: none;
+  border-top: 1px solid var(--sq-border-subtle);
+  margin: 24px 0;
+}
+
+/* Focus ring visible en elementos interactivos personalizados */
+.sq-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sq-glow-brand);
+}
+
