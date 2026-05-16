@@ -5,22 +5,6 @@
 
 (function () {
 
-  /* ── Auth guard ───────────────────────────────────────────────── */
-  var SESSION_KEY   = 'sq_docs_auth';
-  var SESSION_VALUE = 'granted';
-
-  if (sessionStorage.getItem(SESSION_KEY) !== SESSION_VALUE) {
-    /* Guardar la página actual para redirigir después del login */
-    var pathParts0 = window.location.pathname.split('/');
-    var inSubdir0  = pathParts0.some(function(p) {
-      return p === 'components' || p === 'foundations' || p === 'layouts';
-    });
-    var base0 = inSubdir0 ? '../' : './';
-    sessionStorage.setItem('sq_docs_redirect', window.location.href);
-    window.location.replace(base0 + 'login.html');
-    return; /* detener el resto del script */
-  }
-
   /* ── Detect base path (root vs subdir page) ───────────────────── */
   // Pages in docs/components/ or docs/foundations/ need '../'
   // Pages in docs/ root (index.html, getting-started.html, etc.) need './'
